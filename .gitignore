@@ -4,3 +4,4 @@ node_modules/
 .wrangler/
 __pycache__/
 tests/resultats/**/journal.log
+.suivi.json

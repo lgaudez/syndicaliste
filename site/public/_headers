@@ -7,3 +7,6 @@
 
 /install.sh
   Content-Type: text/plain; charset=utf-8
+
+/data/*.txt
+  Content-Type: text/plain; charset=utf-8
