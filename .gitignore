@@ -1,0 +1,5 @@
+.decisions.tsv
+.syndicat/
+node_modules/
+.wrangler/
+__pycache__/

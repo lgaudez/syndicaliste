@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Copie les données du skill (et install.sh s'il existe) dans le site statique.
+set -euo pipefail
+ici="$(cd "$(dirname "$0")" && pwd)"
+racine="$(dirname "$ici")"
+mkdir -p "$ici/public/data"
+cp "$racine"/skills/syndicaliste/data/*.json "$ici/public/data/"
+if [ -f "$racine/install.sh" ]; then
+  cp "$racine/install.sh" "$ici/public/install.sh"
+fi
+echo "sync : $(ls "$ici/public/data" | tr '\n' ' ')$( [ -f "$ici/public/install.sh" ] && echo '+ install.sh')"

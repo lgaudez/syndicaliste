@@ -1,0 +1,96 @@
+{
+  "maj": "2026-10-20",
+  "_note": "Calendrier embarqué. La pointeuse le fusionne avec https://syndicaliste.pages.dev/api/greves.json quand le réseau répond. Ajoutez un mouvement par PR.",
+  "mouvements": [
+    {
+      "debut": "2026-09-29",
+      "fin": "2026-09-29",
+      "intitule": "Fonction publique : contre le gel du point d'indice 2027",
+      "interpro": false,
+      "secteurs": [
+        "fonction-publique"
+      ],
+      "appelants": [
+        "cgt",
+        "fo",
+        "cfdt",
+        "unsa",
+        "fsu",
+        "sud",
+        "cfe-cgc"
+      ],
+      "motif": "Le gouvernement Lecornu veut geler à nouveau le point d'indice en 2027.",
+      "source": "https://www.timefrance.fr/societe/gel-du-point-dindice-huit-syndicats-mobilisent-la-fonction-publique-avant-le-budget-2027/"
+    },
+    {
+      "debut": "2026-10-06",
+      "fin": "2026-10-06",
+      "intitule": "Éducation : mobilisation lycéenne, étudiante et des personnels",
+      "interpro": false,
+      "secteurs": [
+        "education"
+      ],
+      "appelants": [
+        "fsu",
+        "cgt",
+        "fo",
+        "cfdt",
+        "unsa",
+        "sud"
+      ],
+      "motif": "Bâtiments dégradés, manque de personnels.",
+      "source": "https://www.cestlagreve.fr/greve/education-nationale-octobre-2026/"
+    },
+    {
+      "debut": "2026-10-13",
+      "fin": "2026-10-13",
+      "intitule": "Éducation et enseignement supérieur : grève contre les suppressions d'emplois du budget 2027",
+      "interpro": false,
+      "secteurs": [
+        "education"
+      ],
+      "appelants": [
+        "fsu",
+        "cfdt",
+        "cgt",
+        "fo",
+        "sud",
+        "unsa"
+      ],
+      "motif": "Suppressions d'emplois au budget 2027, salaires, titularisation des contractuels, statut des AESH.",
+      "source": "https://www.sgen-cfdt.fr/actu/greve13102026/"
+    },
+    {
+      "debut": "2026-10-17",
+      "fin": "2026-10-17",
+      "intitule": "Mobilisation du 17 octobre (Gilets jaunes, lycéens, Solidaires, climat)",
+      "interpro": false,
+      "secteurs": [],
+      "appelants": [
+        "sud"
+      ],
+      "motif": "Convergence des colères. L'intersyndicale n'appelle pas ; la CGT vient « partout où les conditions sont réunies ».",
+      "source": "https://www.france24.com/fr/france/20261016-france-gilets-jaunes-lyceens-syndicats-a-quoi-va-ressembler-la-mobilisation-du-17-octobre"
+    },
+    {
+      "debut": "2026-11-05",
+      "fin": "2026-11-05",
+      "intitule": "Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027",
+      "interpro": true,
+      "secteurs": [
+        "transport",
+        "fonction-publique",
+        "education"
+      ],
+      "appelants": [
+        "cfdt",
+        "cgt",
+        "fo",
+        "unsa",
+        "fsu"
+      ],
+      "motif": "Hausse du Smic, du point d'indice, des pensions et des minima sociaux, indexation sur les prix, égalité salariale, moyens pour les services publics. Grève SNCF le même jour (CGT-Cheminots, UNSA-Ferroviaire, SUD-Rail, CFDT-Cheminots).",
+      "source": "https://www.cgtetat.fr/societe-959/mobilisations/article/le-5-novembre-grandes-greves-intersyndicales-dans-tout-le-pays-tract-cgt"
+    }
+  ]
+}

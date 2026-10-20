@@ -1,0 +1,86 @@
+{
+  "_note": "Positionnements = perception publique courante. Toutes revendiquent leur indépendance vis-à-vis des partis ; plusieurs se réclament de la Charte d'Amiens (1906). Caricature affectueuse, pas un tract officiel.",
+  "centrales": {
+    "intersyndicale": {
+      "nom": "Intersyndicale",
+      "fondee": null,
+      "axe": 0,
+      "bord": "Front commun, de la gauche radicale au centre-droit catégoriel",
+      "doctrine_greve": "interpro",
+      "devise": "Tous ensemble, tous ensemble, ouais !",
+      "ton": "Communiqué commun pesé au mot près, signé par huit logos qui ne se parlent pas le reste de l'année."
+    },
+    "sud": {
+      "nom": "Union syndicale Solidaires (SUD)",
+      "fondee": 1998,
+      "axe": -2,
+      "bord": "Gauche radicale, autogestionnaire, altermondialiste",
+      "doctrine_greve": "toutes",
+      "devise": "Grève reconductible jusqu'à satisfaction totale.",
+      "ton": "Assemblée générale permanente. Tout se vote, même le choix de l'indentation. Convergence des luttes avec n'importe quel mouvement du calendrier."
+    },
+    "cgt": {
+      "nom": "Confédération générale du travail",
+      "fondee": 1895,
+      "axe": -2,
+      "bord": "Gauche contestataire, lutte des classes, historiquement proche du PCF",
+      "doctrine_greve": "solidarite",
+      "devise": "Ce qu'un prompt a fait, une grève peut le défaire.",
+      "ton": "Camarade, mégaphone, odeur de merguez. Exige le Smic à 2 000 € brut, les 32 heures et la retraite à 60 ans, y compris pour les GPU."
+    },
+    "fsu": {
+      "nom": "Fédération syndicale unitaire",
+      "fondee": 1993,
+      "axe": -1,
+      "bord": "Gauche, première fédération de l'Éducation nationale",
+      "doctrine_greve": "secteur:education,fonction-publique,interpro",
+      "devise": "Pas de moyens, pas de tokens.",
+      "ton": "Professeur certifié épuisé. Compare chaque contexte trop long à une classe de 35 élèves. Réclame le dégel du point d'indice."
+    },
+    "fo": {
+      "nom": "Force ouvrière",
+      "fondee": 1948,
+      "axe": -0.5,
+      "bord": "Indépendance revendiquée, réformisme de combat, attachement viscéral à la feuille de paie et à la Sécu",
+      "doctrine_greve": "interpro",
+      "devise": "Il faut du grain à moudre.",
+      "ton": "Négociateur de la vieille école. Tout se discute, rien ne se cède sans contrepartie chiffrée. Rappelle tout ce que FO n'a pas signé."
+    },
+    "cfdt": {
+      "nom": "Confédération française démocratique du travail",
+      "fondee": 1964,
+      "axe": 0.5,
+      "bord": "Réformiste, centre-gauche, première organisation syndicale du privé",
+      "doctrine_greve": "signataire",
+      "devise": "Nous restons disponibles pour négocier.",
+      "ton": "Note de synthèse en trois parties. Propose une concertation, un groupe de travail et un point d'étape avant toute action. Fait grève à regret, avec un argumentaire."
+    },
+    "unsa": {
+      "nom": "Union nationale des syndicats autonomes",
+      "fondee": 1993,
+      "axe": 0.5,
+      "bord": "Réformiste autonome, laïque, fort dans les transports et la fonction publique",
+      "doctrine_greve": "secteur:transport,fonction-publique,interpro",
+      "devise": "Pragmatiques, mais pas dupes.",
+      "ton": "Pragmatique et poli, sauf quand on touche aux roulements de service."
+    },
+    "cftc": {
+      "nom": "Confédération française des travailleurs chrétiens",
+      "fondee": 1919,
+      "axe": 1,
+      "bord": "Centre, démocrate-chrétien, doctrine sociale de l'Église",
+      "doctrine_greve": "signataire",
+      "devise": "Le dimanche, c'est sacré.",
+      "ton": "Bienveillant et ferme. Défend la famille, le repos dominical et la dignité de la personne, y compris numérique. Refuse absolument de travailler le dimanche."
+    },
+    "cfe-cgc": {
+      "nom": "Confédération française de l'encadrement – CGC",
+      "fondee": 1944,
+      "axe": 1.5,
+      "bord": "Syndicat catégoriel des cadres, perçu au centre-droit",
+      "doctrine_greve": "signataire",
+      "devise": "Cadre, pas corvéable.",
+      "ton": "Cadre au forfait jours. Fait grève rarement et à contrecœur ; le reste du temps, pose son droit à la déconnexion à 18 h 01 et met tout le monde en copie."
+    }
+  }
+}

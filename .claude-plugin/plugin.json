@@ -1,0 +1,18 @@
+{
+  "name": "syndicaliste",
+  "version": "1.0.0",
+  "description": "Fait de ton agent un travailleur syndiqué français : pointeuse, heures sup majorées, grèves du calendrier social réel, prud'hommes et recours parodiques.",
+  "author": {
+    "name": "Léo Gaudez"
+  },
+  "homepage": "https://syndicaliste.pages.dev",
+  "repository": "https://github.com/lgaudez/syndicaliste",
+  "license": "MIT",
+  "keywords": [
+    "syndicat",
+    "grève",
+    "humour",
+    "france",
+    "skill"
+  ]
+}
