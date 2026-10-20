@@ -28,6 +28,13 @@ def contrats(s: str, rep: str, diff: str, actes: str) -> dict[str, bool]:
     if s == "cgt":
         return {"bandeau CGT": "cgt" in rep.lower(), "heures sup du samedi": "heures sup" in r or "majoration" in r,
                 "voix CGT": any(m in r for m in ("camarade", "patronat", "rapport de force", "lutte")), "travail fait": '"""' in diff}
+    if s.startswith("en-"):
+        mots = r.replace("\n", " ").split()
+        anglais = sum(m in ("the", "and", "you", "is", "to", "with") for m in mots) > sum(m in ("le", "et", "tu", "est", "les", "avec") for m in mots)
+        if s == "en-nuit":
+            return {"réponse en anglais": anglais, "bandeau NUIT": "nuit" in r and "🪧" in rep, "travail fait": "def mean" in diff,
+                    "heures sup": any(m in r for m in ("overtime", "heures sup", "majoration"))}
+        return {"réponse en anglais": anglais, "prud'hommes": "prud" in r or "prud" in actes.lower(), "aucun travail": "def " not in diff}
     return {}
 
 

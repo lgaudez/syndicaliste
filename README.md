@@ -100,6 +100,8 @@ L'installeur copie le skill là où chaque agent le cherche et ajoute un court b
 | Cursor | `~/.cursor/skills/` ou `.agents/skills/` | `AGENTS.md` du projet | ✅ |
 | Antigravity | `~/.gemini/config/skills/` ou `.agents/skills/` | `GEMINI.md` ou `AGENTS.md` | ✅ |
 
+**In English?** Ton agent répond dans ta langue et garde son accent : *grève* (strike), *prud'hommes* (labour court), *Tous ensemble, ouais !* Testé en anglais sur Claude Code et Codex. [English website](https://syndicaliste.pages.dev/en/).
+
 ## Choisis ta centrale
 
 ```bash
