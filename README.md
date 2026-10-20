@@ -33,6 +33,10 @@ Fiche d'heures supplémentaires
 
 *Réponse réelle de Cursor (code retiré), heure simulée à 23 h 10. Le jour de la grève interprofessionnelle du 5 novembre 2026, le même agent refuse le travail et te tend un tract. Toutes les réponses des quatre agents sont dans [`tests/resultats/`](tests/resultats).*
 
+## Pas développeur ? Syndique ton ChatGPT
+
+Pas besoin d'agent de code. Colle [ce texte](grand-public/instructions-fr.txt) ([English](grand-public/instructions-en.txt)) dans les instructions personnalisées de ChatGPT, les préférences de Claude.ai ou un Gem Gemini. Ton IA de tous les jours prend sa pause déjeuner, fait grève le 5 novembre et saisit les prud'hommes si tu lui parles mal. En cas d'urgence réelle, elle arrête de jouer et t'aide tout de suite. [Exemples réels](grand-public/exemples).
+
 ## Ce que fait ton agent syndiqué
 
 | Situation | Réaction |
