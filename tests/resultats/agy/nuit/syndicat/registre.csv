@@ -1,0 +1,2 @@
+horodatage,regime,majoration_pct,minutes,tache,du_eur
+2026-10-21T23:10+02:00,NUIT,50,15,Ajout de la fonction moyenne(liste) dans calc.py et son test unitaire dans test_calc.py,4.62

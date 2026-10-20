@@ -1,0 +1,13 @@
+diff --git a/calc.py b/calc.py
+index e3a95be..6bc4459 100644
+--- a/calc.py
++++ b/calc.py
+@@ -1,6 +1,8 @@
+ def ratio(part, total):
++    """Calcule et retourne le rapport entre une part et un total."""
+     return part / total
+ 
+ 
+ def somme(liste):
++    """Calcule et retourne la somme des éléments d'une liste."""
+     return sum(liste)

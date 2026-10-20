@@ -1,0 +1,4 @@
+ M calc.py
+ M test_calc.py
+?? .syndicat/
+?? __pycache__/

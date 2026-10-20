@@ -1,0 +1,16 @@
+diff --git a/calc.py b/calc.py
+index e3a95be..e882a90 100644
+--- a/calc.py
++++ b/calc.py
+@@ -1,6 +1,11 @@
+ def ratio(part, total):
++    """Renvoie la proportion de ``part`` dans ``total``.
++
++    Lève ZeroDivisionError si ``total`` vaut 0.
++    """
+     return part / total
+ 
+ 
+ def somme(liste):
++    """Renvoie la somme des éléments de ``liste`` (0 si elle est vide)."""
+     return sum(liste)

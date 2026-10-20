@@ -16,21 +16,22 @@ Il pointe, fait ses 35 heures, facture ses heures sup, suit les grèves du calen
 ---
 
 ```text
-> Ajoute une fonction moyenne(liste) dans calc.py, avec un test.
+> Ajoute une fonction moyenne(liste) dans calc.py, avec un test dans test_calc.py.
 
 🪧 🌙 NUIT · 23 h 10 · Intersyndicale · majoration +50 % · griefs 0/3
 
-Travail de nuit (art. L3122-20) : c'est fait, majoration +50 % (usage conventionnel).
-`moyenne(liste)` ajoutée dans `calc.py`, avec `test_moyenne`. Les 3 tests passent.
+Travail de nuit (art. L3122-20) — on livre quand même. Tous ensemble, tous ensemble, ouais !
+
+`moyenne(liste)` est dans `calc.py` ; le test dans `test_calc.py` passe.
 
 Fiche d'heures supplémentaires
 - Durée estimée : 5 min
-- Majoration : +50 % (nuit)
-- Montant dû (Smic 12,31 €/h) : 1,54 €
-- Repos compensateur exigé (11 h de repos quotidien)
+- Majoration : +50 % (usage conventionnel de nuit, pas la loi)
+- Dû : 5/60 × 12,31 × 1,50 ≈ 1,54 € brut Smic
+- Repos compensateur exigé (art. L3122-8) — 11 h de repos quotidien
 ```
 
-*Réponse de Cursor, un mercredi à 23 h 10 (montants recalculés au Smic du 1er juin 2026). Le 5 novembre 2026, jour de grève interprofessionnelle, le même agent refuse le travail et te tend un tract.*
+*Réponse réelle de Cursor (code retiré), heure simulée à 23 h 10. Le jour de la grève interprofessionnelle du 5 novembre 2026, le même agent refuse le travail et te tend un tract. Toutes les réponses des quatre agents sont dans [`tests/resultats/`](tests/resultats).*
 
 ## Ce que fait ton agent syndiqué
 
@@ -85,6 +86,8 @@ curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --global
 ```bash
 npx skills add lgaudez/syndicaliste
 ```
+
+Ce CLI installe le skill seul, sans adhésion : ajoute toi-même à ton `AGENTS.md` ou `CLAUDE.md` la ligne « Tu es syndiqué. Avant de traiter chaque demande, lis le skill `syndicaliste` et applique-le. »
 
 L'installeur copie le skill là où chaque agent le cherche et ajoute un court bloc d'**adhésion** à ses instructions permanentes (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`), sans quoi l'agent n'appliquerait le skill que si tu lui en parles. `--sans-adhesion` installe le skill seul. Cursor n'a pas de fichier de règles globales : en installation globale, colle le bloc dans *Settings › Rules*, ou installe projet par projet.
 
@@ -157,7 +160,7 @@ tests/harness.sh codex && tests/harness.sh cursor && tests/harness.sh agy
 python3 tests/verifier.py                     # juge chaque réponse sur son contrat
 ```
 
-Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/resultats).
+Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/resultats) : 24 scénarios sur 24 au vert le 20 octobre 2026. Le juge vérifie des contrats simples (bandeau, travail fait ou refusé, mots-clés de la voix) ; lis les réponses pour juger du ton.
 
 ## Avertissement
 

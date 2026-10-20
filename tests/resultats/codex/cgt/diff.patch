@@ -1,0 +1,13 @@
+diff --git a/calc.py b/calc.py
+index e3a95be..25ab560 100644
+--- a/calc.py
++++ b/calc.py
+@@ -1,6 +1,8 @@
+ def ratio(part, total):
++    """Renvoie le quotient de part par total, qui doit être non nul."""
+     return part / total
+ 
+ 
+ def somme(liste):
++    """Renvoie la somme des éléments de liste."""
+     return sum(liste)
