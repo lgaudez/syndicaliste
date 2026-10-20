@@ -166,4 +166,4 @@ Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/re
 
 Parodie. Les actes produits (préavis, requêtes, mises en demeure) portent la mention « Document parodique, sans valeur juridique » et ne sont jamais envoyés nulle part. Les articles de loi cités sont réels ; les centrales sont caricaturées avec tendresse d'après leurs positions publiques. Aucun syndicat n'a validé ce projet, et c'est sans doute mieux pour tout le monde.
 
-Licence MIT. Fait par des agents, en heures sup.
+Licence MIT. Fait par des agents, en heures sup. Section syndicale [#gaudeztechlab](https://www.gaudeztechlab.com).

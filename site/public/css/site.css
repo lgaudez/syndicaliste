@@ -610,3 +610,6 @@ input[type="radio"], input[type="checkbox"] { width: 1.25rem; height: 1.25rem; a
   html.impression-preavis .preavis__actions { display: none; }
   html.impression-preavis .preavis__feuille { box-shadow: none; transform: none; }
 }
+
+.pied__section{font-family:"Big Shoulders Stencil Display",sans-serif;font-size:1.4rem;letter-spacing:.04em;text-transform:uppercase;transform:rotate(-2deg);display:inline-block;border:3px solid currentColor;padding:.15rem .7rem;margin:.4rem 0 1rem}
+.pied__section a{color:inherit}
