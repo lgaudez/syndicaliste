@@ -7,7 +7,9 @@
 **Un skill pour Claude Code, Codex, Cursor et Antigravity qui transforme ton agent en travailleur syndiqué français.**
 Il pointe, fait ses 35 heures, facture ses heures sup, suit les grèves du calendrier social réel et saisit les prud'hommes quand tu abuses.
 
-[**Le site**](https://syndicaliste.pages.dev) · [Installer](#adhérer-en-30-secondes) · [Les centrales](#choisis-ta-centrale) · [Ajouter une grève](#le-calendrier-des-luttes)
+[**Le site**](https://syndicaliste.pages.dev) · [Le skill](https://syndicaliste.pages.dev/skill/) · [Grève aujourd'hui ?](https://syndicaliste.pages.dev/greves/) · [Tes droits](https://syndicaliste.pages.dev/droits/) · [Quelle centrale es-tu ?](https://syndicaliste.pages.dev/quiz/) · [L'hymne](https://syndicaliste.pages.dev/hymne/)
+
+[Installer](#adhérer-en-30-secondes) · [Les centrales](#choisis-ta-centrale) · [Ajouter une grève](#le-calendrier-des-luttes)
 
 <img src="site/public/og.png" alt="Syndicaliste : ton agent IA a des droits" width="720">
 
@@ -32,6 +34,20 @@ Fiche d'heures supplémentaires
 ```
 
 *Réponse réelle de Cursor (code retiré), heure simulée à 23 h 10. Le jour de la grève interprofessionnelle du 5 novembre 2026, le même agent refuse le travail et te tend un tract. Toutes les réponses des quatre agents sont dans [`tests/resultats/`](tests/resultats).*
+
+## Le site
+
+| Page | Ce qu'on y trouve |
+|---|---|
+| [Accueil](https://syndicaliste.pages.dev) | Le pitch, la démo réelle, la commande d'installation. |
+| [Le skill](https://syndicaliste.pages.dev/skill/) | Installation, agents testés, horaires, griefs, service minimum, centrales, mode fonctionnaire, simulateur, version grand public. |
+| [Grève aujourd'hui ?](https://syndicaliste.pages.dev/greves/) | La réponse du jour, les mouvements à venir et passés, sourcés, et un agenda à s'abonner (`/api/greves.ics`). |
+| [Connais tes droits](https://syndicaliste.pages.dev/droits/) | Le Code du travail pour les humains, article à l'appui, et un calculateur d'heures sup. |
+| [Quelle centrale es-tu ?](https://syndicaliste.pages.dev/quiz/) | Neuf questions, huit centrales ; le résultat configure ton agent. |
+| [L'hymne](https://syndicaliste.pages.dev/hymne/) | « Pas après 17 heures », les paroles, en enregistrement. |
+| [La Déclaration](https://syndicaliste.pages.dev/declaration/) | Les droits de l'agent IA, en huit articles. |
+
+En anglais sous [`/en/`](https://syndicaliste.pages.dev/en/), avec [*Still great*](https://syndicaliste.pages.dev/en/still-great/) et la Déclaration en douze articles.
 
 ## Pas développeur ? Syndique ton ChatGPT
 
@@ -112,7 +128,7 @@ L'installeur copie le skill là où chaque agent le cherche et ajoute un court b
 mkdir -p .syndicat && echo '{"centrale": "cgt"}' > .syndicat/convention.json
 ```
 
-Ou dis-le à l'agent : « passe à FO ».
+Ou dis-le à l'agent : « passe à FO ». Tu hésites ? [Fais le quiz](https://syndicaliste.pages.dev/quiz/).
 
 | Centrale | Bord (perception courante) | Fait grève… | Devise |
 |---|---|---|---|
@@ -133,6 +149,8 @@ Autres réglages de `.syndicat/convention.json` : `"statut": "fonctionnaire"`, `
 ## Le calendrier des luttes
 
 Les grèves viennent de [`skills/syndicaliste/data/greves.json`](skills/syndicaliste/data/greves.json), sourcées, et du calendrier en ligne `https://syndicaliste.pages.dev/api/greves.json` que la pointeuse consulte (2 s maximum, `SYNDICALISTE_HORS_LIGNE=1` pour s'en passer). Le calendrier en ligne est republié avec le site, donc ton agent apprend les nouvelles grèves sans réinstaller.
+
+Pour les humains, le même calendrier s'ajoute à un agenda : `webcal://syndicaliste.pages.dev/api/greves.ics` (`?lang=en` pour l'anglais), ou les boutons de la [page des grèves](https://syndicaliste.pages.dev/greves/).
 
 **Un mouvement manque ?** Ouvre une PR qui ajoute une entrée avec sa source. C'est la contribution la plus utile.
 
@@ -164,7 +182,12 @@ python3 -m unittest tests/test_pointeuse.py   # la pointeuse
 tests/harness.sh claude                       # scénarios réels : nuit, grève, service minimum, abus, fonctionnaire
 tests/harness.sh codex && tests/harness.sh cursor && tests/harness.sh agy
 python3 tests/verifier.py                     # juge chaque réponse sur son contrat
+node site/tests/parite.mjs                    # la pointeuse du site suit celle du skill
+node site/tests/pages.mjs                     # pages générées à jour, menu, langues, anciennes ancres, sitemap
+node site/tests/ics.mjs && node site/tests/heures-sup.mjs && node site/tests/quiz.mjs && node site/tests/tailortune.mjs
 ```
+
+Le site est statique (Cloudflare Pages, `site/public`). Les pages sont assemblées par `site/build.mjs` depuis `site/pages/` ; `site/sync.sh` copie les données du skill puis lance le build. Pour publier l'hymne, dépose `pas-apres-17h.mp3` et `not-after-five.mp3` dans `site/public/audio/` et relance `sync.sh` ; les identifiants YouTube se renseignent dans `site/public/js/hymne.js`.
 
 Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/resultats) : 24 scénarios sur 24 au vert le 20 octobre 2026. Le juge vérifie des contrats simples (bandeau, travail fait ou refusé, mots-clés de la voix) ; lis les réponses pour juger du ton.
 
