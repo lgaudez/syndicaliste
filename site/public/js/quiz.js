@@ -10,6 +10,8 @@ const Q = {
   fr: {
     progression: (i, n) => `Question ${i} sur ${n}`,
     retour: "← Question précédente",
+    aide: "Touche la réponse qui te ressemble le plus.",
+    suivante: "Question suivante →",
     tuEs: "Tu es",
     tampon: "Adhérent",
     bord: "Bord (perception courante)",
@@ -21,17 +23,19 @@ const Q = {
     ouDis: (s) => `Ou dis-lui simplement : « passe à ${s} ».`,
     partager: "Partager mon résultat",
     lienCopie: "Lien copié, camarade",
-    partageTexte: (s, d) => `Je suis ${s} : « ${d} » Et toi, quelle centrale es-tu ?`,
+    partageTexte: (s, d) => `Je suis ${s} : « ${d} » Et toi, quel syndicat es-tu ?`,
     refaire: "Refaire le quiz",
     faire: "Faire le quiz",
-    toutes: "Voir les huit centrales",
+    toutes: "Voir les huit syndicats",
     scores: "Tes points",
     resultatDe: "Résultat partagé. Et toi ?",
-    indispo: "Le quiz n'a pas pu charger les centrales. Recharge la page.",
+    indispo: "Le quiz n'a pas pu charger les syndicats. Recharge la page.",
   },
   en: {
     progression: (i, n) => `Question ${i} of ${n}`,
     retour: "← Previous question",
+    aide: "Tap the answer that sounds most like you.",
+    suivante: "Next question →",
     tuEs: "You are",
     tampon: "Member",
     bord: "Leaning (common perception)",
@@ -54,10 +58,14 @@ const Q = {
 }[LANG];
 
 const racine = $("[data-quiz]");
-const etat = { i: 0, choix: [], centrales: null };
+const etat = { i: 0, choix: [], centrales: null, enQuestion: false, attente: null };
+const LETTRES = "ABCDEFGHIJ";
 
 function poserQuestion({ focus = true } = {}) {
+  clearTimeout(etat.attente);
+  etat.enQuestion = true;
   const q = QUESTIONS[etat.i];
+  const dejaRepondue = etat.choix[etat.i] != null;
   const n = QUESTIONS.length;
   const titre = el("h2", { class: "quiz__question", id: "quiz-question", tabindex: "-1" }, q[LANG]);
   racine.replaceChildren(el("div", { class: "quiz__carte" },
@@ -65,19 +73,41 @@ function poserQuestion({ focus = true } = {}) {
     el("div", { class: "quiz__barre", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": String(n), "aria-valuenow": String(etat.i), "aria-label": Q.progression(etat.i + 1, n) },
       el("span", { style: `width:${(etat.i / n) * 100}%` })),
     titre,
-    el("ul", { class: "quiz__reponses", "aria-labelledby": "quiz-question" },
+    el("p", { class: "quiz__aide", id: "quiz-aide" }, Q.aide),
+    el("ul", { class: "quiz__reponses", "aria-labelledby": "quiz-question", "aria-describedby": "quiz-aide" },
       q.reponses.map((r, k) => el("li", {},
-        el("button", { type: "button", class: "quiz__reponse", "aria-pressed": String(etat.choix[etat.i] === k), onclick: () => repondre(k) }, r[LANG])))),
-    etat.i > 0 && el("button", { type: "button", class: "quiz__retour", onclick: () => { etat.i -= 1; poserQuestion(); } }, Q.retour)));
+        el("button", { type: "button", class: "quiz__reponse", "aria-pressed": String(etat.choix[etat.i] === k), onclick: (e) => repondre(k, e.currentTarget) },
+          el("span", { class: "quiz__lettre", "aria-hidden": "true" }, LETTRES[k]), el("span", {}, r[LANG]))))),
+    el("div", { class: "quiz__navigation" },
+      etat.i > 0 && el("button", { type: "button", class: "quiz__retour", onclick: () => { etat.i -= 1; poserQuestion(); } }, Q.retour),
+      dejaRepondue && el("button", { type: "button", class: "bouton bouton--encre quiz__suivante", onclick: avancer }, Q.suivante))));
   if (focus) titre.focus({ preventScroll: false });
 }
 
-function repondre(k) {
+// La réponse choisie s'allume un instant, puis la question suivante arrive d'elle-même.
+function repondre(k, bouton) {
+  if (etat.attente) return;
   etat.choix[etat.i] = k;
+  for (const b of racine.querySelectorAll(".quiz__reponse")) b.setAttribute("aria-pressed", String(b === bouton));
+  etat.attente = setTimeout(avancer, 250);
+}
+
+function avancer() {
+  clearTimeout(etat.attente);
+  etat.attente = null;
   etat.i += 1;
   if (etat.i < QUESTIONS.length) return poserQuestion();
   const scores = scorer(etat.choix);
   afficherResultat(gagnant(scores, etat.choix), scores);
+}
+
+// Bouton « Commencer le quiz » de l'en-tête : amène la première question (ou relance après un résultat).
+function commencer(e) {
+  e.preventDefault();
+  if (!etat.centrales) return;
+  if (!etat.enQuestion) recommencer({ focus: false });
+  racine.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  $("#quiz-question")?.focus({ preventScroll: true });
 }
 
 const urlResultat = (cle) => `${location.origin}${location.pathname}?c=${cle}`;
@@ -93,6 +123,7 @@ async function partager(cle, c, bouton) {
 }
 
 function afficherResultat(cle, scores = null, { focus = true } = {}) {
+  etat.enQuestion = false;
   const c = T.centrale(cle, etat.centrales[cle]);
   const commande = `mkdir -p .syndicat && echo '{"centrale": "${cle}"}' > .syndicat/convention.json`;
   try { localStorage.setItem("syndicaliste.centrale", cle); } catch { /* navigation privée */ }
@@ -119,7 +150,7 @@ function afficherResultat(cle, scores = null, { focus = true } = {}) {
     el("p", { class: "quiz__dis" }, Q.ouDis(sigle(cle))),
     el("div", { class: "affiche__actions" },
       el("button", { type: "button", class: "bouton bouton--rouge", "data-partager": "", onclick: (e) => partager(cle, c, e.currentTarget) }, Q.partager),
-      el("button", { type: "button", class: "bouton bouton--creux", onclick: recommencer }, scores ? Q.refaire : Q.faire),
+      el("button", { type: "button", class: "bouton bouton--creux", onclick: () => recommencer() }, scores ? Q.refaire : Q.faire),
       el("a", { class: "bouton bouton--creux", href: LANG === "en" ? "/en/skill/#centrales" : "/skill/#centrales" }, Q.toutes)),
     scores && el("div", { class: "quiz__scores" },
       el("h3", { class: "quiz__sous-titre" }, Q.scores),
@@ -130,11 +161,11 @@ function afficherResultat(cle, scores = null, { focus = true } = {}) {
   if (focus) titre.focus();
 }
 
-function recommencer() {
+function recommencer({ focus = true } = {}) {
   etat.i = 0;
   etat.choix = [];
   history.replaceState(null, "", location.pathname);
-  poserQuestion();
+  poserQuestion({ focus });
 }
 
 async function demarrer() {
@@ -146,6 +177,7 @@ async function demarrer() {
     console.error(e);
     return;
   }
+  $("[data-quiz-commencer]")?.addEventListener("click", commencer);
   const demande = new URLSearchParams(location.search).get("c");
   if (CENTRALES_QUIZ.includes(demande)) afficherResultat(demande, null, { focus: false });
   else poserQuestion({ focus: false });
