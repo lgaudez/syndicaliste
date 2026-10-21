@@ -1070,3 +1070,4 @@ input[aria-invalid="true"] { border-color: var(--rouge); background: #fbe3df; }
 .carte--large { grid-column: 1 / -1; }
 .carte--large .carte__lien { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 1.6rem; }
 .carte--large .carte__surtitre { flex-basis: 100%; }
+.ticket__table td:nth-child(2) { white-space: nowrap; }
