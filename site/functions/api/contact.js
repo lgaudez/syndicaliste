@@ -114,11 +114,12 @@ export async function onRequestPost({ request, env }) {
   const origine = new URL(request.url).origin;
   const annoncee = request.headers.get("origin");
   if (annoncee && annoncee !== origine) return repondre(request, 403, { ok: false, erreur: "origine" });
-  let brut;
-  try { brut = await lireCorps(request); } catch { return repondre(request, 400, { ok: false, erreur: "format" }); }
-  if (!brut || typeof brut !== "object") return repondre(request, 400, { ok: false, erreur: "format" });
-  const lang = brut.lang === "en" ? "en" : "fr";
+  let brut = null;
+  try { brut = await lireCorps(request); } catch { /* corps illisible */ }
+  const lang = brut?.lang === "en" ? "en" : "fr";
+  // Guichet fermé tant que le jeton n'est pas posé, quel que soit le bulletin.
   if (!env.NOTION_TOKEN) return repondre(request, 503, { ok: false, erreur: "guichet-ferme", lang, message: MESSAGES[lang]["guichet-ferme"] });
+  if (!brut || typeof brut !== "object" || Array.isArray(brut)) return repondre(request, 400, { ok: false, erreur: "format", lang });
   if (await tropDeDepots(env, request)) return repondre(request, 429, { ok: false, erreur: "trop-de-depots", lang });
   // Pot de miel : un robot remplit tout. On lui dit merci, on n'écrit rien.
   if (propre(brut.site_web)) return repondre(request, 200, { ok: true, lang });

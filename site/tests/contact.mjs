@@ -111,6 +111,10 @@ for (const email of ["", "camarade", "a@b", "a b@c.fr", "<a@b.fr>", "a@b.c"]) {
   ok(r.json.message === "Le guichet est fermé, réessaie plus tard.", "sans jeton : message propre");
   const sansCorps = await onRequestPost({ request: new Request(`${SITE}/api/contact`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }), env: {} });
   ok(sansCorps.status === 503, "sans jeton, même un corps vide : 503");
+  const illisible = await onRequestPost({ request: new Request(`${SITE}/api/contact`, { method: "POST", body: "n'importe quoi" }), env: {} });
+  ok(illisible.status === 503, "sans jeton, même un corps illisible : 503");
+  const illisibleOuvert = await onRequestPost({ request: new Request(`${SITE}/api/contact`, { method: "POST", headers: { "content-type": "application/json" }, body: "{oups" }), env: ENV });
+  ok(illisibleOuvert.status === 400, "avec jeton, corps illisible : 400");
 }
 
 // 8. Autre origine : 403, rien d'écrit.
