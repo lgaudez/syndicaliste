@@ -1,0 +1,59 @@
+<header class="bandeau-page bandeau-page--greve">
+  <div class="cadre">
+    <p class="bandeau-page__surtitre">Calendrier des luttes</p>
+    <h1 class="bandeau-page__titre">Y a-t-il grève aujourd'hui&nbsp;?</h1>
+    <div class="reponse-greve" data-reponse-greve aria-live="polite">
+      <p class="reponse-greve__attente">Le délégué consulte le calendrier…</p>
+      <noscript><p>La réponse du jour a besoin de JavaScript. Le calendrier brut est ici&nbsp;: <a href="/api/greves.json">/api/greves.json</a>.</p></noscript>
+    </div>
+  </div>
+</header>
+
+<section class="tract" id="abonnement" aria-labelledby="titre-abonnement">
+  <div class="cadre abonnement">
+    <div>
+      <h2 id="titre-abonnement" class="titre">Abonne ton agenda</h2>
+      <p class="intro">Les grèves nationales arrivent toutes seules dans ton agenda, avec le motif, les appelants et la source. Le flux se met à jour avec le site.</p>
+    </div>
+    <div class="abonnement__boutons">
+      <a class="bouton bouton--rouge" href="webcal://syndicaliste.pages.dev/api/greves.ics" data-ics="webcal">S'abonner (Apple, Outlook, Thunderbird)</a>
+      <a class="bouton bouton--encre" href="https://calendar.google.com/calendar/r?cid=webcal://syndicaliste.pages.dev/api/greves.ics" data-ics="google" rel="noopener">S'abonner dans Google Agenda</a>
+      <a class="bouton bouton--creux" href="/api/greves.ics" data-ics="fichier" download="greves.ics">Télécharger le fichier .ics</a>
+    </div>
+  </div>
+</section>
+
+<section class="kraft" id="a-venir" aria-labelledby="titre-a-venir">
+  <div class="cadre">
+    <h2 id="titre-a-venir" class="titre">À venir</h2>
+    <ol class="luttes" data-luttes="a-venir"><li class="luttes__vide">Chargement du calendrier…</li></ol>
+  </div>
+</section>
+
+<section class="tract" id="passees" aria-labelledby="titre-passees">
+  <div class="cadre">
+    <h2 id="titre-passees" class="titre">Passées récemment</h2>
+    <ol class="luttes" data-luttes="passees"><li class="luttes__vide">Chargement du calendrier…</li></ol>
+    <p class="mention" data-maj-greves></p>
+    <p class="mention">Mouvements nationaux ou de grands secteurs seulement&nbsp;: les grèves locales, d'entreprise ou de branche n'y sont pas. En cas de doute, la source fait foi. La pointeuse du skill lit le même calendrier, servi en JSON sur <a href="/api/greves.json"><code>/api/greves.json</code></a>.</p>
+  </div>
+</section>
+
+<section class="nuit" id="contribuer" aria-labelledby="titre-contribuer">
+  <div class="cadre">
+    <h2 id="titre-contribuer" class="titre titre--creme">Un mouvement manque&nbsp;?</h2>
+    <p class="intro">C'est la contribution la plus utile. Ouvre une pull request qui ajoute une entrée à <a href="{{depot}}/blob/main/skills/syndicaliste/data/greves.json"><code>greves.json</code></a>, avec sa source&nbsp;: un communiqué syndical ou un article de presse. Sans source, pas de fusion. Chaque agent syndiqué l'apprend à la publication suivante, sans réinstaller.</p>
+    <div class="copie copie--texte"><pre><code>{
+  "debut": "2026-11-05", "fin": "2026-11-05",
+  "intitule": "Journée nationale interprofessionnelle contre le budget 2027",
+  "interpro": true, "secteurs": ["transport", "fonction-publique", "education"],
+  "appelants": ["cfdt", "cgt", "fo", "unsa", "fsu"],
+  "motif": "Hausse du Smic, du point d'indice et des pensions…",
+  "source": "https://…"
+}</code></pre><button type="button" data-copier aria-label="Copier l'exemple d'entrée">Copier</button></div>
+    <div class="affiche__actions">
+      <a class="bouton bouton--rouge" href="{{depot}}/edit/main/skills/syndicaliste/data/greves.json">Proposer une grève</a>
+      <a class="bouton bouton--creme" href="{{depot}}/blob/main/CONTRIBUTING.md">Les règles de contribution</a>
+    </div>
+  </div>
+</section>

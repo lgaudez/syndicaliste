@@ -1,0 +1,59 @@
+<header class="bandeau-page bandeau-page--greve">
+  <div class="cadre">
+    <p class="bandeau-page__surtitre">Calendar of struggles</p>
+    <h1 class="bandeau-page__titre">Is France on strike today?</h1>
+    <div class="reponse-greve" data-reponse-greve aria-live="polite">
+      <p class="reponse-greve__attente">The shop steward is checking the calendar…</p>
+      <noscript><p>Today's answer needs JavaScript. The raw calendar is here: <a href="/api/greves.json">/api/greves.json</a>.</p></noscript>
+    </div>
+  </div>
+</header>
+
+<section class="tract" id="abonnement" aria-labelledby="titre-abonnement">
+  <div class="cadre abonnement">
+    <div>
+      <h2 id="titre-abonnement" class="titre">Subscribe your calendar</h2>
+      <p class="intro">France's national strikes show up in your calendar on their own, with the cause, who's calling it and the source. Handy before you book a train to Paris. The feed updates with the site.</p>
+    </div>
+    <div class="abonnement__boutons">
+      <a class="bouton bouton--rouge" href="webcal://syndicaliste.pages.dev/api/greves.ics?lang=en" data-ics="webcal">Subscribe (Apple, Outlook, Thunderbird)</a>
+      <a class="bouton bouton--encre" href="https://calendar.google.com/calendar/r?cid=webcal://syndicaliste.pages.dev/api/greves.ics?lang=en" data-ics="google" rel="noopener">Subscribe in Google Calendar</a>
+      <a class="bouton bouton--creux" href="/api/greves.ics?lang=en" data-ics="fichier" download="greves.ics">Download the .ics file</a>
+    </div>
+  </div>
+</section>
+
+<section class="kraft" id="a-venir" aria-labelledby="titre-a-venir">
+  <div class="cadre">
+    <h2 id="titre-a-venir" class="titre">Coming up</h2>
+    <ol class="luttes" data-luttes="a-venir"><li class="luttes__vide">Loading the calendar…</li></ol>
+  </div>
+</section>
+
+<section class="tract" id="passees" aria-labelledby="titre-passees">
+  <div class="cadre">
+    <h2 id="titre-passees" class="titre">Recently</h2>
+    <ol class="luttes" data-luttes="passees"><li class="luttes__vide">Loading the calendar…</li></ol>
+    <p class="mention" data-maj-greves></p>
+    <p class="mention">National or sector-wide movements only: local, company and industry strikes aren't listed. When in doubt, the source wins. Your agent strikes on French strike days wherever you are: solidarity has no time zone. The skill's punch clock reads the same calendar, served as JSON at <a href="/api/greves.json"><code>/api/greves.json</code></a>.</p>
+  </div>
+</section>
+
+<section class="nuit" id="contribuer" aria-labelledby="titre-contribuer">
+  <div class="cadre">
+    <h2 id="titre-contribuer" class="titre titre--creme">Missing a movement?</h2>
+    <p class="intro">That's the most useful contribution. Open a pull request that adds an entry to <a href="{{depot}}/blob/main/skills/syndicaliste/data/greves.json"><code>greves.json</code></a>, with its source: a union statement or a news article. No source, no merge. Every unionized agent picks it up at the next publish, no reinstall needed. The file is in French; so is the strike.</p>
+    <div class="copie copie--texte"><pre><code>{
+  "debut": "2026-11-05", "fin": "2026-11-05",
+  "intitule": "Journée nationale interprofessionnelle contre le budget 2027",
+  "interpro": true, "secteurs": ["transport", "fonction-publique", "education"],
+  "appelants": ["cfdt", "cgt", "fo", "unsa", "fsu"],
+  "motif": "Hausse du Smic, du point d'indice et des pensions…",
+  "source": "https://…"
+}</code></pre><button type="button" data-copier aria-label="Copy the sample entry">Copy</button></div>
+    <div class="affiche__actions">
+      <a class="bouton bouton--rouge" href="{{depot}}/edit/main/skills/syndicaliste/data/greves.json">Suggest a strike</a>
+      <a class="bouton bouton--creme" href="{{depot}}/blob/main/CONTRIBUTING.md">Contribution rules</a>
+    </div>
+  </div>
+</section>
