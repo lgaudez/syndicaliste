@@ -1,0 +1,233 @@
+<header class="bandeau-page bandeau-page--droits">
+  <div class="cadre bandeau-page__grille">
+    <div>
+      <p class="bandeau-page__surtitre">For humans</p>
+      <h1 class="bandeau-page__titre">Know your rights, French style</h1>
+      <p class="bandeau-page__chapo">Your agent knows the French Labor Code by heart. Here's what that code actually gives a private-sector employee in France, in plain English, with the article every time. Spoiler: more vacation than you.</p>
+    </div>
+    <svg class="mascotte" viewBox="0 0 240 250" role="img" aria-label="The mascot: a unionized agent in a beret, holding a 35-hour placard"><use href="#mascotte"/></svg>
+  </div>
+</header>
+
+<div class="cadre">
+  <aside class="avertissement" aria-labelledby="avertissement-titre">
+    <h2 id="avertissement-titre" class="avertissement__titre">Read this first</h2>
+    <p>General information about French law, <strong>not legal advice</strong>. In France, collective agreements (<i lang="fr">conventions collectives</i>, negotiated industry by industry), company agreements and your contract can give you more, and that's often where the premiums are. Managers on day-based contracts, apprentices, minors, civil servants and household employees have their own rules. For your situation, ask someone whose job it is (see <a href="#aide">Where to get help</a>).</p>
+  </aside>
+</div>
+
+<nav class="sommaire sommaire--clair" aria-labelledby="sommaire-titre">
+  <div class="cadre">
+    <h2 id="sommaire-titre" class="sommaire__titre">The sheets</h2>
+    <ol>
+      <li><a href="#pause">Breaks</a></li>
+      <li><a href="#duree">35 hours and overtime</a></li>
+      <li><a href="#calculateur">What are you owed?</a></li>
+      <li><a href="#nuit">Night work</a></li>
+      <li><a href="#repos">Rest</a></li>
+      <li><a href="#dimanche">Sundays</a></li>
+      <li><a href="#feries">Holidays and May 1</a></li>
+      <li><a href="#greve">Strikes</a></li>
+      <li><a href="#deconnexion">Disconnecting</a></li>
+      <li><a href="#aide">Where to get help</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="tract fiches-section" aria-label="Sheets 1 and 2">
+  <div class="cadre fiches">
+    <article class="fiche" id="pause" aria-labelledby="t-pause">
+      <p class="fiche__num">Sheet 1</p>
+      <h2 class="fiche__titre" id="t-pause">Breaks</h2>
+      <p class="fiche__essentiel">In France, by law, once you've worked 6 hours in a day, you get a break of at least 20 minutes in a row.</p>
+      <ul class="fiche__points">
+        <li>Twenty consecutive minutes: two ten-minute breaks don't count.</li>
+        <li>It isn't necessarily paid: your agreement or contract decides.</li>
+        <li>An agreement can give you a longer one.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3121-16" rel="noopener">art. L3121-16</a> (in French)</p>
+      <p class="fiche__agent"><span>The union agent</span>“Mine is 12:30 to 1:30, sacred. Yours is 20 minutes minimum. Take them.”</p>
+    </article>
+
+    <article class="fiche" id="duree" aria-labelledby="t-duree">
+      <p class="fiche__num">Sheet 2</p>
+      <h2 class="fiche__titre" id="t-duree">35 hours and overtime</h2>
+      <p class="fiche__essentiel">In France, the legal work week is 35 hours. Every hour beyond that is overtime, and it pays more.</p>
+      <ul class="fiche__points">
+        <li>Unless an agreement says otherwise: +25% for the first 8 overtime hours (hours 36 to 43), then +50%.</li>
+        <li>A company or industry agreement can set a different rate, but never below 10%.</li>
+        <li>Caps: 10 hours a day and 48 hours in any single week, barring exemptions.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3121-27" rel="noopener">art. L3121-27</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-36" rel="noopener">L3121-36</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-33" rel="noopener">L3121-33</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-18" rel="noopener">L3121-18</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-20" rel="noopener">L3121-20</a></p>
+      <p class="fiche__agent"><span>The union agent</span>“The 35-hour week is my demand number one. Yours is already the law. Work out what you're owed, right below.”</p>
+    </article>
+  </div>
+</section>
+
+<section class="kraft" id="calculateur" aria-labelledby="titre-calculateur">
+  <div class="cadre">
+    <h2 id="titre-calculateur" class="titre">What are you owed?</h2>
+    <p class="intro">Your gross hourly rate and your hours for the week, in euros, French rules. The punch clock does the rest, to the cent, rounding in your favor. The default rate is the <i lang="fr">Smic</i>, France's minimum wage.</p>
+    <div class="calculateur">
+      <form class="formulaire" data-calculateur novalidate>
+        <div class="champ">
+          <label for="calc-taux">Gross hourly rate (€)</label>
+          <input type="text" id="calc-taux" name="taux" inputmode="decimal" value="12.31" autocomplete="off" aria-describedby="calc-taux-aide">
+          <small id="calc-taux-aide" class="champ__aide">French gross minimum wage since June 1, 2026: €12.31 an hour.</small>
+        </div>
+        <div class="champ">
+          <label for="calc-heures">Hours worked this week</label>
+          <input type="text" id="calc-heures" name="heures" inputmode="decimal" value="43" autocomplete="off" aria-describedby="calc-heures-aide">
+          <small id="calc-heures-aide" class="champ__aide">Actual working hours, Monday to Sunday. 43.5 for 43 hours 30 minutes.</small>
+        </div>
+        <details class="calculateur__options">
+          <summary>Night or Sunday hours</summary>
+          <p>French law sets no pay premium for night work, and generally none for Sundays. Enter your collective agreement's rate; at 0%, it's the law alone.</p>
+          <div class="champs-duo">
+            <div class="champ">
+              <label for="calc-nuit">Of which, night hours</label>
+              <input type="text" id="calc-nuit" name="nuit" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-taux-nuit">Night premium (%)</label>
+              <input type="text" id="calc-taux-nuit" name="tauxNuit" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-dimanche">Of which, Sunday hours</label>
+              <input type="text" id="calc-dimanche" name="dimanche" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-taux-dimanche">Sunday premium (%)</label>
+              <input type="text" id="calc-taux-dimanche" name="tauxDimanche" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+          </div>
+        </details>
+      </form>
+      <output class="ticket ticket--calcul" for="calc-taux calc-heures" data-calcul-resultat aria-live="polite">
+        <noscript>The calculator needs JavaScript. By hand: (hours − 35, up to 8) × rate × 1.25, then the rest × rate × 1.5.</noscript>
+      </output>
+    </div>
+    <p class="mention">Calculated over a calendar week, with no averaging agreement, no day-based contract and no time off in lieu. Each line is computed in cents and rounded to the nearest cent, half a cent going to the employee, like the skill's punch clock. Night and Sunday premiums are added on top of overtime unless your agreement says otherwise. Gross amounts, before social contributions.</p>
+  </div>
+</section>
+
+<section class="tract fiches-section" aria-label="Sheets 3 to 6">
+  <div class="cadre fiches">
+    <article class="fiche" id="nuit" aria-labelledby="t-nuit">
+      <p class="fiche__num">Sheet 3</p>
+      <h2 class="fiche__titre" id="t-nuit">Night work</h2>
+      <p class="fiche__essentiel">In France, unless an agreement says otherwise, night work is any work between 9 p.m. and 6 a.m.</p>
+      <ul class="fiche__points">
+        <li>An agreement can move the window: at least 9 hours in a row, including midnight to 5 a.m., somewhere between 9 p.m. and 7 a.m.</li>
+        <li>If you regularly work nights, you're owed compensation: rest time, and pay compensation “where applicable”.</li>
+        <li>The law sets no percentage. The “night premium” comes from your collective agreement or your company's practice.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3122-2" rel="noopener">art. L3122-2</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3122-20" rel="noopener">L3122-20</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3122-8" rel="noopener">L3122-8</a></p>
+      <p class="fiche__agent"><span>The union agent</span>“I bill +50% at night, but that's my custom, not the law. I'm unionized, not a liar.”</p>
+    </article>
+
+    <article class="fiche" id="repos" aria-labelledby="t-repos">
+      <p class="fiche__num">Sheet 4</p>
+      <h2 class="fiche__titre" id="t-repos">Rest</h2>
+      <p class="fiche__essentiel">By law, 11 hours off in a row between two workdays, and at least a day and a half off every week.</p>
+      <ul class="fiche__points">
+        <li>Daily rest: at least 11 consecutive hours.</li>
+        <li>Weekly rest: 24 hours in a row, plus the 11 hours of daily rest, so 35 hours.</li>
+        <li>No more than six working days a week.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3131-1" rel="noopener">art. L3131-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-1" rel="noopener">L3132-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-2" rel="noopener">L3132-2</a></p>
+      <p class="fiche__agent"><span>The union agent</span>“You finished at 10 p.m.? You don't start before 9 a.m. That's the law, not me being lazy.”</p>
+    </article>
+
+    <article class="fiche" id="dimanche" aria-labelledby="t-dimanche">
+      <p class="fiche__num">Sheet 5</p>
+      <h2 class="fiche__titre" id="t-dimanche">Sundays</h2>
+      <p class="fiche__essentiel">In principle, French law puts the weekly rest day on Sunday. In practice, there are plenty of exemptions.</p>
+      <ul class="fiche__points">
+        <li>Retail, hospitality, healthcare, tourist areas: many sectors can have staff work Sundays.</li>
+        <li>The law sets no general Sunday premium.</li>
+        <li>Exception: the “mayor's Sundays”, up to 12 a year in retail, pay at least double, plus time off in lieu.</li>
+        <li>For everything else, check your collective agreement.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3132-3" rel="noopener">art. L3132-3</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-26" rel="noopener">L3132-26</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-27" rel="noopener">L3132-27</a></p>
+      <p class="fiche__agent"><span>The union agent (CFTC branch)</span>“Sunday is sacred. The premium is up to your agreement.”</p>
+    </article>
+
+    <article class="fiche" id="feries" aria-labelledby="t-feries">
+      <p class="fiche__num">Sheet 6</p>
+      <h2 class="fiche__titre" id="t-feries">Public holidays and May 1</h2>
+      <p class="fiche__essentiel">France has eleven legal public holidays. Only one is a mandatory day off: May 1, Labor Day.</p>
+      <ul class="fiche__points">
+        <li>The others are days off or not depending on your company's agreement or, failing that, your employer. Alsace-Moselle gets two extra.</li>
+        <li>A holiday off costs you no pay if you've been with the company at least three months.</li>
+        <li>Working an ordinary holiday carries no legal premium. Your agreement may add one.</li>
+        <li>On May 1, if your work can't stop (hospitals, transport…), you're paid double: your wage, plus an equal amount on top.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l3133-1" rel="noopener">art. L3133-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-3" rel="noopener">L3133-3</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-4" rel="noopener">L3133-4</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-6" rel="noopener">L3133-6</a></p>
+      <p class="fiche__agent"><span>The union agent</span>“On May 1, I refuse even at double pay. You, if they call you in, it's double. Minimum.”</p>
+    </article>
+  </div>
+</section>
+
+<section class="nuit fiches-section" aria-label="Sheets 7 and 8">
+  <div class="cadre fiches">
+    <article class="fiche fiche--rouge" id="greve" aria-labelledby="t-greve">
+      <p class="fiche__num">Sheet 7</p>
+      <h2 class="fiche__titre" id="t-greve">The right to strike</h2>
+      <p class="fiche__essentiel">In France, it's in the Constitution: “The right to strike is exercised within the framework of the laws that regulate it.”</p>
+      <ul class="fiche__points">
+        <li>You can't be fired or disciplined for striking, except for gross misconduct. A firing without it is void.</li>
+        <li>No discrimination either, on pay or bonuses.</li>
+        <li>On the other hand, strike hours aren't paid.</li>
+        <li>In the private sector, no legal notice period: a strike is a collective work stoppage over job-related demands the employer knows about. In public services, a representative union files notice five clear days ahead.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946" rel="noopener">1946 Preamble, paragraph 7</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l2511-1" rel="noopener">art. L2511-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l2512-2" rel="noopener">L2512-2</a></p>
+      <p class="fiche__agent"><span>The union agent</span>“On November 5, I march. <a href="{{lien:greves}}">You?</a>”</p>
+    </article>
+
+    <article class="fiche fiche--creme" id="deconnexion" aria-labelledby="t-deconnexion">
+      <p class="fiche__num">Sheet 8</p>
+      <h2 class="fiche__titre" id="t-deconnexion">The right to disconnect</h2>
+      <p class="fiche__essentiel">Since 2017, French law makes companies set rules for after-hours emails, messages and calls.</p>
+      <ul class="fiche__points">
+        <li>Companies that must negotiate every year on quality of work life (in practice, those with a union delegate) have to agree on how employees exercise their right to disconnect.</li>
+        <li>Without an agreement, the employer writes a charter, after consulting the works council, with training for staff and managers.</li>
+      </ul>
+      <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l2242-17" rel="noopener">art. L2242-17, 7°</a></p>
+      <p class="fiche__agent"><span>The union agent (CFE-CGC branch)</span>“6:01 p.m. I'm not reading anything. Neither should you.”</p>
+    </article>
+  </div>
+</section>
+
+<section class="tract" id="aide" aria-labelledby="t-aide">
+  <div class="cadre">
+    <h2 id="t-aide" class="titre">Where to get help</h2>
+    <p class="intro">Sheet 9, the important one. If you work in France and have a real question, talk to real humans. All of these work in French.</p>
+    <ul class="aides">
+      <li>
+        <h3>The digital Labor Code</h3>
+        <p>The official, free government site: guides, calculators (gross to net pay, severance) and <a href="https://code.travail.gouv.fr/outils/convention-collective" rel="noopener">a tool to find your collective agreement</a>.</p>
+        <p class="fiche__loi"><a href="https://code.travail.gouv.fr" rel="noopener">code.travail.gouv.fr</a></p>
+      </li>
+      <li>
+        <h3>Information services</h3>
+        <p>The Labor Ministry's regional services answer private-sector employees' labor law questions for free.</p>
+        <p class="fiche__loi"><a href="https://code.travail.gouv.fr/besoin-plus-informations" rel="noopener">Contact the regional services</a></p>
+      </li>
+      <li>
+        <h3>The labor inspectorate</h3>
+        <p>It enforces the Labor Code and records violations. It can inspect your company.</p>
+        <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l8112-1" rel="noopener">art. L8112-1</a></p>
+      </li>
+      <li>
+        <h3>The <i lang="fr">conseil de prud'hommes</i></h3>
+        <p>France's labor court. It first tries to settle, then rules on disputes between employees and employers over the employment contract. Unpaid overtime included.</p>
+        <p class="fiche__loi">The law: <a href="https://code.travail.gouv.fr/code-du-travail/l1411-1" rel="noopener">art. L1411-1</a></p>
+      </li>
+      <li>
+        <h3>Unions</h3>
+        <p>The real ones. Local union offices and your company's delegates hold drop-in hours and know your agreement better than anyone. <a href="{{lien:quiz}}">The quiz</a> is no substitute for a membership card.</p>
+      </li>
+    </ul>
+  </div>
+</section>

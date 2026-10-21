@@ -1,0 +1,233 @@
+<header class="bandeau-page bandeau-page--droits">
+  <div class="cadre bandeau-page__grille">
+    <div>
+      <p class="bandeau-page__surtitre">Pour les humains</p>
+      <h1 class="bandeau-page__titre">Connais tes droits</h1>
+      <p class="bandeau-page__chapo">Ton agent connaît le Code du travail par cœur. Toi aussi, tu y as droit. L'essentiel pour un salarié du privé en France, sans jargon, avec l'article à chaque fois.</p>
+    </div>
+    <svg class="mascotte" viewBox="0 0 240 250" role="img" aria-label="La mascotte : un agent syndiqué en béret, pancarte 35 h à la main"><use href="#mascotte"/></svg>
+  </div>
+</header>
+
+<div class="cadre">
+  <aside class="avertissement" aria-labelledby="avertissement-titre">
+    <h2 id="avertissement-titre" class="avertissement__titre">À lire avant</h2>
+    <p>Information générale, <strong>pas un conseil juridique</strong>. Ta convention collective, un accord d'entreprise ou ton contrat peuvent prévoir mieux (et parfois autrement)&nbsp;: c'est souvent là que se cachent les majorations. Cadres au forfait, apprentis, mineurs, fonctionnaires, particuliers employeurs&nbsp;: règles particulières. Pour ton cas, demande à quelqu'un dont c'est le métier (voir <a href="#aide">Où se faire aider</a>).</p>
+  </aside>
+</div>
+
+<nav class="sommaire sommaire--clair" aria-labelledby="sommaire-titre">
+  <div class="cadre">
+    <h2 id="sommaire-titre" class="sommaire__titre">Les fiches</h2>
+    <ol>
+      <li><a href="#pause">La pause</a></li>
+      <li><a href="#duree">35 h et heures sup</a></li>
+      <li><a href="#calculateur">Combien on te doit&nbsp;?</a></li>
+      <li><a href="#nuit">La nuit</a></li>
+      <li><a href="#repos">Le repos</a></li>
+      <li><a href="#dimanche">Le dimanche</a></li>
+      <li><a href="#feries">Fériés et 1er mai</a></li>
+      <li><a href="#greve">La grève</a></li>
+      <li><a href="#deconnexion">La déconnexion</a></li>
+      <li><a href="#aide">Où se faire aider</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="tract fiches-section" aria-label="Fiches 1 et 2">
+  <div class="cadre fiches">
+    <article class="fiche" id="pause" aria-labelledby="t-pause">
+      <p class="fiche__num">Fiche 1</p>
+      <h2 class="fiche__titre" id="t-pause">La pause</h2>
+      <p class="fiche__essentiel">Dès 6 heures de travail dans la journée, tu as droit à au moins 20 minutes de pause d'affilée.</p>
+      <ul class="fiche__points">
+        <li>Vingt minutes consécutives&nbsp;: deux fois dix minutes ne comptent pas.</li>
+        <li>Elle n'est pas forcément payée&nbsp;: ta convention ou ton contrat le disent.</li>
+        <li>Un accord peut prévoir une pause plus longue.</li>
+      </ul>
+      <p class="fiche__loi">Le texte&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3121-16" rel="noopener">art. L3121-16</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Moi, c'est 12 h 30 - 13 h 30, sacré. Toi, c'est 20 minutes minimum. Prends-les.&nbsp;»</p>
+    </article>
+
+    <article class="fiche" id="duree" aria-labelledby="t-duree">
+      <p class="fiche__num">Fiche 2</p>
+      <h2 class="fiche__titre" id="t-duree">35 heures et heures sup</h2>
+      <p class="fiche__essentiel">La durée légale est de 35 heures par semaine. Au-delà, ce sont des heures supplémentaires, payées plus cher.</p>
+      <ul class="fiche__points">
+        <li>Sans accord qui dise autre chose&nbsp;: +25&nbsp;% pour les 8 premières (de la 36<sup>e</sup> à la 43<sup>e</sup> heure), puis +50&nbsp;%.</li>
+        <li>Un accord d'entreprise ou de branche peut fixer un autre taux, jamais moins de 10&nbsp;%.</li>
+        <li>Plafonds&nbsp;: 10 heures par jour et 48 heures sur une même semaine, sauf dérogations.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3121-27" rel="noopener">art. L3121-27</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-36" rel="noopener">L3121-36</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-33" rel="noopener">L3121-33</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-18" rel="noopener">L3121-18</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3121-20" rel="noopener">L3121-20</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Les 35 heures, c'est ma revendication n°&nbsp;1. Les tiennes sont déjà dans la loi. Calcule ce qu'on te doit, juste en dessous.&nbsp;»</p>
+    </article>
+  </div>
+</section>
+
+<section class="kraft" id="calculateur" aria-labelledby="titre-calculateur">
+  <div class="cadre">
+    <h2 id="titre-calculateur" class="titre">Combien on te doit&nbsp;?</h2>
+    <p class="intro">Ton taux horaire brut, tes heures de la semaine&nbsp;: la pointeuse fait le reste, au centime près, avec l'arrondi en ta faveur.</p>
+    <div class="calculateur">
+      <form class="formulaire" data-calculateur novalidate>
+        <div class="champ">
+          <label for="calc-taux">Taux horaire brut (€)</label>
+          <input type="text" id="calc-taux" name="taux" inputmode="decimal" value="12,31" autocomplete="off" aria-describedby="calc-taux-aide">
+          <small id="calc-taux-aide" class="champ__aide">Smic horaire brut depuis le 1<sup>er</sup> juin 2026&nbsp;: 12,31&nbsp;€.</small>
+        </div>
+        <div class="champ">
+          <label for="calc-heures">Heures travaillées dans la semaine</label>
+          <input type="text" id="calc-heures" name="heures" inputmode="decimal" value="43" autocomplete="off" aria-describedby="calc-heures-aide">
+          <small id="calc-heures-aide" class="champ__aide">Heures de travail effectif, du lundi au dimanche. 43,5 pour 43 h 30.</small>
+        </div>
+        <details class="calculateur__options">
+          <summary>Heures de nuit ou du dimanche</summary>
+          <p>La loi ne fixe pas de majoration de salaire pour la nuit, ni en général pour le dimanche. Mets le taux de ta convention collective&nbsp;; à 0&nbsp;%, c'est la loi seule.</p>
+          <div class="champs-duo">
+            <div class="champ">
+              <label for="calc-nuit">Dont heures de nuit</label>
+              <input type="text" id="calc-nuit" name="nuit" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-taux-nuit">Majoration de nuit (%)</label>
+              <input type="text" id="calc-taux-nuit" name="tauxNuit" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-dimanche">Dont heures du dimanche</label>
+              <input type="text" id="calc-dimanche" name="dimanche" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+            <div class="champ">
+              <label for="calc-taux-dimanche">Majoration du dimanche (%)</label>
+              <input type="text" id="calc-taux-dimanche" name="tauxDimanche" inputmode="decimal" value="0" autocomplete="off">
+            </div>
+          </div>
+        </details>
+      </form>
+      <output class="ticket ticket--calcul" for="calc-taux calc-heures" data-calcul-resultat aria-live="polite">
+        <noscript>Le calculateur a besoin de JavaScript. À la main&nbsp;: (heures − 35, dans la limite de 8) × taux × 1,25, puis le reste × taux × 1,5.</noscript>
+      </output>
+    </div>
+    <p class="mention">Calcul sur une semaine civile, sans accord de modulation, ni forfait, ni repos de remplacement. Chaque ligne est calculée en centimes et arrondie au centime le plus proche, le demi-centime en faveur du salarié, comme la pointeuse du skill. Les majorations de nuit et du dimanche s'ajoutent aux heures sup, sauf si ta convention dit autrement. Montants bruts, avant cotisations.</p>
+  </div>
+</section>
+
+<section class="tract fiches-section" aria-label="Fiches 3 à 6">
+  <div class="cadre fiches">
+    <article class="fiche" id="nuit" aria-labelledby="t-nuit">
+      <p class="fiche__num">Fiche 3</p>
+      <h2 class="fiche__titre" id="t-nuit">Le travail de nuit</h2>
+      <p class="fiche__essentiel">Sans accord, c'est tout travail entre 21 heures et 6 heures.</p>
+      <ul class="fiche__points">
+        <li>Un accord peut déplacer la plage&nbsp;: au moins 9 heures d'affilée, comprenant minuit-5 h, entre 21 h et 7 h au plus large.</li>
+        <li>Si tu travailles régulièrement la nuit, tu as droit à des contreparties&nbsp;: du repos compensateur, et une compensation salariale «&nbsp;le cas échéant&nbsp;».</li>
+        <li>La loi ne fixe aucun pourcentage. Le «&nbsp;+X&nbsp;% de nuit&nbsp;» vient de ta convention collective ou des usages de ta boîte.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3122-2" rel="noopener">art. L3122-2</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3122-20" rel="noopener">L3122-20</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3122-8" rel="noopener">L3122-8</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Je compte +50&nbsp;% la nuit, mais c'est mon usage conventionnel, pas la loi. Je suis syndiqué, pas menteur.&nbsp;»</p>
+    </article>
+
+    <article class="fiche" id="repos" aria-labelledby="t-repos">
+      <p class="fiche__num">Fiche 4</p>
+      <h2 class="fiche__titre" id="t-repos">Le repos</h2>
+      <p class="fiche__essentiel">11 heures de repos d'affilée entre deux journées, et au moins un jour et demi par semaine.</p>
+      <ul class="fiche__points">
+        <li>Repos quotidien&nbsp;: 11 heures consécutives au minimum.</li>
+        <li>Repos hebdomadaire&nbsp;: 24 heures d'affilée, plus les 11 heures du repos quotidien, soit 35 heures.</li>
+        <li>Pas plus de six jours de travail par semaine.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3131-1" rel="noopener">art. L3131-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-1" rel="noopener">L3132-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-2" rel="noopener">L3132-2</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Tu as fini à 22 h&nbsp;? Tu ne reprends pas avant 9 h. C'est la loi, pas ma paresse.&nbsp;»</p>
+    </article>
+
+    <article class="fiche" id="dimanche" aria-labelledby="t-dimanche">
+      <p class="fiche__num">Fiche 5</p>
+      <h2 class="fiche__titre" id="t-dimanche">Le dimanche</h2>
+      <p class="fiche__essentiel">Par principe, le repos hebdomadaire est donné le dimanche. Mais les dérogations sont nombreuses.</p>
+      <ul class="fiche__points">
+        <li>Commerces, hôtellerie, santé, zones touristiques&nbsp;: beaucoup de secteurs peuvent faire travailler le dimanche.</li>
+        <li>La loi ne prévoit pas de majoration générale pour le dimanche.</li>
+        <li>Exception&nbsp;: les «&nbsp;dimanches du maire&nbsp;», jusqu'à 12 par an dans les commerces, sont payés au moins double, avec un repos compensateur.</li>
+        <li>Pour le reste, regarde ta convention collective.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3132-3" rel="noopener">art. L3132-3</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-26" rel="noopener">L3132-26</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3132-27" rel="noopener">L3132-27</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué (section CFTC)</span>«&nbsp;Le dimanche, c'est sacré. Pour la majoration, c'est ta convention qui décide.&nbsp;»</p>
+    </article>
+
+    <article class="fiche" id="feries" aria-labelledby="t-feries">
+      <p class="fiche__num">Fiche 6</p>
+      <h2 class="fiche__titre" id="t-feries">Jours fériés et 1<sup>er</sup> mai</h2>
+      <p class="fiche__essentiel">Onze jours fériés légaux. Un seul est obligatoirement chômé&nbsp;: le 1<sup>er</sup> mai.</p>
+      <ul class="fiche__points">
+        <li>Les autres fériés sont chômés ou non selon l'accord de ta boîte ou, à défaut, ton employeur. En Alsace-Moselle, il y en a deux de plus.</li>
+        <li>Un férié chômé ne te fait perdre aucun salaire si tu as au moins trois mois d'ancienneté.</li>
+        <li>Travailler un férié ordinaire ne donne droit à aucune majoration légale. Ta convention peut en prévoir une.</li>
+        <li>Le 1<sup>er</sup> mai, si ton activité ne peut pas s'arrêter (hôpital, transports…), tu es payé double&nbsp;: ton salaire, plus une indemnité du même montant.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l3133-1" rel="noopener">art. L3133-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-3" rel="noopener">L3133-3</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-4" rel="noopener">L3133-4</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l3133-6" rel="noopener">L3133-6</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Le 1<sup>er</sup> mai, je refuse même payé double. Toi, si on te fait venir, c'est double. Minimum.&nbsp;»</p>
+    </article>
+  </div>
+</section>
+
+<section class="nuit fiches-section" aria-label="Fiches 7 et 8">
+  <div class="cadre fiches">
+    <article class="fiche fiche--rouge" id="greve" aria-labelledby="t-greve">
+      <p class="fiche__num">Fiche 7</p>
+      <h2 class="fiche__titre" id="t-greve">Le droit de grève</h2>
+      <p class="fiche__essentiel">C'est un droit constitutionnel&nbsp;: «&nbsp;Le droit de grève s'exerce dans le cadre des lois qui le réglementent.&nbsp;»</p>
+      <ul class="fiche__points">
+        <li>On ne peut pas te licencier ni te sanctionner pour avoir fait grève, sauf faute lourde. Un licenciement sans faute lourde est nul.</li>
+        <li>Pas de discrimination non plus, ni sur le salaire, ni sur les primes.</li>
+        <li>En revanche, les heures de grève ne sont pas payées.</li>
+        <li>Dans le privé, pas de préavis légal&nbsp;: c'est un arrêt de travail collectif, pour des revendications professionnelles connues de l'employeur. Dans les services publics, un syndicat représentatif dépose un préavis cinq jours francs avant.</li>
+      </ul>
+      <p class="fiche__loi">Les textes&nbsp;: <a href="https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946" rel="noopener">Préambule de 1946, alinéa 7</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l2511-1" rel="noopener">art. L2511-1</a>, <a href="https://code.travail.gouv.fr/code-du-travail/l2512-2" rel="noopener">L2512-2</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué</span>«&nbsp;Le 5 novembre, je défile. <a href="{{lien:greves}}">Et toi&nbsp;?</a>&nbsp;»</p>
+    </article>
+
+    <article class="fiche fiche--creme" id="deconnexion" aria-labelledby="t-deconnexion">
+      <p class="fiche__num">Fiche 8</p>
+      <h2 class="fiche__titre" id="t-deconnexion">Le droit à la déconnexion</h2>
+      <p class="fiche__essentiel">Mails, messages et appels hors horaires&nbsp;: ta boîte doit avoir fixé des règles.</p>
+      <ul class="fiche__points">
+        <li>Dans les entreprises tenues de négocier chaque année sur la qualité de vie au travail (en pratique, celles qui ont un délégué syndical), l'accord doit prévoir comment tu exerces ton droit à la déconnexion.</li>
+        <li>Sans accord, l'employeur rédige une charte, après avis du CSE, avec des actions de formation pour les salariés et l'encadrement.</li>
+      </ul>
+      <p class="fiche__loi">Le texte&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l2242-17" rel="noopener">art. L2242-17, 7°</a></p>
+      <p class="fiche__agent"><span>L'agent syndiqué (section CFE-CGC)</span>«&nbsp;18 h 01. Je ne lis plus rien. Toi non plus, normalement.&nbsp;»</p>
+    </article>
+  </div>
+</section>
+
+<section class="tract" id="aide" aria-labelledby="t-aide">
+  <div class="cadre">
+    <h2 id="t-aide" class="titre">Où se faire aider</h2>
+    <p class="intro">Fiche 9, la plus importante. Pour une vraie question, on parle à de vrais humains.</p>
+    <ul class="aides">
+      <li>
+        <h3>Le Code du travail numérique</h3>
+        <p>Le site officiel, gratuit&nbsp;: fiches, simulateurs (salaire brut/net, indemnités) et <a href="https://code.travail.gouv.fr/outils/convention-collective" rel="noopener">l'outil pour trouver ta convention collective</a>.</p>
+        <p class="fiche__loi"><a href="https://code.travail.gouv.fr" rel="noopener">code.travail.gouv.fr</a></p>
+      </li>
+      <li>
+        <h3>Les services de renseignement</h3>
+        <p>Les services régionaux du ministère du Travail informent gratuitement les salariés du privé sur le droit du travail.</p>
+        <p class="fiche__loi"><a href="https://code.travail.gouv.fr/besoin-plus-informations" rel="noopener">Contacter les services en région</a></p>
+      </li>
+      <li>
+        <h3>L'inspection du travail</h3>
+        <p>Elle veille à l'application du Code du travail et constate les infractions. Elle peut contrôler ton entreprise.</p>
+        <p class="fiche__loi">Le texte&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l8112-1" rel="noopener">art. L8112-1</a></p>
+      </li>
+      <li>
+        <h3>Le conseil de prud'hommes</h3>
+        <p>Il tente d'abord de concilier, puis juge les litiges entre salariés et employeurs nés du contrat de travail. Heures sup impayées comprises.</p>
+        <p class="fiche__loi">Le texte&nbsp;: <a href="https://code.travail.gouv.fr/code-du-travail/l1411-1" rel="noopener">art. L1411-1</a></p>
+      </li>
+      <li>
+        <h3>Les syndicats</h3>
+        <p>Les vrais. Les unions locales et les délégués de ta boîte tiennent des permanences et connaissent ta convention mieux que personne. <a href="{{lien:quiz}}">Le quiz</a> ne remplace pas une adhésion.</p>
+      </li>
+    </ul>
+  </div>
+</section>
