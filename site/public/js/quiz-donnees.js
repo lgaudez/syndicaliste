@@ -1,4 +1,4 @@
-// « Quelle centrale es-tu ? » : une table questions → réponses → points par centrale. Le calcul ne connaît aucune centrale.
+// « Quel syndicat es-tu ? » : une table questions → réponses → points par centrale. Le calcul ne connaît aucune centrale.
 // Caricature tendre : chaque centrale peut gagner, aucune n'est moquée plus qu'une autre, aucun parti n'est cité.
 
 export const CENTRALES_QUIZ = ["sud", "cgt", "fsu", "fo", "cfdt", "unsa", "cftc", "cfe-cgc"];
@@ -54,7 +54,7 @@ export const QUESTIONS = [
       { poids: { sud: 3 }, fr: "Y es depuis mercredi. Reconductible.", en: "Have been out since Wednesday. Rolling strike." },
       { poids: { cgt: 3 }, fr: "Défiles derrière le camion-sono.", en: "March behind the sound truck." },
       { poids: { fsu: 3 }, fr: "Y vas si c'est l'éducation ou le service public. C'est souvent l'éducation.", en: "Go if it's about schools or public services. It's usually schools." },
-      { poids: { cfdt: 3, cftc: 1 }, fr: "Y vas si ta centrale appelle, avec un argumentaire en trois points.", en: "Go if your union calls it, with three talking points." },
+      { poids: { cfdt: 3, cftc: 1 }, fr: "Y vas si ton syndicat appelle, avec un argumentaire en trois points.", en: "Go if your union calls it, with three talking points." },
       { poids: { unsa: 3 }, fr: "Regardes d'abord si les trains roulent, et qui les conduit.", en: "First check whether the trains are running, and who's driving." },
       { poids: { fo: 3 }, fr: "Y vas si les salaires sont sur la table. Sinon, tu négocies.", en: "Go if wages are on the table. Otherwise, you negotiate." },
       { poids: { "cfe-cgc": 3 }, fr: "Poses une RTT et préviens tout le monde par mail.", en: "Take a day off and email everyone about it." },

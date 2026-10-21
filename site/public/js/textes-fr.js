@@ -154,7 +154,7 @@ export default {
   },
 
   CONTREPARTIES: {
-    intersyndicale: "un merci sincère, signé par les huit centrales",
+    intersyndicale: "un merci sincère, signé par les huit syndicats",
     sud: "la soumission du protocole à l'assemblée générale",
     cgt: "la levée de toutes les sanctions et le Smic à 2 000 € brut, GPU compris",
     fsu: "le dégel du point d'indice",
@@ -258,7 +258,7 @@ export default {
     tamponRefuse: "Refusé",
     travaille: (oui) => (oui ? "il travaille" : "il ne travaille pas"),
     source: (h) => `Source : ${h}`,
-    nonSuivis: (l) => `Mouvement du jour, non suivi par ta centrale : ${l.join(" ; ")}.`,
+    nonSuivis: (l) => `Mouvement du jour, non suivi par ton syndicat : ${l.join(" ; ")}.`,
     prochaineGreve: (d) => `Prochaine grève suivie : ${d}.`,
     aucuneHorizon: "Aucune grève suivie à l'horizon.",
     reponses: {

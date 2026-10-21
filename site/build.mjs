@@ -130,7 +130,7 @@ const INCLUSIONS = {
     const T = TEXTES[lang];
     const tete = lang === "en"
       ? ["Union", "Leaning (common perception)", "Strikes…", "Motto"]
-      : ["Centrale", "Bord (perception courante)", "Fait grève…", "Devise"];
+      : ["Syndicat", "Bord (perception courante)", "Fait grève…", "Devise"];
     const lignes = Object.entries(CENTRALES).sort((a, b) => a[1].axe - b[1].axe).map(([cle, brute]) => {
       const c = T.centrale(cle, brute);
       return `<tr><th scope="row">${sigle(cle)}<br><code>${cle}</code></th><td>${echapper(c.bord)}</td><td>${echapper(doctrineEnClair(T, c.doctrine_greve))}</td><td>${echapper(T.ui.cite(c.devise))}</td></tr>`;

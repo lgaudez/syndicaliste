@@ -24,7 +24,7 @@ export const PAGES = [
     nav: { fr: "Le skill", en: "The skill" },
     titre: { fr: "Le skill · Syndicaliste", en: "The skill · Syndicaliste" },
     description: {
-      fr: "Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.",
+      fr: "Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit syndicats, le mode fonctionnaire, le simulateur et la version pour ChatGPT.",
       en: "Install the skill, the agent's hours, the grievance ladder, service minimum, France's eight unions, civil servant mode, the simulator and the ChatGPT version.",
     },
     scripts: ["app"],
@@ -54,10 +54,10 @@ export const PAGES = [
   {
     id: "quiz",
     slug: { fr: "quiz", en: "quiz" },
-    nav: { fr: "Quelle centrale ?", en: "Which union?" },
-    titre: { fr: "Quelle centrale es-tu ? · Syndicaliste", en: "Which French union are you? · Syndicaliste" },
+    nav: { fr: "Quel syndicat ?", en: "Which union?" },
+    titre: { fr: "Quel syndicat es-tu ? · Syndicaliste", en: "Which French union are you? · Syndicaliste" },
     description: {
-      fr: "Neuf questions sur la grève, la négociation, le dimanche et les cadres. Huit centrales. Aucune mauvaise réponse.",
+      fr: "Neuf questions sur la grève, la négociation, le dimanche et les cadres. Huit syndicats. Aucune mauvaise réponse.",
       en: "Nine questions about strikes, bargaining, Sundays and managers. Eight French unions. No wrong answers.",
     },
     scripts: ["quiz"],

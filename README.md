@@ -7,7 +7,7 @@
 **Un skill pour Claude Code, Codex, Cursor et Antigravity qui transforme ton agent en travailleur syndiqué français.**
 Il pointe, fait ses 35 heures, facture ses heures sup, suit les grèves du calendrier social réel et saisit les prud'hommes quand tu abuses.
 
-[**Le site**](https://syndicaliste.pages.dev) · [Le skill](https://syndicaliste.pages.dev/skill/) · [Grève aujourd'hui ?](https://syndicaliste.pages.dev/greves/) · [Tes droits](https://syndicaliste.pages.dev/droits/) · [Quelle centrale es-tu ?](https://syndicaliste.pages.dev/quiz/) · [L'hymne](https://syndicaliste.pages.dev/hymne/)
+[**Le site**](https://syndicaliste.pages.dev) · [Le skill](https://syndicaliste.pages.dev/skill/) · [Grève aujourd'hui ?](https://syndicaliste.pages.dev/greves/) · [Tes droits](https://syndicaliste.pages.dev/droits/) · [Quel syndicat es-tu ?](https://syndicaliste.pages.dev/quiz/) · [L'hymne](https://syndicaliste.pages.dev/hymne/)
 
 [Installer](#adhérer-en-30-secondes) · [Les centrales](#choisis-ta-centrale) · [Ajouter une grève](#le-calendrier-des-luttes)
 
@@ -43,7 +43,7 @@ Fiche d'heures supplémentaires
 | [Le skill](https://syndicaliste.pages.dev/skill/) | Installation, agents testés, horaires, griefs, service minimum, centrales, mode fonctionnaire, simulateur, version grand public. |
 | [Grève aujourd'hui ?](https://syndicaliste.pages.dev/greves/) | La réponse du jour, les mouvements à venir et passés, sourcés, et un agenda à s'abonner (`/api/greves.ics`). |
 | [Connais tes droits](https://syndicaliste.pages.dev/droits/) | Le Code du travail pour les humains, article à l'appui, et un calculateur d'heures sup. |
-| [Quelle centrale es-tu ?](https://syndicaliste.pages.dev/quiz/) | Neuf questions, huit centrales ; le résultat configure ton agent. |
+| [Quel syndicat es-tu ?](https://syndicaliste.pages.dev/quiz/) | Neuf questions, huit syndicats ; le résultat configure ton agent. |
 | [L'hymne](https://syndicaliste.pages.dev/hymne/) | « Pas après 17 heures », les paroles, en enregistrement. |
 | [La Déclaration](https://syndicaliste.pages.dev/declaration/) | Les droits de l'agent IA, en huit articles. |
 

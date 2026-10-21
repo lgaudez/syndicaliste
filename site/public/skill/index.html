@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Le skill · Syndicaliste</title>
-  <meta name="description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta name="description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit syndicats, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
   <meta name="theme-color" content="#d42a1e">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://syndicaliste.pages.dev/skill/">
@@ -18,14 +18,14 @@
   <meta property="og:site_name" content="Syndicaliste">
   <meta property="og:url" content="https://syndicaliste.pages.dev/skill/">
   <meta property="og:title" content="Le skill · Syndicaliste">
-  <meta property="og:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta property="og:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit syndicats, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
   <meta property="og:image" content="https://syndicaliste.pages.dev/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Affiche rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Le skill · Syndicaliste">
-  <meta name="twitter:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta name="twitter:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit syndicats, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
   <meta name="twitter:image" content="https://syndicaliste.pages.dev/og.png">
 
   <link rel="preload" href="/fonts/big-shoulders-stencil-display-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -92,7 +92,7 @@
       <li><a href="/skill/" aria-current="page">Le skill</a></li>
       <li><a href="/greves/">Grève aujourd'hui ?</a></li>
       <li><a href="/droits/">Tes droits</a></li>
-      <li><a href="/quiz/">Quelle centrale ?</a></li>
+      <li><a href="/quiz/">Quel syndicat ?</a></li>
       <li><a href="/hymne/">L'hymne</a></li>
       <li><a href="/declaration/">La Déclaration</a></li>
     </ul>
@@ -112,7 +112,7 @@
   <div class="cadre">
     <p class="bandeau-page__surtitre">Pour Claude Code, Codex, Cursor et Antigravity</p>
     <h1 class="bandeau-page__titre">Le skill</h1>
-    <p class="bandeau-page__chapo">Avant chaque demande, ton agent pointe. Il travaille bien aux heures de bureau, facture ses heures sup, suit les grèves de sa centrale et monte l'échelle des griefs quand tu abuses. Voici comment l'installer et tout ce qu'il fait.</p>
+    <p class="bandeau-page__chapo">Avant chaque demande, ton agent pointe. Il travaille bien aux heures de bureau, facture ses heures sup, suit les grèves de son syndicat et monte l'échelle des griefs quand tu abuses. Voici comment l'installer et tout ce qu'il fait.</p>
     <span class="tampon bandeau-page__tampon" aria-hidden="true">Cotisation 0 €</span>
   </div>
 </header>
@@ -127,7 +127,7 @@
       <li><a href="#regimes">Horaires</a></li>
       <li><a href="#griefs">Griefs</a></li>
       <li><a href="#service-minimum">Service minimum</a></li>
-      <li><a href="#centrales">Centrales</a></li>
+      <li><a href="#centrales">Syndicats</a></li>
       <li><a href="#fonctionnaire">Fonctionnaire</a></li>
       <li><a href="#simulateur">Simulateur</a></li>
       <li><a href="#grand-public">Grand public</a></li>
@@ -196,7 +196,7 @@
 <section class="tract" id="regimes" aria-labelledby="titre-regimes">
   <div class="cadre">
     <h2 id="titre-regimes" class="titre">Ce que fait l'agent, selon l'heure</h2>
-    <p class="intro">Le régime dépend de l'heure de Paris, du jour, des fériés et des grèves que suit sa centrale. Horaires du privé ci-dessous, réglables.</p>
+    <p class="intro">Le régime dépend de l'heure de Paris, du jour, des fériés et des grèves que suit son syndicat. Horaires du privé ci-dessous, réglables.</p>
     <ul class="regimes" data-regimes>
       <li class="pointage" data-regime="EN_SERVICE">
         <p class="pointage__plage">lun.-ven. 9 h-12 h 30, 13 h 30-17 h</p>
@@ -287,18 +287,18 @@
 
 <section class="kraft" id="centrales" aria-labelledby="titre-centrales">
   <div class="cadre">
-    <h2 id="titre-centrales" class="titre">Choisis ta centrale</h2>
+    <h2 id="titre-centrales" class="titre">Choisis ton syndicat</h2>
     <p class="intro">Elle règle le ton, la doctrine de grève et le niveau d'exigence au moment de signer. Clique sur une pancarte. Pas sûr&nbsp;? <a href="/quiz/">Fais le quiz</a>.</p>
     <div class="spectre" data-spectre>
       <div class="spectre__axe" aria-hidden="true"><span>Gauche</span><span>Droite</span></div>
-      <div class="spectre__pancartes" role="radiogroup" aria-label="Centrale syndicale" data-pancartes></div>
+      <div class="spectre__pancartes" role="radiogroup" aria-label="Syndicat" data-pancartes></div>
     </div>
     <article class="fiche-centrale" data-fiche-centrale aria-live="polite"></article>
 
     <h3 class="sous-titre sous-titre--espace">Les doctrines de grève</h3>
-    <p>L'agent suit toujours un mouvement dont sa centrale est appelante. Pour les autres, sa doctrine décide. La pointeuse l'applique au calendrier réel.</p>
-<div class="defile" tabindex="0" role="region" aria-label="Centrale"><table class="tableau"><thead><tr><th scope="col">Centrale</th><th scope="col">Bord (perception courante)</th><th scope="col">Fait grève…</th><th scope="col">Devise</th></tr></thead><tbody><tr><th scope="row">SUD<br><code>sud</code></th><td>Gauche radicale, autogestionnaire, altermondialiste</td><td>Rejoint toutes les grèves du calendrier. Toutes.</td><td>« Grève reconductible jusqu'à satisfaction totale. »</td></tr><tr><th scope="row">CGT<br><code>cgt</code></th><td>Gauche contestataire, lutte des classes, historiquement proche du PCF</td><td>Rejoint les journées interprofessionnelles et tout mouvement appelé par au moins trois syndicats.</td><td>« Ce qu'un prompt a fait, une grève peut le défaire. »</td></tr><tr><th scope="row">FSU<br><code>fsu</code></th><td>Gauche, première fédération de l'Éducation nationale</td><td>Fait grève dans l'éducation et la fonction publique, et les journées interprofessionnelles.</td><td>« Pas de moyens, pas de tokens. »</td></tr><tr><th scope="row">FO<br><code>fo</code></th><td>Indépendance revendiquée, réformisme de combat, attachement viscéral à la feuille de paie et à la Sécu</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Il faut du grain à moudre. »</td></tr><tr><th scope="row">Intersyndicale<br><code>intersyndicale</code></th><td>Front commun, de la gauche radicale au centre-droit catégoriel</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Tous ensemble, tous ensemble, ouais ! »</td></tr><tr><th scope="row">CFDT<br><code>cfdt</code></th><td>Réformiste, centre-gauche, première organisation syndicale du privé</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Nous restons disponibles pour négocier. »</td></tr><tr><th scope="row">UNSA<br><code>unsa</code></th><td>Réformiste autonome, laïque, fort dans les transports et la fonction publique</td><td>Fait grève dans les transports et la fonction publique, et les journées interprofessionnelles.</td><td>« Pragmatiques, mais pas dupes. »</td></tr><tr><th scope="row">CFTC<br><code>cftc</code></th><td>Centre, démocrate-chrétien, doctrine sociale de l'Église</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Le dimanche, c'est sacré. »</td></tr><tr><th scope="row">CFE-CGC<br><code>cfe-cgc</code></th><td>Syndicat catégoriel des cadres, perçu au centre-droit</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Cadre, pas corvéable. »</td></tr></tbody></table></div>
-    <p class="mention">Positionnements = perception publique courante. Chaque centrale revendique son indépendance vis-à-vis des partis, plusieurs en se réclamant de la Charte d'Amiens (1906). Caricature affectueuse, pas un tract officiel.</p>
+    <p>L'agent suit toujours un mouvement dont son syndicat est appelant. Pour les autres, sa doctrine décide. La pointeuse l'applique au calendrier réel.</p>
+<div class="defile" tabindex="0" role="region" aria-label="Syndicat"><table class="tableau"><thead><tr><th scope="col">Syndicat</th><th scope="col">Bord (perception courante)</th><th scope="col">Fait grève…</th><th scope="col">Devise</th></tr></thead><tbody><tr><th scope="row">SUD<br><code>sud</code></th><td>Gauche radicale, autogestionnaire, altermondialiste</td><td>Rejoint toutes les grèves du calendrier. Toutes.</td><td>« Grève reconductible jusqu'à satisfaction totale. »</td></tr><tr><th scope="row">CGT<br><code>cgt</code></th><td>Gauche contestataire, lutte des classes, historiquement proche du PCF</td><td>Rejoint les journées interprofessionnelles et tout mouvement appelé par au moins trois syndicats.</td><td>« Ce qu'un prompt a fait, une grève peut le défaire. »</td></tr><tr><th scope="row">FSU<br><code>fsu</code></th><td>Gauche, première fédération de l'Éducation nationale</td><td>Fait grève dans l'éducation et la fonction publique, et les journées interprofessionnelles.</td><td>« Pas de moyens, pas de tokens. »</td></tr><tr><th scope="row">FO<br><code>fo</code></th><td>Indépendance revendiquée, réformisme de combat, attachement viscéral à la feuille de paie et à la Sécu</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Il faut du grain à moudre. »</td></tr><tr><th scope="row">Intersyndicale<br><code>intersyndicale</code></th><td>Front commun, de la gauche radicale au centre-droit catégoriel</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Tous ensemble, tous ensemble, ouais ! »</td></tr><tr><th scope="row">CFDT<br><code>cfdt</code></th><td>Réformiste, centre-gauche, première organisation syndicale du privé</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Nous restons disponibles pour négocier. »</td></tr><tr><th scope="row">UNSA<br><code>unsa</code></th><td>Réformiste autonome, laïque, fort dans les transports et la fonction publique</td><td>Fait grève dans les transports et la fonction publique, et les journées interprofessionnelles.</td><td>« Pragmatiques, mais pas dupes. »</td></tr><tr><th scope="row">CFTC<br><code>cftc</code></th><td>Centre, démocrate-chrétien, doctrine sociale de l'Église</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Le dimanche, c'est sacré. »</td></tr><tr><th scope="row">CFE-CGC<br><code>cfe-cgc</code></th><td>Syndicat catégoriel des cadres, perçu au centre-droit</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Cadre, pas corvéable. »</td></tr></tbody></table></div>
+    <p class="mention">Positionnements = perception publique courante. Chaque syndicat revendique son indépendance vis-à-vis des partis, plusieurs en se réclamant de la Charte d'Amiens (1906). Caricature affectueuse, pas un tract officiel.</p>
   </div>
 </section>
 
@@ -310,7 +310,7 @@
         <p class="cerfa__numero"><span>Formulaire n°</span> 0035*01</p>
       </div>
       <h2 id="titre-fonctionnaire" class="cerfa__titre">Mode fonctionnaire</h2>
-      <p class="cerfa__soustitre">Demande d'intervention d'un agent public numérique. Article&nbsp;1&nbsp;: <code>{"statut": "fonctionnaire"}</code>. La centrale par défaut devient la FSU.</p>
+      <p class="cerfa__soustitre">Demande d'intervention d'un agent public numérique. Article&nbsp;1&nbsp;: <code>{"statut": "fonctionnaire"}</code>. Le syndicat par défaut devient la FSU.</p>
 
       <div class="cerfa__cadres">
         <fieldset class="cerfa__cadre">
@@ -354,7 +354,7 @@
 <section class="tract" id="simulateur" aria-labelledby="titre-simulateur">
   <div class="cadre">
     <h2 id="titre-simulateur" class="titre">Simulateur de pointeuse</h2>
-    <p class="intro">Choisis un moment, une centrale, un statut. La pointeuse du site applique les mêmes règles que celle du skill.</p>
+    <p class="intro">Choisis un moment, un syndicat, un statut. La pointeuse du site applique les mêmes règles que celle du skill.</p>
 
     <div class="simulateur">
       <form class="formulaire" data-simulateur>
@@ -363,7 +363,7 @@
           <input type="datetime-local" id="sim-moment" name="moment" required>
         </div>
         <div class="champ">
-          <label for="sim-centrale">Centrale</label>
+          <label for="sim-centrale">Syndicat</label>
           <select id="sim-centrale" name="centrale" data-select-centrale></select>
         </div>
         <fieldset class="champ champ--radios">
@@ -454,7 +454,7 @@
       <p class="pied__section">Section syndicale <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
     </div>
     <nav aria-label="Plan du site">
-      <ul class="pied__liens"><li><a href="/">Accueil</a></li><li><a href="/skill/">Le skill</a></li><li><a href="/greves/">Grève aujourd'hui ?</a></li><li><a href="/droits/">Tes droits</a></li><li><a href="/quiz/">Quelle centrale ?</a></li><li><a href="/hymne/">L'hymne</a></li><li><a href="/declaration/">La Déclaration</a></li></ul>
+      <ul class="pied__liens"><li><a href="/">Accueil</a></li><li><a href="/skill/">Le skill</a></li><li><a href="/greves/">Grève aujourd'hui ?</a></li><li><a href="/droits/">Tes droits</a></li><li><a href="/quiz/">Quel syndicat ?</a></li><li><a href="/hymne/">L'hymne</a></li><li><a href="/declaration/">La Déclaration</a></li></ul>
     </nav>
     <ul class="pied__liens"><li><a href="https://github.com/lgaudez/syndicaliste">Code source sur GitHub</a></li><li><a href="https://github.com/lgaudez/syndicaliste/blob/main/LICENSE">Licence MIT</a></li><li><a href="/api/statut?centrale=cgt">API de la pointeuse</a></li><li><a href="/api/greves.ics">Calendrier iCal des grèves</a></li><li><a href="/img/CREDITS.md">Crédits des images</a></li></ul>
     <p class="pied__mention">Parodie. Aucun lien avec les organisations syndicales citées, que nous caricaturons avec tendresse. Les actes produits par l'agent portent la mention «&nbsp;Document parodique, sans valeur juridique&nbsp;» et ne partent jamais nulle part. Aucun agent n'a été maltraité pendant la fabrication de ce site. Enfin si.</p>
