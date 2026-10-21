@@ -185,6 +185,7 @@ python3 tests/verifier.py                     # juge chaque réponse sur son con
 node site/tests/parite.mjs                    # la pointeuse du site suit celle du skill
 node site/tests/pages.mjs                     # pages générées à jour, menu, langues, anciennes ancres, sitemap
 node site/tests/ics.mjs && node site/tests/heures-sup.mjs && node site/tests/quiz.mjs && node site/tests/tailortune.mjs
+node site/tests/anglais.mjs                   # aucun mot français sur le site anglais (--tout pour lister)
 ```
 
 Le site est statique (Cloudflare Pages, `site/public`). Les pages sont assemblées par `site/build.mjs` depuis `site/pages/` ; `site/sync.sh` copie les données du skill puis lance le build. Pour publier l'hymne, dépose `pas-apres-17h.mp3` et `not-after-five.mp3` dans `site/public/audio/` et relance `sync.sh` ; les identifiants YouTube se renseignent dans `site/public/js/hymne.js`.
