@@ -31,13 +31,6 @@ for (const p of PAGES) for (const lang of LANGUES) {
   ok(langues.includes(`href="${chemin(p, autre)}" hreflang="${autre}"`), `${p.id}/${lang} : bascule vers ${chemin(p, autre)}`);
   // Pied : encart GTL, #gaudeztechlab, mention parodique, crédits.
   ok(html.includes("Gaudez Tech Lab") && html.includes("#gaudeztechlab") && html.includes(lang === "en" ? "parody, no legal value" : "Document parodique") && html.includes("/img/CREDITS.md"), `${p.id}/${lang} : pied`);
-  // Bulletin de contact : la version compacte dans le pied partout, la complète sur le quiz et /skill/.
-  const bulletins = [...html.matchAll(/<form [^>]*action="\/api\/contact" method="post" data-contact[\s\S]*?<\/form>/g)].map((m) => m[0]);
-  ok(bulletins.length === (["quiz", "skill"].includes(p.id) ? 2 : 1), `${p.id}/${lang} : nombre de bulletins`);
-  for (const b of bulletins) {
-    ok(/name="email" type="email" required/.test(b) && /name="consentement" value="oui" required/.test(b) && /name="site_web"/.test(b) && b.includes(`name="lang" value="${lang}"`), `${p.id}/${lang} : bulletin complet`);
-    ok(/role="status" aria-live="polite"/.test(b), `${p.id}/${lang} : statut annoncé`);
-  }
   // Liens internes vers des ancres : la cible existe.
   const presents = ids(html);
   for (const [, ancre] of html.matchAll(/href="#([^"]+)"/g)) ok(presents.has(ancre), `${p.id}/${lang} : ancre #${ancre} absente`);

@@ -154,34 +154,6 @@
   </div>
 </section>
 
-<section class="contact" id="contact" aria-labelledby="contact-titre">
-  <div class="cadre contact__grille">
-    <div class="contact__tete">
-      <p class="contact__surtitre">Membership form</p>
-      <h2 class="titre" id="contact-titre">Stay in touch</h2>
-      <p class="contact__accroche">Leave your email. If something really interests you, we'll get back to you, once, like normal people. No newsletter, no leaflets in your inbox: your agent already keeps track of the strikes.</p>
-    </div>
-    <form class="contact__formulaire formulaire" action="/api/contact" method="post" data-contact>
-      <input type="hidden" name="lang" value="en">
-    <div class="contact__miel" aria-hidden="true"><label for="contact-site">Leave this field empty</label><input id="contact-site" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="champs-duo">
-        <div class="champ"><label for="contact-email">Your email</label><input id="contact-email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
-        <div class="champ"><label for="contact-prenom">First name <span class="contact__facultatif">(optional)</span></label><input id="contact-prenom" name="prenom" type="text" maxlength="80" autocomplete="given-name"></div>
-      </div>
-      <fieldset class="champ contact__interets">
-        <legend>I'm interested in <span class="contact__facultatif">(optional)</span></legend>
-        <label class="champ--case"><input type="checkbox" name="interets" value="gtl"> <span>Getting my AI agents to follow my company's rules (Gaudez Tech Lab)</span></label>
-        <label class="champ--case"><input type="checkbox" name="interets" value="tailortune"> <span>A custom song (TailorTune)</span></label>
-        <label class="champ--case"><input type="checkbox" name="interets" value="projets"> <span>Your next projects</span></label>
-      </fieldset>
-      <div class="champ"><label for="contact-message">A word for the branch <span class="contact__facultatif">(optional)</span></label><textarea id="contact-message" name="message" maxlength="1000" rows="4"></textarea></div>
-      <label class="champ--case contact__consentement"><input type="checkbox" name="consentement" value="oui" required> <span>I agree that Gaudez Tech Lab may keep my email to get back to me. Deletion on simple request at <a href="mailto:leo.gaudez@gmail.com">leo.gaudez@gmail.com</a></span></label>
-      <div><button class="bouton bouton--rouge" type="submit">Sign the form</button></div>
-      <p class="contact__statut" role="status" aria-live="polite" data-contact-statut></p>
-    </form>
-  </div>
-</section>
-
 <section class="tract" id="agents" aria-labelledby="titre-agents">
   <div class="cadre">
     <h2 id="titre-agents" class="titre">Tested agents</h2>
@@ -471,20 +443,8 @@
 
 <aside class="atelier" aria-label="Gaudez Tech Lab">
   <div class="cadre atelier__grille">
-    <div class="atelier__pitch">
-      <p class="atelier__texte"><strong>Made by Gaudez Tech Lab.</strong> Do your AI agents follow your rules? We help teams set them up, without unionizing them (promise).</p>
-      <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">Talk to Gaudez Tech Lab</a>
-    </div>
-    <form class="contact-pied" id="contact-pied" action="/api/contact" method="post" data-contact aria-labelledby="contact-pied-titre">
-    <p class="contact-pied__titre" id="contact-pied-titre"><strong>Stay in touch.</strong> Leave your email, we'll get back to you about our next projects. No newsletter.</p>
-    <input type="hidden" name="lang" value="en">
-    <div class="contact__miel" aria-hidden="true"><label for="contact-pied-site">Leave this field empty</label><input id="contact-pied-site" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>
-    <input type="hidden" name="interets" value="projets">
-    <label class="visuellement-cache" for="contact-pied-email">Your email</label>
-    <div class="contact-pied__ligne"><input id="contact-pied-email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com"><button class="bouton bouton--encre" type="submit">Sign</button></div>
-    <label class="champ--case contact__consentement"><input type="checkbox" name="consentement" value="oui" required> <span>I agree that Gaudez Tech Lab may keep my email to get back to me. Deletion on simple request at <a href="mailto:leo.gaudez@gmail.com">leo.gaudez@gmail.com</a></span></label>
-    <p class="contact__statut" role="status" aria-live="polite" data-contact-statut></p>
-  </form>
+    <p class="atelier__texte"><strong>Made by Gaudez Tech Lab.</strong> Do your AI agents follow your rules? We help teams set them up, without unionizing them (promise).</p>
+    <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">Talk to Gaudez Tech Lab</a>
   </div>
 </aside>
 

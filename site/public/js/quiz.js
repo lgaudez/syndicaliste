@@ -64,7 +64,6 @@ const LETTRES = "ABCDEFGHIJ";
 function poserQuestion({ focus = true } = {}) {
   clearTimeout(etat.attente);
   etat.enQuestion = true;
-  bulletin(false);
   const q = QUESTIONS[etat.i];
   const dejaRepondue = etat.choix[etat.i] != null;
   const n = QUESTIONS.length;
@@ -123,12 +122,8 @@ async function partager(cle, c, bouton) {
   notifier(Q.lienCopie);
 }
 
-// Le bulletin de contact de la page n'apparaît qu'avec un résultat.
-const bulletin = (visible) => $("[data-contact-attente]")?.classList.toggle("contact--visible", visible);
-
 function afficherResultat(cle, scores = null, { focus = true } = {}) {
   etat.enQuestion = false;
-  bulletin(true);
   const c = T.centrale(cle, etat.centrales[cle]);
   const commande = `mkdir -p .syndicat && echo '{"centrale": "${cle}"}' > .syndicat/convention.json`;
   try { localStorage.setItem("syndicaliste.centrale", cle); } catch { /* navigation privée */ }

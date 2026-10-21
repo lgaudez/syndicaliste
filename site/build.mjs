@@ -118,105 +118,8 @@ const DEFS = `<svg width="0" height="0" class="defs" aria-hidden="true" focusabl
   </defs>
 </svg>`;
 
-// Bulletin « Rester en contact », un seul composant pour les trois emplacements :
-// complet (après le résultat du quiz, sur /skill/) et compact (pied de toutes les pages, intérêt « Prochains projets »).
-// Envoi vers /api/contact : en fetch par js/contact.js, ou en formulaire classique sans JavaScript.
-const CONTACT = {
-  fr: {
-    surtitre: "Bulletin d'adhésion",
-    titre: "Rester en contact",
-    accroche: "Laisse ton mail. Si un sujet t'intéresse vraiment, on te recontacte, une fois, comme des gens. Pas de newsletter, pas de tract dans ta boîte&nbsp;: les grèves, ton agent les suit déjà.",
-    email: "Ton e-mail",
-    exemple: "toi@exemple.fr",
-    prenom: "Prénom",
-    facultatif: "facultatif",
-    interets: "Ça m'intéresse",
-    gtl: "Que mes agents IA suivent les règles de ma boîte (Gaudez Tech Lab)",
-    gtlSansMots: "Que mes agents suivent les règles de ma boîte (Gaudez Tech Lab)",
-    tailortune: "Une chanson sur mesure (TailorTune)",
-    projets: "Vos prochains projets",
-    message: "Un mot pour la section",
-    miel: "Ne pas remplir ce champ",
-    consentement: "J'accepte que Gaudez Tech Lab garde mon e-mail pour me recontacter. Suppression sur simple demande à <a href=\"mailto:leo.gaudez@gmail.com\">leo.gaudez@gmail.com</a>",
-    bouton: "Signer le bulletin",
-    compact: "<strong>Rester en contact.</strong> Laisse ton mail, on te recontacte pour nos prochains projets. Pas de newsletter.",
-    boutonCompact: "Signer",
-  },
-  en: {
-    surtitre: "Membership form",
-    titre: "Stay in touch",
-    accroche: "Leave your email. If something really interests you, we'll get back to you, once, like normal people. No newsletter, no leaflets in your inbox: your agent already keeps track of the strikes.",
-    email: "Your email",
-    exemple: "you@example.com",
-    prenom: "First name",
-    facultatif: "optional",
-    interets: "I'm interested in",
-    gtl: "Getting my AI agents to follow my company's rules (Gaudez Tech Lab)",
-    gtlSansMots: "Getting my agents to follow my company's rules (Gaudez Tech Lab)",
-    tailortune: "A custom song (TailorTune)",
-    projets: "Your next projects",
-    message: "A word for the branch",
-    miel: "Leave this field empty",
-    consentement: "I agree that Gaudez Tech Lab may keep my email to get back to me. Deletion on simple request at <a href=\"mailto:leo.gaudez@gmail.com\">leo.gaudez@gmail.com</a>",
-    bouton: "Sign the form",
-    compact: "<strong>Stay in touch.</strong> Leave your email, we'll get back to you about our next projects. No newsletter.",
-    boutonCompact: "Sign",
-  },
-};
-
-export function contact(lang, { compact = false, sansMots = false, attente = false } = {}) {
-  const C = CONTACT[lang];
-  const id = compact ? "contact-pied" : "contact";
-  const commun = `<input type="hidden" name="lang" value="${lang}">
-    <div class="contact__miel" aria-hidden="true"><label for="${id}-site">${C.miel}</label><input id="${id}-site" name="site_web" type="text" tabindex="-1" autocomplete="off"></div>`;
-  const consentement = `<label class="champ--case contact__consentement"><input type="checkbox" name="consentement" value="oui" required> <span>${C.consentement}</span></label>`;
-  const statut = `<p class="contact__statut" role="status" aria-live="polite" data-contact-statut></p>`;
-  const email = (classe = "") => `<input id="${id}-email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="${C.exemple}"${classe}>`;
-  if (compact) {
-    return `<form class="contact-pied" id="${id}" action="/api/contact" method="post" data-contact aria-labelledby="${id}-titre">
-    <p class="contact-pied__titre" id="${id}-titre">${C.compact}</p>
-    ${commun}
-    <input type="hidden" name="interets" value="projets">
-    <label class="visuellement-cache" for="${id}-email">${C.email}</label>
-    <div class="contact-pied__ligne">${email()}<button class="bouton bouton--encre" type="submit">${C.boutonCompact}</button></div>
-    ${consentement}
-    ${statut}
-  </form>`;
-  }
-  const facultatif = `<span class="contact__facultatif">(${C.facultatif})</span>`;
-  const cases = [["gtl", sansMots ? C.gtlSansMots : C.gtl], ["tailortune", C.tailortune], ["projets", C.projets]]
-    .map(([v, t]) => `<label class="champ--case"><input type="checkbox" name="interets" value="${v}"> <span>${t}</span></label>`).join("\n        ");
-  return `<section class="contact" id="${id}" aria-labelledby="${id}-titre"${attente ? " data-contact-attente" : ""}>
-  <div class="cadre contact__grille">
-    <div class="contact__tete">
-      <p class="contact__surtitre">${C.surtitre}</p>
-      <h2 class="titre" id="${id}-titre">${C.titre}</h2>
-      <p class="contact__accroche">${C.accroche}</p>
-    </div>
-    <form class="contact__formulaire formulaire" action="/api/contact" method="post" data-contact>
-      ${commun}
-      <div class="champs-duo">
-        <div class="champ"><label for="${id}-email">${C.email}</label>${email()}</div>
-        <div class="champ"><label for="${id}-prenom">${C.prenom} ${facultatif}</label><input id="${id}-prenom" name="prenom" type="text" maxlength="80" autocomplete="given-name"></div>
-      </div>
-      <fieldset class="champ contact__interets">
-        <legend>${C.interets} ${facultatif}</legend>
-        ${cases}
-      </fieldset>
-      <div class="champ"><label for="${id}-message">${C.message} ${facultatif}</label><textarea id="${id}-message" name="message" maxlength="1000" rows="4"></textarea></div>
-      ${consentement}
-      <div><button class="bouton bouton--rouge" type="submit">${C.bouton}</button></div>
-      ${statut}
-    </form>
-  </div>
-</section>`;
-}
-
 // Blocs calculés au build depuis les données du skill : lisibles sans JavaScript.
 const INCLUSIONS = {
-  contact: (lang, p) => contact(lang, { sansMots: p?.sansMotsInterdits }),
-  "contact-quiz": (lang, p) => contact(lang, { sansMots: p?.sansMotsInterdits, attente: true }),
-
   demos: (lang) => TEXTES[lang].DEMOS.map((d) =>
     `<figure class="terminal"><figcaption><span>${echapper(d.titre)}</span><span>${echapper(d.contexte)}</span></figcaption><pre>${
       d.lignes.map(([type, texte]) => `<span class="l-${type}"${type === "bandeau" ? ' lang="fr"' : ""}>${echapper(texte)}</span>`).join("")
@@ -246,14 +149,14 @@ function lecteurs(html) {
   return publie ? avecLecteur.replace("data-studio-attente>", "data-studio-attente hidden>") : avecLecteur;
 }
 
-function remplir(corps, lang, source, p = null) {
+function remplir(corps, lang, source) {
   return lecteurs(corps)
     .replace(/\{\{lien:([a-z-]+)\}\}/g, (_, id) => lien(id, lang))
     .replace(/\{\{lien-autre:([a-z-]+)\}\}/g, (_, id) => lien(id, autre(lang)))
     .replace(/\{\{depot\}\}/g, DEPOT)
     .replace(/\{\{inclure:([a-z-]+)\}\}/g, (_, nom) => {
       if (!INCLUSIONS[nom]) throw new Error(`${source} : inclusion inconnue ${nom}`);
-      return INCLUSIONS[nom](lang, p);
+      return INCLUSIONS[nom](lang);
     })
     .replace(/\{\{[^}]*\}\}/g, (x) => { throw new Error(`${source} : balise inconnue ${x}`); });
 }
@@ -296,11 +199,8 @@ function pied(p, lang) {
   const liens = C.liens.map(([href, texte]) => `<li><a href="${href}">${texte}</a></li>`).join("");
   return `<aside class="atelier" aria-label="Gaudez Tech Lab">
   <div class="cadre atelier__grille">
-    <div class="atelier__pitch">
-      <p class="atelier__texte">${sansMots ? C.atelierSansMots : C.atelier}</p>
-      <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">${C.atelierBouton}</a>
-    </div>
-    ${contact(lang, { compact: true, sansMots })}
+    <p class="atelier__texte">${sansMots ? C.atelierSansMots : C.atelier}</p>
+    <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">${C.atelierBouton}</a>
   </div>
 </aside>
 
@@ -398,7 +298,7 @@ export function construire() {
   const sorties = new Map();
   for (const p of PAGES) for (const lang of LANGUES) {
     const source = `pages/${lang}/${p.id}.html`;
-    const corps = remplir(readFileSync(join(ici, source), "utf8"), lang, source, p);
+    const corps = remplir(readFileSync(join(ici, source), "utf8"), lang, source);
     sorties.set(fichier(p, lang), document_(p, lang, corps));
   }
   sorties.set("404.html", document_(null, "fr", remplir(readFileSync(join(ici, "pages/404.html"), "utf8"), "fr", "pages/404.html")));
