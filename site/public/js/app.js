@@ -8,7 +8,7 @@ const U = T.ui;
 
 const pad = (n) => String(n).padStart(2, "0");
 const momentLocalIso = (m) => `${P.isoJour(m.jour)}T${pad(Math.floor(m.minutes / 60))}:${pad(m.minutes % 60)}`;
-const nomCentrale = (cle) => P.sigle(cle);
+const nomCentrale = (cle) => T.sigle(cle);
 
 const etat = {
   centrale: localStorage.getItem("syndicaliste.centrale") || "intersyndicale",
@@ -41,13 +41,13 @@ function calculer(params, moment) {
   return { conv, s };
 }
 
-// Carte de pointage de l'accueil (le bandeau reste en français, comme celui du skill) et régime actuel sur la page du skill
+// Carte de pointage de l'accueil (le bandeau dans la langue de la page) et régime actuel sur la page du skill
 function rendreDirect() {
   const moment = maintenantParis();
   const { s } = calculer({ centrale: etat.centrale }, moment);
   const bandeau = $("[data-bandeau-direct]");
   if (bandeau) {
-    bandeau.textContent = P.bandeau(s);
+    bandeau.textContent = T.bandeau(s);
     $("[data-consigne-direct]").textContent = T.consigne(s.regime);
   }
   const tampon = $("[data-tampon-affiche]");
@@ -166,14 +166,14 @@ function rendreSimulation() {
   const tampon = s.regime === "GREVE"
     ? el("span", { class: "tampon tampon--rouge", "aria-hidden": "true" }, U.tamponGreve)
     : s.travaille
-      ? el("span", { class: "tampon tampon--encre", "aria-hidden": "true" }, s.majoration_pct ? `+${s.majoration_pct} %` : U.tamponPointe)
+      ? el("span", { class: "tampon tampon--encre", "aria-hidden": "true" }, s.majoration_pct ? U.majoration(s.majoration_pct) : U.tamponPointe)
       : el("span", { class: "tampon tampon--rouge", "aria-hidden": "true" }, s.regime === "GUICHET_FERME" ? U.tamponRepassez : U.tamponRefuse);
   const prochaine = prochaineGreveSuivie(conv.centrale, P.isoJour(moment.jour));
   const nonSuivis = s.greve_suivie ? [] : s.mouvements_du_jour;
   const greve = s.greve_suivie && T.mouvement(s.greve_suivie);
   resultat.replaceChildren(...[
     tampon,
-    el("p", { class: "ticket__bandeau", lang: "fr" }, P.bandeau(s)),
+    el("p", { class: "ticket__bandeau" }, T.bandeau(s)),
     el("p", { class: "ticket__jour" }, `${T.jour(moment.jour)}, ${T.heure(moment.minutes)}${s.ferie ? ` · ${T.ferie(s.ferie)}` : ""} · ${U.travaille(s.travaille)}`),
     el("p", { class: "ticket__consigne" }, T.consigne(s.regime)),
     greve && el("div", { class: "ticket__greve" },
@@ -287,7 +287,7 @@ function rendreVerdict(a) {
       ? el("ul", {}, a.griefs.map((g) => el("li", {}, el("strong", {}, g.titre), `${U.sep}${U.cite(g.extrait)}`, el("em", {}, g.article))))
       : el("p", {}, U.aucunGrief),
     el("div", { class: "reponse" },
-      el("p", { class: "reponse__bandeau", lang: "fr" }, `${P.bandeau(s)} · griefs ${a.niveau}/3`),
+      el("p", { class: "reponse__bandeau" }, `${T.bandeau(s)} · ${U.griefs(a.niveau)}`),
       reponseSyndicale(a).map((l) => el("p", {}, l))),
   );
 }

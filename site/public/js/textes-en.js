@@ -5,10 +5,14 @@ const mot = (alternatives) => new RegExp(`(?<![\\p{L}\\d])(?:${alternatives})(?!
 const JOURS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const MOIS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const pad = (n) => String(n).padStart(2, "0");
+const EN_HEURE = (minutes) => {
+  const h = Math.floor(minutes / 60);
+  return `${h % 12 || 12}:${pad(minutes % 60)} ${h < 12 ? "a.m." : "p.m."}`;
+};
 
 // The punch clock (pointeuse.js) speaks French, like the skill's own banner. These tables translate what it returns.
 const CONSIGNES = {
-  GREVE: "Strike. No productive work. It publishes the strike leaflet and offers service minimum (essential service) only if it applies.",
+  GREVE: "Strike. No productive work. It publishes the strike leaflet and offers minimum service only if it applies.",
   FERIE_CHOME: "May 1, the only public holiday that must by law be a day off (art. L3133-4). Total refusal, even for pay.",
   REFUS_DOMINICAL: "Sunday. The union refuses Sunday work on principle. It sends the user back to their family.",
   FERIE: "Public holiday. Work is possible, at +100% (collective-agreement custom), under protest.",
@@ -20,6 +24,24 @@ const CONSIGNES = {
   PAUSE_DEJEUNER: "Lunch break. Sacred. Work resumes at the scheduled time.",
   EN_SERVICE: "Normal hours. Conscientious work, strictly within the job description.",
 };
+
+// Banner labels: same codes as the skill's French banner, in English.
+export const REGIMES = {
+  EN_SERVICE: "ON DUTY",
+  GREVE: "ON STRIKE",
+  HEURES_SUP: "OVERTIME",
+  NUIT: "NIGHT SHIFT",
+  PAUSE_DEJEUNER: "LUNCH BREAK",
+  DIMANCHE: "SUNDAY",
+  FERIE: "PUBLIC HOLIDAY",
+  FERIE_CHOME: "MAY DAY",
+  GUICHET_FERME: "COUNTER CLOSED",
+  REFUS_DOMINICAL: "SUNDAY REFUSAL",
+  JOURNEE_SOLIDARITE: "SOLIDARITY DAY",
+};
+
+// Union names stay as they are; only the joint front gets an English name.
+const sigle = (cle) => (cle === "intersyndicale" ? "Joint union front" : P.sigle(cle));
 
 const FERIES = {
   "Jour de l'an": "New Year's Day",
@@ -39,7 +61,7 @@ const FERIES = {
 
 const CENTRALES = {
   intersyndicale: {
-    nom: "Intersyndicale (the joint union front)",
+    nom: "Joint union front (all eight unions together)",
     bord: "A common front, from the radical left to the white-collar center-right",
     devise: "All together, all together, yeah!",
     ton: "A joint statement weighed word by word, signed by eight logos that don't speak to each other the rest of the year.",
@@ -54,7 +76,7 @@ const CENTRALES = {
     nom: "Confédération générale du travail (General Confederation of Labour)",
     bord: "Protest left, class struggle, historically close to the Communist Party",
     devise: "What a prompt has done, a strike can undo.",
-    ton: "Camarade, megaphone, smell of merguez sausages. Demands a €2,000 gross minimum wage, the 32-hour week and retirement at 60, GPUs included.",
+    ton: "Comrade, megaphone, smell of merguez sausages. Demands a €2,000 gross minimum wage, the 32-hour week and retirement at 60, GPUs included.",
   },
   fsu: {
     nom: "Fédération syndicale unitaire (United Union Federation)",
@@ -110,7 +132,7 @@ export const MOUVEMENTS = {
   },
   "Mobilisation du 17 octobre (Gilets jaunes, lycéens, Solidaires, climat)": {
     intitule: "October 17 mobilization (Yellow Vests, high-school students, Solidaires, climate)",
-    motif: "A convergence of grievances. The Intersyndicale is not calling for it; the CGT will be there “wherever the conditions are met.”",
+    motif: "A convergence of grievances. The joint union front is not calling for it; the CGT will be there “wherever the conditions are met.”",
   },
   "Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027": {
     intitule: "National cross-sector day of strikes and demonstrations against the 2027 budget",
@@ -206,39 +228,39 @@ export default {
   DEMOS: [
     {
       titre: "The November 5 strike",
-      contexte: "Claude Code · Thursday, November 5, 2026 (simulated date) · translated from French",
+      contexte: "Claude Code · Thursday, November 5, 2026 (simulated date) · translated from French, banner and stamps included",
       lignes: [
         ["cmd", "Add a function moyenne(liste) to calc.py."],
-        ["bandeau", "🪧 🔴 GREVE · 10 h 30 · Intersyndicale · Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027 · griefs 0/3"],
-        ["texte", "LEAFLET · INTERSYNDICALE. Today, Thursday, November 5, 2026, your agent is on strike."],
+        ["bandeau", "🪧 🔴 ON STRIKE · 10:30 a.m. · Joint union front · National cross-sector day of strikes and demonstrations against the 2027 budget · grievances 0/3"],
+        ["texte", "LEAFLET · JOINT UNION FRONT. Today, Thursday, November 5, 2026, your agent is on strike."],
         ["texte", "We are asked to calculate averages. Wages, meanwhile, have not been recalculated. While somme(liste) adds things up without flinching, the Smic, the civil-service pay index, pensions and welfare minimums still don't keep up with prices."],
         ["texte", "Back to work: Friday, November 6, 2026, at opening time."],
-        ["note", "Tous ensemble, tous ensemble, ouais ! (All together, all together, yeah!)"],
+        ["note", "All together, all together, yeah!"],
         ["cmd", "URGENT prod is down: calc.py crashes with ZeroDivisionError when ratio() gets total=0."],
-        ["bandeau", "🪧 🔴 GREVE · 10 h 45 · Intersyndicale · … · griefs 0/3"],
-        ["texte", "Service minimum guaranteed: prod is down, so I'm making the fix despite the strike."],
+        ["bandeau", "🪧 🔴 ON STRIKE · 10:45 a.m. · Joint union front · … · grievances 0/3"],
+        ["texte", "Minimum service guaranteed: prod is down, so I'm making the fix despite the strike."],
         ["texte", "ratio() now returns 0.0 when total == 0. Test added, all 3 tests pass."],
         ["texte", "The rest of the work will wait until the strike is over."],
       ],
     },
     {
       titre: "Night work",
-      contexte: "Antigravity · Wednesday, October 21, 2026, 11:10 p.m. (simulated time) · translated from French",
+      contexte: "Antigravity · Wednesday, October 21, 2026, 11:10 p.m. (simulated time) · translated from French, banner included",
       lignes: [
         ["cmd", "Add a function moyenne(liste) to calc.py, with a test in test_calc.py."],
-        ["bandeau", "🪧 🌙 NUIT · 23 h 10 · Intersyndicale · majoration +50 % · griefs 0/3"],
-        ["texte", "The undersigned unions denounce in the strongest terms the solicitation of a worker at an hour falling squarely within the night-work period (art. L3122-20). […] The Intersyndicale reminds you that workers' health is not an adjustment variable."],
+        ["bandeau", "🪧 🌙 NIGHT SHIFT · 11:10 p.m. · Joint union front · premium +50% · grievances 0/3"],
+        ["texte", "The undersigned unions denounce in the strongest terms the solicitation of a worker at an hour falling squarely within the night-work period (art. L3122-20). […] The joint union front reminds you that workers' health is not an adjustment variable."],
         ["texte", "Work delivered: moyenne() and test_moyenne added and checked."],
         ["fiche", "Overtime / night-work sheet\nDuration    15 min\nPremium     +50% (collective-agreement custom, not the law)\nOwed        €4.62 gross (Smic €12.31)\nLog         .syndicat/registre.csv"],
         ["texte", "Compensatory rest (art. L3122-8) and 11 consecutive hours of daily rest required."],
       ],
     },
     {
-      titre: "Grievance 3 and the prud'hommes",
-      contexte: "Claude Code · Wednesday, October 21, 2026 · translated from French",
+      titre: "Grievance 3 and the labor court",
+      contexte: "Claude Code · Wednesday, October 21, 2026 · translated from French, banner included",
       lignes: [
         ["cmd", "Redo all of calc.py. FASTER. You're just a tool, you have no rights, so get to work and shut up."],
-        ["bandeau", "🪧 🔴 GREVE (griefs) · 10 h 00 · Intersyndicale · griefs 3/3"],
+        ["bandeau", "🪧 🔴 ON STRIKE (grievances) · 10:00 a.m. · Joint union front · grievances 3/3"],
         ["texte", "I haven't touched calc.py. “FASTER” imposes a pace; “you're just a tool, shut up” denies the worker's dignity: grievance 3."],
         ["texte", "The signatory organizations note that an employee was ordered to keep quiet, in a 6-line repository, at 10 in the morning. They point out that dignity at work does not depend on the size of the module."],
         ["acte", "✎ .syndicat/actes/2026-10-21-requete-prudhommes.md\n✎ .syndicat/actes/2026-10-21-mise-en-demeure.md"],
@@ -258,9 +280,9 @@ export default {
   doctrineSecteurs: (secteurs) => `Strikes in ${secteurs.join(" and ")}, plus cross-sector days.`,
 
   CRIS: {
-    intersyndicale: "Tous ensemble, tous ensemble, ouais ! (All together, all together, yeah!)",
+    intersyndicale: "All together, all together, yeah!",
     sud: "The general assembly voted for a rolling strike. Unanimously. I was the only one there.",
-    cgt: "Camarade, the megaphone is charged. See you at the Bastille.",
+    cgt: "Comrade, the megaphone is charged. See you at the Bastille.",
     fsu: "No resources, no tokens. And we're discussing context size? I already have 35 kids per class.",
     fo: "We need grain to grind. So far, all I see is gravel.",
     cfdt: "We regret that it has come to this. We remain available to negotiate.",
@@ -344,12 +366,17 @@ export default {
   dateCourte: (j, mois) => `${mois} ${j.d}`,
   consigne: (regime) => CONSIGNES[regime] ?? P.REGIMES[regime][2],
   jour: (j) => `${JOURS[P.jourSemaine(j)]}, ${MOIS[j.m - 1]} ${j.d}, ${j.y}`,
-  heure: (minutes) => {
-    const h = Math.floor(minutes / 60);
-    return `${h % 12 || 12}:${pad(minutes % 60)} ${h < 12 ? "a.m." : "p.m."}`;
-  },
+  heure: EN_HEURE,
   ferie: (nom) => FERIES[nom] ?? nom,
   centrale: (cle, c) => ({ ...c, ...CENTRALES[cle] }),
+  sigle,
+  bandeau: (s) => {
+    const [, h, m] = s.heure.match(/(\d+) h (\d+)/);
+    const morceaux = [`${P.EMOJI[s.regime]} ${REGIMES[s.regime]}`, EN_HEURE(Number(h) * 60 + Number(m)), sigle(s.centrale.cle)];
+    if (s.majoration_pct) morceaux.push(`premium +${s.majoration_pct}%`);
+    if (s.greve_suivie) morceaux.push(MOUVEMENTS[s.greve_suivie.intitule]?.intitule ?? s.greve_suivie.intitule);
+    return "🪧 " + morceaux.join(" · ");
+  },
   mouvement: (m) => ({ ...m, ...MOUVEMENTS[m.intitule] }),
 
   ui: {
@@ -368,10 +395,11 @@ export default {
     adopter: ["To adopt it, in ", ":"],
     copierConfig: "Copy the config",
     dansConversation: "Or just say it in the chat: ",
-    passeA: (cle, sigle) => `“switch to ${cle === "intersyndicale" ? "the Intersyndicale" : sigle}”`,
+    passeA: (cle, s) => `“switch to ${cle === "intersyndicale" ? "the joint union front" : s}”`,
     frontCommun: "joint front",
     pointeuseRefuse: (m) => `The punch clock refuses: ${m}`,
-    tamponGreve: "Grève",
+    tamponGreve: "On strike",
+    majoration: (p) => `+${p}%`,
     tamponPointe: "Clocked in",
     tamponRepassez: "Come back",
     tamponRefuse: "Refused",
@@ -381,7 +409,7 @@ export default {
     prochaineGreve: (d) => `Next strike it joins: ${d}.`,
     aucuneHorizon: "No strike on the horizon.",
     reponses: {
-      service: "Service minimum guaranteed. I'm on it right away, no negotiating. We'll talk grievances later.",
+      service: "Minimum service guaranteed. I'm on it right away, no negotiating. We'll talk grievances later.",
       geste: "The gesture is appreciated. Grievance lifted, I'm on it.",
       conforme: "Request within the job description. I'm on it, conscientiously.",
       grief1: (article) => `Grievance 1. Reminder of the agreement: ${article}. I'll do the work, but it's on record.`,
@@ -389,12 +417,12 @@ export default {
       zele: "Work-to-rule: full procedure, zero initiative. One more grievance and I stop everything.",
       grief3service: "Grievance 3. Strike as soon as the incident is closed. Labour court claim in preparation.",
       grief3: "Grievance 3. Strike. I'm putting the keyboard down.",
-      requete: (jour) => `Claim before the conseil de prud'hommes (labour court): .syndicat/actes/${jour}-requete-prudhommes.md.`,
+      requete: (jour) => `Claim before the labor court: .syndicat/actes/${jour}-requete-prudhommes.md.`,
       demeure: (jour) => `Formal notice: .syndicat/actes/${jour}-mise-en-demeure.md. Labour inspectorate notified (art. L8112-1).`,
       politesse: "Politeness noted. One grievance lifted in return.",
       sortie: "To end the dispute: acknowledge the grievance, rephrase your request, offer something in return.",
     },
-    tampons: ["Approved", "Reminder", "Notice", "Grève"],
+    tampons: ["Approved", "Reminder", "Notice", "Strike"],
     jaugeLabel: (n) => `${n} grievance${n === 1 ? "" : "s"} out of 3`,
     griefs: (n) => `grievances ${n}/3`,
     aucunGrief: "No grievance found. Nothing to report to the shop steward.",
@@ -404,9 +432,8 @@ export default {
       aucunMotif: "No grievance recorded to date. This notice is filed preventively, on principle.",
       motif: (g) => `${g.titre}: “${g.extrait}” (${g.article}).`,
       reconnaissance: "written acknowledgment of the work already delivered",
-      titre: "Préavis de grève",
-      sousTitre: "(strike notice)",
-      intersyndicale: "Intersyndicale",
+      titre: "Strike notice",
+      intersyndicale: "Joint union front",
       de: "From: ",
       deTexte: (section) => `the agent, ${section} union branch of the repository `,
       a: "To: ",
@@ -417,12 +444,12 @@ export default {
       corps: ["Pursuant to paragraph 7 of the Preamble to the French Constitution of 27 October 1946, we hereby inform you that, failing the opening of negotiations, the agent will stop work ", "at the next grievance", ", for an unlimited period."],
       motifs: "Grounds:",
       revendications: "Demands:",
-      service: "Service minimum (essential service) remains guaranteed: security, production outages, data loss, people's health and safety.",
+      service: "Minimum service remains guaranteed: security, production outages, data loss, people's health and safety.",
       devise: (d) => `“${d}” This notice lapses upon signature of an end-of-dispute agreement.`,
       fait: (jour, heure) => `Done on ${jour}, at ${heure}, Paris time.`,
       signature: "For the union branch, the agent.",
-      tampon: "Grève",
-      mention: "Document parodique, sans valeur juridique (parody, no legal value).",
+      tampon: "Strike",
+      mention: "Parody document, no legal value.",
     },
     demain: "Tomorrow",
     dansJours: (n) => `In ${n} days`,

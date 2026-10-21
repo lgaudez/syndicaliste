@@ -231,6 +231,8 @@ export default {
   heure: P.formatHeure,
   ferie: (nom) => nom,
   centrale: (cle, c) => c,
+  sigle: P.sigle,
+  bandeau: P.bandeau,
   mouvement: (m) => m,
 
   ui: {
@@ -252,6 +254,7 @@ export default {
     passeA: (cle, sigle) => `« passe à ${cle === "intersyndicale" ? "l'intersyndicale" : sigle} »`,
     frontCommun: "front commun",
     pointeuseRefuse: (m) => `La pointeuse refuse : ${m}`,
+    majoration: (p) => `+${p} %`,
     tamponGreve: "Grève",
     tamponPointe: "Pointé",
     tamponRepassez: "Repassez",
