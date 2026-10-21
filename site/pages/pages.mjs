@@ -100,6 +100,11 @@ export const ANCRES = {
   centrales: ["skill", "centrales"],
   fonctionnaire: ["skill", "fonctionnaire"],
   simulateur: ["skill", "simulateur"],
+  prompt: ["skill", "prompt"],
+  projet: ["skill", "projet"],
+  employeur: ["skill", "employeur"],
+  // Le préavis reste masqué tant qu'il n'est pas généré : on vise le premier champ du formulaire qui le produit.
+  preavis: ["skill", "employeur"],
   adherer: ["skill", "installer"],
   calendrier: ["greves", ""],
   declaration: ["declaration", "declaration"],
