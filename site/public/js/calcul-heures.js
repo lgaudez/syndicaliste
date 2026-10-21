@@ -30,6 +30,32 @@ function bande(minutes, centimes, pdb) {
   return { minutes, taux: pdb, base, majoration: total - base, total };
 }
 
+// Cass. soc. 22 mai 2019, n° 17-22.376 : les majorations de nuit et du dimanche entrent dans la base des heures sup.
+// Une heure sup de nuit vaut donc taux × (1 + nuit) × (1 + 25 ou 50 %). Les bandes et la prime de nuit paient déjà
+// taux × (1 + 25 ou 50 %) et taux × nuit ; il reste taux × nuit × (25 ou 50 %), la ligne « surSup ».
+// Les entrées ne disent pas quelles heures sup tombent la nuit ou le dimanche : on compte les heures du dimanche, puis
+// celles de nuit, comme les dernières de la semaine civile (le dimanche la clôt). C'est l'hypothèse la plus favorable :
+// elles passent en heures sup, et à +50 %, en premier.
+const surSup = (m25, m50, centimes, pdb) => {
+  const num = BigInt(centimes) * BigInt(pdb) * BigInt(m25 * 2500 + m50 * 5000);
+  const den = 60n * 10000n * 10000n;
+  return Number((2n * num + den) / (2n * den));
+};
+
+// Tranche de `longueur` minutes sup qui finit `depuisFin` minutes avant la fin des heures sup : sa part à +50 %, puis à +25 %.
+function tranche(depuisFin, longueur, m50) {
+  const a50 = Math.max(0, Math.min(longueur, m50 - depuisFin));
+  return { m25: longueur - a50, m50: a50 };
+}
+
+const conventionnelle = (minutes, pdb, centimes, { m25, m50 }) => ({
+  minutes,
+  taux: pdb,
+  montant: majoration(minutes, centimes, pdb),
+  minutesSup: m25 + m50,
+  surSup: surSup(m25, m50, centimes, pdb),
+});
+
 // Entrées en unités entières. Les heures de nuit et du dimanche sont « dont » : comprises dans les minutes de la semaine.
 export function calculer({ centimes, minutes, minutesNuit = 0, pdbNuit = 0, minutesDimanche = 0, pdbDimanche = 0 }) {
   const sup = Math.max(0, minutes - DUREE_LEGALE_MINUTES);
@@ -37,10 +63,14 @@ export function calculer({ centimes, minutes, minutesNuit = 0, pdbNuit = 0, minu
   const m50 = sup - m25;
   const b25 = bande(m25, centimes, 2500);
   const b50 = bande(m50, centimes, 5000);
-  const nuit = { minutes: minutesNuit, taux: pdbNuit, montant: majoration(minutesNuit, centimes, pdbNuit) };
-  const dimanche = { minutes: minutesDimanche, taux: pdbDimanche, montant: majoration(minutesDimanche, centimes, pdbDimanche) };
+  const supDimanche = Math.min(minutesDimanche, sup);
+  const supNuit = Math.min(minutesNuit, sup - supDimanche);
+  const dimanche = conventionnelle(minutesDimanche, pdbDimanche, centimes, tranche(0, supDimanche, m50));
+  const nuit = conventionnelle(minutesNuit, pdbNuit, centimes, tranche(supDimanche, supNuit, m50));
   const normales = montant(Math.min(minutes, DUREE_LEGALE_MINUTES), centimes);
   const totalSup = b25.total + b50.total;
+  const totalMajorationsConventionnelles = nuit.montant + dimanche.montant;
+  const totalSurSup = nuit.surSup + dimanche.surSup;
   const alertes = [];
   if (minutes > MAXIMUM_SEMAINE_MINUTES) alertes.push("maximum");
   if (centimes < SMIC_CENTIMES) alertes.push("smic");
@@ -54,8 +84,9 @@ export function calculer({ centimes, minutes, minutesNuit = 0, pdbNuit = 0, minu
     dimanche,
     normales,
     totalSup,
-    totalMajorationsConventionnelles: nuit.montant + dimanche.montant,
-    totalSemaine: normales + totalSup + nuit.montant + dimanche.montant,
+    totalMajorationsConventionnelles,
+    totalSurSup,
+    totalSemaine: normales + totalSup + totalMajorationsConventionnelles + totalSurSup,
     alertes,
   };
 }

@@ -5,6 +5,8 @@ import { $, el, langue } from "./outils.js";
 const LANG = langue();
 const lien = (article) => el("a", { href: `https://code.travail.gouv.fr/code-du-travail/${article.toLowerCase()}`, rel: "noopener" }, `art. ${article}`);
 
+const ARRET = "https://www.courdecassation.fr/recherche-judilibre?search_api_fulltext=17-22.376";
+
 const TEXTES = {
   fr: {
     erreurs: {
@@ -22,6 +24,11 @@ const TEXTES = {
     ligne50: "Heures à +50 %",
     nuit: (t) => `Majoration de nuit (convention, ${t})`,
     dimanche: (t) => `Majoration du dimanche (convention, ${t})`,
+    surSup: (quoi) => `Heures sup ${quoi} : majoration sur la prime`,
+    deNuit: "de nuit",
+    duDimanche: "du dimanche",
+    explication: "Les heures du dimanche, puis de nuit, sont comptées comme les dernières de la semaine : elles passent en heures sup en premier, sur le taux augmenté de leur prime, comme le veut la Cour de cassation (",
+    arret: "Cass. soc., 22 mai 2019, n° 17-22.376",
     detail: (base, maj) => `${base} + ${maj} de majoration`,
     total: "Montant brut des heures sup",
     totalAvecConv: "Heures sup et majorations conventionnelles",
@@ -50,6 +57,11 @@ const TEXTES = {
     ligne50: "Hours at +50%",
     nuit: (t) => `Night premium (agreement, ${t})`,
     dimanche: (t) => `Sunday premium (agreement, ${t})`,
+    surSup: (quoi) => `${quoi} overtime: premium on the premium`,
+    deNuit: "Night",
+    duDimanche: "Sunday",
+    explication: "Sunday hours, then night hours, are counted as the last of the week: they become overtime first, at the rate raised by their premium, as France's top court requires (",
+    arret: "Cass. soc., May 22, 2019, no. 17-22.376",
     detail: (base, maj) => `${base} + ${maj} premium`,
     total: "Gross overtime pay",
     totalAvecConv: "Overtime plus agreement premiums",
@@ -96,11 +108,12 @@ function rendre(form, sortie) {
   const ligne = (libelle, minutes, detail, total) =>
     el("tr", {}, el("th", { scope: "row" }, libelle), el("td", {}, h(minutes)), el("td", {}, detail && el("small", {}, detail), el("strong", {}, total)));
   const conv = r.totalMajorationsConventionnelles > 0;
+  const surPrime = r.totalSurSup > 0;
   const articles = ["L3121-27", "L3121-36"];
   if (r.alertes.includes("maximum")) articles.push("L3121-20");
   if (entrees.minutesNuit) articles.push("L3122-8");
   if (entrees.minutesDimanche) articles.push("L3132-3");
-  const totalAffiche = r.totalSup + r.totalMajorationsConventionnelles;
+  const totalAffiche = r.totalSup + r.totalMajorationsConventionnelles + r.totalSurSup;
 
   sortie.replaceChildren(...[
     el("span", { class: `tampon ${r.minutesSup ? "tampon--rouge" : "tampon--bleu"}`, "aria-hidden": "true" },
@@ -112,10 +125,14 @@ function rendre(form, sortie) {
         ligne(TEXTES.ligne25, r.bande25.minutes, r.bande25.minutes ? TEXTES.detail(eur(r.bande25.base), eur(r.bande25.majoration)) : null, eur(r.bande25.total)),
         ligne(TEXTES.ligne50, r.bande50.minutes, r.bande50.minutes ? TEXTES.detail(eur(r.bande50.base), eur(r.bande50.majoration)) : null, eur(r.bande50.total)),
         r.nuit.taux > 0 && r.nuit.minutes > 0 && ligne(TEXTES.nuit(pc(r.nuit.taux)), r.nuit.minutes, null, eur(r.nuit.montant)),
-        r.dimanche.taux > 0 && r.dimanche.minutes > 0 && ligne(TEXTES.dimanche(pc(r.dimanche.taux)), r.dimanche.minutes, null, eur(r.dimanche.montant)))),
+        r.dimanche.taux > 0 && r.dimanche.minutes > 0 && ligne(TEXTES.dimanche(pc(r.dimanche.taux)), r.dimanche.minutes, null, eur(r.dimanche.montant)),
+        r.nuit.surSup > 0 && ligne(TEXTES.surSup(TEXTES.deNuit), r.nuit.minutesSup, null, eur(r.nuit.surSup)),
+        r.dimanche.surSup > 0 && ligne(TEXTES.surSup(TEXTES.duDimanche), r.dimanche.minutesSup, null, eur(r.dimanche.surSup)))),
     el("p", { class: "ticket__total" }, el("span", {}, conv ? TEXTES.totalAvecConv : TEXTES.total), el("strong", { "data-total-sup": "" }, eur(totalAffiche))),
     el("p", { class: "ticket__prochain" },
       TEXTES.semaine(h(Math.min(r.minutes, C.DUREE_LEGALE_MINUTES)), eur(r.normales), eur(totalAffiche)), " ", TEXTES.semaineTotal(eur(r.totalSemaine))),
+    surPrime && el("p", { class: "ticket__prochain", "data-explication-sursup": "" }, TEXTES.explication,
+      el("a", { href: ARRET, rel: "noopener" }, TEXTES.arret), ")."),
     r.alertes.length > 0 && el("ul", { class: "ticket__alertes" }, r.alertes.map((a) => el("li", {}, TEXTES.alertes[a]))),
     el("p", { class: "ticket__prochain" }, TEXTES.articles, articles.flatMap((a, i) => [i ? ", " : "", lien(a)])),
   ].filter(Boolean));
