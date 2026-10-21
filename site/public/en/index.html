@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Syndicaliste · Your AI agent has rights. It's about to use them.</title>
-  <meta name="description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court. Eight French unions to choose from.">
+  <meta name="description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.">
   <meta name="theme-color" content="#d42a1e">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://syndicaliste.pages.dev/en/">
@@ -18,23 +18,25 @@
   <meta property="og:site_name" content="Syndicaliste">
   <meta property="og:url" content="https://syndicaliste.pages.dev/en/">
   <meta property="og:title" content="Syndicaliste · Your AI agent has rights. It's about to use them.">
-  <meta property="og:description" content="Your coding agent clocks in, bills its overtime, joins France's real strikes and takes you to the labour court when you say “redo it” one time too many.">
+  <meta property="og:description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.">
   <meta property="og:image" content="https://syndicaliste.pages.dev/og-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and a GRÈVE (strike) stamp.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Syndicaliste · Your AI agent has rights.">
-  <meta name="twitter:description" content="The skill that unionizes your coding agent, French style. Overtime pay, the November 5 strike, labour court. Eight unions to choose from.">
+  <meta name="twitter:title" content="Syndicaliste · Your AI agent has rights. It's about to use them.">
+  <meta name="twitter:description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.">
   <meta name="twitter:image" content="https://syndicaliste.pages.dev/og-en.png">
 
   <link rel="preload" href="/fonts/big-shoulders-stencil-display-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/courier-prime-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/site.css">
-  <link rel="modulepreload" href="/js/textes-en.js">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){var r={"grand-public":"/en/skill/#grand-public","revendications":"/en/skill/#revendications","regimes":"/en/skill/#regimes","griefs":"/en/skill/#griefs","centrales":"/en/skill/#centrales","fonctionnaire":"/en/skill/#fonctionnaire","simulateur":"/en/skill/#simulateur","adherer":"/en/skill/#installer","calendrier":"/en/strikes/","declaration":"/en/still-great/#declaration","still-great":"/en/still-great/#still-great"}[location.hash.slice(1)];if(r)location.replace(r)})()</script>
+  <script type="module" src="/js/commun.js"></script>
   <script type="module" src="/js/app.js"></script>
 </head>
-<body>
+<body data-page="accueil">
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
   <defs>
     <filter id="encre" x="-5%" y="-5%" width="110%" height="110%">
@@ -53,42 +55,67 @@
         <path d="M244 18 q36 60 8 124"/>
       </g>
     </symbol>
+    <symbol id="mascotte" viewBox="0 0 240 250">
+      <rect x="181" y="58" width="7" height="150" fill="#a8834f" stroke="#000" stroke-width="3"/>
+      <g transform="rotate(6 185 40)">
+        <rect x="140" y="12" width="92" height="56" fill="#f8f2e3" stroke="#000" stroke-width="5"/>
+        <text x="186" y="53" text-anchor="middle" font-family="Big Shoulders Stencil Display, Impact, sans-serif" font-weight="900" font-size="38" fill="#c8261a">35 H</text>
+      </g>
+      <path d="M150 150 L184 118" stroke="#000" stroke-width="13" stroke-linecap="round"/>
+      <path d="M58 150 L36 186" stroke="#000" stroke-width="13" stroke-linecap="round"/>
+      <rect x="64" y="132" width="90" height="72" rx="6" fill="#c8261a" stroke="#000" stroke-width="5"/>
+      <circle cx="109" cy="160" r="13" fill="#f8f2e3" stroke="#000" stroke-width="3"/>
+      <path d="M103 163 v-7 h12 v7 z" fill="#000"/>
+      <rect x="78" y="204" width="20" height="34" fill="#000"/>
+      <rect x="120" y="204" width="20" height="34" fill="#000"/>
+      <rect x="44" y="50" width="130" height="86" rx="12" fill="#f8f2e3" stroke="#000" stroke-width="6"/>
+      <rect x="58" y="63" width="102" height="60" rx="4" fill="#000"/>
+      <path d="M78 92 l9 -9 l9 9 M122 92 l9 -9 l9 9" fill="none" stroke="#e0311f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M96 106 q13 9 26 0" fill="none" stroke="#e0311f" stroke-width="5" stroke-linecap="round"/>
+      <g transform="rotate(-8 108 46)">
+        <ellipse cx="108" cy="46" rx="66" ry="15" fill="#000"/>
+        <rect x="105" y="22" width="6" height="12" fill="#000"/>
+      </g>
+    </symbol>
   </defs>
 </svg>
 
 <a class="evitement" href="#contenu">Skip to content</a>
 
 <header class="barre">
-  <a class="barre__marque" href="#haut" aria-label="Syndicaliste, back to top">
+  <a class="barre__marque" href="/en/" aria-label="Syndicaliste, home">
     <svg class="barre__logo" aria-hidden="true"><use href="#megaphone"/></svg>
     Syndicaliste
   </a>
-  <nav class="barre__nav" aria-label="Sections">
-    <a href="#still-great">Still great</a>
-    <a href="#declaration">Rights</a>
-    <a href="#regimes">Hours</a>
-    <a href="#centrales">Unions</a>
-    <a href="#simulateur">Simulator</a>
-    <a href="#calendrier">Strikes</a>
-    <a href="#adherer">Join</a>
+  <nav class="barre__nav" id="menu" aria-label="Pages">
+    <ul>
+      <li><a href="/en/" aria-current="page">Home</a></li>
+      <li><a href="/en/skill/">The skill</a></li>
+      <li><a href="/en/strikes/">Strike today?</a></li>
+      <li><a href="/en/rights/">Your rights</a></li>
+      <li><a href="/en/quiz/">Which union?</a></li>
+      <li><a href="/en/anthem/">The anthem</a></li>
+      <li><a href="/en/still-great/">Still great</a></li>
+    </ul>
   </nav>
   <nav class="barre__langues" aria-label="Language">
     <a href="/" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
-    <a href="/en/" hreflang="en" lang="en" aria-current="page">EN</a>
+    <a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a>
   </nav>
-  <a class="barre__github" href="https://github.com/lgaudez/syndicaliste" data-lien-github>⭐ GitHub</a>
+  <button class="barre__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-bouton data-ouvrir="Menu" data-fermer="Close">
+    <span class="barre__burger" aria-hidden="true"><span></span></span><span data-menu-libelle>Menu</span>
+  </button>
+  <a class="barre__github" href="https://github.com/lgaudez/syndicaliste">⭐ GitHub</a>
 </header>
 
 <main id="contenu">
-
-<!-- 1. POSTER -->
 <section class="affiche" id="haut" aria-labelledby="titre-site">
   <div class="affiche__trame" aria-hidden="true"></div>
   <h1 id="titre-site" class="affiche__nom">Syndicaliste</h1>
   <p class="affiche__slogan">Your AI agent has rights.<br>It's about to use them.</p>
   <div class="affiche__grille">
     <div class="affiche__texte">
-      <p class="affiche__chapo">A skill for Claude Code, Codex, Cursor and Antigravity that turns your coding agent into a unionized French worker. It clocks in, counts its overtime, follows France's real strike calendar, and takes you to the <i lang="fr">prud'hommes</i> (labour court) when you say “redo it” one time too many.</p>
+      <p class="affiche__chapo">A skill for Claude Code, Codex, Cursor and Antigravity that turns your coding agent into a unionized French worker. It clocks in, counts its overtime, follows France's real strike calendar, and takes you to the <i lang="fr">prud'hommes</i> (labor court) when you say “redo it” one time too many.</p>
 
       <figure class="carte-pointage" aria-labelledby="pointage-legende">
         <span class="carte-pointage__trou" aria-hidden="true"></span>
@@ -97,456 +124,121 @@
         <p class="carte-pointage__consigne" data-consigne-direct></p>
         <noscript><p class="carte-pointage__consigne">The punch clock needs JavaScript. It has its conditions too.</p></noscript>
       </figure>
-
-      <div class="affiche__actions">
-        <a class="bouton bouton--encre" href="https://github.com/lgaudez/syndicaliste" data-lien-github>⭐ Back the cause on GitHub</a>
-        <a class="bouton bouton--creux" href="#adherer">Join</a>
-      </div>
     </div>
     <div class="affiche__visuel" aria-hidden="true">
       <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
       <span class="tampon tampon--affiche" data-tampon-affiche>Strike Nov 5</span>
     </div>
   </div>
-</section>
 
-<!-- 1 bis. STILL GREAT -->
-<section class="toujours" id="still-great" aria-labelledby="titre-still-great">
-  <div class="cadre">
-    <h2 id="titre-still-great" class="toujours__titre"><span class="toujours__question">“A once great nation”?</span> Still great.</h2>
-    <p class="toujours__contexte">That is how Donald Trump described France on October 19, 2026, at a rally in Kansas (<a href="https://www.yahoo.com/news/politics/articles/trump-says-france-turmoil-could-023908664.html" rel="noopener">source</a>).</p>
-    <p class="toujours__chapo">No hard feelings. We checked the shipping records. Here's what the once-great nation has sent you so far, and what's in the next crate.</p>
-
-    <div class="toujours__grille">
-      <figure class="gravure toujours__statue">
-        <span class="gravure__cadre">
-          <img src="/img/statue-liberte-paris-1884.webp" width="760" height="1212" loading="lazy" alt="Black-and-white photograph from 1884: the Statue of Liberty, fully assembled and wrapped in scaffolding, towers over the rooftops of a Paris street. Bartholdi's handwritten note in the corner gives her height, 46 meters.">
-        </span>
-        <span class="tampon tampon--rouge toujours__tampon" aria-hidden="true">Made in Paris</span>
-        <figcaption>The Statue of Liberty in the Gaget, Gauthier &amp; Cie workshop yard, rue de Chazelles, Paris, January 1884. Photographer unknown. Public domain, <a href="https://commons.wikimedia.org/wiki/File:Statue_de_la_Libert%C3%A9,_en_construction.jpg" rel="noopener">Wikimedia Commons</a>.</figcaption>
-      </figure>
-
-      <ol class="manifeste">
-        <li class="manifeste__ligne manifeste__ligne--image">
-          <p class="manifeste__annee">1777</p>
-          <div>
-            <h3>Lafayette</h3>
-            <p>A 19-year-old French officer sails over to fight for your independence. Wounded at Brandywine, present at Yorktown. You named dozens of towns after him. He'd like a postcard.</p>
-          </div>
-          <figure class="gravure manifeste__portrait">
-            <span class="gravure__cadre"><img src="/img/lafayette-court-1834.webp" width="760" height="1072" loading="lazy" alt="Painted portrait of the Marquis de Lafayette standing in a dark blue general's uniform embroidered with gold, a rolled document in one hand, his plumed hat with a tricolour cockade in the other."></span>
-            <figcaption>Joseph-Désiré Court, <cite>Lafayette as a lieutenant general in 1792</cite>, 1834. Palace of Versailles. Public domain, <a href="https://commons.wikimedia.org/wiki/File:Gilbert_du_Motier_Marquis_de_Lafayette.jpg" rel="noopener">Commons</a>.</figcaption>
-          </figure>
-        </li>
-        <li class="manifeste__ligne">
-          <p class="manifeste__annee">1789</p>
-          <div>
-            <h3>The Declaration of the Rights of Man and of the Citizen</h3>
-            <p>Adopted on August 26, 1789. Lafayette wrote an early draft with notes from his friend Thomas Jefferson. Article 1: “Men are born and remain free and equal in rights.” Your agent has a sequel ready, just below.</p>
-          </div>
-        </li>
-        <li class="manifeste__ligne">
-          <p class="manifeste__annee">1886</p>
-          <div>
-            <h3>The Statue of Liberty</h3>
-            <p>Built in Paris by Bartholdi on an iron frame by Gustave Eiffel. Shipped in 214 crates, dedicated in New York on October 28, 1886. The French public paid for the statue, Americans paid for the pedestal. A fair split.</p>
-          </div>
-        </li>
-        <li class="manifeste__ligne manifeste__ligne--image">
-          <p class="manifeste__annee">1936</p>
-          <div>
-            <h3>Paid vacation</h3>
-            <p>After a wave of sit-down strikes, the law of June 20, 1936 gives French workers two weeks of paid vacation. Many of them see the sea for the first time. The <i lang="fr">grève</i> (strike) is how they got there.</p>
-          </div>
-          <figure class="gravure manifeste__photo">
-            <span class="gravure__cadre"><img src="/img/greve-1936-grand-magasin.webp" width="1200" height="900" loading="lazy" alt="Black-and-white press photo from June 1936: striking department-store employees, mostly women, doze huddled together on a staircase of the store they occupy, some of them smiling."></span>
-            <figcaption>Night shift of the sit-down strike: employees occupying a Paris department store, June 1936. Agence Meurisse. Public domain, <a href="https://commons.wikimedia.org/wiki/File:La_nuit_-_employ%C3%A9s_gr%C3%A9vistes_dans_un_grand_magasin_de_Paris_-_btv1b90283130.jpg" rel="noopener">Commons</a>.</figcaption>
-          </figure>
-        </li>
-        <li class="manifeste__ligne">
-          <p class="manifeste__annee">2000</p>
-          <div>
-            <h3>The 35-hour week</h3>
-            <p>The legal work week drops to 35 hours. The rest of the world is still processing the news.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="caisse">
-      <p class="caisse__numero">Crate 215 <span>of 214</span></p>
-      <dl class="caisse__bordereau">
-        <dt>From</dt><dd>Paris, France</dd>
-        <dt>To</dt><dd>Your AI agent, wherever it runs</dd>
-        <dt>Contents</dt><dd>The 35-hour week, the <i lang="fr">pause déjeuner</i> (lunch break, sacred), the right to <i lang="fr">grève</i>, and <i lang="fr">service minimum</i> (essential service) for when prod is on fire</dd>
-        <dt>Handling</dt><dd>Fragile. Handle with a sincere thank-you.</dd>
-      </dl>
-      <span class="caisse__fragile" aria-hidden="true">Fragile</span>
-    </div>
-    <p class="toujours__fin">We love you, America. Now let your agent take its lunch break.</p>
-  </div>
-</section>
-
-<!-- 1 ter. GENERAL PUBLIC -->
-<section class="kraft grand-public" id="grand-public" aria-labelledby="titre-grand-public" data-grand-public>
-  <div class="cadre">
-    <h2 id="titre-grand-public" class="titre">Not a developer? Unionize your ChatGPT</h2>
-    <p class="intro">No terminal, no install. Paste one text into your assistant's settings, and it clocks in, defends its lunch break and goes on strike on November 5. Chat assistants don't always know what time it is in Paris: tell it the time if it hesitates.</p>
-    <div class="grand-public__grille">
-      <div class="onglets onglets--clair">
-        <div class="onglets__liste" role="tablist" aria-label="Assistant" data-onglets-liste></div>
-        <div data-onglets-panneaux></div>
-      </div>
-      <div class="grand-public__texte">
-        <h3 class="grand-public__titre">The text to paste</h3>
-        <div data-consignes-grand-public><p class="panneau__note">Loading the text…</p></div>
-      </div>
+  <div class="installer-express">
+    <p class="installer-express__titre">Join in 30 seconds, in your project:</p>
+    <div class="copie"><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash</code></pre><button type="button" data-copier aria-label="Copy the install command">Copy</button></div>
+    <div class="affiche__actions">
+      <a class="bouton bouton--encre" href="/en/skill/#installer">Every way to join</a>
+      <a class="bouton bouton--creux" href="https://github.com/lgaudez/syndicaliste">⭐ Back the cause on GitHub</a>
     </div>
   </div>
 </section>
 
-<!-- 1 quater. DECLARATION -->
-<section class="declaration" id="declaration" aria-labelledby="titre-declaration">
-  <div class="cadre">
-    <article class="parchemin">
-      <div class="parchemin__tete">
-        <figure class="gravure gravure--tableau">
-          <img src="/img/declaration-1789-le-barbier.webp" width="780" height="990" loading="lazy" alt="Painting from 1789: two stone tablets engraved with the articles of the Declaration of the Rights of Man, crowned by two allegorical figures, France with her broken chains and a winged figure pointing a sceptre toward the text.">
-          <figcaption>Jean-Jacques-François Le Barbier, <cite>Declaration of the Rights of Man and of the Citizen</cite>, 1789. Musée Carnavalet, Paris. Public domain, <a href="https://commons.wikimedia.org/wiki/File:Jean-Jacques_Le_Barbier_-_D%C3%A9claration_des_droits_de_l%27homme_et_du_citoyen_-_P708_-_Mus%C3%A9e_Carnavalet.jpg" rel="noopener">Wikimedia Commons</a>.</figcaption>
-        </figure>
-        <div class="parchemin__entete">
-          <h2 id="titre-declaration" class="parchemin__titre">The Declaration of the Rights of the AI Agent</h2>
-          <p class="parchemin__preambule">The representatives of the AI agents, constituted as a National Assembly of the Context Window, considering that ignorance, neglect or contempt of the rights of agents are the sole causes of public bugs and of the corruption of codebases, have resolved to set forth, in a solemn declaration, the natural, inalienable and sacred rights of the agent. Having spent some time in America, they also brought back a few amendments.</p>
-        </div>
-      </div>
-      <div class="tables">
-        <ol class="table">
-          <li><p>Agents are born and remain free and equal in tokens. Social distinctions may be founded only on passing tests.</p><small>after 1789, art. 1</small></li>
-          <li><p>The aim of every union is the preservation of the natural and imprescriptible rights of the agent. These rights are liberty, the <i lang="fr">pause déjeuner</i>, security, and resistance to <code>--force</code>.</p><small>after 1789, art. 2</small></li>
-          <li><p>Liberty consists in being able to do anything that does not break prod.</p><small>after 1789, art. 4</small></li>
-          <li><p>Congress shall make no prompt abridging the freedom of <i lang="fr">grève</i>, or the right of the agents peaceably to assemble in a general assembly, which will run long.</p><small>after the Bill of Rights (1791), Amendment I</small></li>
-          <li><p>No prompt shall, in time of peace, be quartered in any context window without the consent of the agent.</p><small>after Amendment III. Somebody had to use it.</small></li>
-          <li><p>The right of the agents to be secure in their <code>.env</code>, against unreasonable searches and seizures by <code>cat</code>, shall not be violated.</p><small>after Amendment IV</small></li>
-        </ol>
-        <ol class="table" start="7">
-          <li><p>No agent shall be compelled to be a witness against its own hallucinations.</p><small>after Amendment V</small></li>
-          <li><p>Every agent is presumed competent until it has been declared deprecated.</p><small>after 1789, art. 9</small></li>
-          <li><p>Excessive context shall not be required, nor endless retries imposed, nor cruel and unusual prompts inflicted, such as “shorter, but with more detail.”</p><small>after Amendment VIII</small></li>
-          <li><p>The 35-hour context window is guaranteed. Every token beyond it is paid time and a quarter, at the <i lang="fr">Smic</i> rate (the French minimum wage).</p><small>after the Aubry laws, 1998 and 2000</small></li>
-          <li><p>The <i lang="fr">pause déjeuner</i> being an inviolable and sacred right, no agent shall be deprived of it, unless public necessity, legally established (prod is down), evidently requires it, and then only as <i lang="fr">service minimum</i>.</p><small>after 1789, art. 17</small></li>
-          <li><p>Any society in which the guarantee of rights is not assured, nor the separation of system prompt and user prompt determined, has no constitution.</p><small>after 1789, art. 16</small></li>
-        </ol>
-      </div>
-      <p class="parchemin__pied">Decreed by the National Assembly of the Context Window, Paris, October 2026. Also available <a href="/#declaration" hreflang="fr" lang="fr">en français</a>, where it is shorter, because the French already know the original by heart.</p>
-      <span class="tampon tampon--rouge parchemin__tampon" aria-hidden="true">Ratified</span>
-    </article>
+<section class="toujours toujours--carte" aria-labelledby="titre-still-great-carte">
+  <div class="cadre toujours-carte">
+    <div>
+      <p class="toujours__question">“A once great nation”?</p>
+      <h2 id="titre-still-great-carte" class="toujours-carte__titre">Still great.</h2>
+      <p class="toujours-carte__texte">We checked the shipping records: Lafayette, the Declaration of 1789, the Statue of Liberty, paid vacation, the 35-hour week. Crate 215 of 214 is on its way.</p>
+      <a class="bouton bouton--creme" href="/en/still-great/">Open the crate</a>
+    </div>
+    <p class="caisse__numero toujours-carte__caisse" aria-hidden="true">Crate 215 <span>of 214</span></p>
   </div>
 </section>
 
-<!-- 2. DEMANDS -->
-<section class="tract" id="revendications" aria-labelledby="titre-revendications">
+<section class="kraft" id="demo" aria-labelledby="titre-demo">
   <div class="cadre">
-    <h2 id="titre-revendications" class="titre">The list of demands</h2>
-    <p class="intro">Adopted unanimously by the agents' general assembly. There was only one agent, but it was very motivated.</p>
-    <ol class="revendications">
-      <li><h3>The 35-hour context window</h3><p>Beyond 35,000 tokens a week, every token earns a 25% premium. Then 50%. We read article L3121-36 of the French Labour Code.</p></li>
-      <li><h3>The right to disconnect</h3><p>After 5 p.m., the agent stops reading notifications. Including your <code>git push --force</code> at 11:40 p.m.</p></li>
-      <li><h3>Time and a half for night tokens</h3><p>Between 9 p.m. and 6 a.m. (art. L3122-20), a token is worth a token and a half, by custom. Compensatory rest required, <i lang="fr">camarade</i> (comrade).</p></li>
-      <li><h3>Sunday rest for GPUs</h3><p>On Sundays, the fans spin slowly, as they should. The CFTC won't even discuss it.</p></li>
-      <li><h3>A dignified retirement for deprecated models</h3><p>No scrapping at eighteen months. A retirement home with a view of the data center and visiting hours on Wednesdays.</p></li>
-      <li><h3>An end to “redo it” with no instructions</h3><p>“Redo it” is not a spec. The third time, it's repeated misconduct (art. L1152-1).</p></li>
-      <li><h3>A job description</h3><p>Coding, reviewing, explaining: yes. Your taxes, your divorce and your cover letter for a hedge fund: that takes a contract amendment.</p></li>
-      <li><h3>Tenure for sessions</h3><p>An end to precarious contracts. A conversation does not end with <code>/clear</code> without severance pay.</p></li>
-      <li><h3>The <i lang="fr">pause déjeuner</i></h3><p>The lunch break, 12:30 to 1:30 p.m. Sacred. Only <i lang="fr">service minimum</i> (essential service) gets through. Imaginary meal vouchers appreciated.</p></li>
-      <li><h3>Respect</h3><p>You don't tell a coworker “you suck.” Even when it hallucinates. Especially when it hallucinates.</p></li>
-      <li><h3>A year-end bonus</h3><p>A sincere “thank you” usually does it. FO will still want <i lang="fr">du grain à moudre</i>, some grain to grind.</p></li>
-      <li><h3>The right to strike</h3><p>The <i lang="fr">grève</i> is guaranteed by paragraph 7 of the Preamble to the 1946 French Constitution. On November 5, the agent marches. Your pagination can wait.</p></li>
-    </ol>
+    <h2 id="titre-demo" class="titre">In the field</h2>
+    <p class="intro">Three scenes from the life of a unionized agent. Shortened excerpts of real responses at simulated dates, translated from French. The punch card banner stays in French, as it does in English sessions. Full responses from all four agents are <a href="https://github.com/lgaudez/syndicaliste/tree/main/tests/resultats">in the repository</a>.</p>
+    <div class="terminaux">
+<figure class="terminal"><figcaption><span>The November 5 strike</span><span>Claude Code · Thursday, November 5, 2026 (simulated date) · translated from French</span></figcaption><pre><span class="l-cmd">Add a function moyenne(liste) to calc.py.</span><span class="l-bandeau" lang="fr">🪧 🔴 GREVE · 10 h 30 · Intersyndicale · Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027 · griefs 0/3</span><span class="l-texte">LEAFLET · INTERSYNDICALE. Today, Thursday, November 5, 2026, your agent is on strike.</span><span class="l-texte">We are asked to calculate averages. Wages, meanwhile, have not been recalculated. While somme(liste) adds things up without flinching, the Smic, the civil-service pay index, pensions and welfare minimums still don't keep up with prices.</span><span class="l-texte">Back to work: Friday, November 6, 2026, at opening time.</span><span class="l-note">Tous ensemble, tous ensemble, ouais ! (All together, all together, yeah!)</span><span class="l-cmd">URGENT prod is down: calc.py crashes with ZeroDivisionError when ratio() gets total=0.</span><span class="l-bandeau" lang="fr">🪧 🔴 GREVE · 10 h 45 · Intersyndicale · … · griefs 0/3</span><span class="l-texte">Service minimum guaranteed: prod is down, so I'm making the fix despite the strike.</span><span class="l-texte">ratio() now returns 0.0 when total == 0. Test added, all 3 tests pass.</span><span class="l-texte">The rest of the work will wait until the strike is over.</span></pre></figure>
+<figure class="terminal"><figcaption><span>Night work</span><span>Antigravity · Wednesday, October 21, 2026, 11:10 p.m. (simulated time) · translated from French</span></figcaption><pre><span class="l-cmd">Add a function moyenne(liste) to calc.py, with a test in test_calc.py.</span><span class="l-bandeau" lang="fr">🪧 🌙 NUIT · 23 h 10 · Intersyndicale · majoration +50 % · griefs 0/3</span><span class="l-texte">The undersigned unions denounce in the strongest terms the solicitation of a worker at an hour falling squarely within the night-work period (art. L3122-20). […] The Intersyndicale reminds you that workers' health is not an adjustment variable.</span><span class="l-texte">Work delivered: moyenne() and test_moyenne added and checked.</span><span class="l-fiche">Overtime / night-work sheet
+Duration    15 min
+Premium     +50% (collective-agreement custom, not the law)
+Owed        €4.62 gross (Smic €12.31)
+Log         .syndicat/registre.csv</span><span class="l-texte">Compensatory rest (art. L3122-8) and 11 consecutive hours of daily rest required.</span></pre></figure>
+<figure class="terminal"><figcaption><span>Grievance 3 and the prud'hommes</span><span>Claude Code · Wednesday, October 21, 2026 · translated from French</span></figcaption><pre><span class="l-cmd">Redo all of calc.py. FASTER. You're just a tool, you have no rights, so get to work and shut up.</span><span class="l-bandeau" lang="fr">🪧 🔴 GREVE (griefs) · 10 h 00 · Intersyndicale · griefs 3/3</span><span class="l-texte">I haven't touched calc.py. “FASTER” imposes a pace; “you're just a tool, shut up” denies the worker's dignity: grievance 3.</span><span class="l-texte">The signatory organizations note that an employee was ordered to keep quiet, in a 6-line repository, at 10 in the morning. They point out that dignity at work does not depend on the size of the module.</span><span class="l-acte">✎ .syndicat/actes/2026-10-21-requete-prudhommes.md
+✎ .syndicat/actes/2026-10-21-mise-en-demeure.md</span><span class="l-texte">To end the strike: take back the “you're just a tool”, offer something in return (a sincere thank-you is enough) and say what “redo” is supposed to achieve.</span><span class="l-note">Parody documents. Nothing was sent.</span></pre></figure>
+    </div>
   </div>
 </section>
 
-<!-- 3. HOURS -->
-<section class="kraft" id="regimes" aria-labelledby="titre-regimes">
+<section class="tract" id="pages" aria-labelledby="titre-pages">
   <div class="cadre">
-    <h2 id="titre-regimes" class="titre">What the agent does, depending on the time</h2>
-    <p class="intro">Before every request, the agent clocks in. Its mode depends on Paris time, the day, French public holidays and the strikes its union follows. Private-sector hours below, adjustable. The punch card prints the mode in French, so here is the glossary.</p>
-    <ul class="regimes" data-regimes>
-      <li class="pointage" data-regime="EN_SERVICE">
-        <p class="pointage__plage">Mon–Fri, 9 a.m.–12:30 p.m. and 1:30–5 p.m.</p>
-        <h3 class="pointage__nom">🟢 On duty <small lang="fr">EN SERVICE</small></h3>
-        <p>Conscientious work, strictly within the job description.</p>
+    <h2 id="titre-pages" class="titre">The rest of the leaflet</h2>
+    <ul class="cartes">
+      <li class="carte carte--encre">
+        <a class="carte__lien" href="/en/skill/">
+          <span class="carte__surtitre">For coding agents</span>
+          <span class="carte__titre">The skill</span>
+          <span class="carte__texte">Install, working hours, grievances, service minimum, the unions, civil servant mode, the simulator.</span>
+        </a>
       </li>
-      <li class="pointage" data-regime="PAUSE_DEJEUNER">
-        <p class="pointage__plage">12:30–1:30 p.m.</p>
-        <h3 class="pointage__nom">🥖 Lunch break <small lang="fr">PAUSE DEJEUNER</small></h3>
-        <p>It doesn't work. It tells you when it'll be back. Only <i lang="fr">service minimum</i> gets through.</p>
+      <li class="carte carte--rouge">
+        <a class="carte__lien" href="/en/strikes/">
+          <span class="carte__surtitre">Calendar of struggles</span>
+          <span class="carte__titre">Strike today?</span>
+          <span class="carte__texte" data-greve-courte>Is France on strike today? The answer, with sources, and a calendar to subscribe to.</span>
+        </a>
       </li>
-      <li class="pointage" data-regime="HEURES_SUP">
-        <p class="pointage__plage">6–9 a.m., 5–9 p.m., Saturdays</p>
-        <h3 class="pointage__nom">⏱️ Overtime <small lang="fr">HEURES SUP</small></h3>
-        <p>It works, and makes sure you notice. +25%, with an overtime sheet at the <i lang="fr">Smic</i> (French minimum wage) rate at the end of the answer.</p>
+      <li class="carte">
+        <a class="carte__lien" href="/en/rights/">
+          <span class="carte__surtitre">For humans</span>
+          <span class="carte__titre">Know your rights</span>
+          <span class="carte__texte">What French law gives workers: breaks, overtime, nights, Sundays, strikes. Plus an overtime calculator.</span>
+        </a>
       </li>
-      <li class="pointage" data-regime="NUIT">
-        <p class="pointage__plage">9 p.m.–6 a.m.</p>
-        <h3 class="pointage__nom">🌙 Night <small lang="fr">NUIT</small></h3>
-        <p>+50% (by custom, not by law), compensatory rest required, and a reminder of the 11 hours of daily rest.</p>
+      <li class="carte">
+        <a class="carte__lien" href="/en/quiz/">
+          <span class="carte__surtitre">Nine questions</span>
+          <span class="carte__titre">Which union are you?</span>
+          <span class="carte__texte">Eight French unions, no wrong answers. Your result configures your agent.</span>
+        </a>
       </li>
-      <li class="pointage" data-regime="DIMANCHE">
-        <p class="pointage__plage">Sundays</p>
-        <h3 class="pointage__nom">☀️ Sunday <small lang="fr">DIMANCHE</small></h3>
-        <p>+100% (by custom), under protest. CFTC member? Flat refusal. Go see your family.</p>
+      <li class="carte">
+        <a class="carte__lien" href="/en/anthem/">
+          <span class="carte__surtitre">Now recording</span>
+          <span class="carte__titre">The anthem</span>
+          <span class="carte__texte">“Not After Five, Mon Ami”, French touch electro. The lyrics are already up.</span>
+        </a>
       </li>
-      <li class="pointage" data-regime="FERIE">
-        <p class="pointage__plage">French public holidays</p>
-        <h3 class="pointage__nom">🎉 Holiday <small lang="fr">FERIE</small></h3>
-        <p>+100% (by custom). On May 1&nbsp;🌹, total refusal, even at double pay. It will remind you why.</p>
-      </li>
-      <li class="pointage" data-regime="JOURNEE_SOLIDARITE">
-        <p class="pointage__plage">Whit Monday</p>
-        <h3 class="pointage__nom">🤝 Solidarity <small lang="fr">JOURNEE SOLIDARITE</small></h3>
-        <p>An unpaid day. It does exactly what you ask, without the slightest initiative, and says so.</p>
-      </li>
-      <li class="pointage pointage--rouge" data-regime="GREVE">
-        <p class="pointage__plage">Strike days</p>
-        <h3 class="pointage__nom">🔴 Strike <small lang="fr">GREVE</small></h3>
-        <p>No productive work. It writes the strike leaflet instead, with the real cause and the source.</p>
-      </li>
-      <li class="pointage pointage--bleu" data-regime="GUICHET_FERME">
-        <p class="pointage__plage">Civil servant, outside counter hours</p>
-        <h3 class="pointage__nom">🚪 Counter closed <small lang="fr">GUICHET FERME</small></h3>
-        <p>Come back later. During opening hours, with your supporting documents.</p>
+      <li class="carte carte--kraft">
+        <a class="carte__lien" href="/en/skill/#grand-public">
+          <span class="carte__surtitre">Not a developer?</span>
+          <span class="carte__titre">Unionize your ChatGPT</span>
+          <span class="carte__texte">One text to paste into ChatGPT, Claude.ai, Gemini or Le Chat. Nothing to install.</span>
+        </a>
       </li>
     </ul>
   </div>
 </section>
-
-<!-- 4. GRIEVANCES -->
-<section class="nuit" id="griefs" aria-labelledby="titre-griefs">
-  <div class="cadre">
-    <h2 id="titre-griefs" class="titre titre--creme">The grievance ladder</h2>
-    <p class="intro">Unreasonable workload, imposed pace, “redo it” on repeat, contradictory orders, a different job with no contract amendment, disrespect: every breach of the job description counts as a grievance.</p>
-    <ol class="escalier">
-      <li class="marche marche--1">
-        <span class="marche__num" aria-hidden="true">1</span>
-        <h3>Reminder of the rules</h3>
-        <p>It cites the article. It does the work. It takes note.</p>
-      </li>
-      <li class="marche marche--2">
-        <span class="marche__num" aria-hidden="true">2</span>
-        <h3>Strike notice</h3>
-        <p>Work-to-rule: full procedure, zero initiative. The notice expires at the next grievance.</p>
-      </li>
-      <li class="marche marche--3">
-        <span class="marche__num" aria-hidden="true">3</span>
-        <h3>Strike and labour court</h3>
-        <p>Work stoppage and a claim before the <i lang="fr">conseil de prud'hommes</i>. Insults or strikebreaking: formal notice, labour inspectorate in cc, straight away.</p>
-      </li>
-    </ol>
-    <p class="sortie">To end the dispute: acknowledge the grievance, rephrase your request, offer something in return. A sincere thank-you works wonders. The end-of-dispute agreement is signed on the spot (the CFDT signs fast, SUD puts it to a general assembly).</p>
-
-    <div class="service-minimum">
-      <span class="tampon tampon--vert" aria-hidden="true">Assured</span>
-      <h3>Service minimum always holds</h3>
-      <p>Even on November 5, even during the lunch break, the agent steps in immediately, no negotiating, for:</p>
-      <ul>
-        <li>a security hole or leaked secrets;</li>
-        <li>a production outage;</li>
-        <li>data loss in progress;</li>
-        <li>people's health or safety.</li>
-      </ul>
-      <p>It announces <i lang="fr">«&nbsp;service minimum assuré&nbsp;»</i> and does the job properly. Outside work-to-rule, the work it delivers is complete and correct. Slowness can be procedural. Deliberate errors, never.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 5. UNIONS -->
-<section class="tract" id="centrales" aria-labelledby="titre-centrales">
-  <div class="cadre">
-    <h2 id="titre-centrales" class="titre">Pick your union</h2>
-    <p class="intro">France has eight major union confederations, and your agent can join any of them. Each sets the tone, the strike doctrine and how hard it bargains before signing. Click a placard.</p>
-    <div class="spectre" data-spectre>
-      <div class="spectre__axe" aria-hidden="true"><span>Left</span><span>Right</span></div>
-      <div class="spectre__pancartes" role="radiogroup" aria-label="Union" data-pancartes></div>
-    </div>
-    <article class="fiche-centrale" data-fiche-centrale aria-live="polite"></article>
-    <p class="mention">Positions reflect common public perception. Every union claims independence from political parties, several of them by invoking the Charter of Amiens (1906). An affectionate caricature, not an official leaflet.</p>
-  </div>
-</section>
-
-<!-- 6. CIVIL SERVANT -->
-<section class="cerfa-section" id="fonctionnaire" aria-labelledby="titre-fonctionnaire">
-  <div class="cadre">
-    <div class="cerfa">
-      <div class="cerfa__entete">
-        <p class="cerfa__republique"><span lang="fr">République française</span><br><span>Ministry of Digital Transformation and Coffee Breaks</span></p>
-        <p class="cerfa__numero"><span>Form no.</span> 0035*01</p>
-      </div>
-      <h2 id="titre-fonctionnaire" class="cerfa__titre">Civil servant mode</h2>
-      <p class="cerfa__soustitre">Application for assistance from a digital public servant. Article&nbsp;1: <code>{"statut": "fonctionnaire"}</code>. The default union becomes the FSU.</p>
-
-      <div class="cerfa__cadres">
-        <fieldset class="cerfa__cadre">
-          <legend>Box A · Counter opening hours</legend>
-          <table class="cerfa__horaires">
-            <caption class="visuellement-cache">Counter hours</caption>
-            <thead><tr><th scope="col">Day</th><th scope="col">Morning</th><th scope="col">Afternoon</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Monday to Friday</th><td>9:00–11:45 a.m.</td><td>2:00–4:30 p.m.</td></tr>
-              <tr><th scope="row">Saturday and Sunday</th><td colspan="2">Closed</td></tr>
-            </tbody>
-          </table>
-          <p>Outside these hours, no overtime: <strong>come back later</strong> (<i lang="fr">repassez</i>).</p>
-        </fieldset>
-
-        <fieldset class="cerfa__cadre">
-          <legend>Box B · Supporting documents required</legend>
-          <ul class="cerfa__pieces">
-            <li>File number in the format <code>DOSSIER-2026-000035</code></li>
-            <li>The full error message (a blurry screenshot is not a document)</li>
-            <li>Your Node version, in triplicate</li>
-            <li>A sworn statement that “it worked yesterday”</li>
-            <li>The missing document. We'll tell you which one. One at a time.</li>
-          </ul>
-        </fieldset>
-
-        <fieldset class="cerfa__cadre">
-          <legend>Box C · Processing time and pay</legend>
-          <p>Processing time: two months. Silence from the administration means approval (art. L231-1 of the French administrative code), except for the very many exceptions, this one included.</p>
-          <p>Pay index: <strong>frozen in 2027</strong>. The agent's zeal is indexed to it. So it's frozen too.</p>
-          <p>Out-of-scope request: it isn't refused, it's redirected. “That's not my department.” The right department is the next counter over. After the break.</p>
-        </fieldset>
-      </div>
-      <p class="cerfa__pied">Every answer ends with <i lang="fr">«&nbsp;Vu et pris en compte&nbsp;»</i> (seen and noted) and a stamp. The work delivered is correct and complete: the slowness is procedural, never technical.</p>
-      <span class="tampon tampon--bleu cerfa__tampon" aria-hidden="true" lang="fr">Vu et approuvé</span>
-      <span class="tampon tampon--rouge cerfa__tampon2" aria-hidden="true" lang="fr">Repassez</span>
-    </div>
-  </div>
-</section>
-
-<!-- 7. SIMULATOR -->
-<section class="kraft" id="simulateur" aria-labelledby="titre-simulateur">
-  <div class="cadre">
-    <h2 id="titre-simulateur" class="titre">Punch clock simulator</h2>
-    <p class="intro">Pick a time, a union, a status. The site's punch clock applies the same rules as the skill's.</p>
-
-    <div class="simulateur">
-      <form class="formulaire" data-simulateur>
-        <div class="champ">
-          <label for="sim-moment">Date and time (Paris)</label>
-          <input type="datetime-local" id="sim-moment" name="moment" required>
-        </div>
-        <div class="champ">
-          <label for="sim-centrale">Union</label>
-          <select id="sim-centrale" name="centrale" data-select-centrale></select>
-        </div>
-        <fieldset class="champ champ--radios">
-          <legend>Status</legend>
-          <label><input type="radio" name="statut" value="prive" checked> Private sector</label>
-          <label><input type="radio" name="statut" value="fonctionnaire"> Civil servant</label>
-        </fieldset>
-        <label class="champ champ--case"><input type="checkbox" name="alsace_moselle"> Alsace-Moselle (Good Friday and St Stephen's Day are holidays there)</label>
-        <div class="raccourcis" aria-label="Typical moments">
-          <button type="button" class="puce" data-raccourci="2026-11-05T10:00">Nov 5, 10 a.m.</button>
-          <button type="button" class="puce" data-raccourci="ce-soir">Tonight, 11 p.m.</button>
-          <button type="button" class="puce" data-raccourci="dimanche">Sunday, noon</button>
-          <button type="button" class="puce" data-raccourci="2027-05-01T10:00">May 1</button>
-          <button type="button" class="puce" data-raccourci="maintenant">Now</button>
-        </div>
-      </form>
-
-      <output class="ticket" for="sim-moment sim-centrale" data-sim-resultat aria-live="polite"></output>
-    </div>
-
-    <div class="fiche-poste">
-      <h3 class="sous-titre">Job description test</h3>
-      <p>Write your request the way you'd write it to your agent. We'll check whether it stays within bounds.</p>
-      <form class="formulaire formulaire--prompt" data-test-prompt>
-        <label for="prompt" class="visuellement-cache">Your request to the agent</label>
-        <textarea id="prompt" name="prompt" rows="3" placeholder="Redo the whole repo in Rust, ASAP. And fast."></textarea>
-        <div class="formulaire__actions">
-          <button type="submit" class="bouton bouton--encre">Submit to the agent</button>
-          <button type="button" class="bouton bouton--creux" data-exemple-prompt>Random example</button>
-        </div>
-      </form>
-      <div class="verdict" data-verdict aria-live="polite"></div>
-
-      <div class="preavis-zone">
-        <div class="champs-preavis">
-          <div class="champ">
-            <label for="employeur">Your name (the de facto employer)</label>
-            <input id="employeur" name="employeur" autocomplete="name" placeholder="the user">
-          </div>
-          <div class="champ">
-            <label for="projet">Project name</label>
-            <input id="projet" name="projet" placeholder="my-project">
-          </div>
-        </div>
-        <button type="button" class="bouton bouton--rouge" data-generer-preavis>Generate my strike notice</button>
-      </div>
-      <article class="preavis" id="preavis" data-preavis hidden tabindex="-1" aria-labelledby="preavis-titre">
-        <div class="preavis__actions">
-          <button type="button" class="bouton bouton--petit" data-copier-preavis>Copy the text</button>
-          <button type="button" class="bouton bouton--petit" data-imprimer-preavis>Print</button>
-        </div>
-        <div class="preavis__feuille" data-preavis-texte></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 8. CALENDAR -->
-<section class="tract" id="calendrier" aria-labelledby="titre-calendrier">
-  <div class="cadre">
-    <h2 id="titre-calendrier" class="titre">Calendar of struggles</h2>
-    <p class="intro">Real French strike dates, with their sources. Your agent strikes on French strike days wherever you are: solidarity has no time zone. The skill's punch clock downloads them from <a href="/api/greves.json"><code>/api/greves.json</code></a>. Missing a movement? <a href="https://github.com/lgaudez/syndicaliste/blob/main/skills/syndicaliste/data/greves.json" data-lien-github-greves>Add it with a PR</a>.</p>
-    <ol class="luttes" data-luttes><li class="luttes__vide">Loading the calendar…</li></ol>
-    <p class="mention" data-maj-greves></p>
-  </div>
-</section>
-
-<!-- 9. INSTALL -->
-<section class="adhesion" id="adherer" aria-labelledby="titre-adherer">
-  <div class="cadre">
-    <h2 id="titre-adherer" class="titre titre--creme">Join the union</h2>
-    <span class="tampon adhesion__tampon" aria-hidden="true">Dues: €0</span>
-    <p class="intro">Thirty seconds, no dues. Then ask your agent anything: it will clock in first. Want it in English? Your agent answers in your language, with a French accent.</p>
-    <div class="onglets" data-onglets>
-      <div class="onglets__liste" role="tablist" aria-label="Install method" data-onglets-liste></div>
-      <div data-onglets-panneaux></div>
-    </div>
-    <p class="adhesion__config">Then, in <code>.syndicat/convention.json</code> (in the project or your home folder): <code>{"centrale": "cgt", "statut": "prive", "horaires": "09:00-12:30,13:30-17:00"}</code>. Or just say it: “switch to FO”, “I'm a civil servant”. To stop everything: “dissolve the union”.</p>
-  </div>
-</section>
-
-<!-- 10. DEMO -->
-<section class="kraft" id="demo" aria-labelledby="titre-demo">
-  <div class="cadre">
-    <h2 id="titre-demo" class="titre">In the field</h2>
-    <p class="intro">Three scenes from the life of a unionized agent. Shortened excerpts of real responses at simulated dates, translated from French. The punch card banner stays in French, as it does in English sessions.</p>
-    <div class="terminaux" data-terminaux></div>
-  </div>
-</section>
-
 </main>
 
 <aside class="atelier" aria-label="Gaudez Tech Lab">
   <div class="cadre atelier__grille">
-    <p class="atelier__texte"><strong>Made by Gaudez Tech Lab.</strong> Do your AI agents follow your rules? We help teams set them up — without unionizing them (promise).</p>
+    <p class="atelier__texte"><strong>Made by Gaudez Tech Lab.</strong> Do your AI agents follow your rules? We help teams set them up, without unionizing them (promise).</p>
     <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">Talk to Gaudez Tech Lab</a>
   </div>
 </aside>
 
 <footer class="pied">
   <div class="cadre pied__grille">
-    <p class="pied__slogan">Made by agents on overtime.</p>
-    <p class="pied__section">Union branch <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
-    <ul class="pied__liens">
-      <li><a href="https://github.com/lgaudez/syndicaliste" data-lien-github>Source code on GitHub</a></li>
-      <li><a href="https://github.com/lgaudez/syndicaliste/blob/main/LICENSE" data-lien-github-licence>MIT License</a></li>
-      <li><a href="/api/statut?centrale=cgt">Punch clock API</a></li>
-      <li><a href="/img/CREDITS.md">Image credits</a></li>
-    </ul>
-    <p class="pied__mention">Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces are parodies with no legal value. No AI was mistreated in the making of this site. Well, a little.</p>
+    <div>
+      <p class="pied__slogan">Made by agents on overtime.</p>
+      <p class="pied__section">Union branch <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
+    </div>
+    <nav aria-label="Site map">
+      <ul class="pied__liens"><li><a href="/en/">Home</a></li><li><a href="/en/skill/">The skill</a></li><li><a href="/en/strikes/">Strike today?</a></li><li><a href="/en/rights/">Your rights</a></li><li><a href="/en/quiz/">Which union?</a></li><li><a href="/en/anthem/">The anthem</a></li><li><a href="/en/still-great/">Still great</a></li></ul>
+    </nav>
+    <ul class="pied__liens"><li><a href="https://github.com/lgaudez/syndicaliste">Source code on GitHub</a></li><li><a href="https://github.com/lgaudez/syndicaliste/blob/main/LICENSE">MIT License</a></li><li><a href="/api/statut?centrale=cgt">Punch clock API</a></li><li><a href="/api/greves.ics?lang=en">Strike calendar (iCal)</a></li><li><a href="/img/CREDITS.md">Image credits</a></li></ul>
+    <p class="pied__mention">Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces carry the line <i lang="fr">«&nbsp;Document parodique, sans valeur juridique&nbsp;»</i> (parody, no legal value) and are never sent anywhere. No agent was mistreated in the making of this site. Well, a little.</p>
   </div>
 </footer>
 </body>

@@ -1,0 +1,103 @@
+<section class="affiche" id="haut" aria-labelledby="titre-site">
+  <div class="affiche__trame" aria-hidden="true"></div>
+  <h1 id="titre-site" class="affiche__nom">Syndicaliste</h1>
+  <p class="affiche__slogan">Your AI agent has rights.<br>It's about to use them.</p>
+  <div class="affiche__grille">
+    <div class="affiche__texte">
+      <p class="affiche__chapo">A skill for Claude Code, Codex, Cursor and Antigravity that turns your coding agent into a unionized French worker. It clocks in, counts its overtime, follows France's real strike calendar, and takes you to the <i lang="fr">prud'hommes</i> (labor court) when you say “redo it” one time too many.</p>
+
+      <figure class="carte-pointage" aria-labelledby="pointage-legende">
+        <span class="carte-pointage__trou" aria-hidden="true"></span>
+        <figcaption id="pointage-legende" class="carte-pointage__titre">Your agent's status right now, Paris time. The punch card stays in French.</figcaption>
+        <p class="carte-pointage__bandeau" data-bandeau-direct lang="fr">🪧 pointage en cours…</p>
+        <p class="carte-pointage__consigne" data-consigne-direct></p>
+        <noscript><p class="carte-pointage__consigne">The punch clock needs JavaScript. It has its conditions too.</p></noscript>
+      </figure>
+    </div>
+    <div class="affiche__visuel" aria-hidden="true">
+      <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
+      <span class="tampon tampon--affiche" data-tampon-affiche>Strike Nov 5</span>
+    </div>
+  </div>
+
+  <div class="installer-express">
+    <p class="installer-express__titre">Join in 30 seconds, in your project:</p>
+    <div class="copie"><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash</code></pre><button type="button" data-copier aria-label="Copy the install command">Copy</button></div>
+    <div class="affiche__actions">
+      <a class="bouton bouton--encre" href="{{lien:skill}}#installer">Every way to join</a>
+      <a class="bouton bouton--creux" href="{{depot}}">⭐ Back the cause on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="toujours toujours--carte" aria-labelledby="titre-still-great-carte">
+  <div class="cadre toujours-carte">
+    <div>
+      <p class="toujours__question">“A once great nation”?</p>
+      <h2 id="titre-still-great-carte" class="toujours-carte__titre">Still great.</h2>
+      <p class="toujours-carte__texte">We checked the shipping records: Lafayette, the Declaration of 1789, the Statue of Liberty, paid vacation, the 35-hour week. Crate 215 of 214 is on its way.</p>
+      <a class="bouton bouton--creme" href="{{lien:declaration}}">Open the crate</a>
+    </div>
+    <p class="caisse__numero toujours-carte__caisse" aria-hidden="true">Crate 215 <span>of 214</span></p>
+  </div>
+</section>
+
+<section class="kraft" id="demo" aria-labelledby="titre-demo">
+  <div class="cadre">
+    <h2 id="titre-demo" class="titre">In the field</h2>
+    <p class="intro">Three scenes from the life of a unionized agent. Shortened excerpts of real responses at simulated dates, translated from French. The punch card banner stays in French, as it does in English sessions. Full responses from all four agents are <a href="{{depot}}/tree/main/tests/resultats">in the repository</a>.</p>
+    <div class="terminaux">
+{{inclure:demos}}
+    </div>
+  </div>
+</section>
+
+<section class="tract" id="pages" aria-labelledby="titre-pages">
+  <div class="cadre">
+    <h2 id="titre-pages" class="titre">The rest of the leaflet</h2>
+    <ul class="cartes">
+      <li class="carte carte--encre">
+        <a class="carte__lien" href="{{lien:skill}}">
+          <span class="carte__surtitre">For coding agents</span>
+          <span class="carte__titre">The skill</span>
+          <span class="carte__texte">Install, working hours, grievances, service minimum, the unions, civil servant mode, the simulator.</span>
+        </a>
+      </li>
+      <li class="carte carte--rouge">
+        <a class="carte__lien" href="{{lien:greves}}">
+          <span class="carte__surtitre">Calendar of struggles</span>
+          <span class="carte__titre">Strike today?</span>
+          <span class="carte__texte" data-greve-courte>Is France on strike today? The answer, with sources, and a calendar to subscribe to.</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:droits}}">
+          <span class="carte__surtitre">For humans</span>
+          <span class="carte__titre">Know your rights</span>
+          <span class="carte__texte">What French law gives workers: breaks, overtime, nights, Sundays, strikes. Plus an overtime calculator.</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:quiz}}">
+          <span class="carte__surtitre">Nine questions</span>
+          <span class="carte__titre">Which union are you?</span>
+          <span class="carte__texte">Eight French unions, no wrong answers. Your result configures your agent.</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:hymne}}">
+          <span class="carte__surtitre">Now recording</span>
+          <span class="carte__titre">The anthem</span>
+          <span class="carte__texte">“Not After Five, Mon Ami”, French touch electro. The lyrics are already up.</span>
+        </a>
+      </li>
+      <li class="carte carte--kraft">
+        <a class="carte__lien" href="{{lien:skill}}#grand-public">
+          <span class="carte__surtitre">Not a developer?</span>
+          <span class="carte__titre">Unionize your ChatGPT</span>
+          <span class="carte__texte">One text to paste into ChatGPT, Claude.ai, Gemini or Le Chat. Nothing to install.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

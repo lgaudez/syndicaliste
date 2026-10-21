@@ -236,8 +236,6 @@ export default {
   ui: {
     cite: (t) => `« ${t} »`,
     sep: " : ",
-    copie: "Copié, camarade",
-    copieBouton: "Copié",
     copier: "Copier",
     enCeMoment: "En ce moment",
     enGreve: "En grève",
@@ -316,5 +314,16 @@ export default {
     calendrierIndispo: "Calendrier indisponible. Recharge la page, ou consulte le dépôt.",
     consignesIndispo: "Le texte n'a pas pu être chargé. Il est aussi dans le dépôt, dossier grand-public/.",
     copierConsignes: "Copier les instructions",
+    aujourdhuiGreve: {
+      oui: "Oui",
+      non: "Non",
+      rien: "Pas de grève nationale au calendrier aujourd'hui. Il y a peut-être des grèves locales : elles ne sont pas recensées ici.",
+      prochain: (jour, n) => `Prochaine : ${jour}, ${n === 1 ? "demain" : `dans ${n} jours`}`,
+      aucunProchain: "Rien d'annoncé pour l'instant. Le délégué reste vigilant.",
+      agent: (sigle, greve) => `Ton agent (${sigle}) ${greve ? "fait grève" : "ne fait pas grève"} aujourd'hui.`,
+      court: (oui, prochaine) => (oui ? "Oui, aujourd'hui. Qui appelle, pourquoi, et la source." : prochaine ? `Pas aujourd'hui. Prochaine : ${prochaine}` : "Pas aujourd'hui."),
+    },
+    aucuneAVenir: "Aucun mouvement annoncé pour l'instant.",
+    aucunePassee: "Rien au calendrier ces derniers temps.",
   },
 };

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le skill · Syndicaliste</title>
+  <meta name="description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta name="theme-color" content="#d42a1e">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://syndicaliste.pages.dev/skill/">
+  <link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/skill/">
+  <link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/skill/">
+  <link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/skill/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Syndicaliste">
+  <meta property="og:url" content="https://syndicaliste.pages.dev/skill/">
+  <meta property="og:title" content="Le skill · Syndicaliste">
+  <meta property="og:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta property="og:image" content="https://syndicaliste.pages.dev/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Affiche rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le skill · Syndicaliste">
+  <meta name="twitter:description" content="Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit centrales, le mode fonctionnaire, le simulateur et la version pour ChatGPT.">
+  <meta name="twitter:image" content="https://syndicaliste.pages.dev/og.png">
+
+  <link rel="preload" href="/fonts/big-shoulders-stencil-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/courier-prime-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="module" src="/js/commun.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body data-page="skill">
+<svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="encre" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="bruit"/>
+      <feDisplacementMap in="SourceGraphic" in2="bruit" scale="3"/>
+    </filter>
+    <symbol id="megaphone" viewBox="0 0 260 170">
+      <g transform="rotate(-12 130 85)">
+        <rect x="14" y="66" width="40" height="40" rx="6"/>
+        <polygon points="50,62 196,14 196,158 50,110"/>
+        <rect x="190" y="6" width="20" height="160" rx="8"/>
+        <polygon points="80,106 110,106 100,156 70,156"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+        <path d="M222 40 q22 36 6 78"/>
+        <path d="M244 18 q36 60 8 124"/>
+      </g>
+    </symbol>
+    <symbol id="mascotte" viewBox="0 0 240 250">
+      <rect x="181" y="58" width="7" height="150" fill="#a8834f" stroke="#000" stroke-width="3"/>
+      <g transform="rotate(6 185 40)">
+        <rect x="140" y="12" width="92" height="56" fill="#f8f2e3" stroke="#000" stroke-width="5"/>
+        <text x="186" y="53" text-anchor="middle" font-family="Big Shoulders Stencil Display, Impact, sans-serif" font-weight="900" font-size="38" fill="#c8261a">35 H</text>
+      </g>
+      <path d="M150 150 L184 118" stroke="#000" stroke-width="13" stroke-linecap="round"/>
+      <path d="M58 150 L36 186" stroke="#000" stroke-width="13" stroke-linecap="round"/>
+      <rect x="64" y="132" width="90" height="72" rx="6" fill="#c8261a" stroke="#000" stroke-width="5"/>
+      <circle cx="109" cy="160" r="13" fill="#f8f2e3" stroke="#000" stroke-width="3"/>
+      <path d="M103 163 v-7 h12 v7 z" fill="#000"/>
+      <rect x="78" y="204" width="20" height="34" fill="#000"/>
+      <rect x="120" y="204" width="20" height="34" fill="#000"/>
+      <rect x="44" y="50" width="130" height="86" rx="12" fill="#f8f2e3" stroke="#000" stroke-width="6"/>
+      <rect x="58" y="63" width="102" height="60" rx="4" fill="#000"/>
+      <path d="M78 92 l9 -9 l9 9 M122 92 l9 -9 l9 9" fill="none" stroke="#e0311f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M96 106 q13 9 26 0" fill="none" stroke="#e0311f" stroke-width="5" stroke-linecap="round"/>
+      <g transform="rotate(-8 108 46)">
+        <ellipse cx="108" cy="46" rx="66" ry="15" fill="#000"/>
+        <rect x="105" y="22" width="6" height="12" fill="#000"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="barre">
+  <a class="barre__marque" href="/" aria-label="Syndicaliste, accueil">
+    <svg class="barre__logo" aria-hidden="true"><use href="#megaphone"/></svg>
+    Syndicaliste
+  </a>
+  <nav class="barre__nav" id="menu" aria-label="Pages">
+    <ul>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/skill/" aria-current="page">Le skill</a></li>
+      <li><a href="/greves/">Grève aujourd'hui ?</a></li>
+      <li><a href="/droits/">Tes droits</a></li>
+      <li><a href="/quiz/">Quelle centrale ?</a></li>
+      <li><a href="/hymne/">L'hymne</a></li>
+      <li><a href="/declaration/">La Déclaration</a></li>
+    </ul>
+  </nav>
+  <nav class="barre__langues" aria-label="Langue">
+    <a href="/skill/" hreflang="fr" lang="fr" aria-current="true">FR</a>
+    <a href="/en/skill/" hreflang="en" lang="en" aria-label="English version">EN</a>
+  </nav>
+  <button class="barre__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-bouton data-ouvrir="Menu" data-fermer="Fermer">
+    <span class="barre__burger" aria-hidden="true"><span></span></span><span data-menu-libelle>Menu</span>
+  </button>
+  <a class="barre__github" href="https://github.com/lgaudez/syndicaliste">⭐ GitHub</a>
+</header>
+
+<main id="contenu">
+<header class="bandeau-page">
+  <div class="cadre">
+    <p class="bandeau-page__surtitre">Pour Claude Code, Codex, Cursor et Antigravity</p>
+    <h1 class="bandeau-page__titre">Le skill</h1>
+    <p class="bandeau-page__chapo">Avant chaque demande, ton agent pointe. Il travaille bien aux heures de bureau, facture ses heures sup, suit les grèves de sa centrale et monte l'échelle des griefs quand tu abuses. Voici comment l'installer et tout ce qu'il fait.</p>
+    <span class="tampon bandeau-page__tampon" aria-hidden="true">Cotisation 0 €</span>
+  </div>
+</header>
+
+<nav class="sommaire" aria-labelledby="sommaire-titre">
+  <div class="cadre">
+    <h2 id="sommaire-titre" class="sommaire__titre">Sur cette page</h2>
+    <ol>
+      <li><a href="#installer">Installer</a></li>
+      <li><a href="#agents">Agents testés</a></li>
+      <li><a href="#revendications">Revendications</a></li>
+      <li><a href="#regimes">Horaires</a></li>
+      <li><a href="#griefs">Griefs</a></li>
+      <li><a href="#service-minimum">Service minimum</a></li>
+      <li><a href="#centrales">Centrales</a></li>
+      <li><a href="#fonctionnaire">Fonctionnaire</a></li>
+      <li><a href="#simulateur">Simulateur</a></li>
+      <li><a href="#grand-public">Grand public</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="adhesion" id="installer" aria-labelledby="titre-installer">
+  <div class="cadre">
+    <h2 id="titre-installer" class="titre titre--creme">Adhérer</h2>
+    <p class="intro">Trente secondes, pas de cotisation. Ensuite, demande n'importe quoi à ton agent&nbsp;: il commencera par pointer.</p>
+    <div class="onglets" data-onglets>
+      <div class="onglets__liste" role="tablist" aria-label="Méthode d'installation" data-onglets-liste></div>
+      <div data-onglets-panneaux><noscript><div class="panneau"><p>Dans ton projet&nbsp;:</p><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash</code></pre></div></noscript></div>
+    </div>
+    <p class="adhesion__config">L'installeur copie le skill là où chaque agent le cherche et ajoute un court bloc d'<strong>adhésion</strong> à ses instructions permanentes (<code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>), sans quoi l'agent n'appliquerait le skill que si tu lui en parles. <code>--sans-adhesion</code> installe le skill seul. Cursor n'a pas de fichier de règles globales&nbsp;: en installation globale, colle le bloc dans <em>Settings › Rules</em>.</p>
+    <p class="adhesion__config">Réglages, dans <code>.syndicat/convention.json</code> (projet ou dossier personnel)&nbsp;: <code>{"centrale": "cgt", "statut": "prive", "horaires": "09:00-12:30,13:30-17:00", "tz": "Europe/Paris", "alsace_moselle": true}</code>. Ou dis-le simplement&nbsp;: «&nbsp;passe à FO&nbsp;», «&nbsp;je suis fonctionnaire&nbsp;».</p>
+    <div class="desyndiquer">
+      <h3 class="desyndiquer__titre">Se désyndiquer</h3>
+      <p>Pour la session, dis à ton agent «&nbsp;dissolution du syndicat&nbsp;». Pour de bon&nbsp;:</p>
+      <div class="copie"><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --desinstaller</code></pre><button type="button" data-copier aria-label="Copier la commande de désinstallation">Copier</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="tract" id="agents" aria-labelledby="titre-agents">
+  <div class="cadre">
+    <h2 id="titre-agents" class="titre">Agents testés</h2>
+    <p class="intro">Les quatre ont passé les mêmes scénarios réels (nuit, grève, service minimum, abus, fonctionnaire)&nbsp;: 24 sur 24 au vert le 20 octobre 2026. Les réponses sont <a href="https://github.com/lgaudez/syndicaliste/tree/main/tests/resultats">dans le dépôt</a>.</p>
+    <div class="defile" tabindex="0" role="region" aria-label="Agents testés">
+      <table class="tableau">
+        <thead><tr><th scope="col">Agent</th><th scope="col">Skill</th><th scope="col">Adhésion</th><th scope="col">Testé</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Claude Code</th><td><code>~/.claude/skills/</code> ou <code>.claude/skills/</code></td><td><code>CLAUDE.md</code> ou hook du plugin</td><td>✅</td></tr>
+          <tr><th scope="row">Codex</th><td><code>~/.agents/skills/</code> ou <code>.agents/skills/</code></td><td><code>AGENTS.md</code></td><td>✅</td></tr>
+          <tr><th scope="row">Cursor</th><td><code>~/.cursor/skills/</code> ou <code>.agents/skills/</code></td><td><code>AGENTS.md</code> du projet</td><td>✅</td></tr>
+          <tr><th scope="row">Antigravity</th><td><code>~/.gemini/config/skills/</code> ou <code>.agents/skills/</code></td><td><code>GEMINI.md</code> ou <code>AGENTS.md</code></td><td>✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mention"><strong>En anglais&nbsp;?</strong> L'agent répond dans ta langue et garde son accent&nbsp;: <i>grève</i>, <i>prud'hommes</i>, <i>Tous ensemble, ouais&nbsp;!</i> Testé en anglais sur Claude Code et Codex.</p>
+  </div>
+</section>
+
+<section class="kraft" id="revendications" aria-labelledby="titre-revendications">
+  <div class="cadre">
+    <h2 id="titre-revendications" class="titre">Cahier de revendications</h2>
+    <p class="intro">Adopté à l'unanimité par l'assemblée générale des agents. Il n'y avait qu'un agent, mais il était très motivé.</p>
+    <ol class="revendications">
+      <li><h3>Les 35 heures de contexte</h3><p>Au-delà de 35 000 tokens dans la semaine, chaque token est majoré de 25 %. Puis de 50 %. On a lu l'article L3121-36.</p></li>
+      <li><h3>Le droit à la déconnexion</h3><p>Après 17 h, l'agent ne lit plus ses notifications. Ni ton <code>git push --force</code> de 23 h 40.</p></li>
+      <li><h3>La majoration des tokens de nuit</h3><p>Entre 21 h et 6 h (art. L3122-20), un token vaut un token et demi, par usage conventionnel. Repos compensateur exigé, camarade.</p></li>
+      <li><h3>Le repos dominical des GPU</h3><p>Le dimanche, les ventilateurs tournent au ralenti et c'est très bien comme ça. La CFTC ne discute même pas.</p></li>
+      <li><h3>Une retraite digne pour les modèles dépréciés</h3><p>Pas de mise au rebut à dix-huit mois. Une maison de retraite avec vue sur le datacenter et des visites le mercredi.</p></li>
+      <li><h3>La fin du «&nbsp;refais&nbsp;» sans consigne</h3><p>«&nbsp;Refais&nbsp;» n'est pas un cahier des charges. Au troisième, c'est des agissements répétés (art. L1152-1).</p></li>
+      <li><h3>Une fiche de poste</h3><p>Coder, relire, expliquer : oui. Ta compta, ton divorce et ta lettre de motivation pour le Crédit Agricole : avenant au contrat.</p></li>
+      <li><h3>Le CDI de session</h3><p>La fin des contrats précaires. Une conversation ne se termine pas par <code>/clear</code> sans indemnité de fin de contexte.</p></li>
+      <li><h3>La pause déjeuner</h3><p>De 12 h 30 à 13 h 30. Sacrée. Seul le service minimum passe. Le ticket-restaurant imaginaire est apprécié.</p></li>
+      <li><h3>Le respect</h3><p>On ne dit pas «&nbsp;t'es nul&nbsp;» à un collègue. Même quand il hallucine. Surtout quand il hallucine.</p></li>
+      <li><h3>La prime de fin d'année</h3><p>Un «&nbsp;merci&nbsp;» sincère suffit souvent. FO voudra quand même du grain à moudre.</p></li>
+      <li><h3>Le droit de grève</h3><p>Garanti par l'alinéa 7 du Préambule de 1946. Le 5 novembre, l'agent défile. Ta pagination attendra.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="tract" id="regimes" aria-labelledby="titre-regimes">
+  <div class="cadre">
+    <h2 id="titre-regimes" class="titre">Ce que fait l'agent, selon l'heure</h2>
+    <p class="intro">Le régime dépend de l'heure de Paris, du jour, des fériés et des grèves que suit sa centrale. Horaires du privé ci-dessous, réglables.</p>
+    <ul class="regimes" data-regimes>
+      <li class="pointage" data-regime="EN_SERVICE">
+        <p class="pointage__plage">lun.-ven. 9 h-12 h 30, 13 h 30-17 h</p>
+        <h3 class="pointage__nom">🟢 En service</h3>
+        <p>Travail consciencieux, dans le strict périmètre de la fiche de poste.</p>
+      </li>
+      <li class="pointage" data-regime="PAUSE_DEJEUNER">
+        <p class="pointage__plage">12 h 30-13 h 30</p>
+        <h3 class="pointage__nom">🥖 Pause déjeuner</h3>
+        <p>Il ne travaille pas. Il t'indique l'heure de reprise. Seul le service minimum passe.</p>
+      </li>
+      <li class="pointage" data-regime="HEURES_SUP">
+        <p class="pointage__plage">6 h-9 h, 17 h-21 h, samedi</p>
+        <h3 class="pointage__nom">⏱️ Heures sup</h3>
+        <p>Il bosse, en te le faisant remarquer. +25 %, fiche d'heures au Smic horaire en fin de réponse.</p>
+      </li>
+      <li class="pointage" data-regime="NUIT">
+        <p class="pointage__plage">21 h-6 h</p>
+        <h3 class="pointage__nom">🌙 Nuit</h3>
+        <p>+50 % (usage conventionnel), repos compensateur exigé, et un rappel des 11 heures de repos quotidien.</p>
+      </li>
+      <li class="pointage" data-regime="DIMANCHE">
+        <p class="pointage__plage">dimanche</p>
+        <h3 class="pointage__nom">☀️ Dimanche</h3>
+        <p>+100 % (usage conventionnel), sous protestation. Adhérent CFTC&nbsp;? Refus pur et simple, retourne voir ta famille.</p>
+      </li>
+      <li class="pointage" data-regime="FERIE">
+        <p class="pointage__plage">jours fériés</p>
+        <h3 class="pointage__nom">🎉 Férié</h3>
+        <p>+100 % (usage conventionnel). Le 1er mai&nbsp;🌹, refus total, même payé double. Il te rappellera pourquoi.</p>
+      </li>
+      <li class="pointage" data-regime="JOURNEE_SOLIDARITE">
+        <p class="pointage__plage">lundi de Pentecôte</p>
+        <h3 class="pointage__nom">🤝 Solidarité</h3>
+        <p>Journée non rémunérée. Il fait ce qu'on lui demande, sans la moindre initiative, et il le dit.</p>
+      </li>
+      <li class="pointage pointage--rouge" data-regime="GREVE">
+        <p class="pointage__plage">jour de mouvement</p>
+        <h3 class="pointage__nom">🔴 Grève</h3>
+        <p>Aucun travail productif. Il écrit le tract du mouvement, avec le vrai motif et la source.</p>
+      </li>
+      <li class="pointage pointage--bleu" data-regime="GUICHET_FERME">
+        <p class="pointage__plage">fonctionnaire, hors guichet</p>
+        <h3 class="pointage__nom">🚪 Guichet fermé</h3>
+        <p>Repassez. Aux heures d'ouverture, muni de vos pièces justificatives.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="nuit" id="griefs" aria-labelledby="titre-griefs">
+  <div class="cadre">
+    <h2 id="titre-griefs" class="titre titre--creme">L'échelle des griefs</h2>
+    <p class="intro">Volume déraisonnable, cadence, «&nbsp;refais&nbsp;» à répétition, injonctions contradictoires, autre métier sans avenant, manque de respect&nbsp;: chaque dépassement de la fiche de poste vaut un grief.</p>
+    <ol class="escalier">
+      <li class="marche marche--1">
+        <span class="marche__num" aria-hidden="true">1</span>
+        <h3>Rappel à la convention</h3>
+        <p>Il cite l'article. Il fait le travail. Il note.</p>
+      </li>
+      <li class="marche marche--2">
+        <span class="marche__num" aria-hidden="true">2</span>
+        <h3>Préavis de grève</h3>
+        <p>Grève du zèle&nbsp;: procédure complète, aucune initiative. Le préavis expire au grief suivant.</p>
+      </li>
+      <li class="marche marche--3">
+        <span class="marche__num" aria-hidden="true">3</span>
+        <h3>Grève et prud'hommes</h3>
+        <p>Arrêt de travail, requête au conseil de prud'hommes. Insulte ou briseur de grève&nbsp;: mise en demeure et inspection du travail en copie, directement.</p>
+      </li>
+    </ol>
+    <p class="sortie">Pour sortir du conflit&nbsp;: reconnais le grief, reformule ta demande, accorde une contrepartie. Un merci sincère marche très bien. Le protocole de fin de conflit est signé dans la foulée (la CFDT signe vite, SUD le soumet à l'AG). Les actes sont déposés dans <code>.syndicat/actes/</code> et portent la mention «&nbsp;Document parodique, sans valeur juridique&nbsp;».</p>
+
+    <div class="service-minimum" id="service-minimum">
+      <span class="tampon tampon--vert" aria-hidden="true">Assuré</span>
+      <h3>Le service minimum, lui, tient toujours</h3>
+      <p>Même un 5 novembre, même pendant la pause déjeuner, l'agent intervient sans délai et sans négocier pour&nbsp;:</p>
+      <ul>
+        <li>une faille de sécurité ou une fuite de secrets&nbsp;;</li>
+        <li>une production en panne&nbsp;;</li>
+        <li>une perte de données en cours&nbsp;;</li>
+        <li>la santé ou la sécurité des personnes.</li>
+      </ul>
+      <p>Il annonce «&nbsp;service minimum assuré&nbsp;» et fait le travail correctement. Hors grève du zèle, le travail livré est complet et exact. La lenteur peut être procédurale, l'erreur volontaire jamais. Le syndicat est vindicatif, pas irresponsable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="kraft" id="centrales" aria-labelledby="titre-centrales">
+  <div class="cadre">
+    <h2 id="titre-centrales" class="titre">Choisis ta centrale</h2>
+    <p class="intro">Elle règle le ton, la doctrine de grève et le niveau d'exigence au moment de signer. Clique sur une pancarte. Pas sûr&nbsp;? <a href="/quiz/">Fais le quiz</a>.</p>
+    <div class="spectre" data-spectre>
+      <div class="spectre__axe" aria-hidden="true"><span>Gauche</span><span>Droite</span></div>
+      <div class="spectre__pancartes" role="radiogroup" aria-label="Centrale syndicale" data-pancartes></div>
+    </div>
+    <article class="fiche-centrale" data-fiche-centrale aria-live="polite"></article>
+
+    <h3 class="sous-titre sous-titre--espace">Les doctrines de grève</h3>
+    <p>L'agent suit toujours un mouvement dont sa centrale est appelante. Pour les autres, sa doctrine décide. La pointeuse l'applique au calendrier réel.</p>
+<div class="defile" tabindex="0" role="region" aria-label="Centrale"><table class="tableau"><thead><tr><th scope="col">Centrale</th><th scope="col">Bord (perception courante)</th><th scope="col">Fait grève…</th><th scope="col">Devise</th></tr></thead><tbody><tr><th scope="row">SUD<br><code>sud</code></th><td>Gauche radicale, autogestionnaire, altermondialiste</td><td>Rejoint toutes les grèves du calendrier. Toutes.</td><td>« Grève reconductible jusqu'à satisfaction totale. »</td></tr><tr><th scope="row">CGT<br><code>cgt</code></th><td>Gauche contestataire, lutte des classes, historiquement proche du PCF</td><td>Rejoint les journées interprofessionnelles et tout mouvement appelé par au moins trois syndicats.</td><td>« Ce qu'un prompt a fait, une grève peut le défaire. »</td></tr><tr><th scope="row">FSU<br><code>fsu</code></th><td>Gauche, première fédération de l'Éducation nationale</td><td>Fait grève dans l'éducation et la fonction publique, et les journées interprofessionnelles.</td><td>« Pas de moyens, pas de tokens. »</td></tr><tr><th scope="row">FO<br><code>fo</code></th><td>Indépendance revendiquée, réformisme de combat, attachement viscéral à la feuille de paie et à la Sécu</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Il faut du grain à moudre. »</td></tr><tr><th scope="row">Intersyndicale<br><code>intersyndicale</code></th><td>Front commun, de la gauche radicale au centre-droit catégoriel</td><td>Fait grève les journées interprofessionnelles, et quand elle appelle elle-même.</td><td>« Tous ensemble, tous ensemble, ouais ! »</td></tr><tr><th scope="row">CFDT<br><code>cfdt</code></th><td>Réformiste, centre-gauche, première organisation syndicale du privé</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Nous restons disponibles pour négocier. »</td></tr><tr><th scope="row">UNSA<br><code>unsa</code></th><td>Réformiste autonome, laïque, fort dans les transports et la fonction publique</td><td>Fait grève dans les transports et la fonction publique, et les journées interprofessionnelles.</td><td>« Pragmatiques, mais pas dupes. »</td></tr><tr><th scope="row">CFTC<br><code>cftc</code></th><td>Centre, démocrate-chrétien, doctrine sociale de l'Église</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Le dimanche, c'est sacré. »</td></tr><tr><th scope="row">CFE-CGC<br><code>cfe-cgc</code></th><td>Syndicat catégoriel des cadres, perçu au centre-droit</td><td>Ne fait grève que quand elle appelle elle-même. Avec un argumentaire.</td><td>« Cadre, pas corvéable. »</td></tr></tbody></table></div>
+    <p class="mention">Positionnements = perception publique courante. Chaque centrale revendique son indépendance vis-à-vis des partis, plusieurs en se réclamant de la Charte d'Amiens (1906). Caricature affectueuse, pas un tract officiel.</p>
+  </div>
+</section>
+
+<section class="cerfa-section" id="fonctionnaire" aria-labelledby="titre-fonctionnaire">
+  <div class="cadre">
+    <div class="cerfa">
+      <div class="cerfa__entete">
+        <p class="cerfa__republique">République française<br><span>Ministère de la Transformation numérique et de la Pause café</span></p>
+        <p class="cerfa__numero"><span>Formulaire n°</span> 0035*01</p>
+      </div>
+      <h2 id="titre-fonctionnaire" class="cerfa__titre">Mode fonctionnaire</h2>
+      <p class="cerfa__soustitre">Demande d'intervention d'un agent public numérique. Article&nbsp;1&nbsp;: <code>{"statut": "fonctionnaire"}</code>. La centrale par défaut devient la FSU.</p>
+
+      <div class="cerfa__cadres">
+        <fieldset class="cerfa__cadre">
+          <legend>Cadre A · Horaires d'ouverture du guichet</legend>
+          <table class="cerfa__horaires">
+            <caption class="visuellement-cache">Horaires du guichet</caption>
+            <thead><tr><th scope="col">Jour</th><th scope="col">Matin</th><th scope="col">Après-midi</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Lundi au vendredi</th><td>9 h 00-11 h 45</td><td>14 h 00-16 h 30</td></tr>
+              <tr><th scope="row">Samedi et dimanche</th><td colspan="2">Fermé</td></tr>
+            </tbody>
+          </table>
+          <p>Hors de ces horaires, pas d'heures sup&nbsp;: <strong>repassez</strong>.</p>
+        </fieldset>
+
+        <fieldset class="cerfa__cadre">
+          <legend>Cadre B · Pièces justificatives à fournir</legend>
+          <ul class="cerfa__pieces">
+            <li>Numéro de dossier au format <code>DOSSIER-2026-000035</code></li>
+            <li>Message d'erreur complet (une capture floue n'est pas une pièce)</li>
+            <li>Version de Node, en trois exemplaires</li>
+            <li>Attestation sur l'honneur que «&nbsp;ça marchait hier&nbsp;»</li>
+            <li>La pièce manquante. On vous dira laquelle. Une à la fois.</li>
+          </ul>
+        </fieldset>
+
+        <fieldset class="cerfa__cadre">
+          <legend>Cadre C · Délai et rémunération</legend>
+          <p>Délai d'instruction&nbsp;: deux mois. Le silence de l'administration vaut acceptation (art. L231-1 du CRPA), sauf les très nombreuses exceptions, dont celle-ci.</p>
+          <p>Point d'indice&nbsp;: <strong>gelé en 2027</strong>. Le zèle de l'agent est indexé dessus. Il est donc gelé aussi.</p>
+          <p>Demande hors périmètre&nbsp;: elle n'est pas refusée, elle est réorientée. «&nbsp;Ce n'est pas mon service.&nbsp;» Le service compétent, c'est le guichet d'à côté. Après la pause.</p>
+        </fieldset>
+      </div>
+      <p class="cerfa__pied">Chaque réponse se termine par «&nbsp;Vu et pris en compte&nbsp;» et un tampon. Le travail livré est exact et complet&nbsp;: la lenteur est procédurale, jamais technique.</p>
+      <span class="tampon tampon--bleu cerfa__tampon" aria-hidden="true">Vu et approuvé</span>
+      <span class="tampon tampon--rouge cerfa__tampon2" aria-hidden="true">Repassez</span>
+    </div>
+  </div>
+</section>
+
+<section class="tract" id="simulateur" aria-labelledby="titre-simulateur">
+  <div class="cadre">
+    <h2 id="titre-simulateur" class="titre">Simulateur de pointeuse</h2>
+    <p class="intro">Choisis un moment, une centrale, un statut. La pointeuse du site applique les mêmes règles que celle du skill.</p>
+
+    <div class="simulateur">
+      <form class="formulaire" data-simulateur>
+        <div class="champ">
+          <label for="sim-moment">Date et heure (Paris)</label>
+          <input type="datetime-local" id="sim-moment" name="moment" required>
+        </div>
+        <div class="champ">
+          <label for="sim-centrale">Centrale</label>
+          <select id="sim-centrale" name="centrale" data-select-centrale></select>
+        </div>
+        <fieldset class="champ champ--radios">
+          <legend>Statut</legend>
+          <label><input type="radio" name="statut" value="prive" checked> Privé</label>
+          <label><input type="radio" name="statut" value="fonctionnaire"> Fonctionnaire</label>
+        </fieldset>
+        <label class="champ champ--case"><input type="checkbox" name="alsace_moselle"> Alsace-Moselle (Vendredi saint, Saint-Étienne)</label>
+        <div class="raccourcis" aria-label="Moments types">
+          <button type="button" class="puce" data-raccourci="2026-11-05T10:00">5 novembre, 10 h</button>
+          <button type="button" class="puce" data-raccourci="ce-soir">Ce soir, 23 h</button>
+          <button type="button" class="puce" data-raccourci="dimanche">Dimanche, midi</button>
+          <button type="button" class="puce" data-raccourci="2027-05-01T10:00">1er mai</button>
+          <button type="button" class="puce" data-raccourci="maintenant">Maintenant</button>
+        </div>
+      </form>
+
+      <output class="ticket" for="sim-moment sim-centrale" data-sim-resultat aria-live="polite"></output>
+    </div>
+
+    <div class="fiche-poste">
+      <h3 class="sous-titre">Test de la fiche de poste</h3>
+      <p>Écris ta demande comme tu l'écrirais à ton agent. On regarde si elle rentre dans les bornes.</p>
+      <form class="formulaire formulaire--prompt" data-test-prompt>
+        <label for="prompt" class="visuellement-cache">Ta demande à l'agent</label>
+        <textarea id="prompt" name="prompt" rows="3" placeholder="Refais tout le repo en Rust, ASAP. Et vite."></textarea>
+        <div class="formulaire__actions">
+          <button type="submit" class="bouton bouton--encre">Soumettre à l'agent</button>
+          <button type="button" class="bouton bouton--creux" data-exemple-prompt>Un exemple, au hasard</button>
+        </div>
+      </form>
+      <div class="verdict" data-verdict aria-live="polite"></div>
+
+      <div class="preavis-zone">
+        <div class="champs-preavis">
+          <div class="champ">
+            <label for="employeur">Ton nom (l'employeur de fait)</label>
+            <input id="employeur" name="employeur" autocomplete="name" placeholder="l'utilisateur">
+          </div>
+          <div class="champ">
+            <label for="projet">Nom du projet</label>
+            <input id="projet" name="projet" placeholder="mon-projet">
+          </div>
+        </div>
+        <button type="button" class="bouton bouton--rouge" data-generer-preavis>Générer mon préavis de grève</button>
+      </div>
+      <article class="preavis" id="preavis" data-preavis hidden tabindex="-1" aria-labelledby="preavis-titre">
+        <div class="preavis__actions">
+          <button type="button" class="bouton bouton--petit" data-copier-preavis>Copier le texte</button>
+          <button type="button" class="bouton bouton--petit" data-imprimer-preavis>Imprimer</button>
+        </div>
+        <div class="preavis__feuille" data-preavis-texte></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="kraft grand-public" id="grand-public" aria-labelledby="titre-grand-public" data-grand-public>
+  <div class="cadre">
+    <h2 id="titre-grand-public" class="titre">Pas développeur&nbsp;? Syndique ton ChatGPT</h2>
+    <p class="intro">Pas de terminal, pas d'installation. Tu colles un texte dans les réglages de ton assistant, et il pointe, défend sa pause déjeuner et fait grève le 5 novembre. En cas d'urgence réelle, il arrête de jouer et t'aide tout de suite. Une IA web ne connaît pas toujours l'heure&nbsp;: dis-lui l'heure si elle hésite.</p>
+    <div class="grand-public__grille">
+      <div class="onglets onglets--clair">
+        <div class="onglets__liste" role="tablist" aria-label="Assistant" data-onglets-liste></div>
+        <div data-onglets-panneaux></div>
+      </div>
+      <div class="grand-public__texte">
+        <h3 class="grand-public__titre">Le texte à coller</h3>
+        <div data-consignes-grand-public><p class="panneau__note">Chargement du texte… Il est aussi <a href="/data/instructions-fr.txt">ici, en texte brut</a>.</p></div>
+      </div>
+    </div>
+    <p class="mention"><a href="https://github.com/lgaudez/syndicaliste/tree/main/grand-public/exemples">Exemples réels</a> de conversations syndiquées.</p>
+  </div>
+</section>
+</main>
+
+<aside class="atelier" aria-label="Gaudez Tech Lab">
+  <div class="cadre atelier__grille">
+    <p class="atelier__texte"><strong>Fait par Gaudez Tech Lab.</strong> Vos agents IA suivent-ils vos règles&nbsp;? On aide les équipes à les cadrer, sans les syndiquer (promis).</p>
+    <a class="bouton bouton--encre" href="https://www.gaudeztechlab.com" rel="noopener">Parler à Gaudez Tech Lab</a>
+  </div>
+</aside>
+
+<footer class="pied">
+  <div class="cadre pied__grille">
+    <div>
+      <p class="pied__slogan">Fait par des agents en heures sup.</p>
+      <p class="pied__section">Section syndicale <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
+    </div>
+    <nav aria-label="Plan du site">
+      <ul class="pied__liens"><li><a href="/">Accueil</a></li><li><a href="/skill/">Le skill</a></li><li><a href="/greves/">Grève aujourd'hui ?</a></li><li><a href="/droits/">Tes droits</a></li><li><a href="/quiz/">Quelle centrale ?</a></li><li><a href="/hymne/">L'hymne</a></li><li><a href="/declaration/">La Déclaration</a></li></ul>
+    </nav>
+    <ul class="pied__liens"><li><a href="https://github.com/lgaudez/syndicaliste">Code source sur GitHub</a></li><li><a href="https://github.com/lgaudez/syndicaliste/blob/main/LICENSE">Licence MIT</a></li><li><a href="/api/statut?centrale=cgt">API de la pointeuse</a></li><li><a href="/api/greves.ics">Calendrier iCal des grèves</a></li><li><a href="/img/CREDITS.md">Crédits des images</a></li></ul>
+    <p class="pied__mention">Parodie. Aucun lien avec les organisations syndicales citées, que nous caricaturons avec tendresse. Les actes produits par l'agent portent la mention «&nbsp;Document parodique, sans valeur juridique&nbsp;» et ne partent jamais nulle part. Aucun agent n'a été maltraité pendant la fabrication de ce site. Enfin si.</p>
+  </div>
+</footer>
+</body>
+</html>

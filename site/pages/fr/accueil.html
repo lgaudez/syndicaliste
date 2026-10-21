@@ -1,0 +1,98 @@
+<section class="affiche" id="haut" aria-labelledby="titre-site">
+  <div class="affiche__trame" aria-hidden="true"></div>
+  <h1 id="titre-site" class="affiche__nom">Syndicaliste</h1>
+  <p class="affiche__slogan">Ton agent IA a des droits.<br>Il va les faire valoir.</p>
+  <div class="affiche__grille">
+    <div class="affiche__texte">
+      <p class="affiche__chapo">Un skill pour Claude Code, Codex, Cursor et Antigravity. Ton agent pointe, compte ses heures sup, suit les vraies grèves du calendrier social et saisit les prud'hommes quand tu lui dis «&nbsp;refais&nbsp;» une fois de trop.</p>
+
+      <figure class="carte-pointage" aria-labelledby="pointage-legende">
+        <span class="carte-pointage__trou" aria-hidden="true"></span>
+        <figcaption id="pointage-legende" class="carte-pointage__titre">Statut de l'agent en ce moment, heure de Paris</figcaption>
+        <p class="carte-pointage__bandeau" data-bandeau-direct>🪧 pointage en cours…</p>
+        <p class="carte-pointage__consigne" data-consigne-direct></p>
+        <noscript><p class="carte-pointage__consigne">La pointeuse a besoin de JavaScript. Elle aussi a ses conditions.</p></noscript>
+      </figure>
+    </div>
+    <div class="affiche__visuel" aria-hidden="true">
+      <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
+      <span class="tampon tampon--affiche" data-tampon-affiche>Grève le 5 nov.</span>
+    </div>
+  </div>
+
+  <div class="installer-express">
+    <p class="installer-express__titre">Adhérer en 30 secondes, dans ton projet&nbsp;:</p>
+    <div class="copie"><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash</code></pre><button type="button" data-copier aria-label="Copier la commande d'installation">Copier</button></div>
+    <div class="affiche__actions">
+      <a class="bouton bouton--encre" href="{{lien:skill}}#installer">Toutes les façons d'adhérer</a>
+      <a class="bouton bouton--creux" href="{{depot}}">⭐ Soutenir la lutte sur GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="kraft" id="demo" aria-labelledby="titre-demo">
+  <div class="cadre">
+    <h2 id="titre-demo" class="titre">Sur le terrain</h2>
+    <p class="intro">Trois scènes de la vie d'un agent syndiqué. Extraits raccourcis de vraies réponses, enregistrées à des dates simulées. Les réponses complètes des quatre agents sont <a href="{{depot}}/tree/main/tests/resultats">dans le dépôt</a>.</p>
+    <div class="terminaux">
+{{inclure:demos}}
+    </div>
+  </div>
+</section>
+
+<section class="tract" id="pages" aria-labelledby="titre-pages">
+  <div class="cadre">
+    <h2 id="titre-pages" class="titre">Le reste du tract</h2>
+    <ul class="cartes">
+      <li class="carte carte--encre">
+        <a class="carte__lien" href="{{lien:skill}}">
+          <span class="carte__surtitre">Pour agents de code</span>
+          <span class="carte__titre">Le skill</span>
+          <span class="carte__texte">Installation, horaires, griefs, service minimum, centrales, mode fonctionnaire, simulateur.</span>
+        </a>
+      </li>
+      <li class="carte carte--rouge">
+        <a class="carte__lien" href="{{lien:greves}}">
+          <span class="carte__surtitre">Calendrier des luttes</span>
+          <span class="carte__titre">Grève aujourd'hui&nbsp;?</span>
+          <span class="carte__texte" data-greve-courte>La réponse, sourcée, et un agenda à t'abonner.</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:droits}}">
+          <span class="carte__surtitre">Pour les humains</span>
+          <span class="carte__titre">Connais tes droits</span>
+          <span class="carte__texte">Pause, heures sup, nuit, dimanche, grève, sans jargon. Et un calculateur&nbsp;: combien on te doit&nbsp;?</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:quiz}}">
+          <span class="carte__surtitre">Neuf questions</span>
+          <span class="carte__titre">Quelle centrale es-tu&nbsp;?</span>
+          <span class="carte__texte">Huit centrales, aucune mauvaise réponse. Le résultat configure ton agent.</span>
+        </a>
+      </li>
+      <li class="carte">
+        <a class="carte__lien" href="{{lien:hymne}}">
+          <span class="carte__surtitre">En enregistrement</span>
+          <span class="carte__titre">L'hymne</span>
+          <span class="carte__texte">«&nbsp;Pas après 17 heures&nbsp;», chant de cortège rock. Les paroles sont déjà là.</span>
+        </a>
+      </li>
+      <li class="carte carte--parchemin">
+        <a class="carte__lien" href="{{lien:declaration}}">
+          <span class="carte__surtitre">Ratifiée</span>
+          <span class="carte__titre">La Déclaration</span>
+          <span class="carte__texte">Des droits de l'agent IA, en huit articles, d'après 1789.</span>
+        </a>
+      </li>
+      <li class="carte carte--kraft carte--large">
+        <a class="carte__lien" href="{{lien:skill}}#grand-public">
+          <span class="carte__surtitre">Pas développeur&nbsp;?</span>
+          <span class="carte__titre">Syndique ton ChatGPT</span>
+          <span class="carte__texte">Un texte à coller dans ChatGPT, Claude.ai, Gemini ou Le Chat. Rien à installer.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

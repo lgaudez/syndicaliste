@@ -95,7 +95,7 @@ const CENTRALES = {
 };
 
 // Keyed by the French title in greves.json. Unknown movements fall back to French.
-const MOUVEMENTS = {
+export const MOUVEMENTS = {
   "Fonction publique : contre le gel du point d'indice 2027": {
     intitule: "Civil service: against the 2027 pay freeze",
     motif: "The Lecornu government wants to freeze the civil-service pay index (point d'indice) again in 2027.",
@@ -355,8 +355,6 @@ export default {
   ui: {
     cite: (t) => `“${t}”`,
     sep: ": ",
-    copie: "Copied, camarade",
-    copieBouton: "Copied",
     copier: "Copy",
     enCeMoment: "Right now",
     enGreve: "On strike",
@@ -437,5 +435,16 @@ export default {
     calendrierIndispo: "Calendar unavailable. Reload the page, or check the repository.",
     consignesIndispo: "The text couldn't be loaded. It's also in the repository, in the grand-public/ folder.",
     copierConsignes: "Copy the instructions",
+    aujourdhuiGreve: {
+      oui: "Yes",
+      non: "No",
+      rien: "No national strike on the calendar today. There may be local strikes: those aren't listed here.",
+      prochain: (jour, n) => `Next: ${jour}, ${n === 1 ? "tomorrow" : `in ${n} days`}`,
+      aucunProchain: "Nothing announced yet. The shop steward is staying vigilant.",
+      agent: (sigle, greve) => `Your agent (${sigle}) ${greve ? "is on strike" : "is not on strike"} today.`,
+      court: (oui, prochaine) => (oui ? "Yes, today. Who's calling it, why, and the source." : prochaine ? `Not today. Next one: ${prochaine}.` : "Not today."),
+    },
+    aucuneAVenir: "Nothing announced yet.",
+    aucunePassee: "Nothing on the calendar lately.",
   },
 };

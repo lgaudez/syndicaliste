@@ -1,81 +1,14 @@
+// Accueil, page du skill et page des grèves. Chaque fonctionnalité ne s'active que si son bloc est dans la page.
 import * as P from "./pointeuse.js";
+import { $, $$, blocCopie, chargerJson, copier, doctrineEnClair, el, hote, langue, textes } from "./outils.js";
 
-const LANG = document.documentElement.lang.startsWith("en") ? "en" : "fr";
-const T = (await import(LANG === "en" ? "./textes-en.js" : "./textes-fr.js")).default;
+const LANG = langue();
+const T = await textes(LANG);
 const U = T.ui;
-
-// À VÉRIFIER AVANT PUBLICATION : dépôt, commandes d'installation, transcripts (dans textes-*.js).
-const DEPOT = "https://github.com/lgaudez/syndicaliste";
-
-const $ = (sel, racine = document) => racine.querySelector(sel);
-const $$ = (sel, racine = document) => [...racine.querySelectorAll(sel)];
-const el = (tag, attrs = {}, ...enfants) => {
-  const n = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v == null || v === false) continue;
-    if (k === "class") n.className = v;
-    else if (k === "text") n.textContent = v;
-    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
-    else n.setAttribute(k, v === true ? "" : v);
-  }
-  for (const e of enfants.flat(Infinity)) if (e != null && e !== false) n.append(e);
-  return n;
-};
-
-async function chargerJson(urls) {
-  for (const url of urls) {
-    try {
-      const r = await fetch(url, { headers: { accept: "application/json" } });
-      if (r.ok && (r.headers.get("content-type") || "").includes("json")) return await r.json();
-    } catch { /* source suivante */ }
-  }
-  throw new Error(`Impossible de charger ${urls.join(" ou ")}`);
-}
-
-let notifMinuteur;
-function notifier(texte) {
-  let n = $(".notif");
-  if (!n) {
-    n = el("div", { class: "notif", role: "status", "aria-live": "polite" });
-    document.body.append(n);
-  }
-  n.textContent = texte;
-  n.classList.add("visible");
-  clearTimeout(notifMinuteur);
-  notifMinuteur = setTimeout(() => n.classList.remove("visible"), 1800);
-}
-
-async function copier(texte, bouton) {
-  try {
-    await navigator.clipboard.writeText(texte);
-  } catch {
-    const t = el("textarea", { "aria-hidden": "true" });
-    t.value = texte;
-    t.style.cssText = "position:fixed;opacity:0";
-    document.body.append(t);
-    t.select();
-    document.execCommand("copy");
-    t.remove();
-  }
-  notifier(U.copie);
-  if (bouton) {
-    const avant = bouton.textContent;
-    bouton.textContent = U.copieBouton;
-    setTimeout(() => (bouton.textContent = avant), 1500);
-  }
-}
-
-const blocCopie = (code, libelle = U.copier, classe = "") =>
-  el("div", { class: `copie ${classe}`.trim() },
-    el("pre", {}, el("code", { text: code })),
-    el("button", { type: "button", "aria-label": `${libelle} : ${code.split("\n")[0].slice(0, 80)}`, onclick: (e) => copier(code, e.currentTarget) }, U.copier));
 
 const pad = (n) => String(n).padStart(2, "0");
 const momentLocalIso = (m) => `${P.isoJour(m.jour)}T${pad(Math.floor(m.minutes / 60))}:${pad(m.minutes % 60)}`;
 const nomCentrale = (cle) => P.sigle(cle);
-const hote = (url) => new URL(url).hostname.replace(/^www\./, "");
-
-// ---------------------------------------------------------------------------
 
 const etat = {
   centrale: localStorage.getItem("syndicaliste.centrale") || "intersyndicale",
@@ -85,9 +18,10 @@ const etat = {
   analyse: null,
 };
 
-function maintenantParis() {
-  return P.momentDepuisDate(new Date(), "Europe/Paris");
-}
+const maintenantParis = () => P.momentDepuisDate(new Date(), "Europe/Paris");
+const aujourdhuiIso = () => P.isoJour(maintenantParis().jour);
+const ecartJours = (iso, depuisIso) => Math.round((Date.parse(`${iso}T00:00:00Z`) - Date.parse(`${depuisIso}T00:00:00Z`)) / 86400000);
+const enCours = (m, jour) => m.debut <= jour && jour <= (m.fin || m.debut);
 
 function prochaineGreveSuivie(cle, apresIso) {
   const doctrine = etat.centrales[cle].doctrine_greve;
@@ -107,20 +41,23 @@ function calculer(params, moment) {
   return { conv, s };
 }
 
-// 1. Bandeau en direct (le bandeau reste en français, comme celui du skill)
+// Carte de pointage de l'accueil (le bandeau reste en français, comme celui du skill) et régime actuel sur la page du skill
 function rendreDirect() {
   const moment = maintenantParis();
   const { s } = calculer({ centrale: etat.centrale }, moment);
-  $("[data-bandeau-direct]").textContent = P.bandeau(s);
-  $("[data-consigne-direct]").textContent = T.consigne(s.regime);
-
-  const tampon = $("[data-tampon-affiche]");
-  if (s.regime === "GREVE") tampon.textContent = U.enGreve;
-  else {
-    const prochaine = prochaineGreveSuivie(etat.centrale, P.isoJour(moment.jour));
-    tampon.textContent = prochaine ? U.greveLe(dateCourte(prochaine.debut)) : U.pretGreve;
+  const bandeau = $("[data-bandeau-direct]");
+  if (bandeau) {
+    bandeau.textContent = P.bandeau(s);
+    $("[data-consigne-direct]").textContent = T.consigne(s.regime);
   }
-
+  const tampon = $("[data-tampon-affiche]");
+  if (tampon) {
+    if (s.regime === "GREVE") tampon.textContent = U.enGreve;
+    else {
+      const prochaine = prochaineGreveSuivie(etat.centrale, P.isoJour(moment.jour));
+      tampon.textContent = prochaine ? U.greveLe(dateCourte(prochaine.debut)) : U.pretGreve;
+    }
+  }
   const carte = { REFUS_DOMINICAL: "DIMANCHE", FERIE_CHOME: "FERIE" }[s.regime] || s.regime;
   for (const li of $$("[data-regimes] .pointage")) {
     const actuel = li.dataset.regime === carte;
@@ -130,7 +67,7 @@ function rendreDirect() {
   }
 }
 
-// 5. Centrales
+// Centrales
 function choisirCentrale(cle, { focus = false } = {}) {
   etat.centrale = cle;
   try { localStorage.setItem("syndicaliste.centrale", cle); } catch { /* navigation privée */ }
@@ -143,31 +80,26 @@ function choisirCentrale(cle, { focus = false } = {}) {
   rendreFiche(cle);
   rendreDirect();
   const select = $("[data-select-centrale]");
-  if (select.value !== cle) {
+  if (select && select.value !== cle) {
     select.value = cle;
     rendreSimulation();
   }
-  rendreLuttes();
-}
-
-function doctrineEnClair(d) {
-  if (T.DOCTRINES[d]) return T.DOCTRINES[d];
-  const secteurs = d.replace("secteur:", "").split(",").map((s) => T.SECTEURS[s]).filter(Boolean);
-  return T.doctrineSecteurs(secteurs);
 }
 
 function rendreFiche(cle) {
+  const fiche = $("[data-fiche-centrale]");
+  if (!fiche) return;
   const c = T.centrale(cle, etat.centrales[cle]);
-  const prochaine = prochaineGreveSuivie(cle, P.isoJour(maintenantParis().jour));
-  const config = `{"centrale": "${cle}"}`;
-  $("[data-fiche-centrale]").replaceChildren(
+  const prochaine = prochaineGreveSuivie(cle, aujourdhuiIso());
+  const config = `mkdir -p .syndicat && echo '{"centrale": "${cle}"}' > .syndicat/convention.json`;
+  fiche.replaceChildren(
     el("p", { class: "fiche-centrale__devise" }, U.cite(c.devise)),
     el("div", {},
       el("h3", { class: "fiche-centrale__nom" }, c.nom),
       el("p", {}, c.fondee ? U.fondee(c.fondee, c.bord) : `${c.bord}.`),
       el("dl", {},
         el("dt", {}, U.ton), el("dd", {}, c.ton),
-        el("dt", {}, U.doctrine), el("dd", {}, doctrineEnClair(c.doctrine_greve)),
+        el("dt", {}, U.doctrine), el("dd", {}, doctrineEnClair(T, c.doctrine_greve)),
         el("dt", {}, U.prochaineSuivie),
         el("dd", {}, prochaine ? `${T.jour(P.jourDepuisIso(prochaine.debut))}${U.sep}${T.mouvement(prochaine).intitule}` : U.aucuneProchaine))),
     el("div", {},
@@ -180,6 +112,7 @@ function rendreFiche(cle) {
 
 function rendreSpectre() {
   const conteneur = $("[data-pancartes]");
+  if (!conteneur) return;
   const entrees = Object.entries(etat.centrales).sort((a, b) => a[1].axe - b[1].axe);
   const groupes = {};
   for (const [, c] of entrees) groupes[c.axe] = (groupes[c.axe] || 0) + 1;
@@ -211,9 +144,10 @@ function rendreSpectre() {
   });
 }
 
-// 7. Simulateur
+// Simulateur
 function rendreSimulation() {
   const form = $("[data-simulateur]");
+  if (!form) return;
   const donnees = new FormData(form);
   const resultat = $("[data-sim-resultat]");
   let conv, s, moment;
@@ -255,6 +189,7 @@ function rendreSimulation() {
 
 function initialiserSimulateur() {
   const form = $("[data-simulateur]");
+  if (!form) return;
   const select = $("[data-select-centrale]");
   for (const [cle, c] of Object.entries(etat.centrales).sort((a, b) => a[1].axe - b[1].axe)) {
     select.append(el("option", { value: cle }, `${nomCentrale(cle)} (${T.centrale(cle, c).devise})`));
@@ -286,7 +221,7 @@ function initialiserSimulateur() {
   rendreSimulation();
 }
 
-// 7 bis. Test de la fiche de poste
+// Test de la fiche de poste
 function analyser(texte) {
   const griefs = [];
   for (const r of T.REGLES) {
@@ -315,7 +250,7 @@ function analyser(texte) {
 
 function reponseSyndicale(a) {
   const R = U.reponses;
-  const aujourdhui = P.isoJour(maintenantParis().jour);
+  const aujourdhui = aujourdhuiIso();
   const lignes = [];
   if (a.service) lignes.push(R.service);
   const premier = a.griefs[0];
@@ -359,6 +294,7 @@ function rendreVerdict(a) {
 
 function initialiserTest() {
   const form = $("[data-test-prompt]");
+  if (!form) return;
   let iExemple = 0;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -400,8 +336,7 @@ function genererPreavis() {
   const motifs = griefs.length ? griefs.map(V.motif) : [V.aucunMotif];
   const revendications = [...new Set(griefs.map((g) => g.revendication)), V.reconnaissance, T.CONTREPARTIES[etat.centrale]];
 
-  const feuille = $("[data-preavis-texte]");
-  feuille.replaceChildren(
+  $("[data-preavis-texte]").replaceChildren(
     el("h3", { id: "preavis-titre" }, V.titre),
     V.sousTitre && el("p", { class: "preavis__soustitre" }, V.sousTitre),
     el("p", {}, el("strong", {}, V.de), V.deTexte(section), el("code", {}, projet)),
@@ -425,39 +360,103 @@ function genererPreavis() {
   zone.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
 }
 
-// 8. Calendrier
-function rendreLuttes() {
-  const liste = $("[data-luttes]");
-  if (!etat.mouvements.length) return;
-  const aujourdhui = P.isoJour(maintenantParis().jour);
+// Page des grèves : la réponse du jour, puis les listes
+const appelants = (m) => m.appelants.map(nomCentrale).join(", ");
+
+function rendreReponseGreve() {
+  const zone = $("[data-reponse-greve]");
+  if (!zone) return;
+  const G = U.aujourdhuiGreve;
+  const jour = aujourdhuiIso();
+  const actifs = etat.mouvements.filter((m) => enCours(m, jour));
+  const prochain = etat.mouvements.filter((m) => m.debut > jour).sort((a, b) => a.debut.localeCompare(b.debut))[0];
   const doctrine = etat.centrales[etat.centrale].doctrine_greve;
-  const tries = [...etat.mouvements].sort((a, b) => b.debut.localeCompare(a.debut));
-  liste.replaceChildren(...tries.map((brut) => {
+  const mouvement = (brut, titre) => {
     const m = T.mouvement(brut);
-    const fin = m.fin || m.debut;
-    const quand = fin < aujourdhui ? "passee" : m.debut > aujourdhui ? "a-venir" : "aujourdhui";
-    const j = P.jourDepuisIso(m.debut);
-    const ecart = Math.round((Date.UTC(j.y, j.m - 1, j.d) - Date.parse(`${aujourdhui}T00:00:00Z`)) / 86400000);
-    const suivie = P.rejoint(etat.centrale, doctrine, brut);
-    return el("li", { class: `lutte lutte--${quand}` },
-      el("p", { class: "lutte__date" },
-        el("span", { class: "lutte__jour" }, String(j.d)),
-        el("span", { class: "lutte__mois" }, `${T.MOIS_COURTS[j.m - 1]} ${j.y}`),
-        el("span", { class: "lutte__semaine" }, T.JOURS[P.jourSemaine(j)])),
-      el("div", {},
-        quand === "a-venir" && el("p", { class: "lutte__compte", style: "margin:0 0 .3rem" }, ecart === 1 ? U.demain : U.dansJours(ecart)),
-        quand === "aujourdhui" && el("p", { class: "lutte__compte", style: "margin:0 0 .3rem" }, U.aujourdhui),
-        el("h3", {}, m.intitule),
-        el("p", { class: "lutte__motif" }, m.motif),
-        el("p", { class: "lutte__meta" },
-          m.interpro && el("span", { class: "etiquette etiquette--plein" }, U.interpro),
-          suivie && quand !== "passee" && el("span", { class: "etiquette etiquette--rouge" }, U.suiviePar(nomCentrale(etat.centrale))),
-          el("span", {}, U.appel),
-          m.appelants.map((c) => el("span", { class: "etiquette" }, nomCentrale(c))),
-          el("a", { href: m.source, rel: "noopener", target: "_blank" }, U.source(hote(m.source))))));
-  }));
-  if (etat.majGreves) {
-    $("[data-maj-greves]").textContent = U.majGreves(T.jour(P.jourDepuisIso(etat.majGreves)));
+    return el("div", { class: "reponse-greve__mouvement" },
+      titre && el("p", { class: "reponse-greve__quand" }, titre),
+      el("h2", { class: "reponse-greve__intitule" }, m.intitule),
+      el("p", {}, m.motif),
+      el("p", { class: "lutte__meta" },
+        m.interpro && el("span", { class: "etiquette etiquette--plein" }, U.interpro),
+        el("span", {}, U.appel), m.appelants.map((c) => el("span", { class: "etiquette" }, nomCentrale(c))),
+        el("a", { href: m.source, rel: "noopener" }, U.source(hote(m.source)))));
+  };
+  const agent = actifs.some((m) => P.rejoint(etat.centrale, doctrine, m));
+  zone.replaceChildren(...[
+    el("p", { class: "reponse-greve__verdict" },
+      el("span", { class: `tampon ${actifs.length ? "tampon--rouge" : "tampon--encre"}` }, actifs.length ? G.oui : G.non),
+      el("span", { class: "reponse-greve__date" }, T.jour(P.jourDepuisIso(jour)))),
+    actifs.length
+      ? actifs.map((m) => mouvement(m))
+      : el("p", { class: "reponse-greve__phrase" }, G.rien),
+    !actifs.length && prochain && mouvement(prochain, G.prochain(T.jour(P.jourDepuisIso(prochain.debut)), ecartJours(prochain.debut, jour))),
+    !actifs.length && !prochain && el("p", {}, G.aucunProchain),
+    el("p", { class: "reponse-greve__agent" }, G.agent(nomCentrale(etat.centrale), agent)),
+  ].flat().filter(Boolean));
+}
+
+function rendreGreveCourte() {
+  const zone = $("[data-greve-courte]");
+  if (!zone) return;
+  const jour = aujourdhuiIso();
+  const actifs = etat.mouvements.filter((m) => enCours(m, jour));
+  const prochain = etat.mouvements.filter((m) => m.debut > jour).sort((a, b) => a.debut.localeCompare(b.debut))[0];
+  zone.textContent = U.aujourdhuiGreve.court(actifs.length > 0, prochain && dateCourte(prochain.debut));
+}
+
+function rendreLuttes() {
+  const listes = $$("[data-luttes]");
+  if (!listes.length || !etat.mouvements.length) return;
+  const aujourdhui = aujourdhuiIso();
+  const doctrine = etat.centrales[etat.centrale].doctrine_greve;
+  for (const liste of listes) {
+    const aVenir = liste.dataset.luttes === "a-venir";
+    const tries = etat.mouvements
+      .filter((m) => (aVenir ? (m.fin || m.debut) >= aujourdhui : (m.fin || m.debut) < aujourdhui))
+      .sort((a, b) => (aVenir ? a.debut.localeCompare(b.debut) : b.debut.localeCompare(a.debut)))
+      .slice(0, aVenir ? Infinity : 8);
+    if (!tries.length) {
+      liste.replaceChildren(el("li", { class: "luttes__vide" }, aVenir ? U.aucuneAVenir : U.aucunePassee));
+      continue;
+    }
+    liste.replaceChildren(...tries.map((brut) => {
+      const m = T.mouvement(brut);
+      const quand = (m.fin || m.debut) < aujourdhui ? "passee" : m.debut > aujourdhui ? "a-venir" : "aujourdhui";
+      const j = P.jourDepuisIso(m.debut);
+      const ecart = ecartJours(m.debut, aujourdhui);
+      const suivie = P.rejoint(etat.centrale, doctrine, brut);
+      return el("li", { class: `lutte lutte--${quand}` },
+        el("p", { class: "lutte__date" },
+          el("span", { class: "lutte__jour" }, String(j.d)),
+          el("span", { class: "lutte__mois" }, `${T.MOIS_COURTS[j.m - 1]} ${j.y}`),
+          el("span", { class: "lutte__semaine" }, T.JOURS[P.jourSemaine(j)])),
+        el("div", {},
+          quand === "a-venir" && el("p", { class: "lutte__compte" }, ecart === 1 ? U.demain : U.dansJours(ecart)),
+          quand === "aujourdhui" && el("p", { class: "lutte__compte" }, U.aujourdhui),
+          el("h3", {}, m.intitule),
+          el("p", { class: "lutte__motif" }, m.motif),
+          el("p", { class: "lutte__meta" },
+            m.interpro && el("span", { class: "etiquette etiquette--plein" }, U.interpro),
+            suivie && quand !== "passee" && el("span", { class: "etiquette etiquette--rouge" }, U.suiviePar(nomCentrale(etat.centrale))),
+            el("span", {}, U.appel),
+            m.appelants.map((c) => el("span", { class: "etiquette" }, nomCentrale(c))),
+            el("a", { href: m.source, rel: "noopener" }, U.source(hote(m.source))))));
+    }));
+  }
+  const maj = $("[data-maj-greves]");
+  if (maj && etat.majGreves) maj.textContent = U.majGreves(T.jour(P.jourDepuisIso(etat.majGreves)));
+}
+
+// Les liens d'abonnement suivent l'hôte servi : une préversion s'abonne à son propre flux.
+function lierIcs() {
+  const liens = $$("[data-ics]");
+  if (!liens.length) return;
+  const chemin = `/api/greves.ics${LANG === "en" ? "?lang=en" : ""}`;
+  const webcal = `webcal://${location.host}${chemin}`;
+  for (const a of liens) {
+    if (a.dataset.ics === "webcal") a.href = webcal;
+    else if (a.dataset.ics === "google") a.href = `https://calendar.google.com/calendar/r?cid=${webcal}`;
   }
 }
 
@@ -465,6 +464,7 @@ function rendreLuttes() {
 function rendreOnglets(racine, items, prefixe, contenu) {
   const liste = $("[data-onglets-liste]", racine);
   const panneaux = $("[data-onglets-panneaux]", racine);
+  panneaux.replaceChildren();
   const onglets = items.map((m, i) => {
     const bouton = el("button", {
       type: "button", role: "tab", class: "onglet", id: `${prefixe}-onglet-${m.id}`,
@@ -495,16 +495,17 @@ function rendreOnglets(racine, items, prefixe, contenu) {
   });
 }
 
-// 9. Installation
 function rendreInstallation() {
-  rendreOnglets($("[data-onglets]"), T.INSTALLATION, "install", (m) => [
+  const racine = $("[data-onglets]");
+  if (!racine) return;
+  rendreOnglets(racine, T.INSTALLATION, "install", (m) => [
     el("p", {}, m.intro),
-    m.commandes.map((c) => blocCopie(c)),
+    m.commandes.map((c) => blocCopie(c, U.copier)),
     m.note && el("p", { class: "panneau__note" }, m.note),
   ]);
 }
 
-// 1 bis. Grand public : le texte à coller vient de grand-public/ (copié par sync.sh)
+// Grand public : le texte à coller vient de grand-public/ (copié par sync.sh)
 async function rendreGrandPublic() {
   const racine = $("[data-grand-public]");
   if (!racine) return;
@@ -522,25 +523,13 @@ async function rendreGrandPublic() {
   }
 }
 
-// 10. Démo
-function rendreDemos() {
-  $("[data-terminaux]").replaceChildren(...T.DEMOS.map((d) =>
-    el("figure", { class: "terminal" },
-      el("figcaption", {}, el("span", {}, d.titre), el("span", {}, d.contexte)),
-      el("pre", {}, d.lignes.map(([type, texte]) => el("span", { class: `l-${type}`, lang: type === "bandeau" ? "fr" : null }, texte))))));
-}
-
-function lierGithub() {
-  for (const a of $$("[data-lien-github]")) a.href = DEPOT;
-  $("[data-lien-github-greves]").href = `${DEPOT}/blob/main/skills/syndicaliste/data/greves.json`;
-  $("[data-lien-github-licence]").href = `${DEPOT}/blob/main/LICENSE`;
-}
+const BESOIN_DONNEES = "[data-bandeau-direct], [data-regimes], [data-pancartes], [data-simulateur], [data-test-prompt], [data-luttes], [data-reponse-greve], [data-greve-courte]";
 
 async function demarrer() {
-  lierGithub();
   rendreInstallation();
-  rendreDemos();
   rendreGrandPublic();
+  lierIcs();
+  if (!$(BESOIN_DONNEES)) return;
   try {
     const [centrales, greves] = await Promise.all([
       chargerJson(["/data/centrales.json"]),
@@ -550,8 +539,9 @@ async function demarrer() {
     etat.mouvements = greves.mouvements;
     etat.majGreves = greves.maj;
   } catch (e) {
-    $("[data-bandeau-direct]").textContent = U.pointeusePanne;
-    $("[data-luttes]").replaceChildren(el("li", { class: "luttes__vide" }, U.calendrierIndispo));
+    const bandeau = $("[data-bandeau-direct]");
+    if (bandeau) bandeau.textContent = U.pointeusePanne;
+    for (const zone of $$("[data-luttes], [data-reponse-greve]")) zone.replaceChildren(el(zone.matches("ol") ? "li" : "p", { class: "luttes__vide" }, U.calendrierIndispo));
     console.error(e);
     return;
   }
@@ -560,6 +550,9 @@ async function demarrer() {
   initialiserSimulateur();
   initialiserTest();
   choisirCentrale(etat.centrale);
+  rendreReponseGreve();
+  rendreGreveCourte();
+  rendreLuttes();
   setInterval(rendreDirect, 30_000);
 }
 
