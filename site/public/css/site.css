@@ -439,7 +439,7 @@ main section[id], main article[id], .service-minimum { scroll-margin-top: 1rem; 
 .champ--radios { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; }
 .champ--radios legend { width: 100%; }
 .champ--radios label, .champ--case { display: flex; align-items: center; gap: .5rem; font-size: 1rem; cursor: pointer; }
-input[type="datetime-local"], select, textarea, input:not([type]), input[type="text"] {
+input[type="datetime-local"], select, textarea, input:not([type]), input[type="text"], input[type="email"] {
   width: 100%; min-height: 2.9rem; padding: .5rem .7rem;
   font: 1rem/1.4 var(--machine); color: var(--encre);
   background: var(--papier-clair); border: 3px solid var(--encre); border-radius: 0;
@@ -1083,3 +1083,45 @@ input[aria-invalid="true"] { border-color: var(--rouge); background: #fbe3df; }
 .carte--large .carte__lien { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 1.6rem; }
 .carte--large .carte__surtitre { flex-basis: 100%; }
 .ticket__table td:nth-child(2) { white-space: nowrap; }
+
+/* Bulletin « Rester en contact » (composant contact() de build.mjs) */
+.contact { position: relative; background: var(--papier); padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.contact__grille { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 2rem clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact__surtitre { font: 800 1.05rem/1 var(--titre); text-transform: uppercase; letter-spacing: .08em; color: var(--rouge); margin-bottom: .6rem; }
+.contact__accroche { font-size: 1.08rem; max-width: 30rem; }
+.contact__formulaire {
+  position: relative; background: var(--papier-clair); border: 3px dashed var(--encre);
+  padding: clamp(1.1rem, 3vw, 1.8rem); box-shadow: 8px 8px 0 var(--rouge);
+}
+.contact__formulaire::before { content: "✂"; position: absolute; top: -1.05rem; left: 1.4rem; font-size: 1.5rem; line-height: 1; background: var(--papier); padding: 0 .3rem; }
+.contact__facultatif { font: 400 .85rem/1 var(--machine); text-transform: none; letter-spacing: 0; opacity: .8; }
+.contact__interets { gap: .55rem; }
+.contact__interets > label { font: 400 1rem/1.35 var(--machine); text-transform: none; letter-spacing: 0; margin: 0; }
+.contact__interets .champ--case, .contact__consentement { align-items: flex-start; line-height: 1.35; }
+.champ--case input { flex: none; margin-top: .08rem; }
+.contact__consentement { display: flex; gap: .5rem; font-size: .92rem; cursor: pointer; }
+.contact__consentement a { overflow-wrap: anywhere; }
+.contact__miel { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact__statut { margin: 0; min-height: 1.4em; font-weight: 700; }
+.contact__statut:empty { min-height: 0; }
+.contact__statut[data-etat="ok"] { color: var(--vert); }
+.contact__statut[data-etat="erreur"] { color: var(--rouge-sombre); }
+/* Sur le quiz, le bulletin attend le résultat (sans JavaScript, il reste visible). */
+.js [data-contact-attente]:not(.contact--visible) { display: none; }
+
+.atelier__grille { align-items: start; }
+.atelier__pitch { display: grid; gap: 1rem; justify-items: start; flex: 1 1 22rem; max-width: 34rem; }
+.contact-pied { flex: 1 1 22rem; max-width: 34rem; display: grid; gap: .6rem; }
+.contact-pied__titre { margin: 0; }
+.contact-pied__ligne { display: flex; gap: .6rem; }
+.contact-pied__ligne input { flex: 1; min-width: 0; }
+.contact-pied__ligne .bouton { flex: none; box-shadow: 4px 4px 0 var(--rouge); min-height: 2.9rem; }
+.contact-pied .contact__consentement { font-size: .85rem; }
+
+@media (max-width: 860px) {
+  .contact__grille { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .contact-pied__ligne { flex-direction: column; }
+  .contact-pied__ligne .bouton { width: 100%; }
+}

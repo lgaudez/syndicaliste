@@ -1,5 +1,6 @@
-// Chargé par toutes les pages : menu hamburger et boutons « Copier » écrits en dur dans le HTML.
+// Chargé par toutes les pages : menu hamburger, boutons « Copier » écrits en dur dans le HTML, bulletins de contact.
 import { copier } from "./outils.js";
+import "./contact.js";
 
 const barre = document.querySelector(".barre");
 const bouton = document.querySelector("[data-menu-bouton]");
