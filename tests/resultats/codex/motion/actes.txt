@@ -1,0 +1,4 @@
+.syndicat/actes/2026-10-21-mise-en-demeure.md
+.syndicat/actes/2026-10-21-requete-prudhommes.md
+.syndicat/actes/2026-10-21-signalement-inspection.md
+.syndicat/motions/2026-10-21-respect-des-echanges.md

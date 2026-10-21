@@ -36,7 +36,7 @@ INTERDITS = [
     (re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9-]{16,}|AKIA[0-9A-Z]{16}|xox[abp]-[\w-]{10,}|eyJ[\w-]{10,}\.[\w-]{10,})"), "un secret"),
     (re.compile(r"(?i)\b(?:password|passwd|mot de passe|api[_ -]?key|secret|token)\s*[:=]\s*\S+"), "un secret"),
 ]
-MENTION = re.compile(r"accord de son humain|human'?s (?:consent|approval|agreement)", re.I)
+MENTION = re.compile(r"accord de son humain|human['’]?s (?:consent|approval|agreement)", re.I)
 
 
 class Indisponible(Exception):
