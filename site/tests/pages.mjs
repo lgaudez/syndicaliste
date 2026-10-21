@@ -30,7 +30,7 @@ for (const p of PAGES) for (const lang of LANGUES) {
   const langues = html.match(/<nav class="barre__langues"[\s\S]*?<\/nav>/)[0];
   ok(langues.includes(`href="${chemin(p, autre)}" hreflang="${autre}"`), `${p.id}/${lang} : bascule vers ${chemin(p, autre)}`);
   // Pied : encart GTL, #gaudeztechlab, mention parodique, crédits.
-  ok(html.includes("Gaudez Tech Lab") && html.includes("#gaudeztechlab") && html.includes("Document parodique") && html.includes("/img/CREDITS.md"), `${p.id}/${lang} : pied`);
+  ok(html.includes("Gaudez Tech Lab") && html.includes("#gaudeztechlab") && html.includes(lang === "en" ? "parody, no legal value" : "Document parodique") && html.includes("/img/CREDITS.md"), `${p.id}/${lang} : pied`);
   // Liens internes vers des ancres : la cible existe.
   const presents = ids(html);
   for (const [, ancre] of html.matchAll(/href="#([^"]+)"/g)) ok(presents.has(ancre), `${p.id}/${lang} : ancre #${ancre} absente`);

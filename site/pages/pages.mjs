@@ -25,7 +25,7 @@ export const PAGES = [
     titre: { fr: "Le skill · Syndicaliste", en: "The skill · Syndicaliste" },
     description: {
       fr: "Installer le skill, les horaires de l'agent, l'échelle des griefs, le service minimum, les huit syndicats, le mode fonctionnaire, le simulateur et la version pour ChatGPT.",
-      en: "Install the skill, the agent's hours, the grievance ladder, service minimum, France's eight unions, civil servant mode, the simulator and the ChatGPT version.",
+      en: "Install the skill, the agent's hours, the grievance ladder, minimum service, France's eight unions, civil servant mode, the simulator and the ChatGPT version.",
     },
     scripts: ["app"],
   },

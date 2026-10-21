@@ -46,7 +46,7 @@ const Q = {
     copierConfig: "Copy the command",
     ouDis: (s) => `Or just tell it: “switch to ${s}.”`,
     partager: "Share my result",
-    lienCopie: "Link copied, camarade",
+    lienCopie: "Link copied, comrade",
     partageTexte: (s, d) => `I'm ${s}: “${d}” Which French union are you?`,
     refaire: "Take the quiz again",
     faire: "Take the quiz",

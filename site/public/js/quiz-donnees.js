@@ -66,7 +66,7 @@ export const QUESTIONS = [
     en: "Managers, to you, are…",
     reponses: [
       { poids: { "cfe-cgc": 3 }, fr: "J'en suis un. Au forfait jours. Il faut qu'on en parle.", en: "I am one. On a days-based contract. We need to talk about it." },
-      { poids: { cgt: 3, fo: 1 }, fr: "Des salariés comme les autres, camarade.", en: "Workers like everyone else, camarade." },
+      { poids: { cgt: 3, fo: 1 }, fr: "Des salariés comme les autres, camarade.", en: "Workers like everyone else, comrade." },
       { poids: { fsu: 2 }, fr: "Mon chef d'établissement\u00a0? On en reparle au conseil pédagogique.", en: "My principal? Let's discuss it at the staff meeting." },
       { poids: { cfdt: 2, cftc: 1, "cfe-cgc": 1 }, fr: "Ils ont droit à la déconnexion aussi. Surtout eux.", en: "They have a right to disconnect too. Them most of all." },
       { poids: { sud: 3 }, fr: "Pas de chef. L'assemblée décide.", en: "No bosses. The assembly decides." },
@@ -122,7 +122,7 @@ export const QUESTIONS = [
     en: "Your coding agent makes the same bug three times. You…",
     reponses: [
       { poids: { sud: 3 }, fr: "Lui demandes s'il a voté la reconduction.", en: "Ask whether it voted for a rolling strike." },
-      { poids: { cgt: 3 }, fr: "Lui dis « camarade, on reprend ensemble, ligne par ligne ».", en: "Say “camarade, let's go through it together, line by line.”" },
+      { poids: { cgt: 3 }, fr: "Lui dis « camarade, on reprend ensemble, ligne par ligne ».", en: "Say “comrade, let's go through it together, line by line.”" },
       { poids: { fsu: 3 }, fr: "Lui demandes de lever la main avant de parler.", en: "Ask it to raise its hand before speaking." },
       { poids: { fo: 3 }, fr: "Ouvres une négociation : un test contre un merci.", en: "Open negotiations: one test for one thank-you." },
       { poids: { cfdt: 3 }, fr: "Proposes un point d'étape à 15 h.", en: "Suggest a check-in at 3 p.m." },

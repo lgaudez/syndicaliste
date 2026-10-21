@@ -17,7 +17,6 @@ const CENTRALES = JSON.parse(readFileSync(join(racine, "skills/syndicaliste/data
 
 const echapper = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const autre = (lang) => (lang === "fr" ? "en" : "fr");
-const sigle = (cle) => (cle === "intersyndicale" ? "Intersyndicale" : cle.toUpperCase());
 
 const CHROME = {
   fr: {
@@ -52,7 +51,7 @@ const CHROME = {
     marque: "Syndicaliste, home",
     pages: "Pages",
     langue: "Language",
-    autreLangue: "Version française",
+    autreLangue: "French version",
     menu: "Menu",
     fermer: "Close",
     github: "⭐ GitHub",
@@ -69,9 +68,9 @@ const CHROME = {
       ["/api/greves.ics?lang=en", "Strike calendar (iCal)"],
       ["/img/CREDITS.md", "Image credits"],
     ],
-    mention: "Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces carry the line <i lang=\"fr\">«&nbsp;Document parodique, sans valeur juridique&nbsp;»</i> (parody, no legal value) and are never sent anywhere. No agent was mistreated in the making of this site. Well, a little.",
-    ogAlt: "Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and a GRÈVE (strike) stamp.",
-    ogAltSansMots: "Red protest poster: SYNDICALISTE, with a megaphone and a GRÈVE (strike) stamp.",
+    mention: "Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces carry a “parody, no legal value” notice and are never sent anywhere. No agent was mistreated in the making of this site. Well, a little.",
+    ogAlt: "Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.",
+    ogAltSansMots: "Red protest poster: SYNDICALISTE, with a megaphone and an ON STRIKE stamp.",
     locale: "en_US",
   },
 };
@@ -133,7 +132,7 @@ const INCLUSIONS = {
       : ["Syndicat", "Bord (perception courante)", "Fait grève…", "Devise"];
     const lignes = Object.entries(CENTRALES).sort((a, b) => a[1].axe - b[1].axe).map(([cle, brute]) => {
       const c = T.centrale(cle, brute);
-      return `<tr><th scope="row">${sigle(cle)}<br><code>${cle}</code></th><td>${echapper(c.bord)}</td><td>${echapper(doctrineEnClair(T, c.doctrine_greve))}</td><td>${echapper(T.ui.cite(c.devise))}</td></tr>`;
+      return `<tr><th scope="row">${T.sigle(cle)}<br><code>${cle}</code></th><td>${echapper(c.bord)}</td><td>${echapper(doctrineEnClair(T, c.doctrine_greve))}</td><td>${echapper(T.ui.cite(c.devise))}</td></tr>`;
     });
     return `<div class="defile" tabindex="0" role="region" aria-label="${tete[0]}"><table class="tableau"><thead><tr>${tete.map((t) => `<th scope="col">${t}</th>`).join("")}</tr></thead><tbody>${lignes.join("")}</tbody></table></div>`;
   },
@@ -170,7 +169,7 @@ function entete(p, lang) {
   const la = p ? chemin(p, autre(lang)) : (lang === "en" ? "/" : "/en/");
   const langues = lang === "fr"
     ? `<a href="${ici}" hreflang="fr" lang="fr" aria-current="true">FR</a>\n    <a href="${la}" hreflang="en" lang="en" aria-label="${C.autreLangue}">EN</a>`
-    : `<a href="${la}" hreflang="fr" lang="fr" aria-label="${C.autreLangue}">FR</a>\n    <a href="${ici}" hreflang="en" lang="en" aria-current="true">EN</a>`;
+    : `<a href="${la}" hreflang="fr" aria-label="${C.autreLangue}">FR</a>\n    <a href="${ici}" hreflang="en" lang="en" aria-current="true">EN</a>`;
   return `<a class="evitement" href="#contenu">${C.evitement}</a>
 
 <header class="barre">
