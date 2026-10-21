@@ -188,13 +188,22 @@ export function scorer(choix) {
   return scores;
 }
 
-// Égalité : la pancarte tranche (une centrale par réponse), puis l'ordre de la liste.
+// Égalité, sans jamais dépendre de l'ordre de CENTRALES_QUIZ :
+// 1. la pancarte tranche (une centrale par réponse) ;
+// 2. sinon, on remonte les réponses depuis la dernière : la première qui donne strictement plus de points à une ex aequo qu'aux autres tranche ;
+// 3. sinon (aucune réponse ne les sépare), l'ordre alphabétique des clés.
 export function gagnant(scores, choix) {
   const max = Math.max(...Object.values(scores));
-  const ex = CENTRALES_QUIZ.filter((c) => scores[c] === max);
+  const ex = Object.keys(scores).filter((c) => scores[c] === max).sort();
   if (ex.length === 1) return ex[0];
   const iPancarte = QUESTIONS.findIndex((q) => q.id === "pancarte");
-  const pancarte = QUESTIONS[iPancarte].reponses[choix[iPancarte]];
-  const parPancarte = pancarte && ex.find((c) => pancarte.poids[c]);
-  return parPancarte || ex[0];
+  const ordre = [iPancarte, ...QUESTIONS.map((_, i) => QUESTIONS.length - 1 - i).filter((i) => i !== iPancarte)];
+  for (const i of ordre) {
+    const r = QUESTIONS[i].reponses[choix[i]];
+    if (!r) continue;
+    const pts = ex.map((c) => r.poids[c] ?? 0);
+    const meilleur = Math.max(...pts);
+    if (pts.filter((p) => p === meilleur).length === 1) return ex[pts.indexOf(meilleur)];
+  }
+  return ex[0];
 }

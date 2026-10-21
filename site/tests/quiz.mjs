@@ -48,7 +48,24 @@ const iPancarte = QUESTIONS.findIndex((q) => q.id === "pancarte");
 const egalite = Object.fromEntries(CENTRALES_QUIZ.map((c) => [c, 5]));
 const choixPancarte = QUESTIONS.map((_, i) => (i === iPancarte ? QUESTIONS[i].reponses.findIndex((r) => r.poids.fo) : null));
 ok(gagnant(egalite, choixPancarte) === "fo", "égalité tranchée par la pancarte");
-ok(gagnant(egalite, []) === CENTRALES_QUIZ[0], "égalité sans pancarte : ordre de la liste");
+ok(gagnant(egalite, []) === "cfdt", "égalité sans aucune réponse : ordre alphabétique");
+// Pancarte sautée : la dernière réponse qui sépare les ex aequo tranche, quel que soit l'ordre de la liste.
+const iCantine = QUESTIONS.findIndex((q) => q.id === "cantine");
+const iAgent = QUESTIONS.findIndex((q) => q.id === "agent");
+const sansPancarte = QUESTIONS.map(() => null);
+sansPancarte[iCantine] = QUESTIONS[iCantine].reponses.findIndex((r) => r.poids.sud === 2 && r.poids.cgt === 2); // ne sépare pas sud et cgt
+sansPancarte[iAgent] = QUESTIONS[iAgent].reponses.findIndex((r) => r.poids.cgt === 3); // cgt, pourtant après sud dans la liste
+const duo = { sud: 7, cgt: 7, fsu: 0, fo: 0, cfdt: 0, unsa: 0, cftc: 0, "cfe-cgc": 0 };
+const inverse = Object.fromEntries(Object.entries(duo).reverse());
+ok(gagnant(duo, sansPancarte) === "cgt" && gagnant(inverse, sansPancarte) === "cgt", "pancarte sautée : la dernière réponse qui sépare tranche, dans les deux ordres");
+// Pancarte répondue pour une centrale hors égalité : on passe aux réponses suivantes au lieu de l'ordre de la liste.
+const pancarteHors = [...sansPancarte];
+pancarteHors[iPancarte] = QUESTIONS[iPancarte].reponses.findIndex((r) => r.poids.fo);
+ok(gagnant(duo, pancarteHors) === "cgt", "pancarte hors égalité : sans effet");
+// Aucune réponse ne sépare : ordre alphabétique, identique dans les deux ordres.
+const neutre = QUESTIONS.map(() => null);
+neutre[iCantine] = sansPancarte[iCantine];
+ok(gagnant(duo, neutre) === "cgt" && gagnant(inverse, neutre) === "cgt", "rien ne sépare : ordre alphabétique (cgt avant sud)");
 
 // Neutralité : aucun parti ni responsable politique cité dans le quiz.
 const texte = JSON.stringify({ QUESTIONS, PORTRAITS });
