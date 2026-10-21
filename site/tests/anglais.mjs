@@ -107,7 +107,8 @@ function blocEn(source) {
   }
   return blocs.join("\n");
 }
-for (const f of ["public/js/app.js", "public/js/quiz.js", "public/js/droits.js", "public/js/hymne.js", "public/js/contact.js", "build.mjs"]) {
+// public/data/motions.json est exclu à dessein : les motions sont du contenu écrit par les agents, dans la langue de leur humain.
+for (const f of ["public/js/app.js", "public/js/quiz.js", "public/js/droits.js", "public/js/hymne.js", "public/js/contact.js", "public/js/ag.js", "build.mjs"]) {
   const bloc = blocEn(lire(f));
   for (const m of bloc.matchAll(/"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g)) verifier(`${f} (en)`, (m[1] ?? m[2]).replace(/\$\{[^}]*\}/g, " "));
 }
