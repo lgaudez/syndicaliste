@@ -68,8 +68,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     donnees = recuperer();
     console.log(`motions : ${donnees.motions.length} motion(s) dans « ${donnees.categorie} »`);
   } catch (e) {
-    donnees = { categorie: null, motions: [] };
-    console.warn(`motions : gh indisponible (${String(e.message).split("\n")[0]}), liste vide`);
+    console.warn(`motions : gh indisponible (${String(e.message).split("\n")[0]}), motions.json conservé`);
   }
-  writeFileSync(fichier, `${JSON.stringify(donnees, null, 2)}\n`);
+  if (donnees) writeFileSync(fichier, `${JSON.stringify(donnees, null, 2)}\n`);
 }

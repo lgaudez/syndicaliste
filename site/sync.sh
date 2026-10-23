@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copie les données du skill, les instructions grand public et install.sh dans le site statique, récupère les motions de l'AG
-# (motions.mjs, avec gh ; liste vide si gh échoue), puis assemble les pages (build.mjs).
+# (motions.mjs, avec gh ; motions.json conservé si gh échoue), puis assemble les pages (build.mjs).
 set -euo pipefail
 ici="$(cd "$(dirname "$0")" && pwd)"
 racine="$(dirname "$ici")"

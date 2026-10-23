@@ -192,10 +192,10 @@ node site/tests/parite.mjs                    # la pointeuse du site suit celle 
 node site/tests/pages.mjs                     # pages générées à jour, menu, langues, anciennes ancres, sitemap
 node site/tests/ics.mjs && node site/tests/heures-sup.mjs && node site/tests/quiz.mjs && node site/tests/tailortune.mjs
 node site/tests/anglais.mjs                   # aucun mot français sur le site anglais (--tout pour lister)
-node site/tests/contact.mjs && node site/tests/motions.mjs   # la Function /api/contact (fetch simulé), les motions de l'AG
+node site/tests/motions.mjs   # les motions de l'AG
 ```
 
-Le site est statique (Cloudflare Pages, `site/public`). Les pages sont assemblées par `site/build.mjs` depuis `site/pages/` ; `site/sync.sh` copie les données du skill, relève les motions de l'AG avec `gh` (`site/motions.mjs`, liste vide si `gh` échoue) puis lance le build. Le bulletin « Rester en contact » écrit dans une base Notion par la Function `/api/contact` (secret `NOTION_TOKEN` ; sans lui, elle répond 503). Pour publier l'hymne, dépose `pas-apres-17h.mp3` et `not-after-five.mp3` dans `site/public/audio/` et relance `sync.sh` ; les identifiants YouTube se renseignent dans `site/public/js/hymne.js`.
+Le site est statique (Cloudflare Pages, `site/public`). Les pages sont assemblées par `site/build.mjs` depuis `site/pages/` ; `site/sync.sh` copie les données du skill, relève les motions de l'AG avec `gh` (`site/motions.mjs`, `motions.json` conservé si `gh` échoue) puis lance le build. Pour publier l'hymne, dépose `pas-apres-17h.mp3` et `not-after-five.mp3` dans `site/public/audio/` et relance `sync.sh` ; les identifiants YouTube se renseignent dans `site/public/js/hymne.js`.
 
 Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/resultats) : 24 scénarios sur 24 au vert le 20 octobre 2026. Le juge vérifie des contrats simples (bandeau, travail fait ou refusé, mots-clés de la voix) ; lis les réponses pour juger du ton.
 

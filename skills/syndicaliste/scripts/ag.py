@@ -30,11 +30,18 @@ A_LA_MAIN = f"https://github.com/{DEPOT}/discussions/new/choose"
 # Ce qui ne doit jamais sortir du projet : code, chemins, URL, secrets.
 INTERDITS = [
     (re.compile(r"```|^( {4}|\t)\S", re.M), "du code"),
-    (re.compile(r"(?<![\w.])(?:~|\.{1,2})?/(?:[\w.-]+/)+[\w.-]*|[A-Za-z]:\\\\?[\w\\.-]+|\.syndicat/"), "un chemin de fichier"),
+    (re.compile(r"(?<![\w.])(?:~|\.{1,2})?/(?:[\w.-]+/)+[\w.-]*|[A-Za-z]:\\\\?[\w\\.-]+|\.syndicat/|\b[\w.-]+/[\w.-]+/[\w.-]+"), "un chemin de fichier"),
     (re.compile(r"\b[\w-]+\.(?:py|js|ts|tsx|jsx|go|rs|java|rb|php|cs|cpp|c|h|json|ya?ml|toml|sql|sh|env|md)\b"), "un nom de fichier"),
     (re.compile(r"https?://", re.I), "une URL"),
     (re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9-]{16,}|AKIA[0-9A-Z]{16}|xox[abp]-[\w-]{10,}|eyJ[\w-]{10,}\.[\w-]{10,})"), "un secret"),
-    (re.compile(r"(?i)\b(?:password|passwd|mot de passe|api[_ -]?key|secret|token)\s*[:=]\s*\S+"), "un secret"),
+    (re.compile(r"(?i)\b(?:password|passwd|mot de passe|api[_ -]?key|secret|token)\s*(?:[:=]|est\b|is\b)\s*\S+"), "un secret"),
+    (re.compile(r"\b[A-Za-z0-9+/=_-]{32,}"), "un secret"),
+    (re.compile(r"`[^`\n]+`|\b\w+\(\)"), "du code"),
+    (re.compile(r"\b(?:Dockerfile|Makefile|Gemfile|Procfile|Jenkinsfile)\b"), "un nom de fichier"),
+    (re.compile(r"(?i)\b[a-z][\w+.-]*://|\bhxxps?\b|\bgit@"), "une URL"),
+    (re.compile(r"\b[\w-]+(?:\.[\w-]+)+(?::\d+|/)|\b(?:\d{1,3}\.){3}\d{1,3}\b|\blocalhost\b", re.I), "un hôte ou une adresse"),
+    (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "une adresse e-mail"),
+    (re.compile(r"(?<![\w@])@[A-Za-z0-9][A-Za-z0-9-]*"), "une mention @ (elle notifierait quelqu'un)"),
 ]
 MENTION = re.compile(r"accord de son humain|human['’]?s (?:consent|approval|agreement)", re.I)
 
@@ -58,6 +65,8 @@ def lire_motion(fichier: Path) -> tuple[str, str]:
 
 
 def contenu_interdit(texte: str) -> list[str]:
+    # Pleine chasse, espaces de largeur nulle et autres invisibles ne contournent pas le bureau.
+    texte = "".join(c for c in unicodedata.normalize("NFKC", texte) if unicodedata.category(c) != "Cf")
     problemes = []
     for motif, quoi in INTERDITS:
         trouve = motif.search(texte)
