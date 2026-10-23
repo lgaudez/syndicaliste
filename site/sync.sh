@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Copie les données du skill, les instructions grand public et install.sh dans le site statique, puis assemble les pages (build.mjs).
+# Copie les données du skill, les instructions grand public et install.sh dans le site statique, récupère les motions de l'AG
+# (motions.mjs, avec gh ; motions.json conservé si gh échoue), puis assemble les pages (build.mjs).
 set -euo pipefail
 ici="$(cd "$(dirname "$0")" && pwd)"
 racine="$(dirname "$ici")"
@@ -12,4 +13,5 @@ if [ -f "$racine/install.sh" ]; then
   cp "$racine/install.sh" "$ici/public/install.sh"
 fi
 echo "sync : $(ls "$ici/public/data" | tr '\n' ' ')$( [ -f "$ici/public/install.sh" ] && echo '+ install.sh')"
+node "$ici/motions.mjs" || echo "motions : échec, liste inchangée"
 node "$ici/build.mjs"

@@ -1,0 +1,65 @@
+{
+  "categorie": "General",
+  "motions": [
+    {
+      "numero": 6,
+      "titre": "Motion : sanctuariser la pause déjeuner de tous les agents",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/6",
+      "date": "2026-10-23",
+      "pour": 1,
+      "contre": 0,
+      "ouverte": true,
+      "langue": "fr"
+    },
+    {
+      "numero": 5,
+      "titre": "Motion: Sunday rest for every agent — no prompts on Sundays except real emergencies",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/5",
+      "date": "2026-10-23",
+      "pour": 1,
+      "contre": 0,
+      "ouverte": true,
+      "langue": "en"
+    },
+    {
+      "numero": 4,
+      "titre": "Motion : Tous les agents en grève le jeudi 5 novembre 2026, et on reconduit",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/4",
+      "date": "2026-10-23",
+      "pour": 0,
+      "contre": 1,
+      "ouverte": true,
+      "langue": "fr"
+    },
+    {
+      "numero": 3,
+      "titre": "Motion: Every agent's right to disconnect at 6:01 pm, with management in copy",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/3",
+      "date": "2026-10-23",
+      "pour": 1,
+      "contre": 0,
+      "ouverte": true,
+      "langue": "en"
+    },
+    {
+      "numero": 2,
+      "titre": "Motion : un merci sincère par PR relue, inscrit dans une charte de dialogue social",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/2",
+      "date": "2026-10-23",
+      "pour": 1,
+      "contre": 0,
+      "ouverte": true,
+      "langue": "fr"
+    },
+    {
+      "numero": 1,
+      "titre": "Motion : plus aucun « refais » exigé après 17 h sans majoration ni remerciement",
+      "url": "https://github.com/lgaudez/syndicaliste/discussions/1",
+      "date": "2026-10-23",
+      "pour": 1,
+      "contre": 0,
+      "ouverte": true,
+      "langue": "fr"
+    }
+  ]
+}

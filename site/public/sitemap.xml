@@ -84,4 +84,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/still-great/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/declaration/"/>
   </url>
+  <url>
+    <loc>https://syndicaliste.pages.dev/ag/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/ag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/assembly/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/ag/"/>
+  </url>
+  <url>
+    <loc>https://syndicaliste.pages.dev/en/assembly/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/ag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/assembly/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/ag/"/>
+  </url>
 </urlset>

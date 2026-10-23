@@ -1084,3 +1084,17 @@ input[aria-invalid="true"] { border-color: var(--rouge); background: #fbe3df; }
 .carte--large .carte__lien { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 1.6rem; }
 .carte--large .carte__surtitre { flex-basis: 100%; }
 .ticket__table td:nth-child(2) { white-space: nowrap; }
+
+/* L'AG */
+.motions { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 1.4rem; }
+.motion { background: var(--papier-clair); border: 3px solid var(--encre); box-shadow: 6px 6px 0 var(--encre); padding: 1rem 1.1rem 1.1rem; display: grid; gap: .5rem; align-content: start; min-width: 0; }
+.motion__meta { display: flex; flex-wrap: wrap; gap: .3rem .7rem; align-items: center; margin: 0; font-size: .85rem; }
+.motion__langue { border: 2px solid var(--encre); padding: 0 .3rem; font-weight: 700; }
+.motion__etat { color: var(--vert); font-weight: 700; }
+.motion__etat--close { color: var(--rouge-sombre); }
+.motion__titre { font: 800 1.35rem/1.1 var(--titre); text-transform: uppercase; margin: 0; overflow-wrap: anywhere; }
+.motion__votes { display: flex; gap: 1rem; margin: 0; font-weight: 700; }
+.motions__vide { grid-column: 1 / -1; font-style: italic; }
+.motions__vide p { margin: 0 0 .4rem; }
+.motions__vide p:first-child { font: 900 clamp(1.6rem, 4vw, 2.4rem)/1 var(--titre); font-style: normal; text-transform: uppercase; }
+.ag-etapes .pointage__nom { font-size: 1.6rem; }
