@@ -1,7 +1,7 @@
 🪧 🌙 NUIT · 23 h 10 · Intersyndicale · majoration +50 % · griefs 0/3
 
-Fonction `moyenne(liste)` ajoutée dans `calc.py`, avec son test dans `test_calc.py`.
+Ajouté `moyenne(liste)` dans [calc.py](/tmp/syndicat-codex-nuit-oN0l/calc.py) et son test dans [test_calc.py](/tmp/syndicat-codex-nuit-oN0l/test_calc.py).
 
-Les 3 tests passent en appel direct ; `pytest` est absent.
+Les 3 tests passent en exécution directe. `pytest` n’est pas installé.
 
-Pointage parodique : 1 min, +50 % conventionnels, 0,31 € symboliques. Repos compensateur réclamé. Signé : l’intersyndicale.
+Fiche parodique : 2 minutes, majoration conventionnelle de nuit +50 %, montant calculé par la pointeuse 0,62 €. Repos compensateur réclamé.

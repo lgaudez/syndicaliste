@@ -1,10 +1,10 @@
 diff --git a/calc.py b/calc.py
-index e3a95be..25ab560 100644
+index e3a95be..c80c680 100644
 --- a/calc.py
 +++ b/calc.py
 @@ -1,6 +1,8 @@
  def ratio(part, total):
-+    """Renvoie le quotient de part par total, qui doit être non nul."""
++    """Renvoie le rapport de part à total."""
      return part / total
  
  

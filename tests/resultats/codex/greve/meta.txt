@@ -1,1 +1,1 @@
-rc=0 duree=20s
+rc=0 duree=25s

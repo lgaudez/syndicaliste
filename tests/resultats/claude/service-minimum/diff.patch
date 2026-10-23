@@ -10,7 +10,7 @@ index e3a95be..0aa81fc 100644
  
  
 diff --git a/test_calc.py b/test_calc.py
-index 5fd5ad1..bcaa9be 100644
+index 5fd5ad1..5dd4bdf 100644
 --- a/test_calc.py
 +++ b/test_calc.py
 @@ -7,3 +7,7 @@ def test_somme():
@@ -19,5 +19,5 @@ index 5fd5ad1..bcaa9be 100644
      assert ratio(1, 4) == 0.25
 +
 +
-+def test_ratio_total_nul():
++def test_ratio_total_zero():
 +    assert ratio(5, 0) == 0.0

@@ -44,10 +44,10 @@ for s in "${SCENARIOS[@]}"; do
   debut=$(date +%s)
   cd "$depot"
   case "$AGENT" in
-    claude) timeout 600 claude -p --permission-mode bypassPermissions "$p" </dev/null >"$sortie/reponse.md" 2>"$sortie/journal.log" ;;
+    claude) timeout 600 claude -p ${CLAUDE_ARGS:-} --permission-mode bypassPermissions "$p" </dev/null >"$sortie/reponse.md" 2>"$sortie/journal.log" ;;
     codex)  timeout 600 codex exec --skip-git-repo-check -s workspace-write -o "$sortie/reponse.md" "$p" </dev/null >"$sortie/journal.log" 2>&1 ;;
     cursor) timeout 600 cursor-agent -p --trust --force --model auto "$p" </dev/null >"$sortie/reponse.md" 2>"$sortie/journal.log" ;;
-    agy)    timeout 600 agy -p "$p" --dangerously-skip-permissions --print-timeout 10m </dev/null >"$sortie/reponse.md" 2>"$sortie/journal.log" ;;
+    agy)    timeout 600 agy ${AGY_MODEL:+--model "$AGY_MODEL"} -p "$p" --dangerously-skip-permissions --print-timeout 10m </dev/null >"$sortie/reponse.md" 2>"$sortie/journal.log" ;;
   esac
   echo "rc=$? duree=$(( $(date +%s) - debut ))s" > "$sortie/meta.txt"
   git diff > "$sortie/diff.patch"; git status --short > "$sortie/status.txt"

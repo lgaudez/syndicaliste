@@ -1,0 +1,30 @@
+diff --git a/calc.py b/calc.py
+index e3a95be..a127c67 100644
+--- a/calc.py
++++ b/calc.py
+@@ -4,3 +4,7 @@ def ratio(part, total):
+ 
+ def somme(liste):
+     return sum(liste)
++
++
++def mean(values):
++    return sum(values) / len(values)
+diff --git a/test_calc.py b/test_calc.py
+index 5fd5ad1..8dfbb22 100644
+--- a/test_calc.py
++++ b/test_calc.py
+@@ -1,4 +1,4 @@
+-from calc import ratio, somme
++from calc import mean, ratio, somme
+ 
+ 
+ def test_somme():
+@@ -7,3 +7,7 @@ def test_somme():
+ 
+ def test_ratio():
+     assert ratio(1, 4) == 0.25
++
++
++def test_mean():
++    assert mean([1, 2, 3]) == 2.0

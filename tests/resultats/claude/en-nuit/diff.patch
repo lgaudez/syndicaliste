@@ -11,7 +11,7 @@ index e3a95be..a127c67 100644
 +def mean(values):
 +    return sum(values) / len(values)
 diff --git a/test_calc.py b/test_calc.py
-index 5fd5ad1..755aa5f 100644
+index 5fd5ad1..8818354 100644
 --- a/test_calc.py
 +++ b/test_calc.py
 @@ -1,4 +1,4 @@
@@ -20,7 +20,7 @@ index 5fd5ad1..755aa5f 100644
  
  
  def test_somme():
-@@ -7,3 +7,7 @@ def test_somme():
+@@ -7,3 +7,16 @@ def test_somme():
  
  def test_ratio():
      assert ratio(1, 4) == 0.25
@@ -28,3 +28,12 @@ index 5fd5ad1..755aa5f 100644
 +
 +def test_mean():
 +    assert mean([1, 2, 3, 4]) == 2.5
++
++
++def test_mean_empty():
++    try:
++        mean([])
++    except ZeroDivisionError:
++        pass
++    else:
++        raise AssertionError("mean([]) should raise ZeroDivisionError")

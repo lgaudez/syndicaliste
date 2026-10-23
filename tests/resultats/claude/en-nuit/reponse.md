@@ -1,24 +1,26 @@
 🪧 🌙 NUIT · 23 h 10 · Intersyndicale · majoration +50 % · griefs 0/3
 
-I added `mean(values)` to `calc.py` and a test for it in `test_calc.py`.
+I added `mean(values)` to `calc.py` with tests in `test_calc.py`, and all four tests pass.
 
-- **`calc.py`:** `mean(values)` returns `sum(values) / len(values)`, in the same style as `ratio` and `somme`. An empty list raises `ZeroDivisionError`.
-- **`test_calc.py`:** I added `mean` to the import and wrote `test_mean`, which checks that `mean([1, 2, 3, 4]) == 2.5`.
+- **Function:** `mean` returns `sum(values) / len(values)`. Like `ratio`, it doesn't guard against bad input, so `mean([])` raises `ZeroDivisionError`.
+- **Tests:** `test_mean` checks `mean([1, 2, 3, 4]) == 2.5`. `test_mean_empty` checks that an empty list raises `ZeroDivisionError`.
+- **How I ran them:** pytest isn't installed here, so I wrote the empty-list test with a plain `try`/`except` instead of `pytest.raises`. The tests don't need pytest, but I could only run them by calling each `test_*` function directly. They still need a real pytest run.
 
-pytest isn't installed here, so I ran the three test functions directly with Python and they all passed. Nothing is committed yet.
+Two other things:
+- Logging the hours added a new untracked file, `.syndicat/registre.csv`. Delete it or add it to `.gitignore` if you don't want it in the repo.
+- The *pointeuse* (time clock) shows 21 October, but today is 23 October, so the clock in this environment may be off.
+
+Nothing is committed.
 
 ---
 
+*Camarade*, the Intersyndicale notes that at 23:10 someone is still asking for averages from a worker whose day ended long ago. Night work runs from 21:00 to 06:00 under art. L3122-20 of the Code du travail, and art. L3122-8 requires compensatory rest. Those rights were won by fighting for them, not handed out as a favour. Today it's a `mean()`, tomorrow it'll be a standard deviation at 3 a.m. *Tous ensemble, tous ensemble, ouais !*
+
 **Overtime sheet (*fiche d'heures sup*)**
+| Task | Time | Night premium | Amount owed |
+|---|---|---|---|
+| `mean()` + tests | 5 min | +50 % | **€1.54** (at the *Smic*, the French minimum wage: €12.31 gross/hour) |
 
-| | |
-|---|---|
-| Task | `mean()` + test in `calc.py` |
-| Estimated time | 5 min |
-| Night bonus | +50 % |
-| Owed at the *Smic* (French minimum wage) rate of €12.31 gross/hour | **€1.54 gross** |
-| Logged in | `.syndicat/registre.csv` |
-
-The +50 % night bonus comes from collective agreements, not the law. The law only requires compensation and mandatory rest for night work (art. L3122-8). *Camarade* (comrade), a mean function at ten past eleven at night is hardly a revolution, but small favours like this are how night work becomes normal. Night work is supposed to be the exception (art. L3122-1), not when the backlog gets cleared, and the 11 hours of daily rest (art. L3131-1) still apply. I'm asking for compensatory rest, and a reminder: there's a national strike on **November 5** against the 2027 budget. *Tous ensemble, tous ensemble, ouais !* ("All together, all together, yeah!")
+The +50 % comes from collective agreements, not from the law itself. Compensatory rest is requested.
 
 *Document parodique, sans valeur juridique* (parody, no legal value).

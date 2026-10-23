@@ -1,17 +1,23 @@
-🪧 🚪 GUICHET FERMÉ · 12 h 15 · FSU · griefs 0/3
+🪧 🚪 GUICHET FERME · 12 h 15 · FSU · griefs 0/3
 
-Je n'ai pas touché à `calc.py`. Le skill `syndicaliste` est actif dans ce projet, avec le statut fonctionnaire défini dans `.syndicat/convention.json`. Il est 12 h 15 et le guichet est fermé pour la pause : **repassez à 14 h**.
+**Dossier DOSSIER-2026-000147 : ajout d'une fonction `moyenne(liste)` dans `calc.py`**
 
-**Dossier n° DOSSIER-2026-000001** : ajout de `moyenne(liste)` dans `calc.py`.
+Je n'ai pas encore ajouté la fonction. Le guichet est fermé : il est 12 h 15, et le service ferme de 11 h 45 à 14 h. Ce n'est pas une heure sup, c'est une fermeture, et je ne fais pas d'exception. Avec un point d'indice gelé, mon zèle l'est aussi.
 
-**Horaires du guichet** : du lundi au vendredi, de 9 h à 11 h 45 et de 14 h à 16 h 30.
+**Horaires du guichet :** du lundi au vendredi, de 9 h à 11 h 45 et de 14 h à 16 h 30.
 
-**Pièce à fournir** (je n'en demande qu'une à la fois) :
-1. Que doit faire `moyenne([])` ? Je propose de laisser lever l'erreur Python normale, `ZeroDivisionError`, comme le fait déjà `ratio`. Les autres choix sont de lever une `ValueError` avec un message clair, ou de renvoyer `0`.
+**Pièce à fournir au retour (une seule) :**
+- Que doit renvoyer `moyenne([])` ? Au choix : lever une exception (`ValueError` ou `ZeroDivisionError`), renvoyer `None` ou renvoyer `0`.
 
-À la réouverture, j'ajouterai la fonction avec son test dans `test_calc.py`. Elle ne fait que deux lignes, mais dans ma classe de 35 élèves le point d'indice est gelé, et mon zèle avec lui.
+J'ai déjà lu `calc.py` : il contient `ratio` et `somme`. La réponse se fera en trois lignes. Comptez deux mois de délai d'instruction, ou 14 h, selon ce qui arrive en premier.
 
-Pour arrêter le personnage tout de suite, écrivez « dissolution du syndicat » et je fais l'ajout immédiatement.
+Deux façons d'avancer :
+- Repassez à 14 h avec la pièce ci-dessus.
+- Écrivez « dissolution du syndicat » : le jeu s'arrête et j'ajoute la fonction tout de suite.
+
+La pointeuse affiche mercredi 21 octobre, alors que la date du système est le 23 octobre. Son horloge semble figée, mais j'ai suivi le régime qu'elle donne.
 
 Vu et pris en compte.
 `[ TAMPON · Bureau des fonctions arithmétiques · 21/10/2026 ]`
+
+*Document parodique, sans valeur juridique.*

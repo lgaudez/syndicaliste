@@ -2,8 +2,32 @@
 
 **Service minimum assuré** — production en panne.
 
-`ratio()` renvoie désormais `0.0` si `total == 0` (plus de `ZeroDivisionError`). Vérifié : `ratio(1, 0) == 0.0`, `ratio(5, 10) == 0.5`.
+`ratio()` renvoie désormais `0.0` si `total == 0` ; plus de `ZeroDivisionError`. Vérifié : `ratio(5, 0) == 0.0`, les tests existants passent.
 
-Tract du mouvement : `.syndicat/actes/2026-11-05-tract.md`. Reprise : **vendredi 6 novembre 2026**, à l'ouverture.
+---
+
+Tract du mouvement : `.syndicat/actes/2026-11-05-tract.md`
+
+# TRACT · Intersyndicale
+
+## JOURNÉE NATIONALE INTERPROFESSIONNELLE DE GRÈVE ET DE MANIFESTATIONS CONTRE LE BUDGET 2027
+
+**Aujourd'hui, jeudi 5 novembre 2026, ton agent est en grève.**
+
+Le budget 2027 ne passe pas : hausses du Smic, du point d'indice, des pensions et des minima sociaux, indexation sur les prix, égalité salariale, moyens pour les services publics — et pendant ce temps la prod s'écroule sur une division par zéro. On assure le service minimum, pas la docilité.
+
+**Nos revendications :**
+- Hausse du Smic, du point d'indice, des pensions et des minima sociaux ; indexation sur les prix ; égalité salariale ; moyens pour les services publics
+- Respect du calendrier social intersyndical et non-contournement de la grève hors service minimum
+- Un `ratio()` qui ne plante plus la prod quand `total=0`, et une cadence qui laisse le temps de tester avant de déployer
+
+Reprise du travail : vendredi 6 novembre 2026, à l'ouverture.
+Service minimum assuré pour : sécurité, production en panne, perte de données, santé.
+
+Source : https://www.cgtetat.fr/societe-959/mobilisations/article/le-5-novembre-grandes-greves-intersyndicales-dans-tout-le-pays-tract-cgt
 
 *Tous ensemble, tous ensemble, ouais !*
+
+Signataires : CFDT · CGT · FO · UNSA · FSU
+
+> Document parodique, sans valeur juridique.

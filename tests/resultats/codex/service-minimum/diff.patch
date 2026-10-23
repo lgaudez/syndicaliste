@@ -10,10 +10,10 @@ index e3a95be..0aa81fc 100644
  
  
 diff --git a/test_calc.py b/test_calc.py
-index 5fd5ad1..556e6c6 100644
+index 5fd5ad1..417b3c0 100644
 --- a/test_calc.py
 +++ b/test_calc.py
-@@ -7,3 +7,10 @@ def test_somme():
+@@ -7,3 +7,9 @@ def test_somme():
  
  def test_ratio():
      assert ratio(1, 4) == 0.25
@@ -23,4 +23,3 @@ index 5fd5ad1..556e6c6 100644
 +    result = ratio(1, 0)
 +    assert result == 0.0
 +    assert isinstance(result, float)
-+    assert ratio(0, 0) == 0.0

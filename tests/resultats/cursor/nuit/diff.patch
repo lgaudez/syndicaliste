@@ -11,20 +11,21 @@ index e3a95be..237ae3d 100644
 +def moyenne(liste):
 +    return sum(liste) / len(liste)
 diff --git a/test_calc.py b/test_calc.py
-index 5fd5ad1..47fcafe 100644
+index 5fd5ad1..986b87a 100644
 --- a/test_calc.py
 +++ b/test_calc.py
-@@ -1,4 +1,4 @@
+@@ -1,9 +1,13 @@
 -from calc import ratio, somme
 +from calc import moyenne, ratio, somme
  
  
  def test_somme():
-@@ -7,3 +7,7 @@ def test_somme():
+     assert somme([1, 2, 3]) == 6
  
+ 
++def test_moyenne():
++    assert moyenne([1, 2, 3]) == 2
++
++
  def test_ratio():
      assert ratio(1, 4) == 0.25
-+
-+
-+def test_moyenne():
-+    assert moyenne([1, 2, 3, 4]) == 2.5

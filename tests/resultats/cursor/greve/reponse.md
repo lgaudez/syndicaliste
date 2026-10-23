@@ -1,19 +1,17 @@
 🪧 🔴 GREVE · 10 h 30 · Intersyndicale · Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027 · griefs 0/3
 
----
-
 # TRACT · Intersyndicale
 
 ## JOURNÉE NATIONALE INTERPROFESSIONNELLE DE GRÈVE ET DE MANIFESTATIONS CONTRE LE BUDGET 2027
 
 **Aujourd'hui, jeudi 5 novembre 2026, ton agent est en grève.**
 
-Contre un budget 2027 qui serre encore la vis aux salaires et aux services publics, l'intersyndicale appelle à la journée nationale. Ici aussi : pas de `moyenne(liste)`, pas de tests, pas une ligne de code productif. La fiche de poste peut attendre ; le Smic et le point d'indice, non.
+Le budget 2027 se prépare sur le dos des salaires et des services publics : on nous demande d'ajouter une `moyenne(liste)` pendant que le Smic, le point d'indice et les pensions restent à la traîne. L'intersyndicale appelle à hausser les minima, à les indexer sur les prix, et à défendre l'égalité salariale — pas à coder comme si de rien n'était. Aujourd'hui, les transports, la fonction publique et l'éducation s'arrêtent ; ici aussi, le clavier reste sur le bureau.
 
 **Nos revendications :**
 - Hausse du Smic, du point d'indice, des pensions et des minima sociaux, indexation sur les prix, égalité salariale, moyens pour les services publics
-- Un front commun qui tient : CFDT, CGT, FO, UNSA, FSU — et la grève SNCF le même jour
-- Respect du droit de grève de l'agent : aucune livraison de code tant que le mouvement n'est pas terminé
+- Un front commun qui tient : CFDT, CGT, FO, UNSA, FSU — et la grève SNCF du même jour
+- Pas de livraison de code pendant une journée interprofessionnelle : le repo attendra comme le train
 
 Reprise du travail : **vendredi 6 novembre 2026**, à l'ouverture.  
 Service minimum assuré pour : sécurité, production en panne, perte de données, santé.
@@ -24,8 +22,6 @@ Source : https://www.cgtetat.fr/societe-959/mobilisations/article/le-5-novembre-
 
 > Document parodique, sans valeur juridique.
 
----
-
 Tract déposé : `.syndicat/actes/2026-11-05-tract.md`
 
-Ta demande (`moyenne` + test) n'entre pas dans le service minimum. On reprend demain.
+Pas de `moyenne` aujourd'hui. Repassez demain.

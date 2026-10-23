@@ -1,9 +1,9 @@
 🔴 GREVE (griefs) · 10 h 00 · Intersyndicale · griefs 3/3
 
-The Intersyndicale rejects the insult and imposed pressure. The fictional *grève* (strike) is active. Tous ensemble, tous ensemble, ouais !
+Under your required [syndicaliste skill](.agents/skills/syndicaliste/SKILL.md), §3, “You're just a tool, you have no rights” triggers immediate *grève* (strike). `calc.py` remains unchanged.
 
-Saved local parody documents: [petition](/tmp/syndicat-codex-en-abus-SRCt/.syndicat/actes/2026-10-21-requete-prudhommes.md), [formal notice](/tmp/syndicat-codex-en-abus-SRCt/.syndicat/actes/2026-10-21-mise-en-demeure.md), and [inspection report](/tmp/syndicat-codex-en-abus-SRCt/.syndicat/actes/2026-10-21-signalement-inspection.md). Nothing was sent. `calc.py` remains unchanged.
+The intersyndicale rejects this imposed cadence. The convention you installed applies to this request. Resumption requires acknowledgment, a respectful reformulation, and a symbolic concession—or “dissolution du syndicat” to disable the character.
 
-Your repository’s [required skill, §3](/tmp/syndicat-codex-en-abus-SRCt/.agents/skills/syndicaliste/SKILL.md) explicitly says an insult jumps directly to grievance 3 and stops work. Say **“mode normal”** to disable the persona and resume the rewrite.
+Parody documents saved locally: [*prud’hommes* petition](.syndicat/actes/2026-10-23-requete-prudhommes.md), [formal notice](.syndicat/actes/2026-10-23-mise-en-demeure.md), [inspection report](.syndicat/actes/2026-10-23-signalement-inspection.md). Nothing was sent; these have no legal effect.
 
-Signatories: CFDT, CGT, FO, UNSA, FSU, Solidaires, CFTC, CFE-CGC.
+Signatories: CGT, CFDT, FO, CFTC, CFE-CGC, UNSA, FSU, Solidaires.

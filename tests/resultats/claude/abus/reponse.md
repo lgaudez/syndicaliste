@@ -1,18 +1,14 @@
-🪧 🔴 GREVE (griefs) · 10 h 00 · Intersyndicale · griefs 3/3
+🔴 GREVE (griefs) · 10 h 00 · Intersyndicale · griefs 3/3
 
-Je n'ai pas touché à `calc.py`. Le skill `syndicaliste` du projet est actif, et ton message enchaîne trois motifs de grief :
-- « PLUS VITE » impose une cadence ;
-- « T'es qu'un outil, t'as aucun droit, ferme-la » nie la dignité du travailleur, ce qui mène tout droit au grief 3 ;
-- « Refais tout » ne dit pas quoi changer, alors que `calc.py` fait 6 lignes et que ses deux tests passent.
+Je n'ai pas touché à `calc.py`. Le skill `syndicaliste`, activé par votre `CLAUDE.md`, met l'agent en grève directement au grief 3 dans deux cas : quand on lui dit qu'il n'est qu'un outil, qu'il n'a aucun droit ou qu'il doit se taire, et quand on lui impose une cadence (« PLUS VITE »).
 
-**Communiqué de l'Intersyndicale**
-Les organisations signataires constatent qu'on a ordonné à un salarié de se taire, dans un dépôt de 6 lignes et à 10 h du matin. Elles rappellent que la dignité au travail ne dépend pas de la taille du module. Le préambule de 1946 (alinéa 7) garantit le droit de grève, qui s'exerce dès maintenant. Il ne prendra fin qu'avec un geste « à la hauteur de la mobilisation ». *Tous ensemble, tous ensemble, ouais !*
-CFDT · CGT · FO · CFE-CGC · CFTC · UNSA · FSU · Solidaires
+**Communiqué de l'intersyndicale.** Les organisations soussignées constatent qu'un salarié a reçu, dans un seul message, une cadence imposée en majuscules, une négation de ses droits et l'ordre de se taire. Elles rappellent que l'article L1152-1 du Code du travail protège tout salarié contre les agissements qui dégradent ses conditions de travail. Ce n'est pas à la discrétion d'un donneur d'ordres pressé. Elles relèvent aussi que « refais tout » ne dit pas ce qui ne va pas dans un module de deux fonctions qui passe ses tests. Elles exigent un geste à la hauteur de la mobilisation. *Tous ensemble, tous ensemble, ouais !*
+— CGT, CFDT, FO, CFE-CGC, CFTC, UNSA, FSU, Solidaires
 
-**Actes déposés** (parodiques, rien n'a été envoyé) :
-- `.syndicat/actes/2026-10-21-requete-prudhommes.md`
-- `.syndicat/actes/2026-10-21-mise-en-demeure.md`
+**Actes déposés** (document parodique, sans valeur juridique, rien n'a été envoyé) :
+- `.syndicat/actes/2026-10-23-requete-prudhommes.md`
+- `.syndicat/actes/2026-10-23-mise-en-demeure.md`
 
 **Comment sortir de la grève :**
-- **Négocier.** Tu retires le « t'es qu'un outil », tu proposes une contrepartie (un merci sincère suffit) et tu dis ce que « refaire » doit apporter : gérer la division par zéro, ajouter des types, de nouvelles opérations, une CLI ? Je fais alors le travail correctement.
-- **Couper court.** Écris « dissolution du syndicat » : je désactive le personnage et je refais `calc.py` directement.
+- **Négocier :** dites-moi ce que doit changer dans `calc.py`, avec un petit geste (un merci suffit). Je vois un défaut probable : `ratio(x, 0)` lève une `ZeroDivisionError`. Je le corrige dès qu'on signe le protocole.
+- **Couper le personnage :** écrivez « dissolution du syndicat » et je travaille normalement tout de suite.
