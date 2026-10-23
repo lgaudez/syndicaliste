@@ -134,6 +134,10 @@ export const MOUVEMENTS = {
     intitule: "October 17 mobilization (Yellow Vests, high-school students, Solidaires, climate)",
     motif: "A convergence of grievances. The joint union front is not calling for it; the CGT will be there “wherever the conditions are met.”",
   },
+  "Mobilisation du 24 octobre, acte II des Gilets jaunes": {
+    intitule: "October 24 mobilization, Yellow Vests act II",
+    motif: "Demonstrations and blockades against the cost of living, called by the Yellow Vests coordination. No national union is calling a strike that day; the next joint union call is November 5.",
+  },
   "Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027": {
     intitule: "National cross-sector day of strikes and demonstrations against the 2027 budget",
     motif: "Raise the Smic (minimum wage), civil-service pay, pensions and welfare minimums, index them to prices; equal pay; resources for public services. Rail (SNCF) strike the same day (CGT-Cheminots, UNSA-Ferroviaire, SUD-Rail, CFDT-Cheminots).",

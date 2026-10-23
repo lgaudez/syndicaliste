@@ -1,5 +1,5 @@
 {
-  "maj": "2026-10-20",
+  "maj": "2026-10-23",
   "_note": "Calendrier embarqué. La pointeuse le fusionne avec https://syndicaliste.pages.dev/api/greves.json quand le réseau répond. Ajoutez un mouvement par PR.",
   "mouvements": [
     {
@@ -71,6 +71,16 @@
       ],
       "motif": "Convergence des colères. L'intersyndicale n'appelle pas ; la CGT vient « partout où les conditions sont réunies ».",
       "source": "https://www.france24.com/fr/france/20261016-france-gilets-jaunes-lyceens-syndicats-a-quoi-va-ressembler-la-mobilisation-du-17-octobre"
+    },
+    {
+      "debut": "2026-10-24",
+      "fin": "2026-10-24",
+      "intitule": "Mobilisation du 24 octobre, acte II des Gilets jaunes",
+      "interpro": false,
+      "secteurs": [],
+      "appelants": [],
+      "motif": "Manifestations et blocages contre la vie chère, à l'appel de la coordination des Gilets jaunes. Aucun syndicat national n'appelle à la grève ce jour-là ; le prochain appel intersyndical est le 5 novembre.",
+      "source": "https://lebonbon.fr/paris/news/apres-17-octobre-deux-nouvelles-manifestations-24-31-octobre/"
     },
     {
       "debut": "2026-11-05",
