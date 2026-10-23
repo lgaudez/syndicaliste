@@ -3,7 +3,7 @@
 import { $, $$, el } from "./outils.js";
 
 // Identifiants YouTube à remplir à la publication (la partie après « v= »). Vide : le bloc reste masqué.
-export const YOUTUBE = { fr: "", en: "" };
+export const YOUTUBE = { fr: "PxJbrbEQRGs", en: "" };
 
 for (const bloc of $$("[data-youtube]")) {
   const id = YOUTUBE[bloc.dataset.youtube];

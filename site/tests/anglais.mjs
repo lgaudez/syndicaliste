@@ -13,7 +13,7 @@ const { mouvements } = JSON.parse(lire("../skills/syndicaliste/data/greves.json"
 // Exceptions, chacune pour une raison :
 const AUTORISES = [
   // noms propres, marques, titre de la chanson
-  "Syndicaliste", "Mon Ami", "mon ami", "Légifrance", "code.travail.gouv.fr", "Gaudez Tech Lab", "Marquis de Lafayette", "Lafayette", "Le Chat", "rue de Chazelles", "de facto",
+  "Syndicaliste", "Mon Ami", "mon ami", "Pas après 17 heures", "Légifrance", "code.travail.gouv.fr", "Gaudez Tech Lab", "Marquis de Lafayette", "Lafayette", "Le Chat", "rue de Chazelles", "de facto",
   // crédits des œuvres (noms d'artistes et de musées)
   "Joseph-Désiré Court", "Jean-Jacques-François Le Barbier", "Musée Carnavalet",
   // noms officiels des syndicats, en VO, suivis de leur traduction
