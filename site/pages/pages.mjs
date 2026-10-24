@@ -1,5 +1,5 @@
 // Table unique des pages : pilote le menu, la bascule de langue, le sitemap et les redirections d'anciennes ancres.
-export const SITE = "https://syndicaliste.pages.dev";
+export const SITE = "https://syndicaliste.gaudeztechlab.com";
 export const DEPOT = "https://github.com/lgaudez/syndicaliste";
 export const LANGUES = ["fr", "en"];
 

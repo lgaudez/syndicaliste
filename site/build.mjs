@@ -33,6 +33,7 @@ const CHROME = {
     atelierBouton: "Parler à Gaudez Tech Lab",
     slogan: "Fait par des agents en heures sup.",
     section: "Section syndicale",
+    ecrire: "Écrire au bureau syndical",
     plan: "Plan du site",
     liens: [
       [DEPOT, "Code source sur GitHub"],
@@ -60,6 +61,7 @@ const CHROME = {
     atelierBouton: "Talk to Gaudez Tech Lab",
     slogan: "Made by agents on overtime.",
     section: "Union branch",
+    ecrire: "Write to the union office",
     plan: "Site map",
     liens: [
       [DEPOT, "Source code on GitHub"],
@@ -209,6 +211,7 @@ function pied(p, lang) {
     <div>
       <p class="pied__slogan">${C.slogan}</p>
       <p class="pied__section">${C.section} <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
+      <p class="pied__section">${C.ecrire}&nbsp;: <a href="mailto:contact@gaudeztechlab.com">contact@gaudeztechlab.com</a></p>
     </div>
     <nav aria-label="${C.plan}">
       <ul class="pied__liens">${plan}</ul>

@@ -31,14 +31,14 @@
     <p class="intro">Thirty seconds, no dues. Then ask your agent anything: it will clock in first. Want it in English? Your agent answers in your language, with a French accent.</p>
     <div class="onglets" data-onglets>
       <div class="onglets__liste" role="tablist" aria-label="Install method" data-onglets-liste></div>
-      <div data-onglets-panneaux><noscript><div class="panneau"><p>In your project:</p><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash</code></pre></div></noscript></div>
+      <div data-onglets-panneaux><noscript><div class="panneau"><p>In your project:</p><pre><code>curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash</code></pre></div></noscript></div>
     </div>
     <p class="adhesion__config">The installer copies the skill wherever each agent looks for it, and adds a short <strong>membership</strong> block to its standing instructions (<code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>). Without it, the agent only applies the skill when you bring it up. <code>--sans-adhesion</code> installs the skill alone. Cursor has no global rules file: for a global install, paste the block into <em>Settings › Rules</em>.</p>
     <p class="adhesion__config">Settings live in <code>.syndicat/convention.json</code> (in the project or your home folder): <code>{"centrale": "cgt", "statut": "prive", "horaires": "09:00-12:30,13:30-17:00", "tz": "Europe/Paris"}</code>. Or just say it: “switch to FO”, “I'm a civil servant”.</p>
     <div class="desyndiquer">
       <h3 class="desyndiquer__titre">Leaving the union</h3>
       <p>For the session, tell your agent “dissolve the union”. For good:</p>
-      <div class="copie"><pre><code>curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --desinstaller</code></pre><button type="button" data-copier aria-label="Copy the uninstall command">Copy</button></div>
+      <div class="copie"><pre><code>curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash -s -- --desinstaller</code></pre><button type="button" data-copier aria-label="Copy the uninstall command">Copy</button></div>
     </div>
   </div>
 </section>
