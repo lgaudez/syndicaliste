@@ -1,6 +1,6 @@
 {
   "maj": "2026-10-23",
-  "_note": "Calendrier embarqué. La pointeuse le fusionne avec https://syndicaliste.dev/api/greves.json quand le réseau répond. Ajoutez un mouvement par PR.",
+  "_note": "Calendrier embarqué. La pointeuse le fusionne avec https://syndicaliste.gaudeztechlab.com/api/greves.json quand le réseau répond. Ajoutez un mouvement par PR.",
   "mouvements": [
     {
       "debut": "2026-09-29",

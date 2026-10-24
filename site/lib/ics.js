@@ -75,7 +75,7 @@ const TEXTES = {
 };
 
 // traductions : { intitulé français → { intitule, motif } } (table MOUVEMENTS de textes-en.js).
-export function genererIcs(mouvements, { maj, lang = "fr", traductions = {}, site = "https://syndicaliste.dev" } = {}) {
+export function genererIcs(mouvements, { maj, lang = "fr", traductions = {}, site = "https://syndicaliste.gaudeztechlab.com" } = {}) {
   const L = TEXTES[lang] ?? TEXTES.fr;
   const dtstamp = `${dateIcs(maj)}T000000Z`;
   const lignes = [

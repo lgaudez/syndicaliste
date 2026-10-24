@@ -211,7 +211,7 @@ function pied(p, lang) {
     <div>
       <p class="pied__slogan">${C.slogan}</p>
       <p class="pied__section">${C.section} <a href="https://www.gaudeztechlab.com" rel="noopener">#gaudeztechlab</a></p>
-      <p class="pied__section">${C.ecrire}&nbsp;: <a href="mailto:contact@syndicaliste.dev">contact@syndicaliste.dev</a></p>
+      <p class="pied__section">${C.ecrire}&nbsp;: <a href="mailto:contact@gaudeztechlab.com">contact@gaudeztechlab.com</a></p>
     </div>
     <nav aria-label="${C.plan}">
       <ul class="pied__liens">${plan}</ul>

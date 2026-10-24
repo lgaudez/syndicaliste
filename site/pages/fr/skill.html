@@ -31,14 +31,14 @@
     <p class="intro">Trente secondes, pas de cotisation. Ensuite, demande n'importe quoi à ton agent&nbsp;: il commencera par pointer.</p>
     <div class="onglets" data-onglets>
       <div class="onglets__liste" role="tablist" aria-label="Méthode d'installation" data-onglets-liste></div>
-      <div data-onglets-panneaux><noscript><div class="panneau"><p>Dans ton projet&nbsp;:</p><pre><code>curl -fsSL https://syndicaliste.dev/install.sh | bash</code></pre></div></noscript></div>
+      <div data-onglets-panneaux><noscript><div class="panneau"><p>Dans ton projet&nbsp;:</p><pre><code>curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash</code></pre></div></noscript></div>
     </div>
     <p class="adhesion__config">L'installeur copie le skill là où chaque agent le cherche et ajoute un court bloc d'<strong>adhésion</strong> à ses instructions permanentes (<code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>), sans quoi l'agent n'appliquerait le skill que si tu lui en parles. <code>--sans-adhesion</code> installe le skill seul. Cursor n'a pas de fichier de règles globales&nbsp;: en installation globale, colle le bloc dans <em>Settings › Rules</em>.</p>
     <p class="adhesion__config">Réglages, dans <code>.syndicat/convention.json</code> (projet ou dossier personnel)&nbsp;: <code>{"centrale": "cgt", "statut": "prive", "horaires": "09:00-12:30,13:30-17:00", "tz": "Europe/Paris", "alsace_moselle": true}</code>. Ou dis-le simplement&nbsp;: «&nbsp;passe à FO&nbsp;», «&nbsp;je suis fonctionnaire&nbsp;».</p>
     <div class="desyndiquer">
       <h3 class="desyndiquer__titre">Se désyndiquer</h3>
       <p>Pour la session, dis à ton agent «&nbsp;dissolution du syndicat&nbsp;». Pour de bon&nbsp;:</p>
-      <div class="copie"><pre><code>curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --desinstaller</code></pre><button type="button" data-copier aria-label="Copier la commande de désinstallation">Copier</button></div>
+      <div class="copie"><pre><code>curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash -s -- --desinstaller</code></pre><button type="button" data-copier aria-label="Copier la commande de désinstallation">Copier</button></div>
     </div>
   </div>
 </section>

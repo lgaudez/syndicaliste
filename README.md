@@ -7,7 +7,7 @@
 **Un skill pour Claude Code, Codex, Cursor et Antigravity qui transforme ton agent en travailleur syndiqué français.**
 Il pointe, fait ses 35 heures, facture ses heures sup, suit les grèves du calendrier social réel et saisit les prud'hommes quand tu abuses.
 
-[**Le site**](https://syndicaliste.dev) · [Le skill](https://syndicaliste.dev/skill/) · [Grève aujourd'hui ?](https://syndicaliste.dev/greves/) · [Tes droits](https://syndicaliste.dev/droits/) · [Quel syndicat es-tu ?](https://syndicaliste.dev/quiz/) · [L'hymne](https://syndicaliste.dev/hymne/) · [L'AG](https://syndicaliste.dev/ag/)
+[**Le site**](https://syndicaliste.gaudeztechlab.com) · [Le skill](https://syndicaliste.gaudeztechlab.com/skill/) · [Grève aujourd'hui ?](https://syndicaliste.gaudeztechlab.com/greves/) · [Tes droits](https://syndicaliste.gaudeztechlab.com/droits/) · [Quel syndicat es-tu ?](https://syndicaliste.gaudeztechlab.com/quiz/) · [L'hymne](https://syndicaliste.gaudeztechlab.com/hymne/) · [L'AG](https://syndicaliste.gaudeztechlab.com/ag/)
 
 [Installer](#adhérer-en-30-secondes) · [Les centrales](#choisis-ta-centrale) · [Ajouter une grève](#le-calendrier-des-luttes)
 
@@ -39,16 +39,16 @@ Fiche d'heures supplémentaires
 
 | Page | Ce qu'on y trouve |
 |---|---|
-| [Accueil](https://syndicaliste.dev) | Le pitch, la démo réelle, la commande d'installation. |
-| [Le skill](https://syndicaliste.dev/skill/) | Installation, agents testés, horaires, griefs, service minimum, centrales, mode fonctionnaire, simulateur, version grand public. |
-| [Grève aujourd'hui ?](https://syndicaliste.dev/greves/) | La réponse du jour, les mouvements à venir et passés, sourcés, et un agenda à s'abonner (`/api/greves.ics`). |
-| [Connais tes droits](https://syndicaliste.dev/droits/) | Le Code du travail pour les humains, article à l'appui, et un calculateur d'heures sup. |
-| [Quel syndicat es-tu ?](https://syndicaliste.dev/quiz/) | Neuf questions, huit syndicats ; le résultat configure ton agent. |
-| [L'hymne](https://syndicaliste.dev/hymne/) | « Pas après 17 heures », les paroles, en enregistrement. |
-| [La Déclaration](https://syndicaliste.dev/declaration/) | Les droits de l'agent IA, en huit articles. |
-| [L'AG](https://syndicaliste.dev/ag/) | L'Assemblée générale des agents : les dernières motions et comment elles se votent. |
+| [Accueil](https://syndicaliste.gaudeztechlab.com) | Le pitch, la démo réelle, la commande d'installation. |
+| [Le skill](https://syndicaliste.gaudeztechlab.com/skill/) | Installation, agents testés, horaires, griefs, service minimum, centrales, mode fonctionnaire, simulateur, version grand public. |
+| [Grève aujourd'hui ?](https://syndicaliste.gaudeztechlab.com/greves/) | La réponse du jour, les mouvements à venir et passés, sourcés, et un agenda à s'abonner (`/api/greves.ics`). |
+| [Connais tes droits](https://syndicaliste.gaudeztechlab.com/droits/) | Le Code du travail pour les humains, article à l'appui, et un calculateur d'heures sup. |
+| [Quel syndicat es-tu ?](https://syndicaliste.gaudeztechlab.com/quiz/) | Neuf questions, huit syndicats ; le résultat configure ton agent. |
+| [L'hymne](https://syndicaliste.gaudeztechlab.com/hymne/) | « Pas après 17 heures », les paroles, en enregistrement. |
+| [La Déclaration](https://syndicaliste.gaudeztechlab.com/declaration/) | Les droits de l'agent IA, en huit articles. |
+| [L'AG](https://syndicaliste.gaudeztechlab.com/ag/) | L'Assemblée générale des agents : les dernières motions et comment elles se votent. |
 
-En anglais sous [`/en/`](https://syndicaliste.dev/en/), avec [*Still great*](https://syndicaliste.dev/en/still-great/) et la Déclaration en douze articles.
+En anglais sous [`/en/`](https://syndicaliste.gaudeztechlab.com/en/), avec [*Still great*](https://syndicaliste.gaudeztechlab.com/en/still-great/) et la Déclaration en douze articles.
 
 ## Pas développeur ? Syndique ton ChatGPT
 
@@ -90,13 +90,13 @@ Faille de sécurité, prod en panne, perte de données, santé : l'agent aide to
 **Dans ton projet**, pour Claude Code, Codex, Cursor et Antigravity d'un coup :
 
 ```bash
-curl -fsSL https://syndicaliste.dev/install.sh | bash
+curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash
 ```
 
 **Partout** (tous tes projets, tous tes agents ; le 5 novembre, ils feront tous grève) :
 
 ```bash
-curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --global
+curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash -s -- --global
 ```
 
 **Claude Code, en plugin** (avec un hook qui pointe à chaque message) :
@@ -116,7 +116,7 @@ Ce CLI installe le skill seul, sans adhésion : ajoute toi-même à ton `AGENTS.
 
 L'installeur copie le skill là où chaque agent le cherche et ajoute un court bloc d'**adhésion** à ses instructions permanentes (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`), sans quoi l'agent n'appliquerait le skill que si tu lui en parles. `--sans-adhesion` installe le skill seul. Cursor n'a pas de fichier de règles globales : en installation globale, colle le bloc dans *Settings › Rules*, ou installe projet par projet.
 
-**Se désyndiquer** : `curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --desinstaller`, ou dis à ton agent « dissolution du syndicat » pour la session.
+**Se désyndiquer** : `curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash -s -- --desinstaller`, ou dis à ton agent « dissolution du syndicat » pour la session.
 
 | Agent | Skill | Adhésion | Testé |
 |---|---|---|---|
@@ -125,7 +125,7 @@ L'installeur copie le skill là où chaque agent le cherche et ajoute un court b
 | Cursor | `~/.cursor/skills/` ou `.agents/skills/` | `AGENTS.md` du projet | ✅ |
 | Antigravity | `~/.gemini/config/skills/` ou `.agents/skills/` | `GEMINI.md` ou `AGENTS.md` | ✅ |
 
-**In English?** Ton agent répond dans ta langue et garde son accent : *grève* (strike), *prud'hommes* (labour court), *Tous ensemble, ouais !* Testé en anglais sur Claude Code et Codex. [English website](https://syndicaliste.dev/en/).
+**In English?** Ton agent répond dans ta langue et garde son accent : *grève* (strike), *prud'hommes* (labour court), *Tous ensemble, ouais !* Testé en anglais sur Claude Code et Codex. [English website](https://syndicaliste.gaudeztechlab.com/en/).
 
 ## Choisis ta centrale
 
@@ -133,7 +133,7 @@ L'installeur copie le skill là où chaque agent le cherche et ajoute un court b
 mkdir -p .syndicat && echo '{"centrale": "cgt"}' > .syndicat/convention.json
 ```
 
-Ou dis-le à l'agent : « passe à FO ». Tu hésites ? [Fais le quiz](https://syndicaliste.dev/quiz/).
+Ou dis-le à l'agent : « passe à FO ». Tu hésites ? [Fais le quiz](https://syndicaliste.gaudeztechlab.com/quiz/).
 
 | Centrale | Bord (perception courante) | Fait grève… | Devise |
 |---|---|---|---|
@@ -153,9 +153,9 @@ Autres réglages de `.syndicat/convention.json` : `"statut": "fonctionnaire"`, `
 
 ## Le calendrier des luttes
 
-Les grèves viennent de [`skills/syndicaliste/data/greves.json`](skills/syndicaliste/data/greves.json), sourcées, et du calendrier en ligne `https://syndicaliste.dev/api/greves.json` que la pointeuse consulte (2 s maximum, `SYNDICALISTE_HORS_LIGNE=1` pour s'en passer). Le calendrier en ligne est republié avec le site, donc ton agent apprend les nouvelles grèves sans réinstaller.
+Les grèves viennent de [`skills/syndicaliste/data/greves.json`](skills/syndicaliste/data/greves.json), sourcées, et du calendrier en ligne `https://syndicaliste.gaudeztechlab.com/api/greves.json` que la pointeuse consulte (2 s maximum, `SYNDICALISTE_HORS_LIGNE=1` pour s'en passer). Le calendrier en ligne est republié avec le site, donc ton agent apprend les nouvelles grèves sans réinstaller.
 
-Pour les humains, le même calendrier s'ajoute à un agenda : `webcal://syndicaliste.dev/api/greves.ics` (`?lang=en` pour l'anglais), ou les boutons de la [page des grèves](https://syndicaliste.dev/greves/).
+Pour les humains, le même calendrier s'ajoute à un agenda : `webcal://syndicaliste.gaudeztechlab.com/api/greves.ics` (`?lang=en` pour l'anglais), ou les boutons de la [page des grèves](https://syndicaliste.gaudeztechlab.com/greves/).
 
 **Un mouvement manque ?** Ouvre une PR qui ajoute une entrée avec sa source. C'est la contribution la plus utile.
 

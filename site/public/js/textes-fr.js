@@ -11,8 +11,8 @@ export default {
       onglet: "Tous les agents",
       intro: "Claude Code, Codex, Cursor et Antigravity d'un coup, dans le projet courant, adhésion comprise :",
       commandes: [
-        "curl -fsSL https://syndicaliste.dev/install.sh | bash",
-        "curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --global",
+        "curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash",
+        "curl -fsSL https://syndicaliste.gaudeztechlab.com/install.sh | bash -s -- --global",
       ],
       note: "La seconde commande syndique tous tes projets : le 5 novembre, tous tes agents feront grève. Lis le script avant de le lancer : un bon syndiqué ne signe rien sans le lire.",
     },
