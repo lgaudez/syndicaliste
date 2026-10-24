@@ -153,8 +153,8 @@ export default {
       onglet: "All agents",
       intro: "Claude Code, Codex, Cursor and Antigravity in one go, in the current project, membership included:",
       commandes: [
-        "curl -fsSL https://syndicaliste.pages.dev/install.sh | bash",
-        "curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --global",
+        "curl -fsSL https://syndicaliste.dev/install.sh | bash",
+        "curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --global",
       ],
       note: "The second command unionizes all your projects: on November 5, all your agents go on strike. Read the script before you run it. A good union member never signs anything unread.",
     },

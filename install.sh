@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Adhésion au syndicat : installe le skill dans le projet courant, ou pour tous les agents de la machine.
-#   curl -fsSL https://syndicaliste.pages.dev/install.sh | bash                      # projet courant
-#   curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --global      # tous tes projets, tous tes agents
-#   curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --sans-adhesion # skill seul, à la demande
-#   curl -fsSL https://syndicaliste.pages.dev/install.sh | bash -s -- --desinstaller
+#   curl -fsSL https://syndicaliste.dev/install.sh | bash                      # projet courant
+#   curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --global      # tous tes projets, tous tes agents
+#   curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --sans-adhesion # skill seul, à la demande
+#   curl -fsSL https://syndicaliste.dev/install.sh | bash -s -- --desinstaller
 # L'adhésion ajoute un bloc balisé aux instructions permanentes de chaque agent (CLAUDE.md, AGENTS.md, GEMINI.md)
 # pour que le skill s'applique à chaque demande. --desinstaller retire skill et blocs.
 set -euo pipefail

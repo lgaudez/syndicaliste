@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://syndicaliste.pages.dev/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/"/>
+    <loc>https://syndicaliste.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/"/>
+    <loc>https://syndicaliste.dev/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/skill/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/skill/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/skill/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/skill/"/>
+    <loc>https://syndicaliste.dev/skill/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/skill/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/skill/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/skill/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/skill/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/skill/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/skill/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/skill/"/>
+    <loc>https://syndicaliste.dev/en/skill/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/skill/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/skill/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/skill/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/greves/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/greves/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/strikes/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/greves/"/>
+    <loc>https://syndicaliste.dev/greves/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/greves/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/strikes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/greves/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/strikes/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/greves/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/strikes/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/greves/"/>
+    <loc>https://syndicaliste.dev/en/strikes/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/greves/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/strikes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/greves/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/droits/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/droits/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/rights/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/droits/"/>
+    <loc>https://syndicaliste.dev/droits/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/droits/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/rights/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/droits/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/rights/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/droits/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/rights/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/droits/"/>
+    <loc>https://syndicaliste.dev/en/rights/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/droits/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/rights/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/droits/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/quiz/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/quiz/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/quiz/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/quiz/"/>
+    <loc>https://syndicaliste.dev/quiz/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/quiz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/quiz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/quiz/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/quiz/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/quiz/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/quiz/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/quiz/"/>
+    <loc>https://syndicaliste.dev/en/quiz/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/quiz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/quiz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/quiz/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/hymne/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/hymne/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/anthem/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/hymne/"/>
+    <loc>https://syndicaliste.dev/hymne/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/hymne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/anthem/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/hymne/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/anthem/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/hymne/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/anthem/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/hymne/"/>
+    <loc>https://syndicaliste.dev/en/anthem/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/hymne/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/anthem/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/hymne/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/declaration/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/declaration/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/still-great/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/declaration/"/>
+    <loc>https://syndicaliste.dev/declaration/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/declaration/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/still-great/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/declaration/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/still-great/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/declaration/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/still-great/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/declaration/"/>
+    <loc>https://syndicaliste.dev/en/still-great/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/declaration/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/still-great/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/declaration/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/ag/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/ag/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/assembly/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/ag/"/>
+    <loc>https://syndicaliste.dev/ag/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/ag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/assembly/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/ag/"/>
   </url>
   <url>
-    <loc>https://syndicaliste.pages.dev/en/assembly/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.pages.dev/ag/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.pages.dev/en/assembly/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.pages.dev/ag/"/>
+    <loc>https://syndicaliste.dev/en/assembly/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://syndicaliste.dev/ag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://syndicaliste.dev/en/assembly/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://syndicaliste.dev/ag/"/>
   </url>
 </urlset>
