@@ -43,8 +43,8 @@ const CHROME = {
       ["/img/CREDITS.md", "Crédits des images"],
     ],
     mention: "Parodie. Aucun lien avec les organisations syndicales citées, que nous caricaturons avec tendresse. Les actes produits par l'agent portent la mention «&nbsp;Document parodique, sans valeur juridique&nbsp;» et ne partent jamais nulle part. Aucun agent n'a été maltraité pendant la fabrication de ce site. Enfin si.",
-    ogAlt: "Affiche rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.",
-    ogAltSansMots: "Affiche rouge : SYNDICALISTE, avec un mégaphone et un tampon GRÈVE.",
+    ogAlt: "Affiche crème et rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.",
+    ogAltSansMots: "Affiche crème et rouge : SYNDICALISTE, avec un mégaphone et un tampon GRÈVE.",
     locale: "fr_FR",
   },
   en: {
@@ -71,8 +71,8 @@ const CHROME = {
       ["/img/CREDITS.md", "Image credits"],
     ],
     mention: "Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces carry a “parody, no legal value” notice and are never sent anywhere. No agent was mistreated in the making of this site. Well, a little.",
-    ogAlt: "Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.",
-    ogAltSansMots: "Red protest poster: SYNDICALISTE, with a megaphone and an ON STRIKE stamp.",
+    ogAlt: "Cream and red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.",
+    ogAltSansMots: "Cream and red protest poster: SYNDICALISTE, with a megaphone and an ON STRIKE stamp.",
     locale: "en_US",
   },
 };
@@ -130,8 +130,8 @@ const INCLUSIONS = {
   centrales: (lang) => {
     const T = TEXTES[lang];
     const tete = lang === "en"
-      ? ["Union", "Leaning (common perception)", "Strikes…", "Motto"]
-      : ["Syndicat", "Bord (perception courante)", "Fait grève…", "Devise"];
+      ? ["Union", "Leaning (common perception)", "Strikes: the agent’s roleplay", "Agent motto (fiction)"]
+      : ["Syndicat", "Bord (perception courante)", "Grève : rôle joué par l’agent", "Slogan de l’agent (fiction)"];
     const lignes = Object.entries(CENTRALES).sort((a, b) => a[1].axe - b[1].axe).map(([cle, brute]) => {
       const c = T.centrale(cle, brute);
       return `<tr><th scope="row">${T.sigle(cle)}<br><code>${cle}</code></th><td>${echapper(c.bord)}</td><td>${echapper(doctrineEnClair(T, c.doctrine_greve))}</td><td>${echapper(T.ui.cite(c.devise))}</td></tr>`;
@@ -242,10 +242,10 @@ function document_(p, lang, corps) {
 <html lang="${lang}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>${echapper(titre)}</title>
   <meta name="description" content="${echapper(description)}">${est404 ? '\n  <meta name="robots" content="noindex">' : ""}
-  <meta name="theme-color" content="#d42a1e">
+  <meta name="theme-color" content="#171714">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">${alternates}
 
   <meta property="og:type" content="website">

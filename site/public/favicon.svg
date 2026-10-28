@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#d42a1e"/>
-  <g transform="rotate(-14 32 32)" fill="#000">
+  <rect width="64" height="64" rx="0" fill="#c8261a"/>
+  <g transform="rotate(-14 32 32)" fill="#f8f2e3">
     <rect x="7" y="27" width="10" height="11" rx="2"/>
     <polygon points="16,26 44,15 44,50 16,39"/>
     <rect x="42" y="13" width="5" height="39" rx="2"/>
     <polygon points="22,38 29,38 27,50 20,50"/>
   </g>
-  <g fill="none" stroke="#000" stroke-width="4" stroke-linecap="round">
+  <g fill="none" stroke="#f8f2e3" stroke-width="4" stroke-linecap="round">
     <path d="M52 18 q6 9 2 19"/>
     <path d="M57 11 q10 15 3 32"/>
   </g>
