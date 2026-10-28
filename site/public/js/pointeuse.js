@@ -149,6 +149,11 @@ export function momentDepuisIso(texte, tz) {
 }
 
 export function rejoint(centrale, doctrine, m) {
+  if (m.greve === false) return false;
+  if (m.sectoriel) {
+    if (doctrine === "toutes") return true;
+    return doctrine.startsWith("secteur:") && m.secteurs.some((s) => doctrine.slice("secteur:".length).split(",").includes(s));
+  }
   if (m.appelants.includes(centrale)) return true;
   if (doctrine === "toutes") return true;
   if (doctrine === "solidarite") return m.interpro || m.appelants.length >= 3;

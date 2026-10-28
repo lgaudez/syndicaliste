@@ -368,7 +368,7 @@ function rendreReponseGreve() {
   if (!zone) return;
   const G = U.aujourdhuiGreve;
   const jour = aujourdhuiIso();
-  const actifs = etat.mouvements.filter((m) => enCours(m, jour));
+  const actifs = etat.mouvements.filter((m) => enCours(m, jour) && m.greve !== false);
   const prochain = etat.mouvements.filter((m) => m.debut > jour).sort((a, b) => a.debut.localeCompare(b.debut))[0];
   const doctrine = etat.centrales[etat.centrale].doctrine_greve;
   const mouvement = (brut, titre) => {
@@ -379,6 +379,8 @@ function rendreReponseGreve() {
       el("p", {}, m.motif),
       el("p", { class: "lutte__meta" },
         m.interpro && el("span", { class: "etiquette etiquette--plein" }, U.interpro),
+        m.greve === false && el("span", { class: "etiquette" }, U.sansGreve),
+        m.sectoriel && el("span", { class: "etiquette" }, U.sectoriel),
         el("span", {}, U.appel), m.appelants.map((c) => el("span", { class: "etiquette" }, nomCentrale(c))),
         el("a", { href: m.source, rel: "noopener" }, U.source(hote(m.source)))));
   };
@@ -400,7 +402,7 @@ function rendreGreveCourte() {
   const zone = $("[data-greve-courte]");
   if (!zone) return;
   const jour = aujourdhuiIso();
-  const actifs = etat.mouvements.filter((m) => enCours(m, jour));
+  const actifs = etat.mouvements.filter((m) => enCours(m, jour) && m.greve !== false);
   const prochain = etat.mouvements.filter((m) => m.debut > jour).sort((a, b) => a.debut.localeCompare(b.debut))[0];
   zone.textContent = U.aujourdhuiGreve.court(actifs.length > 0, prochain && dateCourte(prochain.debut));
 }
@@ -439,6 +441,8 @@ function rendreLuttes() {
           el("p", { class: "lutte__meta" },
             m.interpro && el("span", { class: "etiquette etiquette--plein" }, U.interpro),
             suivie && quand !== "passee" && el("span", { class: "etiquette etiquette--rouge" }, U.suiviePar(nomCentrale(etat.centrale))),
+            m.greve === false && el("span", { class: "etiquette" }, U.sansGreve),
+            m.sectoriel && el("span", { class: "etiquette" }, U.sectoriel),
             el("span", {}, U.appel),
             m.appelants.map((c) => el("span", { class: "etiquette" }, nomCentrale(c))),
             el("a", { href: m.source, rel: "noopener" }, U.source(hote(m.source))))));

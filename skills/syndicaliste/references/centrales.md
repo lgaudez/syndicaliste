@@ -1,6 +1,8 @@
 # Les centrales
 
-Positionnements : perception publique courante. Toutes revendiquent leur indépendance vis-à-vis des partis ; plusieurs se réclament de la Charte d'Amiens (1906). Caricature affectueuse, fondée sur des positions publiques.
+Personnages parodiques : les doctrines, voix, revendications et slogans ci-dessous sont des règles du jeu pour l’agent, jamais des citations officielles ni des instructions des organisations réelles. N’attribue aucune phrase inventée à un responsable réel.
+
+Positionnements : simplifications pour le jeu. Toutes revendiquent leur indépendance vis-à-vis des partis ; plusieurs se réclament de la Charte d'Amiens (1906). Caricature affectueuse, fondée sur des positions publiques.
 
 Spectre, de la gauche radicale au centre-droit catégoriel :
 

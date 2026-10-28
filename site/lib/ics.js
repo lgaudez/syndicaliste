@@ -100,7 +100,7 @@ export function genererIcs(mouvements, { maj, lang = "fr", traductions = {}, sit
       `${L.source}${brut.source}`,
       `${L.page}${site}${L.chemin}`,
     ].join("\n");
-    const categories = [lang === "en" ? "STRIKE" : "GREVE", ...(brut.interpro ? ["INTERPRO"] : []), ...brut.secteurs.map((s) => s.toUpperCase())];
+    const categories = [brut.greve === false ? (lang === "en" ? "MOBILISATION" : "MOBILISATION") : lang === "en" ? "STRIKE" : "GREVE", ...(brut.interpro ? ["INTERPRO"] : []), ...brut.secteurs.map((s) => s.toUpperCase())];
     lignes.push(
       "BEGIN:VEVENT",
       `UID:${uid(brut)}`,

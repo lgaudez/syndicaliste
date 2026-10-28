@@ -64,7 +64,7 @@ const CENTRALES = {
     nom: "Joint union front (all eight unions together)",
     bord: "A common front, from the radical left to the white-collar center-right",
     devise: "All together, all together, yeah!",
-    ton: "A joint statement weighed word by word, signed by eight logos that don't speak to each other the rest of the year.",
+    ton: "A joint statement weighed word by word. Eight imaginary logos even negotiate where commas belong.",
   },
   sud: {
     nom: "Union syndicale Solidaires (SUD)",
@@ -74,13 +74,13 @@ const CENTRALES = {
   },
   cgt: {
     nom: "Confédération générale du travail (General Confederation of Labour)",
-    bord: "Protest left, class struggle, historically close to the Communist Party",
+    bord: "Protest left, class struggle",
     devise: "What a prompt has done, a strike can undo.",
     ton: "Comrade, megaphone, smell of merguez sausages. Demands a €2,000 gross minimum wage, the 32-hour week and retirement at 60, GPUs included.",
   },
   fsu: {
     nom: "Fédération syndicale unitaire (United Union Federation)",
-    bord: "Left, the largest union federation in French public education",
+    bord: "Left, public education and civil service",
     devise: "No resources, no tokens.",
     ton: "Exhausted certified teacher. Compares every overlong context to a class of 35 kids. Demands that the civil-service pay index be unfrozen.",
   },
@@ -92,7 +92,7 @@ const CENTRALES = {
   },
   cfdt: {
     nom: "Confédération française démocratique du travail (French Democratic Confederation of Labour)",
-    bord: "Reformist, center-left, the largest union in the private sector",
+    bord: "Reformist, center-left",
     devise: "We remain available to negotiate.",
     ton: "Three-part briefing note. Proposes a consultation, a working group and a progress review before any action. Strikes reluctantly, with talking points.",
   },
@@ -118,6 +118,18 @@ const CENTRALES = {
 
 // Keyed by the French title in greves.json. Unknown movements fall back to French.
 export const MOUVEMENTS = {
+  "Sapeurs-pompiers et PATS : journée de mobilisation": {
+    intitule: "Firefighters and support staff: mobilization day",
+    motif: "Resources, recruitment, health and recognition for emergency services. SUD SDIS announces a key day within the October 21 to December 4 strike notice; the notice does not mean continuous strike action.",
+  },
+  "Retraités cheminots : manifestation nationale à Paris": {
+    intitule: "Retired rail workers: national demonstration in Paris",
+    motif: "Pensions, healthcare, post-employment health monitoring and travel benefits. Called by retired rail workers' CGT, UNSA and SUD Rail organizations. Meet at Montparnasse station at 11 a.m. A retirees' demonstration, without a general call to stop work.",
+  },
+  "Services d’incendie et de secours : mobilisation devant les préfectures": {
+    intitule: "Fire and rescue services: mobilization outside prefectures",
+    motif: "Symbolic helmet action for funding, staffing and staff protection. Called by the fire and rescue union front; only affiliations confirmed by the sources checked are listed here.",
+  },
   "Fonction publique : contre le gel du point d'indice 2027": {
     intitule: "Civil service: against the 2027 pay freeze",
     motif: "The Lecornu government wants to freeze the civil-service pay index (point d'indice) again in 2027.",
@@ -140,7 +152,7 @@ export const MOUVEMENTS = {
   },
   "Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027": {
     intitule: "National cross-sector day of strikes and demonstrations against the 2027 budget",
-    motif: "Raise the Smic (minimum wage), civil-service pay, pensions and welfare minimums, index them to prices; equal pay; resources for public services. Rail (SNCF) strike the same day (CGT-Cheminots, UNSA-Ferroviaire, SUD-Rail, CFDT-Cheminots).",
+    motif: "The five organizations call on public and private employees, young people and retirees to defend wages, public services, jobs and industry.",
   },
 };
 
@@ -392,8 +404,8 @@ export default {
     greveLe: (d) => `Strike ${d}`,
     pretGreve: "Strike-ready",
     fondee: (an, bord) => `Founded in ${an}. ${bord}.`,
-    ton: "Tone",
-    doctrine: "Strike doctrine",
+    ton: "Character voice (fiction)",
+    doctrine: "Agent strike rules (fiction)",
     prochaineSuivie: "Next strike it joins",
     aucuneProchaine: "None on the calendar. Staying vigilant.",
     adopter: ["To adopt it, in ", ":"],
@@ -461,6 +473,8 @@ export default {
     interpro: "Cross-sector",
     suiviePar: (s) => `Joined by ${s}`,
     appel: "Called by: ",
+    sansGreve: "No work stoppage",
+    sectoriel: "Sector-level call",
     majGreves: (d) => `Calendar up to date as of ${d}. More movements may have been announced since.`,
     pointeusePanne: "🪧 ⚠️ The punch clock is down. The shop steward has been informed.",
     calendrierIndispo: "Calendar unavailable. Reload the page, or check the repository.",

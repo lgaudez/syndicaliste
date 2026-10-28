@@ -37,6 +37,15 @@ class Regimes(unittest.TestCase):
         for c in ("intersyndicale", "cgt", "cfdt", "fo", "sud"):
             self.cas("2026-11-05T10:00", "GREVE", "--centrale", c)
 
+    def test_manifestation_sans_arret_de_travail_ne_met_personne_en_greve(self):
+        for c in ("cgt", "unsa", "sud", "fo"):
+            self.assertNotEqual(pointer("2026-11-19T10:00", "--centrale", c)["regime"], "GREVE", c)
+            self.assertNotEqual(pointer("2026-12-04T10:00", "--centrale", c)["regime"], "GREVE", c)
+
+    def test_appel_sectoriel_ne_vaut_pas_appel_de_la_centrale(self):
+        self.cas("2026-11-03T10:00", "GREVE", "--centrale", "sud")
+        self.cas("2026-11-03T10:00", "EN_SERVICE", "--centrale", "cgt")
+
     def test_doctrines_divergent_sur_une_mobilisation_minoritaire(self):
         self.cas("2026-10-17T10:00", "GREVE", "--centrale", "sud")
         self.cas("2026-10-16T10:00", "EN_SERVICE", "--centrale", "cgt")

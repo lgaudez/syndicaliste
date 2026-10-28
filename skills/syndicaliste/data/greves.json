@@ -1,5 +1,5 @@
 {
-  "maj": "2026-10-23",
+  "maj": "2026-10-28",
   "_note": "Calendrier embarqué. La pointeuse le fusionne avec https://syndicaliste.gaudeztechlab.com/api/greves.json quand le réseau répond. Ajoutez un mouvement par PR.",
   "mouvements": [
     {
@@ -83,6 +83,22 @@
       "source": "https://lebonbon.fr/paris/news/apres-17-octobre-deux-nouvelles-manifestations-24-31-octobre/"
     },
     {
+      "debut": "2026-11-03",
+      "fin": "2026-11-03",
+      "intitule": "Sapeurs-pompiers et PATS : journée de mobilisation",
+      "interpro": false,
+      "secteurs": [
+        "fonction-publique"
+      ],
+      "appelants": [
+        "sud"
+      ],
+      "motif": "Moyens, recrutements, santé et reconnaissance des métiers du secours. Journée forte annoncée par SUD SDIS dans le cadre du préavis du 21 octobre au 4 décembre ; ce calendrier ne transforme pas tout le préavis en grève effective.",
+      "source": "https://sudsdis-national.net/2026/10/18/la-mobilisation-continue-la-greve-est-reconduite-jusquau-4-decembre-avec-un-bonus-le-3-novembre/",
+      "verification": "2026-10-28",
+      "sectoriel": true
+    },
+    {
       "debut": "2026-11-05",
       "fin": "2026-11-05",
       "intitule": "Journée nationale interprofessionnelle de grève et de manifestations contre le budget 2027",
@@ -99,8 +115,46 @@
         "unsa",
         "fsu"
       ],
-      "motif": "Hausse du Smic, du point d'indice, des pensions et des minima sociaux, indexation sur les prix, égalité salariale, moyens pour les services publics. Grève SNCF le même jour (CGT-Cheminots, UNSA-Ferroviaire, SUD-Rail, CFDT-Cheminots).",
-      "source": "https://www.cgtetat.fr/societe-959/mobilisations/article/le-5-novembre-grandes-greves-intersyndicales-dans-tout-le-pays-tract-cgt"
+      "motif": "Les cinq organisations appellent les salariés du public et du privé, les jeunes et les retraités à défendre les salaires, les services publics, l’emploi et l’industrie.",
+      "source": "https://www.unsa.org/appel-a-la-mobilisation-pour-les-salaires-les-services-publics-lemploi-et-lindustrie/",
+      "verification": "2026-10-28"
+    },
+    {
+      "debut": "2026-11-19",
+      "fin": "2026-11-19",
+      "intitule": "Retraités cheminots : manifestation nationale à Paris",
+      "interpro": false,
+      "secteurs": [
+        "retraites"
+      ],
+      "appelants": [
+        "cgt",
+        "unsa",
+        "sud"
+      ],
+      "motif": "Revalorisation des pensions, accès aux soins, suivi post-professionnel et facilités de circulation. Appel des organisations de retraités cheminots CGT, UNSA et SUD Rail. Rendez-vous à 11 h gare Montparnasse. Mobilisation des retraités, sans appel général à arrêter le travail.",
+      "source": "https://www.cheminotcgt.fr/actions/reforme-des-retraites/determines-a-agir/",
+      "verification": "2026-10-28",
+      "sectoriel": true,
+      "greve": false
+    },
+    {
+      "debut": "2026-12-04",
+      "fin": "2026-12-04",
+      "intitule": "Services d’incendie et de secours : mobilisation devant les préfectures",
+      "interpro": false,
+      "secteurs": [
+        "fonction-publique"
+      ],
+      "appelants": [
+        "cfdt",
+        "cgt"
+      ],
+      "motif": "Dépose symbolique des casques devant les préfectures pour le financement des secours, les effectifs et la protection des personnels. Appel de l’intersyndicale des SIS ; seules les affiliations confirmées par les sources consultées sont renseignées ici.",
+      "source": "https://www.cfdtsdis.fr/securite-civile-mobilisation-intersyndicale-4-decembre-2026/",
+      "verification": "2026-10-28",
+      "sectoriel": true,
+      "greve": false
     }
   ]
 }
