@@ -1,0 +1,29 @@
+name: Tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntaxe Bash
+        run: bash -n install.sh site/public/install.sh
+      - name: Tous les tests Node (un processus par fichier)
+        shell: bash
+        run: |
+          set -euo pipefail
+          for test in site/tests/*.mjs; do
+            node "$test"
+          done
+      - name: Pointeuse, AG, grand public et installateur isolé
+        run: python3 -m unittest tests/test_pointeuse.py tests/test_ag.py tests/test_grand_public.py tests/test_install.py

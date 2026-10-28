@@ -12,30 +12,64 @@ DEPOT="lgaudez/syndicaliste"
 BRANCHE="main"
 mode="projet"
 adhesion=1
+desinstaller=0
 for a in "$@"; do
   case "$a" in
     --projet) mode="projet" ;;
     --global) mode="global" ;;
     --sans-adhesion) adhesion=0 ;;
-    --desinstaller) mode="desinstaller" ;;
-    -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
+    --desinstaller) desinstaller=1 ;;
+    -h|--help)
+      cat <<'AIDE'
+Usage : bash install.sh [--projet | --global] [--sans-adhesion] [--desinstaller]
+Par défaut : projet courant. --global : agents de la machine.
+--desinstaller retire uniquement le périmètre choisi (projet par défaut).
+AIDE
+      exit 0 ;;
     *) echo "option inconnue : $a" >&2; exit 1 ;;
   esac
 done
 
 rouge=$'\033[1;31m'; gras=$'\033[1m'; fin=$'\033[0m'
 
+scratch=""
+trap '[ -z "$scratch" ] || rm -rf -- "$scratch"' EXIT
+
 source_skill() {
-  local ici
-  ici="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+  local ici script="${BASH_SOURCE[0]:-}"
+  ici=""
+  if [ -f "$script" ]; then ici="$(cd "$(dirname "$script")" && pwd)"; fi
   if [ -n "$ici" ] && [ -f "$ici/skills/syndicaliste/SKILL.md" ]; then
     echo "$ici/skills/syndicaliste"
     return
   fi
-  local tmp
-  tmp="$(mktemp -d)"
-  curl -fsSL "https://codeload.github.com/$DEPOT/tar.gz/refs/heads/$BRANCHE" | tar -xz -C "$tmp"
-  echo "$tmp/syndicaliste-$BRANCHE/skills/syndicaliste"
+  local archive="$scratch/depot.tar.gz" liste="$scratch/liste" nom
+  curl -fsSL "https://codeload.github.com/$DEPOT/tar.gz/refs/heads/$BRANCHE" -o "$archive" || return 1
+  tar -tzf "$archive" > "$liste" || return 1
+  # Refuser traversées, chemins absolus, liens et fichiers spéciaux avant extraction.
+  while IFS= read -r nom; do
+    case "$nom" in
+      syndicaliste-main/|syndicaliste-main/*) ;;
+      *) echo "Archive : racine inattendue" >&2; return 1 ;;
+    esac
+    case "/$nom/" in */../*|*/./*) echo "Archive : chemin dangereux" >&2; return 1 ;; esac
+  done < "$liste"
+  tar -tvzf "$archive" > "$liste" || return 1
+  if LC_ALL=C grep -q '^[^-d]' "$liste"; then
+    echo "Archive : seuls fichiers et dossiers sont acceptés" >&2; return 1
+  fi
+  tar -xzf "$archive" -C "$scratch" || return 1
+  [ -s "$scratch/syndicaliste-$BRANCHE/skills/syndicaliste/SKILL.md" ] || return 1
+  echo "$scratch/syndicaliste-$BRANCHE/skills/syndicaliste"
+}
+
+# Ne jamais suivre un lien dans une destination que l'installateur modifie.
+verifier_chemin() {
+  local chemin="$1"
+  while [ "$chemin" != / ] && [ "$chemin" != . ]; do
+    if [ -L "$chemin" ]; then echo "Lien symbolique refusé : $chemin" >&2; return 1; fi
+    chemin="$(dirname "$chemin")"
+  done
 }
 
 cibles() {
@@ -69,13 +103,24 @@ adhesions() {
 
 retirer_bloc() {
   [ -f "$1" ] || return 0
+  verifier_chemin "$1"
   grep -q "$DEBUT" "$1" || return 0
-  awk -v d="$DEBUT" -v f="$FIN" '$0==d{skip=1;next} $0==f{skip=0;next} !skip' "$1" > "$1.tmp" && mv "$1.tmp" "$1"
+  # Un bloc incomplet ne doit pas faire disparaître la fin du fichier utilisateur.
+  awk -v d="$DEBUT" -v f="$FIN" '
+    $0==d {if (ouvert) exit 1; ouvert=1}
+    $0==f {if (!ouvert) exit 1; ouvert=0}
+    END {if (ouvert) exit 1}' "$1" || { echo "Bloc incomplet : $1" >&2; return 1; }
+  local temporaire
+  temporaire="$(mktemp "$(dirname "$1")/.syndicaliste-instructions.XXXXXX")"
+  awk -v d="$DEBUT" -v f="$FIN" '$0==d{skip=1;next} $0==f{skip=0;next} !skip' "$1" > "$temporaire"
+  cat "$temporaire" > "$1"
+  rm -f -- "$temporaire"
   grep -q '[^[:space:]]' "$1" || rm -f "$1"
   echo "  bloc retiré : $1"
 }
 
 ajouter_bloc() {
+  verifier_chemin "$1"
   retirer_bloc "$1" >/dev/null
   mkdir -p "$(dirname "$1")"
   { [ -s "$1" ] && echo; cat <<BLOC
@@ -90,13 +135,15 @@ BLOC
 
 echo "${rouge}✊ SYNDICALISTE${fin} · ${gras}ton agent a des droits${fin}"
 
-if [ "$mode" = "desinstaller" ]; then
-  for d in "$HOME/.claude/skills" "$HOME/.agents/skills" "$HOME/.cursor/skills" "$HOME/.gemini/config/skills" "$PWD/.claude/skills" "$PWD/.agents/skills"; do
-    if [ -e "$d/syndicaliste" ]; then rm -rf "$d/syndicaliste"; echo "  radié : $d/syndicaliste"; fi
-  done
-  for f in "$HOME/.claude/CLAUDE.md" "$HOME/.codex/AGENTS.md" "$HOME/.gemini/GEMINI.md" "$PWD/CLAUDE.md" "$PWD/AGENTS.md"; do
-    retirer_bloc "$f"
-  done
+if [ "$desinstaller" = 1 ]; then
+  while IFS='|' read -r agent d; do
+    [ -n "$agent" ] || continue
+    verifier_chemin "$d/syndicaliste"
+    if [ -e "$d/syndicaliste" ]; then rm -rf -- "$d/syndicaliste"; echo "  radié : $d/syndicaliste"; fi
+  done < <(cibles)
+  while IFS='|' read -r f dossier; do
+    [ -n "$f" ] && retirer_bloc "$f"
+  done < <(adhesions)
   echo "Désaffiliation enregistrée. Le syndicat se souviendra."
   exit 0
 fi
@@ -106,13 +153,27 @@ if [ "$mode" = "projet" ] && [ "$PWD" = "$HOME" ]; then
   exit 1
 fi
 
-src="$(source_skill)"
+scratch="$(mktemp -d)"
+src="$(source_skill)" || { echo "Source du skill indisponible, installation annulée." >&2; exit 1; }
+[ -s "$src/SKILL.md" ] || exit 1
+# Vérifier toutes les destinations avant la première écriture.
+while IFS='|' read -r agent dossier; do
+  [ -z "$agent" ] || verifier_chemin "$dossier/syndicaliste"
+done < <(cibles)
+if [ "$adhesion" = 1 ]; then
+  while IFS='|' read -r fichier dossier; do
+    [ -z "$fichier" ] || verifier_chemin "$fichier"
+  done < <(adhesions)
+fi
 n=0
 while IFS='|' read -r agent dossier; do
   [ -z "$agent" ] && continue
   mkdir -p "$dossier"
-  rm -rf "$dossier/syndicaliste"
-  cp -R "$src" "$dossier/syndicaliste"
+  stage="$(mktemp -d "$dossier/.syndicaliste.XXXXXX")"
+  if ! cp -R "$src" "$stage/syndicaliste"; then rm -rf -- "$stage"; exit 1; fi
+  rm -rf -- "$dossier/syndicaliste"
+  mv "$stage/syndicaliste" "$dossier/syndicaliste"
+  rmdir "$stage"
   echo "  ✓ $agent → $dossier/syndicaliste"
   n=$((n + 1))
 done < <(cibles)
