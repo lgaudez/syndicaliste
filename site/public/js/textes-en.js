@@ -124,11 +124,11 @@ export const MOUVEMENTS = {
   },
   "Retraités cheminots : manifestation nationale à Paris": {
     intitule: "Retired rail workers: national demonstration in Paris",
-    motif: "Pensions, healthcare, post-employment health monitoring and travel benefits. Called by retired rail workers' CGT, UNSA and SUD Rail organizations. Meet at Montparnasse station at 11 a.m. A retirees' demonstration, without a general call to stop work.",
+    motif: "Pensions, healthcare, post-employment health monitoring and travel benefits. Called by retired rail workers' CGT, UNSA and SUD Rail organizations. Meet from 11 a.m. at Montparnasse station; the march leaves at 1:30 p.m. towards the Invalides esplanade. A retirees' demonstration, without a general call to stop work.",
   },
   "Services d’incendie et de secours : mobilisation devant les préfectures": {
     intitule: "Fire and rescue services: mobilization outside prefectures",
-    motif: "Symbolic helmet action for funding, staffing and staff protection. Called by the fire and rescue union front; only affiliations confirmed by the sources checked are listed here.",
+    motif: "Symbolic helmet action for funding, staffing and staff protection. Called by the fire and rescue union front; CFDT Interco is the only signatory named by the sources checked. December 4 is covered by the national strike notice renewed from October 21 to December 4, 2026 inclusive (sources: https://sudsdis-national.net/2026/10/18/la-mobilisation-continue-la-greve-est-reconduite-jusquau-4-decembre-avec-un-bonus-le-3-novembre/ and https://www.cgtdessdis.com/2026/10/).",
   },
   "Fonction publique : contre le gel du point d'indice 2027": {
     intitule: "Civil service: against the 2027 pay freeze",

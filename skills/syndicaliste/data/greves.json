@@ -132,7 +132,7 @@
         "unsa",
         "sud"
       ],
-      "motif": "Revalorisation des pensions, accès aux soins, suivi post-professionnel et facilités de circulation. Appel des organisations de retraités cheminots CGT, UNSA et SUD Rail. Rendez-vous à 11 h gare Montparnasse. Mobilisation des retraités, sans appel général à arrêter le travail.",
+      "motif": "Revalorisation des pensions, accès aux soins, suivi post-professionnel et facilités de circulation. Appel des organisations de retraités cheminots CGT, UNSA et SUD Rail. Rendez-vous à partir de 11 h gare Montparnasse, départ de la manifestation à 13 h 30 vers les Invalides. Mobilisation des retraités, sans appel général à arrêter le travail.",
       "source": "https://www.cheminotcgt.fr/actions/reforme-des-retraites/determines-a-agir/",
       "verification": "2026-10-28",
       "sectoriel": true,
@@ -147,14 +147,12 @@
         "fonction-publique"
       ],
       "appelants": [
-        "cfdt",
-        "cgt"
+        "cfdt"
       ],
-      "motif": "Dépose symbolique des casques devant les préfectures pour le financement des secours, les effectifs et la protection des personnels. Appel de l’intersyndicale des SIS ; seules les affiliations confirmées par les sources consultées sont renseignées ici.",
+      "motif": "Dépose symbolique des casques devant les préfectures pour le financement des secours, les effectifs et la protection des personnels. Appel de l’intersyndicale des SIS ; la CFDT Interco est la seule signataire nommée par les sources consultées. Le 4 décembre est couvert par le préavis national de grève reconduit du 21 octobre au 4 décembre 2026 inclus (sources : https://sudsdis-national.net/2026/10/18/la-mobilisation-continue-la-greve-est-reconduite-jusquau-4-decembre-avec-un-bonus-le-3-novembre/ et https://www.cgtdessdis.com/2026/10/).",
       "source": "https://www.cfdtsdis.fr/securite-civile-mobilisation-intersyndicale-4-decembre-2026/",
       "verification": "2026-10-28",
-      "sectoriel": true,
-      "greve": false
+      "sectoriel": true
     }
   ]
 }

@@ -78,6 +78,12 @@ ok(plie.split("\r\n").every((l) => octets(l) <= 75), "pliage à 75 octets");
 ok(plie.replace(/\r\n /g, "") === long, "le dépliage restitue la ligne");
 ok(!plie.includes("�") && plie.split("\r\n").every((l) => Buffer.from(l, "utf8").toString("utf8") === l), "aucun caractère UTF-8 coupé");
 
+// Mobilisation sans arrêt de travail : catégorie propre à chaque langue
+for (const [lang, attendu] of [["fr", "MOBILISATION"], ["en", "MOBILIZATION"]]) {
+  const [m] = analyser(genererIcs([{ ...piege, greve: false }], { maj, lang }));
+  ok(m.CATEGORIES.split(",")[0] === attendu, `catégorie ${attendu} (${lang})`);
+}
+
 // 4. La Function, avec un ASSETS factice
 const env = { ASSETS: { fetch: async () => new Response(brut, { headers: { "content-type": "application/json" } }) } };
 const reponse = await onRequestGet({ request: new Request("https://syndicaliste.pages.dev/api/greves.ics?lang=en"), env });
