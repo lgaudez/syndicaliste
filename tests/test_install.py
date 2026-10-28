@@ -98,6 +98,27 @@ class TestInstall(unittest.TestCase):
         self.assertNotEqual(self.run_install().returncode, 0)
         self.assertEqual(text.read_text(), 'intact')
 
+    def test_liens_dans_les_parents_du_projet_et_de_home(self):
+        reel = self.base / 'reel'
+        reel.mkdir()
+        (self.base / 'tmp').symlink_to(reel, target_is_directory=True)
+        projet = self.base / 'tmp' / 'projet'
+        projet.mkdir()
+        self.env['PWD'] = str(projet)
+        r = subprocess.run(['bash', '-s', '--'], input=(ROOT / 'install.sh').read_text(), text=True, cwd=projet, env=self.env, capture_output=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertTrue((reel / 'projet/.claude/skills/syndicaliste/SKILL.md').exists())
+        dotfiles = self.base / 'dotfiles'
+        (dotfiles / 'claude').mkdir(parents=True)
+        (dotfiles / 'CLAUDE.md').write_text('dotfiles\n')
+        (dotfiles / 'claude/CLAUDE.md').symlink_to(dotfiles / 'CLAUDE.md')
+        (self.home / '.claude').symlink_to(dotfiles / 'claude', target_is_directory=True)
+        r = self.run_install('--global')
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertTrue((dotfiles / 'claude/skills/syndicaliste/SKILL.md').exists())
+        self.assertIn('syndicaliste:debut', (dotfiles / 'CLAUDE.md').read_text())
+        self.assertTrue((dotfiles / 'claude/CLAUDE.md').is_symlink())
+
     def test_malformed_block_preserves_text(self):
         instructions = self.project / 'AGENTS.md'
         text = 'avant\n<!-- syndicaliste:debut -->\napres\n'

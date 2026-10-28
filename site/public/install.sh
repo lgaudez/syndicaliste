@@ -63,10 +63,13 @@ source_skill() {
   echo "$scratch/syndicaliste-$BRANCHE/skills/syndicaliste"
 }
 
-# Ne jamais suivre un lien dans une destination que l'installateur modifie.
+# Dans un dépôt (non fiable), ne jamais suivre un lien entre le projet et la cible : seuls la cible
+# et les dossiers que l'installateur crée sous $PWD sont testés, pas le chemin qui mène à $PWD
+# (/tmp ou /var sous macOS). En global, $HOME est à l'utilisateur : dotfiles et stow restent permis.
 verifier_chemin() {
+  [ "$mode" = "projet" ] || return 0
   local chemin="$1"
-  while [ "$chemin" != / ] && [ "$chemin" != . ]; do
+  while [ "$chemin" != "$PWD" ] && [ "$chemin" != / ] && [ "$chemin" != . ]; do
     if [ -L "$chemin" ]; then echo "Lien symbolique refusé : $chemin" >&2; return 1; fi
     chemin="$(dirname "$chemin")"
   done
