@@ -218,10 +218,6 @@ p { margin: 0 0 .9em; }
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: var(--grain-leger), radial-gradient(circle at 50% 46%, var(--papier-clair) 0 36%, transparent 36.3%);
 }
-.affiche__megaphone {
-  width: 88%; aspect-ratio: 260 / 170; height: auto;
-  fill: var(--encre); color: var(--encre); transform: rotate(-12deg);
-}
 .affiche__sceau {
   position: absolute; right: .8rem; top: .8rem; border: 2px solid currentColor;
   padding: .5rem .7rem; font: 800 1rem/1 var(--titre); text-transform: uppercase;
@@ -1170,7 +1166,7 @@ a:active { opacity: .8; }
 @media (max-width: 860px) {
   .affiche__grille { padding-top: 1.5rem; gap: 1.4rem; }
   .affiche__slogan { font-size: clamp(2.35rem, 7.5vw, 4rem); }
-  .affiche__megaphone { width: 74%; }
+  .haut-parleur { width: 74%; }
 }
 @media (max-width: 520px) {
   .affiche__edition { font-size: .65rem; letter-spacing: .02em; }
@@ -1184,4 +1180,107 @@ a:active { opacity: .8; }
 
 @media (max-width: 520px) {
   .pied__section { max-width: 100%; overflow-wrap: anywhere; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Barre collante, mégaphone-bouton, mini-lecteur de l'hymne, clip 16:9
+   --------------------------------------------------------------------------- */
+
+/* La barre reste accessible : ancres, focus clavier et zones protégées tiennent compte de sa hauteur (mesurée par commun.js). */
+:root { --hauteur-barre: 4.4rem; }
+html { scroll-padding-top: calc(var(--hauteur-barre) + .5rem); }
+html:not(.js) { scroll-padding-top: 0; }
+.barre {
+  position: sticky; top: 0;
+  padding-left: max(var(--gouttiere), env(safe-area-inset-left));
+  padding-right: max(var(--gouttiere), env(safe-area-inset-right));
+  box-shadow: 0 3px 0 var(--rouge-vif);
+}
+html:not(.js) .barre { position: relative; }
+@media (max-width: 420px) {
+  .barre { padding-left: max(.9rem, env(safe-area-inset-left)); padding-right: max(.9rem, env(safe-area-inset-right)); }
+}
+@media (max-width: 1179px) {
+  .js .barre__nav {
+    max-height: calc(100vh - var(--hauteur-barre)); max-height: calc(100dvh - var(--hauteur-barre));
+    overflow-y: auto; overscroll-behavior: contain;
+    padding-left: max(var(--gouttiere), env(safe-area-inset-left)); padding-right: max(var(--gouttiere), env(safe-area-inset-right));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+}
+.toujours__statue { top: calc(var(--hauteur-barre) + 1.5rem); }
+
+/* Mégaphone de l'affiche : vrai bouton, ondes qui pulsent, lecture de l'hymne */
+.haut-parleur {
+  display: grid; place-items: center; width: 88%; padding: 0; margin: 0;
+  border: 0; background: none; color: var(--encre); font: inherit; cursor: pointer; border-radius: 0;
+  -webkit-appearance: none; appearance: none;
+}
+.haut-parleur__dessin { width: 100%; height: auto; aspect-ratio: 260 / 170; fill: currentColor; overflow: visible; transform: rotate(-12deg); }
+.onde { opacity: .6; transform-box: fill-box; transform-origin: 0% 50%; }
+.haut-parleur--joue .onde { opacity: 1; }
+.haut-parleur__etat {
+  position: absolute; left: .8rem; bottom: .8rem; max-width: calc(100% - 9rem);
+  background: var(--papier-clair); color: var(--encre); border: 2px solid var(--encre);
+  padding: .45rem .7rem .35rem; font: 800 1rem/1.1 var(--titre); text-transform: uppercase; letter-spacing: .04em;
+  box-shadow: 3px 3px 0 var(--encre); transform: rotate(-2deg);
+}
+.haut-parleur--joue .haut-parleur__etat { background: var(--encre); color: var(--papier-clair); box-shadow: 3px 3px 0 var(--papier-clair); }
+@media (hover: hover) and (pointer: fine) {
+  .haut-parleur:hover .haut-parleur__etat { background: var(--encre); color: var(--papier-clair); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .onde { animation: onde 2.4s ease-in-out infinite; }
+  .onde--2 { animation-delay: .35s; }
+  .haut-parleur--joue .onde { animation-duration: .8s; }
+  .haut-parleur--joue .haut-parleur__dessin { animation: porte-voix .5s ease-in-out infinite; }
+  @keyframes onde {
+    0%, 100% { opacity: .3; transform: translateX(-4px) scale(.93); }
+    50% { opacity: 1; transform: translateX(6px) scale(1.07); }
+  }
+  @keyframes porte-voix {
+    0%, 100% { transform: rotate(-12deg); }
+    50% { transform: rotate(-10.5deg) scale(1.03); }
+  }
+}
+
+/* Mini-lecteur de l'hymne, ouvert par le mégaphone (iframe nocookie chargée au clic) */
+.mini-lecteur {
+  position: fixed; z-index: 60; width: min(24rem, calc(100vw - 2rem));
+  right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
+  background: var(--encre); color: var(--papier-clair); border: 3px solid var(--encre); box-shadow: 6px 6px 0 var(--rouge);
+}
+.mini-lecteur--vertical { width: min(13.5rem, calc(100vw - 2rem)); }
+.mini-lecteur__barre { display: flex; align-items: center; gap: .4rem; padding-left: .7rem; font: 800 .95rem/1.1 var(--titre); text-transform: uppercase; letter-spacing: .03em; }
+.mini-lecteur__titre { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-lecteur__fermer { flex: none; min-width: 2.75rem; min-height: 2.75rem; border: 0; background: none; color: inherit; font: 800 1.2rem/1 var(--titre); cursor: pointer; }
+.mini-lecteur__video { aspect-ratio: 16 / 9; }
+.mini-lecteur--vertical .mini-lecteur__video { aspect-ratio: 9 / 16; }
+.mini-lecteur iframe { display: block; width: 100%; height: 100%; border: 0; }
+.mini-lecteur :focus-visible { outline-color: var(--papier-clair); }
+
+/* Clip 16:9 de la page de l'hymne : ordinateur seulement, façade sans iframe jusqu'au clic */
+.studio__clip { display: none; margin-top: 1.6rem; aspect-ratio: 16 / 9; background: var(--encre); border: 4px solid var(--encre); box-shadow: 10px 10px 0 var(--rouge); }
+.studio__clip iframe { display: block; width: 100%; height: 100%; border: 0; }
+.studio__facade {
+  display: grid; place-content: center; justify-items: center; gap: .5rem; width: 100%; height: 100%; padding: 1rem;
+  border: 0; border-radius: 0; cursor: pointer; color: var(--papier-clair); text-align: center;
+  background: var(--grain-leger), radial-gradient(circle at 50% 42%, #3a1612, var(--encre) 70%);
+  -webkit-appearance: none; appearance: none;
+}
+.studio__lire { width: 5.2rem; height: 5.2rem; border-radius: 50%; background: var(--rouge-vif); border: 3px solid var(--papier-clair); position: relative; box-shadow: 5px 5px 0 var(--rouge-sombre); }
+.studio__lire::after { content: ""; position: absolute; left: 1.95rem; top: 1.25rem; border-style: solid; border-width: 1.3rem 0 1.3rem 2rem; border-color: transparent transparent transparent var(--papier-clair); }
+.studio__facade-titre { font: 900 clamp(2rem, 4.4vw, 3.6rem)/.95 var(--pochoir); text-transform: uppercase; letter-spacing: .03em; }
+.studio__facade-mention { font: 700 .95rem/1 var(--machine); text-transform: uppercase; letter-spacing: .1em; }
+.studio__facade:focus-visible { outline: 4px solid var(--papier-clair); outline-offset: -10px; }
+@media (hover: hover) and (pointer: fine) {
+  .studio__facade:hover .studio__lire { transform: scale(1.07) rotate(-3deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .studio__lire { transition: transform .15s; }
+}
+@media (min-width: 900px) {
+  .studio--clip { max-width: 64rem; }
+  .studio--clip .studio__clip { display: block; }
+  .studio--clip .studio__video, .studio--clip .studio__attente { display: none; }
 }

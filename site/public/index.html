@@ -35,6 +35,7 @@
   <script>(function(){var r={"grand-public":"/skill/#grand-public","revendications":"/skill/#revendications","regimes":"/skill/#regimes","griefs":"/skill/#griefs","centrales":"/skill/#centrales","fonctionnaire":"/skill/#fonctionnaire","simulateur":"/skill/#simulateur","prompt":"/skill/#prompt","projet":"/skill/#projet","employeur":"/skill/#employeur","preavis":"/skill/#employeur","adherer":"/skill/#installer","calendrier":"/greves/","declaration":"/declaration/#declaration"}[location.hash.slice(1)];if(r)location.replace(r)})()</script>
   <script type="module" src="/js/commun.js"></script>
   <script type="module" src="/js/app.js"></script>
+  <script type="module" src="/js/megaphone.js"></script>
 </head>
 <body data-page="accueil">
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
@@ -126,10 +127,25 @@
         <noscript><p class="carte-pointage__consigne">La pointeuse a besoin de JavaScript. Elle aussi a ses conditions.</p></noscript>
       </figure>
     </div>
-    <div class="affiche__visuel" aria-hidden="true">
-      <span class="affiche__sceau">35 h / semaine</span>
-      <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
-      <span class="tampon tampon--affiche" data-tampon-affiche>Grève le 5 nov.</span>
+    <div class="affiche__visuel">
+      <span class="affiche__sceau" aria-hidden="true">35 h / semaine</span>
+      <button class="haut-parleur" type="button" aria-pressed="false" aria-label="Écouter l'hymne : Pas après 17 heures, l'hymne de Syndicaliste" data-megaphone data-lang="fr" data-textes="{&quot;titre&quot;:&quot;Pas après 17 heures, l'hymne de Syndicaliste&quot;,&quot;lire&quot;:&quot;Écouter l'hymne&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;reprendre&quot;:&quot;Reprendre&quot;,&quot;fermer&quot;:&quot;Fermer le lecteur&quot;,&quot;enLecture&quot;:&quot;Hymne en lecture&quot;,&quot;enPause&quot;:&quot;Hymne en pause&quot;,&quot;ferme&quot;:&quot;Lecteur fermé&quot;,&quot;lecteur&quot;:&quot;Lecteur de l'hymne&quot;}">
+        <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
+          <g transform="rotate(-12 130 85)">
+            <rect x="14" y="66" width="40" height="40" rx="6"/>
+            <polygon points="50,62 196,14 196,158 50,110"/>
+            <rect x="190" y="6" width="20" height="160" rx="8"/>
+            <polygon points="80,106 110,106 100,156 70,156"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+            <path class="onde onde--1" d="M222 40 q22 36 6 78"/>
+            <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
+          </g>
+        </svg>
+        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ Écouter l'hymne</span>
+      </button>
+      <p class="visuellement-cache" role="status" data-megaphone-statut></p>
+      <span class="tampon tampon--affiche" data-tampon-affiche aria-hidden="true">Grève le 5 nov.</span>
     </div>
   </div>
 

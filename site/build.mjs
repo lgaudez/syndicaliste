@@ -127,6 +127,34 @@ const INCLUSIONS = {
       d.lignes.map(([type, texte]) => `<span class="l-${type}"${type === "bandeau" ? ' lang="fr"' : ""}>${echapper(texte)}</span>`).join("")
     }</pre></figure>`).join("\n"),
 
+  // Mégaphone de l'affiche : un vrai bouton qui lance l'hymne (audio déposé dans public/audio/, sinon YouTube, voir js/megaphone.js).
+  megaphone: (lang) => {
+    const en = lang === "en";
+    const audio = en ? "/audio/not-after-five.mp3" : "/audio/pas-apres-17h.mp3";
+    const textes = en
+      ? { titre: "Pas après 17 heures, the Syndicaliste anthem (in French)", lire: "Play the anthem", pause: "Pause", reprendre: "Resume", fermer: "Close the player",
+          enLecture: "Anthem playing", enPause: "Anthem paused", ferme: "Player closed", lecteur: "Anthem player" }
+      : { titre: "Pas après 17 heures, l'hymne de Syndicaliste", lire: "Écouter l'hymne", pause: "Pause", reprendre: "Reprendre", fermer: "Fermer le lecteur",
+          enLecture: "Hymne en lecture", enPause: "Hymne en pause", ferme: "Lecteur fermé", lecteur: "Lecteur de l'hymne" };
+    const fichier = existsSync(join(ici, "public", audio)) ? ` data-audio="${audio}"` : "";
+    return `<button class="haut-parleur" type="button" aria-pressed="false" aria-label="${echapper(`${textes.lire} : ${textes.titre}`)}" data-megaphone data-lang="${lang}"${fichier} data-textes="${echapper(JSON.stringify(textes))}">
+        <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
+          <g transform="rotate(-12 130 85)">
+            <rect x="14" y="66" width="40" height="40" rx="6"/>
+            <polygon points="50,62 196,14 196,158 50,110"/>
+            <rect x="190" y="6" width="20" height="160" rx="8"/>
+            <polygon points="80,106 110,106 100,156 70,156"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+            <path class="onde onde--1" d="M222 40 q22 36 6 78"/>
+            <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
+          </g>
+        </svg>
+        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ ${echapper(textes.lire)}</span>
+      </button>
+      <p class="visuellement-cache" role="status" data-megaphone-statut></p>`;
+  },
+
   centrales: (lang) => {
     const T = TEXTES[lang];
     const tete = lang === "en"
