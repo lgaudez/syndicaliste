@@ -9,3 +9,5 @@ export async function onRequestGet({ request, env }) {
     },
   });
 }
+
+export const onRequestHead = onRequestGet;
