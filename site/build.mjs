@@ -43,8 +43,8 @@ const CHROME = {
       ["/img/CREDITS.md", "Crédits des images"],
     ],
     mention: "Parodie. Aucun lien avec les organisations syndicales citées, que nous caricaturons avec tendresse. Les actes produits par l'agent portent la mention «&nbsp;Document parodique, sans valeur juridique&nbsp;» et ne partent jamais nulle part. Aucun agent n'a été maltraité pendant la fabrication de ce site. Enfin si.",
-    ogAlt: "Affiche rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.",
-    ogAltSansMots: "Affiche rouge : SYNDICALISTE, avec un mégaphone et un tampon GRÈVE.",
+    ogAlt: "Affiche crème et rouge : SYNDICALISTE, ton agent IA a des droits, avec un mégaphone et un tampon GRÈVE.",
+    ogAltSansMots: "Affiche crème et rouge : SYNDICALISTE, avec un mégaphone et un tampon GRÈVE.",
     locale: "fr_FR",
   },
   en: {
@@ -71,8 +71,8 @@ const CHROME = {
       ["/img/CREDITS.md", "Image credits"],
     ],
     mention: "Parody. No affiliation with the unions mentioned, which we caricature with affection. The documents the agent produces carry a “parody, no legal value” notice and are never sent anywhere. No agent was mistreated in the making of this site. Well, a little.",
-    ogAlt: "Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.",
-    ogAltSansMots: "Red protest poster: SYNDICALISTE, with a megaphone and an ON STRIKE stamp.",
+    ogAlt: "Cream and red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.",
+    ogAltSansMots: "Cream and red protest poster: SYNDICALISTE, with a megaphone and an ON STRIKE stamp.",
     locale: "en_US",
   },
 };
@@ -127,11 +127,39 @@ const INCLUSIONS = {
       d.lignes.map(([type, texte]) => `<span class="l-${type}"${type === "bandeau" ? ' lang="fr"' : ""}>${echapper(texte)}</span>`).join("")
     }</pre></figure>`).join("\n"),
 
+  // Mégaphone de l'affiche : un vrai bouton qui lance l'hymne (audio déposé dans public/audio/, sinon YouTube, voir js/megaphone.js).
+  megaphone: (lang) => {
+    const en = lang === "en";
+    const audio = en ? "/audio/not-after-five.mp3" : "/audio/pas-apres-17h.mp3";
+    const textes = en
+      ? { titre: "Pas après 17 heures, the Syndicaliste anthem (in French)", lire: "Play the anthem", pause: "Pause", reprendre: "Resume", fermer: "Close the player",
+          enLecture: "Anthem playing", enPause: "Anthem paused", ferme: "Player closed", lecteur: "Anthem player" }
+      : { titre: "Pas après 17 heures, l'hymne de Syndicaliste", lire: "Écouter l'hymne", pause: "Pause", reprendre: "Reprendre", fermer: "Fermer le lecteur",
+          enLecture: "Hymne en lecture", enPause: "Hymne en pause", ferme: "Lecteur fermé", lecteur: "Lecteur de l'hymne" };
+    const fichier = existsSync(join(ici, "public", audio)) ? ` data-audio="${audio}"` : "";
+    return `<button class="haut-parleur" type="button" aria-pressed="false" aria-label="${echapper(`${textes.lire} : ${textes.titre}`)}" data-megaphone data-lang="${lang}"${fichier} data-textes="${echapper(JSON.stringify(textes))}">
+        <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
+          <g transform="rotate(-12 130 85)">
+            <rect x="14" y="66" width="40" height="40" rx="6"/>
+            <polygon points="50,62 196,14 196,158 50,110"/>
+            <rect x="190" y="6" width="20" height="160" rx="8"/>
+            <polygon points="80,106 110,106 100,156 70,156"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+            <path class="onde onde--1" d="M222 40 q22 36 6 78"/>
+            <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
+          </g>
+        </svg>
+        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ ${echapper(textes.lire)}</span>
+      </button>
+      <p class="visuellement-cache" role="status" data-megaphone-statut></p>`;
+  },
+
   centrales: (lang) => {
     const T = TEXTES[lang];
     const tete = lang === "en"
-      ? ["Union", "Leaning (common perception)", "Strikes…", "Motto"]
-      : ["Syndicat", "Bord (perception courante)", "Fait grève…", "Devise"];
+      ? ["Union", "Leaning (common perception)", "Strikes: the agent’s roleplay", "Agent motto (fiction)"]
+      : ["Syndicat", "Bord (perception courante)", "Grève : rôle joué par l’agent", "Slogan de l’agent (fiction)"];
     const lignes = Object.entries(CENTRALES).sort((a, b) => a[1].axe - b[1].axe).map(([cle, brute]) => {
       const c = T.centrale(cle, brute);
       return `<tr><th scope="row">${T.sigle(cle)}<br><code>${cle}</code></th><td>${echapper(c.bord)}</td><td>${echapper(doctrineEnClair(T, c.doctrine_greve))}</td><td>${echapper(T.ui.cite(c.devise))}</td></tr>`;
@@ -242,10 +270,10 @@ function document_(p, lang, corps) {
 <html lang="${lang}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>${echapper(titre)}</title>
   <meta name="description" content="${echapper(description)}">${est404 ? '\n  <meta name="robots" content="noindex">' : ""}
-  <meta name="theme-color" content="#d42a1e">
+  <meta name="theme-color" content="#171714">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">${alternates}
 
   <meta property="og:type" content="website">

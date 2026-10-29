@@ -2,6 +2,13 @@
 import { copier } from "./outils.js";
 
 const barre = document.querySelector(".barre");
+
+// La barre est collante : sa hauteur réelle décale les ancres et le focus clavier (scroll-padding-top dans site.css).
+if (barre) {
+  const mesurer = () => document.documentElement.style.setProperty("--hauteur-barre", `${barre.getBoundingClientRect().height}px`);
+  mesurer();
+  new ResizeObserver(mesurer).observe(barre);
+}
 const bouton = document.querySelector("[data-menu-bouton]");
 const menu = bouton && document.getElementById(bouton.getAttribute("aria-controls"));
 const libelle = bouton?.querySelector("[data-menu-libelle]");

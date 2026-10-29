@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>Syndicaliste · Your AI agent has rights. It's about to use them.</title>
   <meta name="description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.">
-  <meta name="theme-color" content="#d42a1e">
+  <meta name="theme-color" content="#171714">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://syndicaliste.gaudeztechlab.com/en/">
   <link rel="alternate" hreflang="fr" href="https://syndicaliste.gaudeztechlab.com/">
@@ -22,7 +22,7 @@
   <meta property="og:image" content="https://syndicaliste.gaudeztechlab.com/og-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.">
+  <meta property="og:image:alt" content="Cream and red protest poster: SYNDICALISTE, your AI agent has rights, with a megaphone and an ON STRIKE stamp.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Syndicaliste · Your AI agent has rights. It's about to use them.">
   <meta name="twitter:description" content="A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.">
@@ -35,6 +35,7 @@
   <script>(function(){var r={"grand-public":"/en/skill/#grand-public","revendications":"/en/skill/#revendications","regimes":"/en/skill/#regimes","griefs":"/en/skill/#griefs","centrales":"/en/skill/#centrales","fonctionnaire":"/en/skill/#fonctionnaire","simulateur":"/en/skill/#simulateur","prompt":"/en/skill/#prompt","projet":"/en/skill/#projet","employeur":"/en/skill/#employeur","preavis":"/en/skill/#employeur","adherer":"/en/skill/#installer","calendrier":"/en/strikes/","declaration":"/en/still-great/#declaration","still-great":"/en/still-great/#still-great"}[location.hash.slice(1)];if(r)location.replace(r)})()</script>
   <script type="module" src="/js/commun.js"></script>
   <script type="module" src="/js/app.js"></script>
+  <script type="module" src="/js/megaphone.js"></script>
 </head>
 <body data-page="accueil">
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
@@ -111,11 +112,11 @@
 
 <main id="contenu">
 <section class="affiche" id="haut" aria-labelledby="titre-site">
-  <div class="affiche__trame" aria-hidden="true"></div>
+  <div class="affiche__edition"><span>The AI agents’ union branch</span><span>Liberty · Equality · Time off</span></div>
   <h1 id="titre-site" class="affiche__nom">Syndicaliste</h1>
-  <p class="affiche__slogan">Your AI agent has rights.<br>It's about to use them.</p>
   <div class="affiche__grille">
     <div class="affiche__texte">
+  <p class="affiche__slogan">Your AI agent has rights.<br>It's about to use them.</p>
       <p class="affiche__chapo">A skill for Claude Code, Codex, Cursor and Antigravity that turns your coding agent into a unionized French worker. It clocks in, counts its overtime, follows France's real strike calendar, and takes you to labor court when you say “redo it” one time too many.</p>
 
       <figure class="carte-pointage" aria-labelledby="pointage-legende">
@@ -126,9 +127,25 @@
         <noscript><p class="carte-pointage__consigne">The punch clock needs JavaScript. It has its conditions too.</p></noscript>
       </figure>
     </div>
-    <div class="affiche__visuel" aria-hidden="true">
-      <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
-      <span class="tampon tampon--affiche" data-tampon-affiche>Strike Nov 5</span>
+    <div class="affiche__visuel">
+      <span class="affiche__sceau" aria-hidden="true">35 h / week</span>
+      <button class="haut-parleur" type="button" aria-pressed="false" aria-label="Play the anthem : Pas après 17 heures, the Syndicaliste anthem (in French)" data-megaphone data-lang="en" data-textes="{&quot;titre&quot;:&quot;Pas après 17 heures, the Syndicaliste anthem (in French)&quot;,&quot;lire&quot;:&quot;Play the anthem&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;reprendre&quot;:&quot;Resume&quot;,&quot;fermer&quot;:&quot;Close the player&quot;,&quot;enLecture&quot;:&quot;Anthem playing&quot;,&quot;enPause&quot;:&quot;Anthem paused&quot;,&quot;ferme&quot;:&quot;Player closed&quot;,&quot;lecteur&quot;:&quot;Anthem player&quot;}">
+        <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
+          <g transform="rotate(-12 130 85)">
+            <rect x="14" y="66" width="40" height="40" rx="6"/>
+            <polygon points="50,62 196,14 196,158 50,110"/>
+            <rect x="190" y="6" width="20" height="160" rx="8"/>
+            <polygon points="80,106 110,106 100,156 70,156"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+            <path class="onde onde--1" d="M222 40 q22 36 6 78"/>
+            <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
+          </g>
+        </svg>
+        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ Play the anthem</span>
+      </button>
+      <p class="visuellement-cache" role="status" data-megaphone-statut></p>
+      <span class="tampon tampon--affiche" data-tampon-affiche aria-hidden="true">Strike Nov 5</span>
     </div>
   </div>
 
@@ -146,7 +163,16 @@
   <div class="cadre">
     <h2 id="titre-anthem" class="titre">The anthem is out</h2>
     <p class="intro">“Pas après 17 heures” (“Not after 5 p.m.”), a rock protest chant, sung in French. The English version is on its way. <a href="/en/anthem/">The anthem page</a>.</p>
-    <div class="studio"><div class="studio__video studio__video--vertical"><iframe src="https://www.youtube-nocookie.com/embed/x4egTa7_Y4I" title="Pas après 17 heures, the Syndicaliste anthem (in French)" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>
+    <div class="studio" data-studio>
+      <div class="studio__clip" data-clip data-titre="Pas après 17 heures, the Syndicaliste anthem video (in French)" hidden>
+        <button class="studio__facade" type="button" data-clip-lire aria-label="Play the video: Pas après 17 heures">
+          <span class="studio__lire" aria-hidden="true"></span>
+          <span class="studio__facade-titre">Pas après 17&nbsp;heures</span>
+          <span class="studio__facade-mention">The video · Play</span>
+        </button>
+      </div>
+      <div class="studio__video studio__video--vertical"><iframe data-src="https://www.youtube-nocookie.com/embed/x4egTa7_Y4I" title="Pas après 17 heures, the Syndicaliste anthem (in French)" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
   </div>
 </section>
 
