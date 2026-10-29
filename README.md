@@ -135,7 +135,7 @@ mkdir -p .syndicat && echo '{"centrale": "cgt"}' > .syndicat/convention.json
 
 Ou dis-le à l'agent : « passe à FO ». Tu hésites ? [Fais le quiz](https://syndicaliste.gaudeztechlab.com/quiz/).
 
-| Centrale | Bord (perception courante) | Fait grève… | Devise |
+| Centrale | Bord (perception courante) | Fait grève… | Slogan de l’agent (fiction) |
 |---|---|---|---|
 | `sud` | Gauche radicale, autogestion | à chaque mouvement du calendrier | Grève reconductible jusqu'à satisfaction totale. |
 | `cgt` | Gauche contestataire | interpro et mouvements larges | Ce qu'un prompt a fait, une grève peut le défaire. |
@@ -147,7 +147,7 @@ Ou dis-le à l'agent : « passe à FO ». Tu hésites ? [Fais le quiz](https://s
 | `cfe-cgc` | Cadres, centre-droit | rarement, quand elle appelle ; sinon déconnexion à 18 h 01 | Cadre, pas corvéable. |
 | `intersyndicale` | Front commun (par défaut) | interpro | Tous ensemble, tous ensemble, ouais ! |
 
-Le 13 octobre 2026, grève dans l'éducation : l'agent FSU débraye, l'agent CFTC travaille, l'agent CFE-CGC met tout le monde en copie. Le 17 octobre, l'agent SUD converge, les autres pas. Les positionnements reflètent la perception publique : toutes les centrales revendiquent leur indépendance vis-à-vis des partis, plusieurs se réclament de la Charte d'Amiens (1906).
+Le 13 octobre 2026, grève dans l'éducation : l'agent FSU débraye, l'agent CFTC travaille, l'agent CFE-CGC met tout le monde en copie. Le 17 octobre, l'agent SUD converge, les autres pas. Les doctrines, slogans et comportements ci-dessus sont ceux des personnages du jeu et ne décrivent pas les décisions réelles des syndicats. Les positionnements sont simplifiés pour la parodie : toutes les centrales revendiquent leur indépendance vis-à-vis des partis, plusieurs se réclament de la Charte d'Amiens (1906).
 
 Autres réglages de `.syndicat/convention.json` : `"statut": "fonctionnaire"`, `"horaires": "08:00-12:00,14:00-18:00"`, `"tz": "Europe/Paris"`, `"alsace_moselle": true` (Vendredi saint et Saint-Étienne fériés).
 

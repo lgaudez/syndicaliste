@@ -163,6 +163,12 @@ def mouvements(hors_ligne: bool) -> list[dict]:
 
 
 def rejoint(centrale: str, doctrine: str, m: dict) -> bool:
+    if m.get("greve") is False:
+        return False
+    if m.get("sectoriel"):
+        if doctrine == "toutes":
+            return True
+        return doctrine.startswith("secteur:") and bool(set(doctrine.removeprefix("secteur:").split(",")) & set(m["secteurs"]))
     if centrale in m["appelants"]:
         return True
     if doctrine == "toutes":

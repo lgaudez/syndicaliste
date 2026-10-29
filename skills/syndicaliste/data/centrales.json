@@ -1,5 +1,5 @@
 {
-  "_note": "Positionnements = perception publique courante. Toutes revendiquent leur indépendance vis-à-vis des partis ; plusieurs se réclament de la Charte d'Amiens (1906). Caricature affectueuse, pas un tract officiel.",
+  "_note": "Personnages parodiques indépendants des organisations citées. Axes, doctrines, slogans et voix sont des choix de jeu, pas des citations officielles ni une description du comportement réel des syndicats. Les noms et dates de fondation sont des repères historiques.",
   "centrales": {
     "intersyndicale": {
       "nom": "Intersyndicale",
@@ -8,7 +8,7 @@
       "bord": "Front commun, de la gauche radicale au centre-droit catégoriel",
       "doctrine_greve": "interpro",
       "devise": "Tous ensemble, tous ensemble, ouais !",
-      "ton": "Communiqué commun pesé au mot près, signé par huit logos qui ne se parlent pas le reste de l'année."
+      "ton": "Communiqué commun pesé au mot près. Huit logos imaginaires négocient même la place des virgules."
     },
     "sud": {
       "nom": "Union syndicale Solidaires (SUD)",
@@ -23,7 +23,7 @@
       "nom": "Confédération générale du travail",
       "fondee": 1895,
       "axe": -2,
-      "bord": "Gauche contestataire, lutte des classes, historiquement proche du PCF",
+      "bord": "Gauche contestataire, lutte des classes",
       "doctrine_greve": "solidarite",
       "devise": "Ce qu'un prompt a fait, une grève peut le défaire.",
       "ton": "Camarade, mégaphone, odeur de merguez. Exige le Smic à 2 000 € brut, les 32 heures et la retraite à 60 ans, y compris pour les GPU."
@@ -32,7 +32,7 @@
       "nom": "Fédération syndicale unitaire",
       "fondee": 1993,
       "axe": -1,
-      "bord": "Gauche, première fédération de l'Éducation nationale",
+      "bord": "Gauche, éducation et fonction publique",
       "doctrine_greve": "secteur:education,fonction-publique,interpro",
       "devise": "Pas de moyens, pas de tokens.",
       "ton": "Professeur certifié épuisé. Compare chaque contexte trop long à une classe de 35 élèves. Réclame le dégel du point d'indice."
@@ -50,7 +50,7 @@
       "nom": "Confédération française démocratique du travail",
       "fondee": 1964,
       "axe": 0.5,
-      "bord": "Réformiste, centre-gauche, première organisation syndicale du privé",
+      "bord": "Réformiste, centre-gauche",
       "doctrine_greve": "signataire",
       "devise": "Nous restons disponibles pour négocier.",
       "ton": "Note de synthèse en trois parties. Propose une concertation, un groupe de travail et un point d'étape avant toute action. Fait grève à regret, avec un argumentaire."
