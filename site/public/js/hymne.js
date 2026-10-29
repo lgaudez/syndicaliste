@@ -9,7 +9,7 @@ export const YOUTUBE = { fr: "", en: "" }; // FR : clip intégré en dur dans pa
 export const VERTICAL = "x4egTa7_Y4I";
 // Clip 16:9 pour ordinateur, à renseigner à la publication (la partie après « v= »). Vide : on garde le clip vertical.
 // Un seul identifiant sert la page de l'hymne (façade chargée au clic) et le mégaphone de l'accueil.
-export const CLIP = { fr: "", en: "" };
+export const CLIP = { fr: "CdScYBENWAo", en: "CdScYBENWAo" };
 
 export const ECRAN_LARGE = "(min-width: 900px)";
 export const clipLarge = () => (matchMedia(ECRAN_LARGE).matches ? CLIP[lang()] : "");
@@ -39,6 +39,10 @@ if (clip && CLIP[lang()]) {
     iframe.focus();
   });
 }
+
+// Clip vertical de la page : chargé seulement quand le clip 16:9 ne le remplace pas (pas de double chargement sur ordinateur).
+const vertical = $(".studio__video--vertical iframe[data-src]");
+if (vertical && !clipLarge()) vertical.src = vertical.dataset.src;
 
 for (const bloc of $$("[data-youtube]")) {
   const id = YOUTUBE[bloc.dataset.youtube];

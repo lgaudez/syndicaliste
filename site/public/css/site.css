@@ -1263,14 +1263,14 @@ html:not(.js) .barre { position: relative; }
 .studio__clip { display: none; margin-top: 1.6rem; aspect-ratio: 16 / 9; background: var(--encre); border: 4px solid var(--encre); box-shadow: 10px 10px 0 var(--rouge); }
 .studio__clip iframe { display: block; width: 100%; height: 100%; border: 0; }
 .studio__facade {
-  display: grid; place-content: center; justify-items: center; gap: .5rem; width: 100%; height: 100%; padding: 1rem;
+  display: grid; grid-template-rows: 1fr auto auto; justify-items: center; align-items: center; gap: .4rem; width: 100%; height: 100%; padding: 1rem 1rem 1.4rem;
   border: 0; border-radius: 0; cursor: pointer; color: var(--papier-clair); text-align: center;
-  background: var(--grain-leger), radial-gradient(circle at 50% 42%, #3a1612, var(--encre) 70%);
+  background: linear-gradient(to top, rgba(26, 24, 20, .92), rgba(26, 24, 20, .35) 45%, transparent 70%), url("/img/hymne-clip-miniature.webp") center / cover, var(--encre);
   -webkit-appearance: none; appearance: none;
 }
 .studio__lire { width: 5.2rem; height: 5.2rem; border-radius: 50%; background: var(--rouge-vif); border: 3px solid var(--papier-clair); position: relative; box-shadow: 5px 5px 0 var(--rouge-sombre); }
 .studio__lire::after { content: ""; position: absolute; left: 1.95rem; top: 1.25rem; border-style: solid; border-width: 1.3rem 0 1.3rem 2rem; border-color: transparent transparent transparent var(--papier-clair); }
-.studio__facade-titre { font: 900 clamp(2rem, 4.4vw, 3.6rem)/.95 var(--pochoir); text-transform: uppercase; letter-spacing: .03em; }
+.studio__facade-titre { text-shadow: 2px 2px 0 var(--encre); font: 900 clamp(2rem, 4.4vw, 3.6rem)/.95 var(--pochoir); text-transform: uppercase; letter-spacing: .03em; }
 .studio__facade-mention { font: 700 .95rem/1 var(--machine); text-transform: uppercase; letter-spacing: .1em; }
 .studio__facade:focus-visible { outline: 4px solid var(--papier-clair); outline-offset: -10px; }
 @media (hover: hover) and (pointer: fine) {
