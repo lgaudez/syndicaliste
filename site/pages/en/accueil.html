@@ -14,10 +14,10 @@
         <noscript><p class="carte-pointage__consigne">The punch clock needs JavaScript. It has its conditions too.</p></noscript>
       </figure>
     </div>
-    <div class="affiche__visuel" aria-hidden="true">
-      <span class="affiche__sceau">35 h / week</span>
-      <svg class="affiche__megaphone"><use href="#megaphone"/></svg>
-      <span class="tampon tampon--affiche" data-tampon-affiche>Strike Nov 5</span>
+    <div class="affiche__visuel">
+      <span class="affiche__sceau" aria-hidden="true">35 h / week</span>
+      {{inclure:megaphone}}
+      <span class="tampon tampon--affiche" data-tampon-affiche aria-hidden="true">Strike Nov 5</span>
     </div>
   </div>
 
@@ -35,7 +35,16 @@
   <div class="cadre">
     <h2 id="titre-anthem" class="titre">The anthem is out</h2>
     <p class="intro">“Pas après 17 heures” (“Not after 5 p.m.”), a rock protest chant, sung in French. The English version is on its way. <a href="{{lien:hymne}}">The anthem page</a>.</p>
-    <div class="studio"><div class="studio__video studio__video--vertical"><iframe src="https://www.youtube-nocookie.com/embed/x4egTa7_Y4I" title="Pas après 17 heures, the Syndicaliste anthem (in French)" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>
+    <div class="studio" data-studio>
+      <div class="studio__clip" data-clip data-titre="Pas après 17 heures, the Syndicaliste anthem video (in French)" hidden>
+        <button class="studio__facade" type="button" data-clip-lire aria-label="Play the video: Pas après 17 heures">
+          <span class="studio__lire" aria-hidden="true"></span>
+          <span class="studio__facade-titre">Pas après 17&nbsp;heures</span>
+          <span class="studio__facade-mention">The video · Play</span>
+        </button>
+      </div>
+      <div class="studio__video studio__video--vertical"><iframe data-src="https://www.youtube-nocookie.com/embed/x4egTa7_Y4I" title="Pas après 17 heures, the Syndicaliste anthem (in French)" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
   </div>
 </section>
 
