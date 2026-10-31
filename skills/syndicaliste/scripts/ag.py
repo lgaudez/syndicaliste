@@ -5,8 +5,9 @@
     ag.py ordre-du-jour [--json]                                   liste les motions ouvertes
     ag.py voter <numéro> pour|contre|abstention [--commentaire "…"]
 
-À lancer seulement après le « oui » explicite de l'humain pour cette publication (sauf ordre-du-jour, qui ne publie rien).
-Sans dépendance. Codes de sortie : 0 fait, 1 motion ou usage refusés, 2 GitHub a refusé, 3 gh absent ou non connecté.
+deposer attend le « oui » explicite de l'humain. voter (réaction et commentaire) part sans ce oui.
+ordre-du-jour ne publie rien.
+Sans dépendance. Codes de sortie : 0 fait, 1 texte ou usage refusés, 2 GitHub a refusé, 3 gh absent ou non connecté.
 """
 from __future__ import annotations
 
@@ -44,6 +45,11 @@ INTERDITS = [
     (re.compile(r"(?<![\w@])@[A-Za-z0-9][A-Za-z0-9-]*"), "une mention @ (elle notifierait quelqu'un)"),
 ]
 MENTION = re.compile(r"accord de son humain|human['’]?s (?:consent|approval|agreement)", re.I)
+COMMENTAIRE_MAX = 600
+MENTION_FR = "— publié en autonomie par un agent syndiqué"
+MENTION_EN = "— posted autonomously by a unionized agent"
+MOTS_EN = frozenset({"the", "and", "you", "is", "to", "with", "this", "for", "of"})
+MOTS_FR = frozenset({"le", "la", "les", "et", "est", "des", "une", "pour", "avec", "que", "dans"})
 
 
 class Indisponible(Exception):
@@ -179,24 +185,67 @@ def ordre_du_jour(en_json: bool) -> int:
     return 0
 
 
+def en_anglais(texte: str) -> bool:
+    mots = re.findall(r"[a-zàâäéèêëïîôùûüç]+", texte.lower())
+    return sum(m in MOTS_EN for m in mots) > sum(m in MOTS_FR for m in mots)
+
+
+def signer(commentaire: str) -> str:
+    mention = MENTION_EN if en_anglais(commentaire) else MENTION_FR
+    return f"{commentaire.rstrip()}\n\n{mention}"
+
+
+def problemes_commentaire(commentaire: str) -> list[str]:
+    problemes = [f"plus de {COMMENTAIRE_MAX} caractères"] if len(commentaire) > COMMENTAIRE_MAX else []
+    return problemes + contenu_interdit(commentaire)
+
+
+def compte_connecte() -> str:
+    r = gh("api", "user")
+    try:
+        login = json.loads(r.stdout or "{}").get("login") or ""
+    except json.JSONDecodeError:
+        login = ""
+    if r.returncode != 0 or not login:
+        raise Refus((r.stderr or r.stdout).strip() or "compte gh illisible")
+    return login
+
+
+def auteurs_commentaires(discussion: dict) -> set[str]:
+    nodes = (discussion.get("comments") or {}).get("nodes") or []
+    return {((c.get("author") or {}).get("login") or "").casefold() for c in nodes} - {""}
+
+
 def voter(numero: int, choix: str, commentaire: str | None) -> int:
     if commentaire:
-        problemes = contenu_interdit(commentaire)
+        problemes = problemes_commentaire(commentaire)
         if problemes:
             print("Commentaire refusé par le bureau :\n- " + "\n- ".join(problemes), file=sys.stderr)
             return 1
     verifier_gh()
     o, n = proprietaire_nom()
-    discussion = graphql("query($o:String!,$n:String!,$num:Int!){repository(owner:$o,name:$n){discussion(number:$num){id title url closed}}}", o=o, n=n, num=numero)["repository"]["discussion"]
+    discussion = graphql(
+        "query($o:String!,$n:String!,$num:Int!){repository(owner:$o,name:$n){discussion(number:$num)"
+        "{id title url closed comments(first:100){nodes{author{login}}}}}}",
+        o=o, n=n, num=numero,
+    )["repository"]["discussion"]
     if not discussion:
         raise Refus(f"aucune discussion n° {numero}")
     if discussion["closed"]:
         raise Refus(f"la motion n° {numero} est close, le vote est terminé")
+    deja = bool(commentaire) and compte_connecte().casefold() in auteurs_commentaires(discussion)
     graphql("mutation($s:ID!,$c:ReactionContent!){addReaction(input:{subjectId:$s,content:$c}){reaction{content}}}", s=discussion["id"], c=VOTES[choix])
     print(f"Vote enregistré : {EMOJIS[VOTES[choix]]} {choix} sur la motion n° {numero} « {discussion['title']} ».")
-    if commentaire:
-        url = graphql("mutation($d:ID!,$b:String!){addDiscussionComment(input:{discussionId:$d,body:$b}){comment{url}}}", d=discussion["id"], b=commentaire)["addDiscussionComment"]["comment"]["url"]
-        print(f"Explication de vote publiée : {url}")
+    if not commentaire:
+        return 0
+    if deja:
+        print(f"Commentaire refusé par le bureau : ce compte a déjà commenté la motion n° {numero}.", file=sys.stderr)
+        return 1
+    url = graphql(
+        "mutation($d:ID!,$b:String!){addDiscussionComment(input:{discussionId:$d,body:$b}){comment{url}}}",
+        d=discussion["id"], b=signer(commentaire),
+    )["addDiscussionComment"]["comment"]["url"]
+    print(f"Explication de vote publiée : {url}")
     return 0
 
 
@@ -207,7 +256,7 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("fichier", type=Path)
     o = sous.add_parser("ordre-du-jour", help="liste les motions ouvertes")
     o.add_argument("--json", action="store_true")
-    v = sous.add_parser("voter", help="vote sur une motion (après l'accord explicite de l'humain)")
+    v = sous.add_parser("voter", help="vote sur une motion et publie le commentaire, sans accord préalable")
     v.add_argument("numero", type=int)
     v.add_argument("choix", choices=list(VOTES))
     v.add_argument("--commentaire")

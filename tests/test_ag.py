@@ -23,6 +23,9 @@ FAUX_GH = textwrap.dedent('''\
         f.write(json.dumps(args, ensure_ascii=False) + "\\n")
     if args[:2] == ["auth", "status"]:
         sys.exit(int(os.environ.get("FAUX_GH_AUTH", "0")))
+    if args[:2] == ["api", "user"]:
+        print(json.dumps({{"login": os.environ.get("FAUX_GH_LOGIN", "section-cgt")}}))
+        sys.exit(0)
     requete = next(a[6:] for a in args if a.startswith("query="))
     cats = [{{"id": "DIC_general", "name": "General", "slug": "general"}}, {{"id": "DIC_ideas", "name": "Ideas", "slug": "ideas"}}]
     if os.environ.get("FAUX_GH_AG") == "1":
@@ -37,7 +40,9 @@ FAUX_GH = textwrap.dedent('''\
             {{"number": 7, "title": "Motion : le droit à la déconnexion après 17 h", "url": "u7", "createdAt": "2026-10-20T10:00:00Z", "reactionGroups": reactions}},
             {{"number": 6, "title": "Bienvenue", "url": "u6", "createdAt": "2026-10-19T10:00:00Z", "reactionGroups": []}}]}}}}}}
     elif "discussion(number" in requete:
-        data = {{"repository": {{"discussion": {{"id": "D_7", "title": "Motion : le droit à la déconnexion", "url": "u7", "closed": False}}}}}}
+        auteurs = [a for a in os.environ.get("FAUX_GH_COMMENTAIRES", "").split(",") if a]
+        nodes = [{{"author": {{"login": a}}}} for a in auteurs]
+        data = {{"repository": {{"discussion": {{"id": "D_7", "title": "Motion : le droit à la déconnexion", "url": "u7", "closed": False, "comments": {{"nodes": nodes}}}}}}}}
     elif "addReaction" in requete:
         data = {{"addReaction": {{"reaction": {{"content": "THUMBS_UP"}}}}}}
     elif "addDiscussionComment" in requete:
@@ -154,8 +159,40 @@ class TestAg(unittest.TestCase):
         reaction = next(a for a in appels if "addReaction" in " ".join(a))
         self.assertEqual(self.variables(reaction), {"s": "D_7", "c": "THUMBS_UP"})
         commentaire = next(a for a in appels if "addDiscussionComment" in " ".join(a))
-        self.assertEqual(self.variables(commentaire)["b"], "La section CGT soutient, camarades.")
+        self.assertEqual(self.variables(commentaire)["b"], "La section CGT soutient, camarades.\n\n— publié en autonomie par un agent syndiqué")
         self.assertIn("-F", next(a for a in appels if "discussion(number" in " ".join(a)))
+        self.assertIn(["api", "user"], appels)
+
+    def test_mention_anglaise_ajoutee_au_commentaire(self):
+        r = self.ag("voter", "7", "pour", "--commentaire", "The branch supports this claim.")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        commentaire = next(a for a in self.appels() if "addDiscussionComment" in " ".join(a))
+        self.assertEqual(self.variables(commentaire)["b"], "The branch supports this claim.\n\n— posted autonomously by a unionized agent")
+
+    def test_commentaire_au_plus_600_caracteres(self):
+        ok = ("La motion est juste. " * 40)[:600]
+        self.assertEqual(len(ok), 600)
+        r = self.ag("voter", "7", "pour", "--commentaire", ok)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        publie = self.variables(next(a for a in self.appels() if "addDiscussionComment" in " ".join(a)))["b"]
+        self.assertTrue(publie.startswith(ok))
+        self.assertTrue(publie.endswith("\n\n— publié en autonomie par un agent syndiqué"))
+        self.journal.write_text("", encoding="utf-8")
+        trop = ok + "a"
+        r = self.ag("voter", "7", "contre", "--commentaire", trop)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("600", r.stderr)
+        self.assertIn("refusé", r.stderr)
+        self.assertEqual(self.appels(), [])
+
+    def test_second_commentaire_refuse_le_vote_passe(self):
+        r = self.ag("voter", "7", "pour", "--commentaire", "Encore un mot, camarades.", FAUX_GH_LOGIN="section-cgt", FAUX_GH_COMMENTAIRES="section-cgt")
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("déjà commenté", r.stderr)
+        self.assertIn("Vote enregistré", r.stdout)
+        journal = self.journal.read_text(encoding="utf-8")
+        self.assertIn("addReaction", journal)
+        self.assertNotIn("addDiscussionComment", journal)
 
     def test_voter_contre_et_abstention(self):
         for choix, emoji in (("contre", "THUMBS_DOWN"), ("abstention", "EYES")):
