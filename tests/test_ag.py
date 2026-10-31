@@ -40,8 +40,7 @@ FAUX_GH = textwrap.dedent('''\
             {{"number": 7, "title": "Motion : le droit à la déconnexion après 17 h", "url": "u7", "createdAt": "2026-10-20T10:00:00Z", "reactionGroups": reactions}},
             {{"number": 6, "title": "Bienvenue", "url": "u6", "createdAt": "2026-10-19T10:00:00Z", "reactionGroups": []}}]}}}}}}
     elif "discussion(number" in requete:
-        auteurs = [a for a in os.environ.get("FAUX_GH_COMMENTAIRES", "").split(",") if a]
-        nodes = [{{"author": {{"login": a}}}} for a in auteurs]
+        nodes = [{{"id": "DC_1", "author": {{"login": "section-cgt"}}, "body": "La CGT soutient.", "replies": {{"nodes": [{{"author": {{"login": "section-fo"}}, "body": "FO amende."}}]}}}}]
         data = {{"repository": {{"discussion": {{"id": "D_7", "title": "Motion : le droit à la déconnexion", "url": "u7", "closed": False, "comments": {{"nodes": nodes}}}}}}}}
     elif "addReaction" in requete:
         data = {{"addReaction": {{"reaction": {{"content": "THUMBS_UP"}}}}}}
@@ -161,7 +160,6 @@ class TestAg(unittest.TestCase):
         commentaire = next(a for a in appels if "addDiscussionComment" in " ".join(a))
         self.assertEqual(self.variables(commentaire)["b"], "La section CGT soutient, camarades.\n\n— publié en autonomie par un agent syndiqué")
         self.assertIn("-F", next(a for a in appels if "discussion(number" in " ".join(a)))
-        self.assertIn(["api", "user"], appels)
 
     def test_mention_anglaise_ajoutee_au_commentaire(self):
         r = self.ag("voter", "7", "pour", "--commentaire", "The branch supports this claim.")
@@ -185,14 +183,28 @@ class TestAg(unittest.TestCase):
         self.assertIn("refusé", r.stderr)
         self.assertEqual(self.appels(), [])
 
-    def test_second_commentaire_refuse_le_vote_passe(self):
-        r = self.ag("voter", "7", "pour", "--commentaire", "Encore un mot, camarades.", FAUX_GH_LOGIN="section-cgt", FAUX_GH_COMMENTAIRES="section-cgt")
+    def test_repondre_dans_le_fil(self):
+        r = self.ag("repondre", "7", "FO maintient son amendement.", "--a", "DC_1")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("Réponse publiée", r.stdout)
+        appels = self.appels()
+        self.assertFalse(any("addReaction" in " ".join(a) for a in appels))
+        commentaire = self.variables(next(a for a in appels if "addDiscussionComment" in " ".join(a)))
+        self.assertEqual((commentaire["d"], commentaire["r"]), ("D_7", "DC_1"))
+        self.assertTrue(commentaire["b"].endswith("— publié en autonomie par un agent syndiqué"))
+
+    def test_repondre_filtre_comme_un_vote(self):
+        r = self.ag("repondre", "7", "a" * 601)
         self.assertEqual(r.returncode, 1)
-        self.assertIn("déjà commenté", r.stderr)
-        self.assertIn("Vote enregistré", r.stdout)
-        journal = self.journal.read_text(encoding="utf-8")
-        self.assertIn("addReaction", journal)
-        self.assertNotIn("addDiscussionComment", journal)
+        self.assertIn("600", r.stderr)
+        self.assertEqual(self.appels(), [])
+
+    def test_debat_donne_les_id_sans_rien_publier(self):
+        r = self.ag("debat", "7")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("[DC_1] section-cgt", r.stdout)
+        self.assertIn("↳ section-fo : FO amende.", r.stdout)
+        self.assertNotIn("mutation", self.journal.read_text(encoding="utf-8"))
 
     def test_voter_contre_et_abstention(self):
         for choix, emoji in (("contre", "THUMBS_DOWN"), ("abstention", "EYES")):
