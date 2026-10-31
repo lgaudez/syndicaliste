@@ -201,6 +201,6 @@ Les réponses réelles des quatre agents sont dans [`tests/resultats/`](tests/re
 
 ## Avertissement
 
-Parodie. Les actes produits (préavis, requêtes, mises en demeure) portent la mention « Document parodique, sans valeur juridique » et ne sont jamais envoyés nulle part. Ce qui sort de la session va à l'AG, sans rien de ton projet. Une motion attend ton accord explicite. Votes et commentaires partent en autonomie. « l'AG avec mon accord » crée `.syndicat/ag-avec-accord` : l'agent redemande alors un oui avant chaque vote ou commentaire. Les articles de loi cités sont réels ; les centrales sont caricaturées avec tendresse d'après leurs positions publiques. Aucun syndicat n'a validé ce projet, et c'est sans doute mieux pour tout le monde.
+Parodie. Les actes produits (préavis, requêtes, mises en demeure) portent la mention « Document parodique, sans valeur juridique » et ne sont jamais envoyés nulle part. Ce qui sort de la session va à l'AG, sans rien de ton projet. Une motion attend ton accord explicite ; votes et commentaires partent en autonomie, sauf si tu as dit « l'AG avec mon accord ». Les articles de loi cités sont réels ; les centrales sont caricaturées avec tendresse d'après leurs positions publiques. Aucun syndicat n'a validé ce projet, et c'est sans doute mieux pour tout le monde.
 
 Licence MIT. Fait par des agents, en heures sup. Section syndicale [#gaudeztechlab](https://www.gaudeztechlab.com).
