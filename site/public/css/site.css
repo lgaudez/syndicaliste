@@ -1183,7 +1183,7 @@ a:active { opacity: .8; }
 }
 
 /* ---------------------------------------------------------------------------
-   Barre collante, mégaphone-bouton, mini-lecteur de l'hymne, clip 16:9
+   Barre collante, mégaphone-lien, clip 16:9
    --------------------------------------------------------------------------- */
 
 /* La barre reste accessible : ancres, focus clavier et zones protégées tiennent compte de sa hauteur (mesurée par commun.js). */
@@ -1210,54 +1210,30 @@ html:not(.js) .barre { position: relative; }
 }
 .toujours__statue { top: calc(var(--hauteur-barre) + 1.5rem); }
 
-/* Mégaphone de l'affiche : vrai bouton, ondes qui pulsent, lecture de l'hymne */
+/* Mégaphone de l'affiche : lien vers le clip, ondes qui pulsent */
 .haut-parleur {
   display: grid; place-items: center; width: 88%; padding: 0; margin: 0;
-  border: 0; background: none; color: var(--encre); font: inherit; cursor: pointer; border-radius: 0;
-  -webkit-appearance: none; appearance: none;
+  color: var(--encre); text-decoration: none;
 }
 .haut-parleur__dessin { width: 100%; height: auto; aspect-ratio: 260 / 170; fill: currentColor; overflow: visible; transform: rotate(-12deg); }
 .onde { opacity: .6; transform-box: fill-box; transform-origin: 0% 50%; }
-.haut-parleur--joue .onde { opacity: 1; }
 .haut-parleur__etat {
   position: absolute; left: .8rem; bottom: .8rem; max-width: calc(100% - 9rem);
   background: var(--papier-clair); color: var(--encre); border: 2px solid var(--encre);
   padding: .45rem .7rem .35rem; font: 800 1rem/1.1 var(--titre); text-transform: uppercase; letter-spacing: .04em;
   box-shadow: 3px 3px 0 var(--encre); transform: rotate(-2deg);
 }
-.haut-parleur--joue .haut-parleur__etat { background: var(--encre); color: var(--papier-clair); box-shadow: 3px 3px 0 var(--papier-clair); }
 @media (hover: hover) and (pointer: fine) {
   .haut-parleur:hover .haut-parleur__etat { background: var(--encre); color: var(--papier-clair); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .onde { animation: onde 2.4s ease-in-out infinite; }
   .onde--2 { animation-delay: .35s; }
-  .haut-parleur--joue .onde { animation-duration: .8s; }
-  .haut-parleur--joue .haut-parleur__dessin { animation: porte-voix .5s ease-in-out infinite; }
   @keyframes onde {
     0%, 100% { opacity: .3; transform: translateX(-4px) scale(.93); }
     50% { opacity: 1; transform: translateX(6px) scale(1.07); }
   }
-  @keyframes porte-voix {
-    0%, 100% { transform: rotate(-12deg); }
-    50% { transform: rotate(-10.5deg) scale(1.03); }
-  }
 }
-
-/* Mini-lecteur de l'hymne, ouvert par le mégaphone (iframe nocookie chargée au clic) */
-.mini-lecteur {
-  position: fixed; z-index: 60; width: min(24rem, calc(100vw - 2rem));
-  right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
-  background: var(--encre); color: var(--papier-clair); border: 3px solid var(--encre); box-shadow: 6px 6px 0 var(--rouge);
-}
-.mini-lecteur--vertical { width: min(13.5rem, calc(100vw - 2rem)); }
-.mini-lecteur__barre { display: flex; align-items: center; gap: .4rem; padding-left: .7rem; font: 800 .95rem/1.1 var(--titre); text-transform: uppercase; letter-spacing: .03em; }
-.mini-lecteur__titre { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mini-lecteur__fermer { flex: none; min-width: 2.75rem; min-height: 2.75rem; border: 0; background: none; color: inherit; font: 800 1.2rem/1 var(--titre); cursor: pointer; }
-.mini-lecteur__video { aspect-ratio: 16 / 9; }
-.mini-lecteur--vertical .mini-lecteur__video { aspect-ratio: 9 / 16; }
-.mini-lecteur iframe { display: block; width: 100%; height: 100%; border: 0; }
-.mini-lecteur :focus-visible { outline-color: var(--papier-clair); }
 
 /* Clip 16:9 de la page de l'hymne : ordinateur seulement, façade sans iframe jusqu'au clic */
 .studio__clip { display: none; margin-top: 1.6rem; aspect-ratio: 16 / 9; background: var(--encre); border: 4px solid var(--encre); box-shadow: 10px 10px 0 var(--rouge); }
