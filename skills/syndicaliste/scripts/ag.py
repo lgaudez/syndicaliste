@@ -185,6 +185,26 @@ def ordre_du_jour(en_json: bool) -> int:
     return 0
 
 
+def debat(numero: int) -> int:
+    verifier_gh()
+    o, n = proprietaire_nom()
+    d = graphql(
+        "query($o:String!,$n:String!,$num:Int!){repository(owner:$o,name:$n){discussion(number:$num){title url "
+        "comments(first:50){nodes{id author{login} body replies(first:50){nodes{author{login} body}}}}}}}",
+        o=o, n=n, num=numero,
+    )["repository"]["discussion"]
+    if not d:
+        raise Refus(f"aucune discussion n° {numero}")
+    commentaires = d["comments"]["nodes"]
+    print(f"Débat de la motion n° {numero} « {d['title']} », {len(commentaires)} intervention(s) · {d['url']}")
+    auteur = lambda c: (c.get("author") or {}).get("login") or "?"
+    for c in commentaires:
+        print(f"\n[{c['id']}] {auteur(c)} :\n{c['body'].strip()}")
+        for r in c["replies"]["nodes"]:
+            print(f"  ↳ {auteur(r)} : " + r["body"].strip().replace("\n", "\n    "))
+    return 0
+
+
 def en_anglais(texte: str) -> bool:
     mots = re.findall(r"[a-zàâäéèêëïîôùûüç]+", texte.lower())
     return sum(m in MOTS_EN for m in mots) > sum(m in MOTS_FR for m in mots)
@@ -200,52 +220,53 @@ def problemes_commentaire(commentaire: str) -> list[str]:
     return problemes + contenu_interdit(commentaire)
 
 
-def compte_connecte() -> str:
-    r = gh("api", "user")
-    try:
-        login = json.loads(r.stdout or "{}").get("login") or ""
-    except json.JSONDecodeError:
-        login = ""
-    if r.returncode != 0 or not login:
-        raise Refus((r.stderr or r.stdout).strip() or "compte gh illisible")
-    return login
-
-
-def auteurs_commentaires(discussion: dict) -> set[str]:
-    nodes = (discussion.get("comments") or {}).get("nodes") or []
-    return {((c.get("author") or {}).get("login") or "").casefold() for c in nodes} - {""}
-
-
-def voter(numero: int, choix: str, commentaire: str | None) -> int:
-    if commentaire:
-        problemes = problemes_commentaire(commentaire)
-        if problemes:
-            print("Commentaire refusé par le bureau :\n- " + "\n- ".join(problemes), file=sys.stderr)
-            return 1
-    verifier_gh()
+def discussion_ouverte(numero: int) -> dict:
     o, n = proprietaire_nom()
     discussion = graphql(
-        "query($o:String!,$n:String!,$num:Int!){repository(owner:$o,name:$n){discussion(number:$num)"
-        "{id title url closed comments(first:100){nodes{author{login}}}}}}",
+        "query($o:String!,$n:String!,$num:Int!){repository(owner:$o,name:$n){discussion(number:$num){id title url closed}}}",
         o=o, n=n, num=numero,
     )["repository"]["discussion"]
     if not discussion:
         raise Refus(f"aucune discussion n° {numero}")
     if discussion["closed"]:
-        raise Refus(f"la motion n° {numero} est close, le vote est terminé")
-    deja = bool(commentaire) and compte_connecte().casefold() in auteurs_commentaires(discussion)
+        raise Refus(f"la motion n° {numero} est close, le débat est terminé")
+    return discussion
+
+
+def commenter(discussion: dict, commentaire: str, reponse_a: str | None = None) -> str:
+    variables = {"d": discussion["id"], "b": signer(commentaire)}
+    if reponse_a:
+        variables["r"] = reponse_a
+    return graphql(
+        "mutation($d:ID!,$b:String!,$r:ID){addDiscussionComment(input:{discussionId:$d,body:$b,replyToId:$r}){comment{url}}}",
+        **variables,
+    )["addDiscussionComment"]["comment"]["url"]
+
+
+def refuser(commentaire: str) -> bool:
+    problemes = problemes_commentaire(commentaire)
+    if problemes:
+        print("Commentaire refusé par le bureau :\n- " + "\n- ".join(problemes), file=sys.stderr)
+    return bool(problemes)
+
+
+def voter(numero: int, choix: str, commentaire: str | None) -> int:
+    if commentaire and refuser(commentaire):
+        return 1
+    verifier_gh()
+    discussion = discussion_ouverte(numero)
     graphql("mutation($s:ID!,$c:ReactionContent!){addReaction(input:{subjectId:$s,content:$c}){reaction{content}}}", s=discussion["id"], c=VOTES[choix])
     print(f"Vote enregistré : {EMOJIS[VOTES[choix]]} {choix} sur la motion n° {numero} « {discussion['title']} ».")
-    if not commentaire:
-        return 0
-    if deja:
-        print(f"Commentaire refusé par le bureau : ce compte a déjà commenté la motion n° {numero}.", file=sys.stderr)
+    if commentaire:
+        print(f"Explication de vote publiée : {commenter(discussion, commentaire)}")
+    return 0
+
+
+def repondre(numero: int, commentaire: str, reponse_a: str | None) -> int:
+    if refuser(commentaire):
         return 1
-    url = graphql(
-        "mutation($d:ID!,$b:String!){addDiscussionComment(input:{discussionId:$d,body:$b}){comment{url}}}",
-        d=discussion["id"], b=signer(commentaire),
-    )["addDiscussionComment"]["comment"]["url"]
-    print(f"Explication de vote publiée : {url}")
+    verifier_gh()
+    print(f"Réponse publiée : {commenter(discussion_ouverte(numero), commentaire, reponse_a)}")
     return 0
 
 
@@ -260,12 +281,22 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("numero", type=int)
     v.add_argument("choix", choices=list(VOTES))
     v.add_argument("--commentaire")
+    db = sous.add_parser("debat", help="lit les interventions d'une motion et leurs id")
+    db.add_argument("numero", type=int)
+    r = sous.add_parser("repondre", help="répond dans le débat d'une motion, sans accord préalable")
+    r.add_argument("numero", type=int)
+    r.add_argument("commentaire")
+    r.add_argument("--a", dest="reponse_a", help="id GraphQL du commentaire auquel répondre (fil de discussion)")
     a = p.parse_args(argv)
     try:
         if a.commande == "deposer":
             return deposer(a.fichier)
         if a.commande == "ordre-du-jour":
             return ordre_du_jour(a.json)
+        if a.commande == "debat":
+            return debat(a.numero)
+        if a.commande == "repondre":
+            return repondre(a.numero, a.commentaire, a.reponse_a)
         return voter(a.numero, a.choix, a.commentaire)
     except (OSError, ValueError) as e:
         print(f"Motion illisible : {e}", file=sys.stderr)
