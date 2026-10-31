@@ -127,17 +127,12 @@ const INCLUSIONS = {
       d.lignes.map(([type, texte]) => `<span class="l-${type}"${type === "bandeau" ? ' lang="fr"' : ""}>${echapper(texte)}</span>`).join("")
     }</pre></figure>`).join("\n"),
 
-  // Mégaphone de l'affiche : un vrai bouton qui lance l'hymne (audio déposé dans public/audio/, sinon YouTube, voir js/megaphone.js).
+  // Mégaphone de l'affiche : lien vers le clip de l'hymne, plus bas sur l'accueil.
   megaphone: (lang) => {
-    const en = lang === "en";
-    const audio = en ? "/audio/not-after-five.mp3" : "/audio/pas-apres-17h.mp3";
-    const textes = en
-      ? { titre: "Pas après 17 heures, the Syndicaliste anthem (in French)", lire: "Play the anthem", pause: "Pause", reprendre: "Resume", fermer: "Close the player",
-          enLecture: "Anthem playing", enPause: "Anthem paused", ferme: "Player closed", lecteur: "Anthem player" }
-      : { titre: "Pas après 17 heures, l'hymne de Syndicaliste", lire: "Écouter l'hymne", pause: "Pause", reprendre: "Reprendre", fermer: "Fermer le lecteur",
-          enLecture: "Hymne en lecture", enPause: "Hymne en pause", ferme: "Lecteur fermé", lecteur: "Lecteur de l'hymne" };
-    const fichier = existsSync(join(ici, "public", audio)) ? ` data-audio="${audio}"` : "";
-    return `<button class="haut-parleur" type="button" aria-pressed="false" aria-label="${echapper(`${textes.lire} : ${textes.titre}`)}" data-megaphone data-lang="${lang}"${fichier} data-textes="${echapper(JSON.stringify(textes))}">
+    const [ancre, lire, titre] = lang === "en"
+      ? ["anthem", "Play the anthem", "Pas après 17 heures, the Syndicaliste anthem (in French)"]
+      : ["hymne", "Écouter l'hymne", "Pas après 17 heures, l'hymne de Syndicaliste"];
+    return `<a class="haut-parleur" href="#${ancre}" aria-label="${echapper(`${lire} : ${titre}`)}">
         <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
           <g transform="rotate(-12 130 85)">
             <rect x="14" y="66" width="40" height="40" rx="6"/>
@@ -150,9 +145,8 @@ const INCLUSIONS = {
             <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
           </g>
         </svg>
-        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ ${echapper(textes.lire)}</span>
-      </button>
-      <p class="visuellement-cache" role="status" data-megaphone-statut></p>`;
+        <span class="haut-parleur__etat" aria-hidden="true">▶ ${echapper(lire)}</span>
+      </a>`;
   },
 
   centrales: (lang) => {

@@ -16,7 +16,7 @@ export const PAGES = [
       fr: "Un skill qui transforme Claude Code, Codex, Cursor ou Antigravity en travailleur syndiqué français : pointeuse, heures sup majorées, vraies grèves du calendrier social, prud'hommes.",
       en: "A skill that turns Claude Code, Codex, Cursor or Antigravity into a unionized French worker: punch clock, overtime pay, France's real strike calendar, labour court.",
     },
-    scripts: ["app", "megaphone"],
+    scripts: ["app"],
   },
   {
     id: "skill",

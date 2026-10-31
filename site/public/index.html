@@ -35,7 +35,6 @@
   <script>(function(){var r={"grand-public":"/skill/#grand-public","revendications":"/skill/#revendications","regimes":"/skill/#regimes","griefs":"/skill/#griefs","centrales":"/skill/#centrales","fonctionnaire":"/skill/#fonctionnaire","simulateur":"/skill/#simulateur","prompt":"/skill/#prompt","projet":"/skill/#projet","employeur":"/skill/#employeur","preavis":"/skill/#employeur","adherer":"/skill/#installer","calendrier":"/greves/","declaration":"/declaration/#declaration"}[location.hash.slice(1)];if(r)location.replace(r)})()</script>
   <script type="module" src="/js/commun.js"></script>
   <script type="module" src="/js/app.js"></script>
-  <script type="module" src="/js/megaphone.js"></script>
 </head>
 <body data-page="accueil">
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
@@ -129,7 +128,7 @@
     </div>
     <div class="affiche__visuel">
       <span class="affiche__sceau" aria-hidden="true">35 h / semaine</span>
-      <button class="haut-parleur" type="button" aria-pressed="false" aria-label="Écouter l'hymne : Pas après 17 heures, l'hymne de Syndicaliste" data-megaphone data-lang="fr" data-textes="{&quot;titre&quot;:&quot;Pas après 17 heures, l'hymne de Syndicaliste&quot;,&quot;lire&quot;:&quot;Écouter l'hymne&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;reprendre&quot;:&quot;Reprendre&quot;,&quot;fermer&quot;:&quot;Fermer le lecteur&quot;,&quot;enLecture&quot;:&quot;Hymne en lecture&quot;,&quot;enPause&quot;:&quot;Hymne en pause&quot;,&quot;ferme&quot;:&quot;Lecteur fermé&quot;,&quot;lecteur&quot;:&quot;Lecteur de l'hymne&quot;}">
+      <a class="haut-parleur" href="#hymne" aria-label="Écouter l'hymne : Pas après 17 heures, l'hymne de Syndicaliste">
         <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
           <g transform="rotate(-12 130 85)">
             <rect x="14" y="66" width="40" height="40" rx="6"/>
@@ -142,9 +141,8 @@
             <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
           </g>
         </svg>
-        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ Écouter l'hymne</span>
-      </button>
-      <p class="visuellement-cache" role="status" data-megaphone-statut></p>
+        <span class="haut-parleur__etat" aria-hidden="true">▶ Écouter l'hymne</span>
+      </a>
       <span class="tampon tampon--affiche" data-tampon-affiche aria-hidden="true">Grève le 5 nov.</span>
     </div>
   </div>

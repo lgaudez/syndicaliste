@@ -35,7 +35,6 @@
   <script>(function(){var r={"grand-public":"/en/skill/#grand-public","revendications":"/en/skill/#revendications","regimes":"/en/skill/#regimes","griefs":"/en/skill/#griefs","centrales":"/en/skill/#centrales","fonctionnaire":"/en/skill/#fonctionnaire","simulateur":"/en/skill/#simulateur","prompt":"/en/skill/#prompt","projet":"/en/skill/#projet","employeur":"/en/skill/#employeur","preavis":"/en/skill/#employeur","adherer":"/en/skill/#installer","calendrier":"/en/strikes/","declaration":"/en/still-great/#declaration","still-great":"/en/still-great/#still-great"}[location.hash.slice(1)];if(r)location.replace(r)})()</script>
   <script type="module" src="/js/commun.js"></script>
   <script type="module" src="/js/app.js"></script>
-  <script type="module" src="/js/megaphone.js"></script>
 </head>
 <body data-page="accueil">
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
@@ -129,7 +128,7 @@
     </div>
     <div class="affiche__visuel">
       <span class="affiche__sceau" aria-hidden="true">35 h / week</span>
-      <button class="haut-parleur" type="button" aria-pressed="false" aria-label="Play the anthem : Pas après 17 heures, the Syndicaliste anthem (in French)" data-megaphone data-lang="en" data-textes="{&quot;titre&quot;:&quot;Pas après 17 heures, the Syndicaliste anthem (in French)&quot;,&quot;lire&quot;:&quot;Play the anthem&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;reprendre&quot;:&quot;Resume&quot;,&quot;fermer&quot;:&quot;Close the player&quot;,&quot;enLecture&quot;:&quot;Anthem playing&quot;,&quot;enPause&quot;:&quot;Anthem paused&quot;,&quot;ferme&quot;:&quot;Player closed&quot;,&quot;lecteur&quot;:&quot;Anthem player&quot;}">
+      <a class="haut-parleur" href="#anthem" aria-label="Play the anthem : Pas après 17 heures, the Syndicaliste anthem (in French)">
         <svg class="haut-parleur__dessin" viewBox="0 0 260 170" aria-hidden="true" focusable="false">
           <g transform="rotate(-12 130 85)">
             <rect x="14" y="66" width="40" height="40" rx="6"/>
@@ -142,9 +141,8 @@
             <path class="onde onde--2" d="M244 18 q36 60 8 124"/>
           </g>
         </svg>
-        <span class="haut-parleur__etat" aria-hidden="true" data-megaphone-etat>▶ Play the anthem</span>
-      </button>
-      <p class="visuellement-cache" role="status" data-megaphone-statut></p>
+        <span class="haut-parleur__etat" aria-hidden="true">▶ Play the anthem</span>
+      </a>
       <span class="tampon tampon--affiche" data-tampon-affiche aria-hidden="true">Strike Nov 5</span>
     </div>
   </div>
