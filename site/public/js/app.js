@@ -52,9 +52,10 @@ function rendreDirect() {
   }
   const tampon = $("[data-tampon-affiche]");
   if (tampon) {
-    if (s.regime === "GREVE") tampon.textContent = U.enGreve;
+    // L'affiche annonce la grève nationale, pas celle de la centrale choisie.
+    if (calculer({ centrale: "intersyndicale" }, moment).s.regime === "GREVE") tampon.textContent = U.enGreve;
     else {
-      const prochaine = prochaineGreveSuivie(etat.centrale, P.isoJour(moment.jour));
+      const prochaine = prochaineGreveSuivie("intersyndicale", P.isoJour(moment.jour));
       tampon.textContent = prochaine ? U.greveLe(dateCourte(prochaine.debut)) : U.pretGreve;
     }
   }
